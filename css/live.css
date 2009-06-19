@@ -1,0 +1,392 @@
+div.hidden { 
+	visibility: hidden; 
+}
+
+
+div.tableau { 
+	overflow: hidden; 
+	position: absolute; 
+	border-right: thin solid black; 
+	height:  90%; 
+	width: 	62%; 
+	top: 8%; 
+	left: 20px; 
+}
+
+
+div.vlist
+{
+	overflow: hidden;
+	position: absolute;
+	border: none;
+	height:  95%;
+	right: 25px;
+	width: 34%;
+}
+
+div.innervlist
+{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body { 
+	font-family: "Georgia"; 
+	color: #000000; 
+	font-size: 1.0em; 
+	padding: 0px; 
+	margin: 0px; 
+}
+
+div.half, div.quarter  { 
+	height: 50%; width:100%; 
+}
+
+#container { 
+	width: 100%; 
+	height: 100%; 
+	display: table; 
+}
+
+#position { 
+	display: table-cell; 
+	vertical-align: middle; 
+}
+
+div.col1 { 
+	width: 30%; 
+	float: left; 
+}
+
+div.col { 
+	width: 22%; 
+	float: left; 
+}
+
+div.A { 
+	margin-left: 5%; 
+	height:25%; 
+	width: 95%; 
+	background-color: #dcdcdc; 
+	position: relative; 
+}
+
+div.B { 
+	margin-left: 5%; 
+	height:25%; 
+	width: 95%; 
+	background-color: #dcdcdc; 
+	position: relative; 
+}
+
+div.final { 
+	height: 12.5%; 
+	font-size: 1.5em;
+	padding-left: 0.5em;
+}
+
+div.winner { 
+	font-weight: bold; 
+}
+
+div.boutinfo { 
+	height:50%; 
+	text-align: right; 
+	padding-right: 5%; 
+}
+
+div.bout { 
+	width: 95%; 
+	height: 66%; 
+	border-right: 6px solid lightblue; 
+}
+
+span.seed { 
+	width: 2em; 
+	border-right: 1px solid black; 
+	position: absolute; left: 4px; 
+}
+
+span.fencer { 
+	padding-left: 2.5em; 
+}
+
+span.country { 
+	text-align: right; 
+	position: absolute; 
+	right:10px; 
+}
+
+span.noseed { 
+	padding-left: .5em; 
+}
+
+div.title { 
+	height: 7%; 
+	text-align: center; 
+	width: 62%; 
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	border-right: thin solid black;
+}
+
+#top, #bottom, #left, #right {	
+	position: fixed; 
+}
+
+#left, #right { 
+	top: 0px; bottom: 0px; width: 15px; 
+}
+
+#left { 
+	left: 0px; 
+}
+
+#right { 
+	right: 0px; 
+}
+
+#top, #bottom { 
+	left: 0px; right: 0px; height: 15px; 
+}
+
+#top { 
+	top: 0px; 
+}
+
+#bottom { 
+	bottom: 0px; 
+}
+
+.col_multi {
+	-moz-column-count: 4;
+	-moz-column-gap: 1em;
+	-webkit-column-count: 4;
+	-webkit-column-gap: 1em;
+	/* height: 85%; */
+	width: 95%;
+	position: absolute;
+	/* border: thin solid black; */
+	top: 15%;
+	left: 30px;
+}
+
+.col_single {
+	height: 85%;
+	width: 90%;
+	position: absolute;
+	/* border: thin solid black; */
+	top: 15%;
+	left: 3%;
+}
+
+
+span.col_rank {
+	float: left;
+	width: 10%;
+}
+
+span.col_name { 
+	float: left;
+}
+
+
+span.col_club { 
+	text-align: right; 
+	float: right;
+	border-right: thin solid black;
+	padding-right: 1em;
+}
+
+
+	
+div.vlist_title {
+	height: 7%; 
+	text-align: center; 
+	width: 99%; 
+	position: absolute;
+	top: 15px;
+}
+
+
+span.noborder {
+	border: none;
+}
+
+div.vlist_body {
+	overflow: hidden;
+	position: absolute;
+	top: 15%;
+}
+
+div.vlist_header {
+	border-top: thin solid black;
+	border-bottom: thin solid black;
+	overflow: hidden;
+	position: absolute;
+	top: 11%;
+}
+
+
+table.vlist_table {
+	min-width: 460px !important;
+	border-collapse: collapse;
+}
+
+
+.fencer_country, .init_rank, .vlist_piste, .vlist_poule {
+	width: 3em;
+	text-align: right;
+}
+
+.vlist_name {
+	width: 12em;
+	text-align: left;
+}
+
+.vlist_club {
+	width: 8em;
+	text-align: right;
+}
+
+.seed, .vlist_position {
+	width: 3em;
+	text-align: left;
+}
+
+
+/* 
+td.message {
+	margin-right: 2em;
+	height: 1.3em;
+}
+
+td.messagespace {
+	width: 100%;
+	height: 1.3em;
+}
+*/
+
+.vm, .hs, .ind {
+	width: 3em;
+	text-align: right;
+}
+
+/* 
+.eliminated {
+	background-color: red;
+}
+*/
+
+/* need to have a set of styles for eliminated in R1, L128, L64, L32 etc */
+
+.elim_p {
+	background-color: #ffcccc;
+}
+
+.elim_128 {
+	background-color: #ffffff;
+}
+
+.elim_64 {
+	background-color: #ffffcc;
+}
+
+.elim_32 {
+	background-color: #fffccc;
+}
+
+.elim_16 {
+	background-color: #cffcfc;
+}
+
+.elim_8 {
+	background-color: #cccfff;
+}
+
+.elim_4 {
+	background-color: #ccccff;
+}
+
+.elim_2 {
+	background-color: #ff865e;
+}
+
+.elim_0 {
+	color: white;
+	background-color: #e63a00;
+}
+
+
+/* css for poule layout */
+/* Peter Smith - peter.smith@englandfencing.org.uk */
+
+table.poule {
+	border: thin solid black;
+	margin-left: 3px;
+	margin-right: 10px;
+	border-collapse: collapse;
+}
+
+td.poule-grid-emptycol {
+	border: none;
+}
+
+td.poule-grid-result {
+	padding: 3px;
+	width: 5%;
+	text-align: center;
+	height: 20px;
+	border: 1px solid black;
+}
+
+td.poule-grid-name, td.poule-grid-club {
+	border: 1px solid black;
+}
+
+td.poule-grid-vm, td.poule-grid-hs, td.poule-grid-ind, td.poule-grid-pl {
+	padding: 5px;
+	width: 5%;
+	text-align: right;
+	border: 1px solid black;
+}
+
+th.poule-title-blank {
+	width: 15px;
+	/* color: black; */
+	background: blue;
+}
+
+th.poule-title-name, th.poule-title-club {
+	border: none;
+	width: 20%;
+	text-transform: capitalize;
+	text-align: left;
+	overflow: hidden;
+	padding-left: 3px;
+}
+
+th.poule-title-result {
+	width: 15px;
+	border: none;
+	background: blue;
+}
+
+.poule td {
+	padding: 3px;
+	font-size: small;
+}
+
+.poule th {
+	border: none;
+	background-color: blue;
+	color: white;
+}
+
+.poule-grid-blank {
+	background-color: #a4a4a4;
+	border: 1px solid black;
+}
+

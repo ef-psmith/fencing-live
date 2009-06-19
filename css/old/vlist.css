@@ -1,0 +1,30 @@
+.list_cont_id {
+	-moz-column-count: 4;
+	-moz-column-gap: 1em;
+	height: 85%;
+	width: 95%;
+	position: absolute;
+	/* border: thin solid black; */
+	top: 10%;
+	left: 30px;
+}
+
+span.col_name { 
+	float: left;
+}
+
+
+span.col_club { 
+	text-align: right; 
+	float: right;
+	border-right: thin solid black;
+	padding-right: 1em;
+}
+
+
+.list_title {
+	text-align: center;
+	width: 95%;
+	position: absolute;
+	left: 30px;
+}

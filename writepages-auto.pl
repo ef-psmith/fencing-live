@@ -870,7 +870,7 @@ sub readpagedefs
 						if ($iter < $#pagedefs) 
 						{
 							# ${$pagedefs[$iter]}{'nextpage'} = ${$pagedefs[$iter + 1]}{'target'};
-							${$pagedefs[$iter]}{'nextpage'} = "page" . ($iter + 1) . ".html";
+							${$pagedefs[$iter]}{'nextpage'} = "page" . ($iter + 2) . ".html";
 						} 
 						else 
 						{

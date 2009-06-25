@@ -913,7 +913,11 @@ sub createpage
 	my $compname = 	$pagedef->{'competition'};
 	my $comp = Engarde->new($compname);
 	
-	die "no comp" unless $comp;	
+	unless ($comp)
+	{
+		warn "no comp";
+		return 1;
+	}
 	# initialise the competition
 	$comp->initialise;
 	

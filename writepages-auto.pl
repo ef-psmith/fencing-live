@@ -865,7 +865,7 @@ sub readpagedefs
 				{
 					for (my $iter = 0; $iter < @pagedefs; $iter++) 
 					{
-						${$pagedefs[$iter]}{'target'} = "page" . $iter . ".html";
+						${$pagedefs[$iter]}{'target'} = "page" . $iter + 1 . ".html";
 
 						if ($iter < $#pagedefs) 
 						{
@@ -915,7 +915,7 @@ sub createpage
 	
 	unless ($comp)
 	{
-		warn "no comp";
+		warn "no comp: $compname";
 		return 1;
 	}
 	# initialise the competition

@@ -865,12 +865,12 @@ sub readpagedefs
 				{
 					for (my $iter = 0; $iter < @pagedefs; $iter++) 
 					{
-						${$pagedefs[$iter]}{'target'} = "page" . $iter + 1 . ".html";
+						${$pagedefs[$iter]}{'target'} = "page" . ($iter + 1) . ".html";
 
 						if ($iter < $#pagedefs) 
 						{
 							# ${$pagedefs[$iter]}{'nextpage'} = ${$pagedefs[$iter + 1]}{'target'};
-							${$pagedefs[$iter]}{'nextpage'} = "page" . $iter + 1 . ".html";
+							${$pagedefs[$iter]}{'nextpage'} = "page" . ($iter + 1) . ".html";
 						} 
 						else 
 						{

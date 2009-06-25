@@ -841,9 +841,9 @@ sub readpagedefs
 		elsif (/^\[\/PAGE\]$/) 
 		{
 			# End of a page so check whether we want this or not
-			my $enabled = $currentpage{'enabled'};
+			my $enabled = $currentpage{'enabled'} || "true";
 
-			if (defined($enabled) && $enabled eq 'true') 
+			if ($enabled eq 'true') 
 			{
 				# PRS - copy series values to page - makes life easier later on....
 				foreach my $skey (keys %currentseries)
@@ -865,13 +865,17 @@ sub readpagedefs
 				{
 					for (my $iter = 0; $iter < @pagedefs; $iter++) 
 					{
+						${$pagedefs[$iter]}{'target'} = "page" . $iter . ".html";
+
 						if ($iter < $#pagedefs) 
 						{
-							${$pagedefs[$iter]}{'nextpage'} = ${$pagedefs[$iter + 1]}{'target'};
+							# ${$pagedefs[$iter]}{'nextpage'} = ${$pagedefs[$iter + 1]}{'target'};
+							${$pagedefs[$iter]}{'nextpage'} = "page" . $iter + 1 . ".html";
 						} 
 						else 
 						{
-							${$pagedefs[$iter]}{'nextpage'} = ${$pagedefs[0]}{'target'};
+							# ${$pagedefs[$iter]}{'nextpage'} = ${$pagedefs[0]}{'target'};
+							${$pagedefs[$iter]}{'nextpage'} = "page1.html";
 						}
 					}
 				}
@@ -1057,7 +1061,7 @@ sub createpage
 	}
 	
 
-	my $pagename = $pagedef->{'targetlocation'} . $pagedef->{'target'};
+	my $pagename = $pagedef->{'targetlocation'} . "/" . $pagedef->{'target'};
 	open( WEBPAGE,"> $pagename") || die("can't open $pagename: $!");
 
 	my $fh = select(WEBPAGE);

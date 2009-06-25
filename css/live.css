@@ -161,7 +161,7 @@ div.title {
 }
 
 .col_multi {
-	-moz-column-count: 4;
+	-moz-column-count: 3;
 	-moz-column-gap: 1em;
 	-webkit-column-count: 4;
 	-webkit-column-gap: 1em;

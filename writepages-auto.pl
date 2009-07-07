@@ -14,7 +14,7 @@
 
 # for dev purposes (mostly)
 use lib "../lib";
-use lib "../eng-lib";
+use lib "../eng-perl";
 
 use strict;
 use Engarde;

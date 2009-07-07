@@ -14,6 +14,7 @@
 
 # for dev purposes (mostly)
 use lib "../lib";
+use lib "../eng-lib";
 
 use strict;
 use Engarde;
@@ -1203,7 +1204,7 @@ sub which_list
 ##################################################################################
 # Main starts here (I think)
 ##################################################################################
-my $pagedeffile = shift || "pagedefinitions.ini";
+my $pagedeffile = shift || "live.ini";
 
 # read the page definitions
 

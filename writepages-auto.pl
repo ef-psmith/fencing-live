@@ -1225,8 +1225,6 @@ while (1)
 		{
 			createpage ($pagedef);
 		}
-
-		# create series index page here!
 	}	
 
 	# print "Done\nSleeping...\n";

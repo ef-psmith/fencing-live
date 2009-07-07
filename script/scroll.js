@@ -12,7 +12,7 @@ counters[1] = 0;
 
 var hasTableau = false;
 var hasVlist = false;
-var pauseTime = 7 * 1000;
+var pauseTime = 20 * 1000;
 
 // standard id prefixes for swapable elements
 var tswapsprefix = "T";

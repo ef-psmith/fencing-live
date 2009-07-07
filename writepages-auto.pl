@@ -13,7 +13,7 @@
 #	tableau drawn		-	tableau + final ranking
 
 # for dev purposes (mostly)
-use lib "..";
+use lib "../lib";
 
 use strict;
 use Engarde;
@@ -656,7 +656,7 @@ sub createRoundTableaus
 	  
    	my $where = $competition->whereami;
 
-	# print "\n\ncreateRoundTableaus: where = $where\n";
+	print "\n\ncreateRoundTableaus: where = $where\n";
 
  	if ($where =~ /tableau/ || $where eq "termine")
 	{
@@ -668,12 +668,12 @@ sub createRoundTableaus
 			#
 			my @t = $competition->tableaux;
 
-			# print "\ncreateRoundTableaus: t = @t\n";
+			print "\ncreateRoundTableaus: t = @t\n";
 
-			if (defined $t[0])
-			{
-				$where = $t[0];
-			}
+			#if (defined $t[0])
+			#{
+			#	$where = $t[0];
+			#}
 		}
 		elsif ($where eq "termine")
 		{
@@ -740,7 +740,7 @@ sub createRoundTableaus
 			}
 
 			# $part is 1 indexed and our divs are 0 indexed to avoid confusing me.
-			my $divname = "T" . $part - 1;
+			my $divname = "T" . ($part - 1);
 			my $title_id = "TT" . ($part - 1);
 		
 			# $localswaps[$defindex] = $divname;

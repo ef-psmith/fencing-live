@@ -1067,7 +1067,7 @@ sub createpage
 	
 
 	my $pagename = $pagedef->{'targetlocation'} . "/" . $pagedef->{'target'};
-	open( WEBPAGE,"> $pagename") || die("can't open $pagename: $!");
+	open( WEBPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
 
 	my $fh = select(WEBPAGE);
 	$| = 1;			# unbuffered output
@@ -1110,6 +1110,10 @@ sub createpage
 	}
 
 	print WEBPAGE "</body>\n</html>";
+
+	close WEBPAGE;
+
+	rename $pagename . ".tmp", $pagename;
 
 }	# end sub
 

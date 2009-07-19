@@ -1,4 +1,3 @@
-<<<<<<< .mine
 # (c) Copyright Oliver Smith & Peter Smith 2007-2009 
 # oliver_rps@yahoo.co.uk
 
@@ -31,7 +30,7 @@ $Engarde::DEBUGGING=1;
 ##################################################################################
 sub writeTableauMatch 
 {
-    my $bout = shift;
+	my $bout = shift;
 	my $roundnumber = shift;
 
 	my $tab = $roundnumber == 1 ? "" : "\t";
@@ -113,45 +112,45 @@ sub writeBlurb
 {
 	# print "writeBlurb: starting\n";
 
-    my $page = shift;
+	my $page = shift;
 
 	# print "writeBlurb: page = " . Dumper(\$page);
    
-    my $nextpage = $page->{'nextpage'};
-    my $pagetitle = $page->{'pagetitle'};
-    my $refresh = $page->{'refresh_time'};
-    my $layout = $page->{'layout'};
-    my $bkcolour = $page->{'background'};
-    my $csspath = $page->{'csspath'};
-    my $scriptpath = $page->{'scriptpath'};
+	my $nextpage = $page->{'nextpage'};
+	my $pagetitle = $page->{'pagetitle'};
+	my $refresh = $page->{'refresh_time'};
+	my $layout = $page->{'layout'};
+	my $bkcolour = $page->{'background'};
+	my $csspath = $page->{'csspath'};
+	my $scriptpath = $page->{'scriptpath'};
 
 	# DO NOT ADD A "DOCTYPE" LINE 
 	# We need the browser to be in quirks mode for some of the CSS layout to work properly 
 	# and any DOCTYPE causes firefox to operate in strict mode
 	print WEBPAGE "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">\n";
-    
-    print WEBPAGE "<head>\n";
-    
-    print WEBPAGE "<title>$pagetitle</title>\n";
+	
+	print WEBPAGE "<head>\n";
+	
+	print WEBPAGE "<title>$pagetitle</title>\n";
 
-    print WEBPAGE "<META HTTP-EQUIV=\"PRAGMA\" CONTENT=\"NO-CACHE\">\n";
+	print WEBPAGE "<META HTTP-EQUIV=\"PRAGMA\" CONTENT=\"NO-CACHE\">\n";
 	print WEBPAGE "<META HTTP-EQUIV=\"CACHE-CONTROL\" CONTENT=\"NO-CACHE\">\n";
 
 	print WEBPAGE "<style type=\"text/css\">\n\t#top, #bottom, #left, #right { background: $bkcolour;}\n</style>\n";
 
-    print WEBPAGE "<link href=\"".$csspath."live.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />\n";
+	print WEBPAGE "<link href=\"".$csspath."live.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />\n";
 
-    print WEBPAGE "<script type=\"text/javascript\">\n";
+	print WEBPAGE "<script type=\"text/javascript\">\n";
 	print WEBPAGE "\tvar next_location=\"$nextpage\";\n";
 		
 	print WEBPAGE "</script>\n";
 
 	# this must come after the local variables above and for some reason the XHTML closure doesn't 
 	# always work so we need to use </script> in full
-    print WEBPAGE "<script src=\"".$scriptpath."scroll.js\" type=\"text/javascript\"></script>\n";
+	print WEBPAGE "<script src=\"".$scriptpath."scroll.js\" type=\"text/javascript\"></script>\n";
 	print WEBPAGE "</head>\n";
 	print WEBPAGE "<body onload=\"onPageLoaded()\">\n";
-    
+	
 	print WEBPAGE "<div id=\"left\"></div>\n";
 	print WEBPAGE "<div id=\"right\"></div>\n";
 	print WEBPAGE "<div id=\"top\"></div>\n";
@@ -165,28 +164,28 @@ sub writeBlurb
 # Write out a poule, writePoule(comp, page)
 sub writePoule 
 {
-    my $comp = shift;
-    my $page = shift;
+	my $comp = shift;
+	my $page = shift;
 
 	my $round = $page->{'poules'}[0]->{'round'};
 	my $compname = $comp->titre_ligne;
 
-    my $div_id = $page->{'poule_div'};
+	my $div_id = $page->{'poule_div'};
 
-    # Note that we are going to use tableau as the generic container for poules as well.
-    my $poule_class = 'tableau';
+	# Note that we are going to use tableau as the generic container for poules as well.
+	my $poule_class = 'tableau';
 
-    if (defined($page->{'poule_class'})) 
+	if (defined($page->{'poule_class'})) 
 	{
-        $poule_class = $page->{'poule_class'};
-    }
+		$poule_class = $page->{'poule_class'};
+	}
 
 	print WEBPAGE "<div class=\"title\"><h2>$compname Round $round</h2></div>\n";
 	print WEBPAGE "<div class=\"$poule_class\" id=\"$div_id\">\n";
-    
-    my @poules = @{$page->{'poules'}};
-    
-    foreach my $pouledef (@poules) 
+	
+	my @poules = @{$page->{'poules'}};
+	
+	foreach my $pouledef (@poules) 
 	{
 		my @g = $pouledef->{'poule'}->grid;
 
@@ -261,18 +260,18 @@ sub writePoule
 # Write out a tableau, writeTableau(data, pagedetails)
 sub writeTableau 
 {
-    my $comp = shift;
-    my $page = shift;
+	my $comp = shift;
+	my $page = shift;
 
 	my $where = $page->{'where'};
 	
-	# print "Where: $where \n";
+	print "Where: $where \n";
 
-    # this is the bout before this tableau.  Should be divisible by 2.
-    my $preceeding_bout = $page->{'preceeding_bout'};
-    
+	# this is the bout before this tableau.  Should be divisible by 2.
+	my $preceeding_bout = $page->{'preceeding_bout'};
+	
 	print WEBPAGE "<div class=\"$page->{title_class}\" id=\"$page->{'title_id'}\"><h2>$page->{'tableau_title'}</h2></div>\n";
-    print WEBPAGE "<div class=\"$page->{tableau_class}\" id=\"$page->{'tableau_div'}\">\n";  # 1st DIV		"tableau"
+	print WEBPAGE "<div class=\"$page->{tableau_class}\" id=\"$page->{'tableau_div'}\">\n";  # 1st DIV		"tableau"
 
 	my $numrounds = $page->{'num_cols'};
 	if (!defined($numrounds)  || $numrounds < 2) {
@@ -290,14 +289,14 @@ sub writeTableau
 
 	my $bout;
 	
-    for (my $roundnum = 1; $roundnum <= $numrounds; $roundnum++) 
+	for (my $roundnum = 1; $roundnum <= $numrounds; $roundnum++) 
 	{
-		# print "writeTableau: roundnum = $roundnum\n";
+		print "writeTableau: roundnum = $roundnum, maxbout = $maxbout\n";
 
-        my $colname = $roundnum == 1 ? "col1" : "col";
-        print WEBPAGE "<div class=\"$colname\">\n";						# COLUMN
+		my $colname = $roundnum == 1 ? "col1" : "col";
+		print WEBPAGE "<div class=\"$colname\">\n";						# COLUMN
 
-        for (my $boutnum = $minbout; $boutnum < $maxbout; $boutnum++) 
+		for (my $boutnum = $minbout; $boutnum < $maxbout; $boutnum++) 
 		{
 			if ($boutnum == $minbout || $boutnum == $minbout + 2) 
 			{
@@ -313,21 +312,23 @@ sub writeTableau
 
 			# print WEBPAGE "<!--   MATCH GOES HERE -->\n";
 
+			print "writeTableau: getting round $roundnum, bout $boutnum\n";
 			$bout = $comp->match($where, $boutnum);
+			print "writeTableau: bout = " . Dumper(\$bout);
 			writeTableauMatch($bout, $roundnum);
 
 			print WEBPAGE "\t\t</div> <!-- quarter -->\n" if $roundnum == 1 ;					# close VERTICAL DIVIDER
 			print WEBPAGE "\t</div>  <!-- half -->\n" if ($roundnum < 3 && ($boutnum == $minbout + 1 || $boutnum == $minbout + 3));	
 		}
 
-        print WEBPAGE "</div><!-- col -->\n";				# close 2nd DIV
-        # end of col div
+		print WEBPAGE "</div><!-- col -->\n";				# close 2nd DIV
+		# end of col div
 
-        # next round has half as many bouts
-        
-        $numbouts /= 2;
-        my $newlastN = $lastN/2;
-        $preceeding_bout /=2; 
+		# next round has half as many bouts
+		
+		$numbouts /= 2;
+		my $newlastN = $lastN/2;
+		$preceeding_bout /=2; 
 		$minbout = $preceeding_bout + 1;
 		$maxbout = $minbout + $numbouts;
 
@@ -337,7 +338,7 @@ sub writeTableau
 
 		# print "writeTableau: where = $where, lastN = $lastN\n";
 
-    }
+	}
 
 	if ($bout->{'winner'})
 	{
@@ -351,8 +352,8 @@ sub writeTableau
 		print WEBPAGE "\t</div></div>\n";
 		print WEBPAGE "</div>\n";
 	}
-    
-    print WEBPAGE "</div>  <!-- tableau -->\n";					# close 1st DIV
+	
+	print WEBPAGE "</div>  <!-- tableau -->\n";					# close 1st DIV
 }
 
 ##################################################################################
@@ -360,8 +361,8 @@ sub writeTableau
 ##################################################################################
 # write a fencer into an entry list.  (key to data, webpage, details of list);
 sub writeEntryListFencer {
-    my $EGData = shift;
-    my $col_details = shift;
+	my $EGData = shift;
+	my $col_details = shift;
 
 	# flag to indicate if the style should be amended based on the "group" value
 	my $adjust_style = shift || 0;
@@ -374,18 +375,18 @@ sub writeEntryListFencer {
 		$row_class = "class=\"$group\"";
 	}
 		
-    print WEBPAGE "\t\t\t<tr $row_class>\n";
+	print WEBPAGE "\t\t\t<tr $row_class>\n";
 
-    foreach my $column_def (@{$col_details}) 
+	foreach my $column_def (@{$col_details}) 
 	{
 		my $col_class = $column_def->{'class'};
 		my $col_key = $column_def->{'key'};
 		my $col_val = defined $EGData->{$col_key} ? $EGData->{$col_key} : "&nbsp;";
 
 		print WEBPAGE "\t\t\t\t<td class=\"$col_class\">$col_val</td>\n";
-    }
+	}
 
-    print WEBPAGE "\t\t\t</tr>\n"; 
+	print WEBPAGE "\t\t\t</tr>\n"; 
 
 }
 
@@ -396,14 +397,14 @@ sub writeFencerListDivHeader
 
 	$class .= " hidden" if ($div_id > 0);
 
-    print WEBPAGE "\t<div class=\"$class\" id=\"V$div_id\">\n";
-    print WEBPAGE "\t\t<table class=\"vlist_table\">\n";
+	print WEBPAGE "\t<div class=\"$class\" id=\"V$div_id\">\n";
+	print WEBPAGE "\t\t<table class=\"vlist_table\">\n";
 }
 
 
 sub writeFencerListDivFooter
 {
-    print WEBPAGE "\t\t</table>\n\t</div>\n";
+	print WEBPAGE "\t\t</table>\n\t</div>\n";
 }
 
 
@@ -414,20 +415,20 @@ sub writeFencerListDivFooter
 # Write out the entry list in table format  - used for all vlist divs
 sub writeFencerList 
 {
-    local $pagedetails = shift;		# must be scoped as local to allow for sort funcs
+	local $pagedetails = shift;		# must be scoped as local to allow for sort funcs
 
-    my $list_title = $pagedetails->{'list_title'};
-    my $col_details = $pagedetails->{'column_defs'};
+	my $list_title = $pagedetails->{'list_title'};
+	my $col_details = $pagedetails->{'column_defs'};
 	my $sort_func = $pagedetails->{'sort'};
 	my $entry_list = $pagedetails->{'entry_list'};
 	my $ref = ref $pagedetails->{'entry_list'} || "";
 	my $size = $pagedetails->{'size'};
 
-    print WEBPAGE "<div class=\"vlist\">\n";
-    print WEBPAGE "\t<div class=\"vlist_title\"><h2>$list_title</h2></div>\n";
-    print WEBPAGE "\t<div class=\"vlist_header\">\n";
-    print WEBPAGE "\t\t<table class=\"vlist_table\">\n\t\t\t<tr>\n";
-    foreach my $column_def (@{$col_details}) 
+	print WEBPAGE "<div class=\"vlist\">\n";
+	print WEBPAGE "\t<div class=\"vlist_title\"><h2>$list_title</h2></div>\n";
+	print WEBPAGE "\t<div class=\"vlist_header\">\n";
+	print WEBPAGE "\t\t<table class=\"vlist_table\">\n\t\t\t<tr>\n";
+	foreach my $column_def (@{$col_details}) 
 	{
 		my $col_class = $column_def->{'class'};
 		my $col_heading = $column_def->{'heading'};
@@ -435,13 +436,13 @@ sub writeFencerList
 		print WEBPAGE "\t\t\t\t<td class=\"$col_class\">$col_heading</td>\n";
 	}
 
-    print WEBPAGE "\t\t\t\</tr>\n\t\t</table>\n\t</div>\n";
+	print WEBPAGE "\t\t\t\</tr>\n\t\t</table>\n\t</div>\n";
 
 	my $div_id = 0;
   
 	writeFencerListDivHeader($div_id);
 
-    if (defined ($entry_list))
+	if (defined ($entry_list))
 	{
 		my $entryindex = 0;
 		if ($ref)
@@ -505,8 +506,8 @@ sub writeFencerList
 				}
 			}
 		}
-    }
-    
+	}
+	
 	writeFencerListDivFooter();
 	
 	print WEBPAGE "\n</div>";
@@ -518,18 +519,18 @@ sub writeFencerList
 # Write out the entry list in CSS3 multi column format 
 sub writeEntryList 
 {
-    local $pagedetails = shift;
+	local $pagedetails = shift;
 
-    my $list_title = $pagedetails->{'list_title'};
-    my $col_details = $pagedetails->{'column_defs'};
+	my $list_title = $pagedetails->{'list_title'};
+	my $col_details = $pagedetails->{'column_defs'};
 	my $sort_func = $pagedetails->{'sort'};
 	my $entry_list = $pagedetails->{'entry_list'};
 	my $ref = ref $pagedetails->{'entry_list'} || "";
 
-    print WEBPAGE "<div class=\"vlist_title\"><h2>$list_title</h2></div>\n";
-    print WEBPAGE "<div class=\"col_multi\" id=\"V0\">\n";
+	print WEBPAGE "<div class=\"vlist_title\"><h2>$list_title</h2></div>\n";
+	print WEBPAGE "<div class=\"col_multi\" id=\"V0\">\n";
 
-    if (defined ($entry_list))
+	if (defined ($entry_list))
 	{
 		my $entryindex = 0;
 
@@ -543,9 +544,9 @@ sub writeEntryList
 
 		   	$entryindex += 1;
 		}
-    }
-    
-    print WEBPAGE "</div>\n";
+	}
+	
+	print WEBPAGE "</div>\n";
 }
 
 ##################################################################################
@@ -555,17 +556,17 @@ sub writeEntryList
 # the first will be visible the later ones not
 sub createPouleDefinitions 
 {
-    my $competition = shift;
+	my $competition = shift;
 	my $round = shift;
 
 	# print "createPouleDefinitions: round = $round\n";
 
   	my %retval;
-    
+	
 	#  my @localswaps;
 
-    my @defs;
-    my $defindex = 0;
+	my @defs;
+	my $defindex = 0;
    	
    	my $numPoulesPerPage = 3;
 
@@ -586,7 +587,7 @@ sub createPouleDefinitions
 
 				$def{'poule_div'} = $divname;
 			
-	    		$def{'poule_class'} = 'tableau hidden' if ($defindex / $numPoulesPerPage > 0); 
+				$def{'poule_class'} = 'tableau hidden' if ($defindex / $numPoulesPerPage > 0); 
 
 				$defs[$defindex / $numPoulesPerPage] = \%def;
 				
@@ -629,38 +630,28 @@ sub createPouleDefinitions
 # the first will be visible the later ones not
 sub createRoundTableaus 
 {
-    my $competition = shift;
-    my $tableaupart = shift;
-    my $chosenpart = 0;
-    my $numparts = 0;
-    #	default is two columns
+	print "createRoundTableaus starting\n";
+
+	my $competition = shift;
+	# my $tableaupart = shift;
+	my $chosenpart = 0;
+	my $numparts = 0;
+	#	default is two columns
 	my $numcols = 3;
 
-
-	# PRS - this bit allows a single quarter to be displayed
-	# not used here but left in for consistency
-
-    if ($tableaupart =~ m%(\d)/(\d)in(\d)%) {
-		$chosenpart = $1;
-		$numparts = $2;
-		$numcols = $3;
-    	print "Tableau Part: $tableaupart or $chosenpart / $numparts \n";
-    }
-        
-    my $compname = $competition->titre_ligne;
-    
+	my $compname = $competition->titre_ligne;
+	
   	my $retval = {};
 	
 	my $tab;
 	my $roundsize = 0;
-
 
 	# PRS - minroundsize controls the number of fencers in col1 - now fixed at 8
 	my $minroundsize = 8; 
 	  
    	my $where = $competition->whereami;
 
-	print "\n\ncreateRoundTableaus: where = $where\n";
+	print "createRoundTableaus: where = $where\n";
 
  	if ($where =~ /tableau/ || $where eq "termine")
 	{
@@ -670,9 +661,8 @@ sub createRoundTableaus
 
 			# start at the last complete tableau if possible.
 			#
-			my @t = $competition->tableaux;
-
-			print "\ncreateRoundTableaus: t = @t\n";
+			# my @t = $competition->tableaux;
+			# print "\ncreateRoundTableaus: t = @t\n";
 
 			#if (defined $t[0])
 			#{
@@ -681,8 +671,10 @@ sub createRoundTableaus
 		}
 		elsif ($where eq "termine")
 		{
-			my @tableaux = $competition->tableaux();
-			$where = $tableaux[-1];
+			my @tableaux = $competition->tableaux;
+			print "createRoundTableaus: tableaux (where=termine) = @tableaux\n";
+			$where = $tableaux[-3];
+			print "createRoundTableaus: where (where=termine) = $where\n";
 		}
 		else
 		{
@@ -701,7 +693,7 @@ sub createRoundTableaus
 			print "Now where is (after round definition)  $where\n";
 		}	
 
-		# print "where = $where\n";
+		print "where99 = $where\n";
 		$tab = $competition->tableau($where);
 
 		$roundsize = $tab->taille if ref $tab;
@@ -723,14 +715,14 @@ sub createRoundTableaus
 
 	# my @localswaps;
 
-    my @defs;
-    my $defindex = 0;
+	my @defs;
+	my $defindex = 0;
 
-    my $preceedingbout = 0;
-    while ($preceedingbout < $roundsize / 2) 
+	my $preceedingbout = 0;
+	while ($preceedingbout < $roundsize / 2) 
 	{
 		# print "Preceeding Bout: $preceedingbout Chosen part: $chosenpart \n";
-    
+	
 		if (0 == $chosenpart || $preceedingbout == ($minroundsize /2) * $chosenpart) 
 		{
 			my %def;
@@ -755,15 +747,15 @@ sub createRoundTableaus
 
 			if ($preceedingbout == 0 && $roundsize <= 8) 
 			{
-	    		$def{'tableau_title'} = $compname . " Final";
+				$def{'tableau_title'} = $compname . " Final";
 			} 
 			elsif ($preceedingbout == 0 && $roundsize == $minroundsize)
 			{
-	    		$def{'tableau_title'} = $compname . " Last $minroundsize";
+				$def{'tableau_title'} = $compname . " Last $minroundsize";
 			}
 			else 
 			{
-	    		$def{'tableau_title'} = $compname . " Last ". $roundsize . " part " . $part;
+				$def{'tableau_title'} = $compname . " Last ". $roundsize . " part " . $part;
 			}
 
 			$def{'lastN'} = $roundsize;
@@ -771,13 +763,13 @@ sub createRoundTableaus
 		
 			if ($preceedingbout != 0 && 0 == $chosenpart) 
 			{
-	    		$def{'tableau_class'} = 'tableau hidden';
-	    		$def{'title_class'} = 'title hidden';
+				$def{'tableau_class'} = 'tableau hidden';
+				$def{'title_class'} = 'title hidden';
 			}
 			else
 			{
-	    		$def{'tableau_class'} = 'tableau';
-	    		$def{'title_class'} = 'title';
+				$def{'tableau_class'} = 'tableau';
+				$def{'title_class'} = 'title';
 			}
 
 			$defs[$defindex] = \%def;
@@ -801,17 +793,17 @@ sub readpagedefs
 
 	my $pagedeffile = shift;
 
-    open PAGEDEFFILE, $pagedeffile or die "Couldn't open page definitions file";
+	open PAGEDEFFILE, $pagedeffile or die "Couldn't open page definitions file";
 
-    my @pagedefs;
-    my $pageindex = 0;
-    my %currentpage;
+	my @pagedefs;
+	my $pageindex = 0;
+	my %currentpage;
 	my %currentseries;
 	my $series = {};
-    my $inpage = 0;
-    my $inseries = 0;
+	my $inpage = 0;
+	my $inseries = 0;
 
-    while (<PAGEDEFFILE>) 
+	while (<PAGEDEFFILE>) 
 	{
 		if (/^\[SERIES\]$/)
 		{
@@ -824,7 +816,7 @@ sub readpagedefs
 		{
 			$currentpage{$name} = $value if $inpage; 
 			$currentseries{$name} = $value if $inseries && not $inpage; 
-        }
+		}
 		elsif (/^\[PAGE\]$/) 
 		{
 			# Beginning of a page so clear everything
@@ -841,7 +833,7 @@ sub readpagedefs
 			elsif ($inseries)
 			{
 			}
-       	}
+	   	}
 		elsif (/^\[\/PAGE\]$/) 
 		{
 			# End of a page so check whether we want this or not
@@ -865,7 +857,7 @@ sub readpagedefs
 		{
 			if (defined($currentseries{'enabled'})  && $currentseries{'enabled'} eq "true")
 			{
-    			if (@pagedefs > 0) 
+				if (@pagedefs > 0) 
 				{
 					for (my $iter = 0; $iter < @pagedefs; $iter++) 
 					{
@@ -896,7 +888,7 @@ sub readpagedefs
 
 		$pageindex++;
 	}
-    close PAGEDEFFILE;
+	close PAGEDEFFILE;
 
 	# print "pagedefs = " . Dumper(\@pagedefs);
 	return $series;
@@ -915,6 +907,9 @@ sub createpage
 	
 	#Create the competition
 	my $compname = 	$pagedef->{'competition'};
+
+	print "\ncreatepage(): processing $compname\n";
+
 	my $comp = Engarde->new($compname);
 	
 	unless ($comp)
@@ -922,16 +917,11 @@ sub createpage
 		warn "no comp: $compname";
 		return 1;
 	}
-	# initialise the competition
-	$comp->initialise;
 	
 	# $pagedef->{'comp'} = $comp;
 
 	$pagedef->{'pagetitle'} = $comp->titre_ligne;
 	
-	# default refresh time of 30s.  This is changed later to be a minimum of 10 seconds per tableau view or the size of the vertical list.
-	my $refreshtime = 30;
-
 	# If there are tableaus then we need to create them
 	my $hastableau = want($comp, "tableau");
 
@@ -974,7 +964,7 @@ sub createpage
 		# $pagedef->{'swaps'} = $pouledefs{'swaps'};
 	}
 
-    # Now sort out the vertical list
+	# Now sort out the vertical list
 	my $vertlist = want($comp, "list");
 
 	my $listdef = undef();
@@ -1029,7 +1019,7 @@ sub createpage
 				{'class' => 'vm', 'heading' => 'vm', key => 'vm'},
 				{'class' => 'ind', 'heading' => 'ind', key=> 'ind'},
 				{'class' => 'hs', 'heading' => 'hs', key=> 'hs'} ];						
-    
+	
 			$listdef = 	{	'sort' => \&ranksort, 'size' => $pagedef->{'vlistsize'},
 							'list_title' => 'Ranking after the pools', 
 							'entry_list' => $fencers, 'column_defs' => $entrylistdef
@@ -1047,7 +1037,7 @@ sub createpage
 							{'class' => 'vlist_position', 'heading' => ' ', key => 'seed'},
 							{'class' => 'vlist_name', 'heading' => 'Name', key=> 'nom'},
 							{'class' => 'vlist_club', 'heading' => 'Club', key => 'club'}];		
-    
+	
 			$listdef = {	'sort' => \&ranksort, 'size' => $pagedef->{'vlistsize'},
 							'list_title' => 'Overall Ranking', 
 							'entry_list' => $fencers, 'column_defs' => $entrylistdef
@@ -1060,7 +1050,7 @@ sub createpage
 			my $entrylistdef = [ 
 							{'class' => 'fencer_name', 'heading' => 'Name', key=> 'nom'},
 							{'class' => 'fencer_club', 'heading' => 'Club', key => 'club'}];		
-    
+	
 			$listdef = {	'sort' => \&namesort, 'size' => $pagedef->{'entrylistsize'},
 							'list_title' => $comp->titre_ligne . ' Entries', 
 							'entry_list' => $fencers, 'column_defs' => $entrylistdef
@@ -1222,7 +1212,7 @@ $| = 1;
 select($fh);
 # STDOUT->autoflush(1);  # to ease debugging!
 
-while (1)
+#while (1)
 {
 	print "\nRunning......";
 	my $pages = readpagedefs ($pagedeffile);
@@ -1238,3 +1228,4 @@ while (1)
 
 	sleep 30;
 }
+			

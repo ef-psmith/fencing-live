@@ -263,9 +263,12 @@ sub writeTableau
 	my $comp = shift;
 	my $page = shift;
 
+	# print Dumper(\$page);
+
 	my $where = $page->{'where'};
+	my $lastN = $page->{'lastN'};
 	
-	print "Where: $where \n";
+	print "**********\nWhere = $where, lastN = $lastN\n";
 
 	# this is the bout before this tableau.  Should be divisible by 2.
 	my $preceeding_bout = $page->{'preceeding_bout'};
@@ -279,7 +282,6 @@ sub writeTableau
 	}
 	
 	# Work out the number of bouts
-	my $lastN = $page->{'lastN'};
 	my $numbouts = $page->{'num_bouts'};
 	
 	# print "writeTableau: Number of rounds: $numrounds Number of bouts: $numbouts\n";
@@ -333,7 +335,7 @@ sub writeTableau
 		$maxbout = $minbout + $numbouts;
 
 		# Change the where
-		$where =~ s/$lastN/$newlastN/; 
+		$where =~ s/\d+/$newlastN/;
 		$lastN = $newlastN;
 
 		# print "writeTableau: where = $where, lastN = $lastN\n";
@@ -630,7 +632,7 @@ sub createPouleDefinitions
 # the first will be visible the later ones not
 sub createRoundTableaus 
 {
-	print "createRoundTableaus starting\n";
+	# print "createRoundTableaus starting\n";
 
 	my $competition = shift;
 	# my $tableaupart = shift;
@@ -651,7 +653,7 @@ sub createRoundTableaus
 	  
    	my $where = $competition->whereami;
 
-	print "createRoundTableaus: where = $where\n";
+	# print "createRoundTableaus: where = $where\n";
 
  	if ($where =~ /tableau/ || $where eq "termine")
 	{
@@ -672,9 +674,9 @@ sub createRoundTableaus
 		elsif ($where eq "termine")
 		{
 			my @tableaux = $competition->tableaux;
-			print "createRoundTableaus: tableaux (where=termine) = @tableaux\n";
+			# print "createRoundTableaus: tableaux (where=termine) = @tableaux\n";
 			$where = $tableaux[-3];
-			print "createRoundTableaus: where (where=termine) = $where\n";
+			# print "createRoundTableaus: where (where=termine) = $where\n";
 		}
 		else
 		{
@@ -688,16 +690,18 @@ sub createRoundTableaus
 		{
 			$roundsize = $numparts * $minroundsize;
 			
-			print "where = $where\n";
+			# print "where = $where\n";
 			$where =~ s/\d+/$roundsize/;
-			print "Now where is (after round definition)  $where\n";
+			# print "Now where is (after round definition)  $where\n";
 		}	
 
-		print "where99 = $where\n";
+		# print "where99 = $where\n";
 		$tab = $competition->tableau($where);
 
+		print "$where = " . Dumper(\$tab);
+
 		$roundsize = $tab->taille if ref $tab;
-		# print "Roundsize $roundsize, Minroundsize $minroundsize\n";
+		print "Roundsize $roundsize, Minroundsize $minroundsize\n";
 
 		if ($roundsize < $minroundsize)	# assume it's the final - wouldn't be true if all the DE places were fought
 		{
@@ -1212,7 +1216,7 @@ $| = 1;
 select($fh);
 # STDOUT->autoflush(1);  # to ease debugging!
 
-#while (1)
+while (1)
 {
 	print "\nRunning......";
 	my $pages = readpagedefs ($pagedeffile);

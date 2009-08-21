@@ -34,7 +34,7 @@ div.innervlist
 body { 
 	font-family: "Sans"; 
 	color: #000000; 
-	font-size: 1.0em; 
+	font-size: 1.5em; 
 	padding: 0px; 
 	margin: 0px; 
 }
@@ -244,6 +244,7 @@ table.vlist_table {
 .vlist_name {
 	width: 12em;
 	text-align: left;
+	font-size: 1.5em;
 }
 
 .vlist_club {
@@ -251,9 +252,15 @@ table.vlist_table {
 	text-align: right;
 }
 
-.seed, .vlist_position {
+.seed { 
 	width: 3em;
 	text-align: left;
+}
+
+.vlist_position {
+	width: 3em;
+	text-align: left;
+	font-size: 1.5em;
 }
 
 

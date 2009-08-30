@@ -55,12 +55,12 @@ div.half, div.quarter  {
 }
 
 div.col1 { 
-	width: 30%; 
+	width: 40%; 
 	float: left; 
 }
 
 div.col { 
-	width: 22%; 
+	width: 29%; 
 	float: left; 
 }
 
@@ -70,6 +70,8 @@ div.A {
 	width: 95%; 
 	background-color: #dcdcdc; 
 	position: relative; 
+	font-size: 1.5em;
+	overflow: hidden;
 }
 
 div.B { 
@@ -78,6 +80,8 @@ div.B {
 	width: 95%; 
 	background-color: #dcdcdc; 
 	position: relative; 
+	font-size: 1.5em;
+	overflow: hidden;
 }
 
 div.final { 
@@ -219,6 +223,7 @@ div.vlist_body {
 	overflow: hidden;
 	position: absolute;
 	top: 15%;
+	width: 95%;
 }
 
 div.vlist_header {
@@ -227,18 +232,21 @@ div.vlist_header {
 	overflow: hidden;
 	position: absolute;
 	top: 11%;
+	width: 95%;
 }
 
 
 table.vlist_table {
 	min-width: 460px !important;
 	border-collapse: collapse;
+	width: 100%;
 }
 
 
 .fencer_country, .init_rank, .vlist_piste, .vlist_poule {
 	width: 3em;
 	text-align: right;
+	font-size: 1.5em;
 }
 
 .vlist_name {
@@ -310,20 +318,19 @@ td.messagespace {
 }
 
 .elim_8 {
-	background-color: #cccfff;
+	background-color: #ccffcc;
 }
 
 .elim_4 {
-	background-color: #ccccff;
+	background-color: #b8860b;
 }
 
 .elim_2 {
-	background-color: #ff865e;
+	background-color: #c0c0c0;
 }
 
 .elim_0 {
-	color: white;
-	background-color: #e63a00;
+	background-color: #ffd700;
 }
 
 
@@ -383,13 +390,14 @@ th.poule-title-result {
 
 .poule td {
 	padding: 3px;
-	font-size: small;
+	font-size: 1.5em;
 }
 
 .poule th {
 	border: none;
 	background-color: blue;
 	color: white;
+	font-size: 1.5em;
 }
 
 .poule-grid-blank {

@@ -189,6 +189,8 @@ sub writePoule
 	{
 		my @g = $pouledef->{'poule'}->grid;
 
+		print "writePoules: grid = " . Dumper(\@g);
+
 		print WEBPAGE "\t<h3>" . $pouledef->{'poule_title'} . "</h3>\n";
 		print WEBPAGE "\t<table class=\"poule\">\n";
 		
@@ -267,6 +269,8 @@ sub writeTableau
 
 	my $where = $page->{'where'};
 	my $lastN = $page->{'lastN'};
+
+	my @winners;
 	
 	print "**********\nWhere = $where, lastN = $lastN\n";
 
@@ -278,7 +282,7 @@ sub writeTableau
 
 	my $numrounds = $page->{'num_cols'};
 	if (!defined($numrounds)  || $numrounds < 2) {
-		$numrounds = 3;
+		$numrounds = 2;
 	}
 	
 	# Work out the number of bouts
@@ -289,7 +293,7 @@ sub writeTableau
 	my $minbout = $preceeding_bout + 1;
 	my $maxbout = $minbout + $numbouts;
 
-	my $bout;
+	# my $bout;
 	
 	for (my $roundnum = 1; $roundnum <= $numrounds; $roundnum++) 
 	{
@@ -315,7 +319,14 @@ sub writeTableau
 			# print WEBPAGE "<!--   MATCH GOES HERE -->\n";
 
 			print "writeTableau: getting round $roundnum, bout $boutnum\n";
-			$bout = $comp->match($where, $boutnum);
+			my $bout = $comp->match($where, $boutnum);
+
+			if ($roundnum == $numrounds) 
+			{
+				# last col so collect any winners
+				push @winners, $bout->{winner} || "&nbsp;";
+			}
+
 			print "writeTableau: bout = " . Dumper(\$bout);
 			writeTableauMatch($bout, $roundnum);
 
@@ -342,16 +353,27 @@ sub writeTableau
 
 	}
 
-	if ($bout->{'winner'})
+	if (@winners)
 	{
+		print "DEBUG: writeTableau: we have winners!\n" . Dumper (\@winners);
+
 		print WEBPAGE "<div class=\"col\">\n";
-		print WEBPAGE "\t<div id=\"container\"><div id=\"position\">\n";
-		print WEBPAGE "\t\t<div class=\"A final winner\">\n";
-		print WEBPAGE "\t\t\t<div id=\"container\"><div id=\"position\">\n";
-		print WEBPAGE "\t\t\t\t$bout->{'winner'}\n";
-		print WEBPAGE "\t\t\t</div></div>\n";
-		print WEBPAGE "\t\t</div>\n";
-		print WEBPAGE "\t</div></div>\n";
+
+		foreach (@winners)
+		{
+			print WEBPAGE "\t<div class=\"half\">\n";
+			print WEBPAGE "\t\t<div id=\"container\"><div id=\"position\">\n";
+			print "writeTableau: winner = $_\n";
+			print WEBPAGE "\t\t<div class=\"A final winner\">\n";
+			print WEBPAGE "\t\t\t<div id=\"container\"><div id=\"position\">\n";
+			print WEBPAGE "\t\t\t\t$_\n";
+			print WEBPAGE "\t\t\t</div></div>\n";
+			print WEBPAGE "\t\t</div>\n";
+			print WEBPAGE "\t\t</div></div>\n";
+			print WEBPAGE "\t</div>\n";
+
+		}
+
 		print WEBPAGE "</div>\n";
 	}
 	
@@ -570,7 +592,7 @@ sub createPouleDefinitions
 	my @defs;
 	my $defindex = 0;
    	
-   	my $numPoulesPerPage = 3;
+   	my $numPoulesPerPage = 2;
 
 	my $poule;
 
@@ -639,7 +661,7 @@ sub createRoundTableaus
 	my $chosenpart = 0;
 	my $numparts = 0;
 	#	default is two columns
-	my $numcols = 3;
+	my $numcols = 2;
 
 	my $compname = $competition->titre_ligne;
 	
@@ -660,6 +682,10 @@ sub createRoundTableaus
 		if ($where =~ /tableau/)
 		{
 			$where =~ s/tableau //;
+
+			my @w = split / /, $where;
+
+			$where = $w[0];
 
 			# start at the last complete tableau if possible.
 			#
@@ -1012,7 +1038,7 @@ sub createpage
 			else
 			{
 				# PRS: need something extra here - final ranking after poules will never get displayed
-				$fencers = $comp->ranking("p", $haspoules - 1);
+				$fencers = $comp->ranking("p");
 			}
 	
 			my $entrylistdef = [ 
@@ -1168,7 +1194,6 @@ sub want
 	}
 }
 
-
 sub which_list
 {
 	my $where = shift;
@@ -1194,7 +1219,14 @@ sub which_list
 	}
 	elsif ($where =~ /tableau/ || $where eq "termine")
 	{
-		return "result";
+		return "result" if $where eq "termine";
+
+		my @w = split / /, $where;
+
+		print "which_list: w = @w\n";
+
+		return "ranking" if $w[1] eq $w[2];
+		return "result" unless $w[1] eq $w[2];
 	}
 	elsif ($where eq "debut")
 	{

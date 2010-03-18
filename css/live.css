@@ -34,7 +34,7 @@ div.innervlist
 body { 
 	font-family: "Sans"; 
 	color: #000000; 
-	font-size: 1.5em; 
+	font-size: 1.1em; 
 	padding: 0px; 
 	margin: 0px; 
 }
@@ -88,10 +88,12 @@ div.final {
 	height: 12.5%; 
 	font-size: 1.5em;
 	padding-left: 0.5em;
+	overflow: hidden;
 }
 
 div.winner { 
 	font-weight: bold; 
+	overflow: hidden;
 }
 
 div.boutinfo { 
@@ -253,16 +255,19 @@ table.vlist_table {
 	width: 12em;
 	text-align: left;
 	font-size: 1.5em;
+	overflow: hidden;
 }
 
 .vlist_club {
 	width: 8em;
 	text-align: right;
+	overflow: hidden;
 }
 
 .seed { 
 	width: 3em;
 	text-align: left;
+	overflow: hidden;
 }
 
 .vlist_position {

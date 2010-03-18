@@ -1,4 +1,5 @@
-# (c) Copyright Oliver Smith & Peter Smith 2007-2009 
+#!/opt/bin/perl -w
+# (c) Copyright Oliver Smith & Peter Smith 2007-2010 
 # oliver_rps@yahoo.co.uk
 
 # modified to reduce the amount of info needed in the config file by

@@ -86,6 +86,9 @@ sub writeTableauMatch
 				if ($bout->{'fencerA'} && $bout->{'fencerB'})
 				{
 					$title = "$bout->{'scoreA'} / $bout->{'scoreB'}";
+					$title = "by exclusion" if $title =~ /exclusion/;
+					$title = "by abandonment" if $title =~ /abandon/;
+					$title = "by penalty" if $title =~ /forfait/;
 				}
 			}
 			else
@@ -190,12 +193,12 @@ sub writePoule
 	{
 		my @g = $pouledef->{'poule'}->grid;
 
-		print "writePoules: grid = " . Dumper(\@g);
+		#print "writePoules: grid = " . Dumper(\@g);
 
 		print WEBPAGE "\t<h3>" . $pouledef->{'poule_title'} . "</h3>\n";
 		print WEBPAGE "\t<table class=\"poule\">\n";
 		
-		my $lineNum = 0;
+		# my $lineNum = 0;
 		my $titles = $g[0];
 		
 		print WEBPAGE "\t\t<tr>\n";
@@ -230,8 +233,8 @@ sub writePoule
 
 			for ($cellNum = 1; $cellNum < scalar @$line; $cellNum++)
 			{
-				my $text = $$line[$cellNum];
-				$text = "" if $text eq "()";
+				my $text = $$line[$cellNum] || "";
+				$text = "" if $text && $text eq "()";
 
 				my $class = $$titles[$cellNum] || "emptycol";
 
@@ -397,7 +400,7 @@ sub writeEntryListFencer {
 	if ($adjust_style)
 	{
 		my $group = $EGData->{"group"};
-		$row_class = "class=\"$group\"";
+		$row_class = "class=\"$group\"" if $group;
 	}
 		
 	print WEBPAGE "\t\t\t<tr $row_class>\n";
@@ -725,7 +728,7 @@ sub createRoundTableaus
 		# print "where99 = $where\n";
 		$tab = $competition->tableau($where);
 
-		print "$where = " . Dumper(\$tab);
+		#print "$where = " . Dumper(\$tab);
 
 		$roundsize = $tab->taille if ref $tab;
 		print "Roundsize $roundsize, Minroundsize $minroundsize\n";
@@ -836,6 +839,9 @@ sub readpagedefs
 
 	while (<PAGEDEFFILE>) 
 	{
+		my $name = "";
+		my $value = "";
+
 		if (/^\[SERIES\]$/)
 		{
 			$inseries = 1;
@@ -843,7 +849,7 @@ sub readpagedefs
 			undef @pagedefs;
 			undef %currentpage;
 		}
-		elsif ((my $name, my $value) = ($_ =~ /(\w*)=(.*)/)) 
+		elsif (($name, $value) = ($_ =~ /(\w*)=(.*)/)) 
 		{
 			$currentpage{$name} = $value if $inpage; 
 			$currentseries{$name} = $value if $inseries && not $inpage; 
@@ -854,7 +860,7 @@ sub readpagedefs
 			undef %currentpage;
 			$inpage = 1;
 		}
-		elsif ((my $name, my $value) = ($_ =~ /(\w*)=(.*)/)) 
+		elsif (($name, $value) = ($_ =~ /(\w*)=(.*)/)) 
 		{
 			if ($inpage) 
 			{
@@ -1032,7 +1038,7 @@ sub createpage
 			#######################################################
 
 			# Need to check the round no
-			if ($hp[2] eq "finished")
+			if (defined($hp[2]) && $hp[2] eq "finished")
 			{
 				$fencers = $comp->ranking("p", $haspoules);
 			}
@@ -1174,7 +1180,7 @@ sub want
 
 	my $where = $c->whereami;
 
-	# print "WANT: what = $what, where = $where\n";
+	print "DEBUG: WANT: what = $what, where = $where\n";
 
 	if ($what eq "tableau")
 	{ 
@@ -1198,6 +1204,8 @@ sub want
 sub which_list
 {
 	my $where = shift;
+
+	print "DEBUG: which_list: where = $where\n";
 
 	if ($where =~ /poules/)
 	{
@@ -1224,7 +1232,7 @@ sub which_list
 
 		my @w = split / /, $where;
 
-		print "which_list: w = @w\n";
+		print "which_list: w = [@w]\n";
 
 		return "ranking" if $w[1] eq $w[2];
 		return "result" unless $w[1] eq $w[2];

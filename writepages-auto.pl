@@ -24,7 +24,7 @@ use Data::Dumper;
 
 use vars qw($pagedetails);
 
-$Engarde::DEBUGGING=1;
+$Engarde::DEBUGGING=0;
 
 ##################################################################################
 # writeTableauMatch
@@ -193,7 +193,7 @@ sub writePoule
 	{
 		my @g = $pouledef->{'poule'}->grid;
 
-		#print "writePoules: grid = " . Dumper(\@g);
+		# print "writePoules: grid = " . Dumper(\@g);
 
 		print WEBPAGE "\t<h3>" . $pouledef->{'poule_title'} . "</h3>\n";
 		print WEBPAGE "\t<table class=\"poule\">\n";
@@ -205,6 +205,8 @@ sub writePoule
 
 		my $cellNum;
 		my $resultNum = 1;
+
+		# print "writePoules: titles = " . Dumper(\$titles);
 
 		for ($cellNum = 1; $cellNum < scalar @$titles; $cellNum++)
 		{
@@ -231,9 +233,13 @@ sub writePoule
 
 			print WEBPAGE "\t\t<tr>\n";
 
+			# print "writePoules: line = " . Dumper(\$line);
+
 			for ($cellNum = 1; $cellNum < scalar @$line; $cellNum++)
 			{
-				my $text = $$line[$cellNum] || "";
+				$$line[$cellNum] = "" unless defined $$line[$cellNum];
+
+				my $text = $$line[$cellNum];
 				$text = "" if $text && $text eq "()";
 
 				my $class = $$titles[$cellNum] || "emptycol";
@@ -1180,7 +1186,7 @@ sub want
 
 	my $where = $c->whereami;
 
-	print "DEBUG: WANT: what = $what, where = $where\n";
+	# print "DEBUG: WANT: what = $what, where = $where\n";
 
 	if ($what eq "tableau")
 	{ 
@@ -1205,7 +1211,7 @@ sub which_list
 {
 	my $where = shift;
 
-	print "DEBUG: which_list: where = $where\n";
+	# print "DEBUG: which_list: where = $where\n";
 
 	if ($where =~ /poules/)
 	{

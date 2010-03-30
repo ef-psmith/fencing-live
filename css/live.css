@@ -206,6 +206,20 @@ span.col_club {
 	padding-right: 1em;
 }
 
+span.top10 {
+	color: red;
+	font-weight: bold;
+}
+
+span.top20 {
+	color: blue;
+	font-weight: bold;
+}
+
+span.top50 {
+	color: green;
+	font-weight: bold;
+}
 
 	
 div.vlist_title {

@@ -561,25 +561,49 @@ sub writeEntryList
 	my $entry_list = $pagedetails->{'entry_list'};
 	my $ref = ref $pagedetails->{'entry_list'} || "";
 
-	print WEBPAGE "<div class=\"vlist_title\"><h2>$list_title</h2></div>\n";
-	print WEBPAGE "<div class=\"col_multi\" id=\"V0\">\n";
+	my $count = scalar keys %$entry_list;
+
+	my $out = "";
+	my $nif = 0;
 
 	if (defined ($entry_list))
 	{
-		my $entryindex = 0;
-
 		foreach my $entrydetail (sort namesort keys %$entry_list) 
 		{
 			my $affiliation = $entry_list->{$entrydetail}->{'club'} || "&nbsp;";
 			my $nom = $entry_list->{$entrydetail}->{'nom'};
+			my $serie = $entry_list->{$entrydetail}->{'serie'} || 999;
 
-			print WEBPAGE "<span class=\"col_name\">$nom</span>";
-			print WEBPAGE "<span class=\"col_club\">$affiliation</span><br>\n";
+			my $nameclass = "col_name";
 
-		   	$entryindex += 1;
+			if ($serie < 11)
+			{
+				$nameclass .= " top10"; 
+				$nif += 6;
+			}
+			elsif ($serie < 21)
+			{
+				$nameclass .= " top20"; 
+				$nif += 3;
+			}
+			elsif ($serie < 51)
+			{
+				$nameclass .= " top50"; 
+				$nif += 1;
+			}
+
+			$out .= "<span class=\"$nameclass\">$nom</span>";
+			$out .= "<span class=\"col_club\">$affiliation</span><br>\n";
 		}
 	}
+
+	$nif = int($count / 4) if $nif * 4 < $count;
 	
+	print WEBPAGE "<div class=\"vlist_title\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n";
+	print WEBPAGE "<div class=\"col_multi\" id=\"V0\">\n";
+
+	print WEBPAGE $out;
+
 	print WEBPAGE "</div>\n";
 }
 
@@ -1092,7 +1116,9 @@ sub createpage
 
 			my $entrylistdef = [ 
 							{'class' => 'fencer_name', 'heading' => 'Name', key=> 'nom'},
-							{'class' => 'fencer_club', 'heading' => 'Club', key => 'club'}];		
+							{'class' => 'fencer_club', 'heading' => 'Club', key => 'club'},
+							{'class' => 'fencer_rank', 'heading' => '', key => 'serie'},
+					   ];		
 	
 			$listdef = {	'sort' => \&namesort, 'size' => $pagedef->{'entrylistsize'},
 							'list_title' => $comp->titre_ligne . ' Entries', 
@@ -1141,6 +1167,7 @@ sub createpage
 		}
 		else
 		{
+			# can we get here?
 			writeFencerList($listdef)
 		}
 	}

@@ -1,0 +1,15 @@
+.free
+{
+background-color: lime;
+}
+.late
+{
+background-color: red;
+}
+.competition,.piste
+{
+float: left;
+margin:5px 5px;
+padding:5px 5px;
+border: solid thin black;
+}

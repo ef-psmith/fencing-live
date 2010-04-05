@@ -1,0 +1,100 @@
+<html>
+<head>
+
+<link href="dt.css" rel="stylesheet" type="text/css" media="screen" />
+
+<script type="text/javascript" language="javascript">
+   var http_request = false;
+   function makeRequest(url, parameters) {
+      http_request = false;
+      if (window.XMLHttpRequest) { // Mozilla, Safari,...
+         http_request = new XMLHttpRequest();
+         if (http_request.overrideMimeType) {
+            http_request.overrideMimeType('text/xml');
+         }
+      } else if (window.ActiveXObject) { // IE
+         try {
+            http_request = new ActiveXObject("Msxml2.XMLHTTP");
+         } catch (e) {
+            try {
+               http_request = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) {}
+         }
+      }
+      if (!http_request) {
+         alert('Cannot create XMLHTTP instance');
+         return false;
+      }
+      http_request.onreadystatechange = alertContents;
+      http_request.open('GET', url + parameters, true);
+      http_request.send(null);
+   }
+
+   function alertContents() {
+      if (http_request.readyState == 4) {
+         if (http_request.status == 200) {
+
+            var xmldoc = http_request.responseXML;
+            var returndata = xmldoc.getElementsByTagName('returndata')[0];
+
+            var i = 0;
+
+            for (i = 0; i < returndata.childNodes.length; ++i) {
+               var divdata = returndata.childNodes[i];
+
+               // We only care about divs
+               if (divdata.nodeType == returndata.nodeType) {
+			//alert(divdata.tagName);
+
+			if ("div" == divdata.tagName)
+			{
+                    // For each child node find the id
+                    var childid = divdata.getAttribute("id");
+
+                    // Find the relevant node in the HTML page
+                    var compelem = document.getElementById(childid);
+
+                    if (null != compelem) {
+                     	// Save the data from the XML node's children into the relevant element.
+                        var newhtml = "";
+				for (j = 0;j < divdata.childNodes.length; ++j)
+				{
+				  if (undefined != divdata.childNodes[j])
+				  	newhtml += new XMLSerializer().serializeToString(divdata.childNodes[j]);
+				}
+                     	compelem.innerHTML = newhtml;
+                    }
+			}
+               }
+
+            }
+
+         }
+	      // Make it all happen again
+	      setInterval(function() {onDoneTimer()},pauseTime);
+      }
+   }
+
+var pauseTime = 10 * 1000;
+
+function onDoneTimer()
+{
+	makeRequest('./dtsummary.xml','');
+}
+
+function start_timers(swaplist, index) 
+{	// alert(swaplist);
+	setInterval(function() {onDoneTimer()},pauseTime);
+}
+
+
+</script>
+</head>
+<body onload="start_timers()">
+<div id="competitions">
+<h1>Waiting for data</h1>
+</div>
+<div id="pistes">
+</div>
+</body>
+</html>

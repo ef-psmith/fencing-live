@@ -1,10 +1,11 @@
 <html>
 <head>
 
-<link href="dt.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/dt.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script type="text/javascript" language="javascript">
    var http_request = false;
+
    function makeRequest(url, parameters) {
       http_request = false;
       if (window.XMLHttpRequest) { // Mozilla, Safari,...
@@ -29,6 +30,8 @@
       http_request.open('GET', url + parameters, true);
       http_request.send(null);
    }
+
+var pauseTime = 10 * 1000;
 
    function alertContents() {
       if (http_request.readyState == 4) {
@@ -70,20 +73,16 @@
             }
 
          }
-	      // Make it all happen again
-	      setInterval(function() {onDoneTimer()},pauseTime);
       }
    }
-
-var pauseTime = 10 * 1000;
 
 function onDoneTimer()
 {
 	makeRequest('./dtsummary.xml','');
 }
 
-function start_timers(swaplist, index) 
-{	// alert(swaplist);
+function start_timers() 
+{	
 	setInterval(function() {onDoneTimer()},pauseTime);
 }
 

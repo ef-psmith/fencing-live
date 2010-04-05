@@ -122,7 +122,7 @@ sub processcomp
 		   $boutnum = 1 + $boutnum;
 	   }
 	   
-		$compspan = $compspan . "In tableau $where</p>$compbouts</span>\n";
+		$compspan = $compspan . "In tableau $where</p><h3>Bouts without a piste allocated</h3>$compbouts</span>\n";
 	}
 	
 	elsif ($where eq "poules 1 constitution")
@@ -305,8 +305,8 @@ while (1)
 	}	
 		
 	open( OUTFILE,"> $outputfile.tmp") || die("can't open $outputfile.tmp: $!");
-	
-	print OUTFILE "<dtdata>\n<competitions>\n<p>\n";
+	print OUTFILE "<?xml version=\"1.0\" ?>\n";
+	print OUTFILE "<dtdata>\n<returndata>\n<div id=\"competitions\">\n";
 	
 	# print out the competition data
 	foreach my $comp (@compdata)
@@ -315,7 +315,7 @@ while (1)
 	}
 	
 	
-	print OUTFILE "</p>\n</competitions>\n<pistes>\n<p>\n";
+	print OUTFILE "</div>\n<div id=\"pistes\">\n";
 	my $pistes = $inidata{'pistes'};
 	# Now the pistes
 	foreach my $piste (@$pistes)
@@ -333,7 +333,7 @@ while (1)
 	   }
 	   print OUTFILE "</span>\n";
 	}
-	print OUTFILE "</p>\n</pistes>\n</dtdata>\n";
+	print OUTFILE "</div>\n</returndata>\n</dtdata>\n";
 	
 	close OUTFILE;
 

@@ -20,6 +20,8 @@ use lib "../eng-perl";
 use strict;
 use Engarde;
 use Data::Dumper;
+
+use XML::Simple;
 # use IO::Handle;
 
 use vars qw($pagedetails);
@@ -852,7 +854,109 @@ sub createRoundTableaus
 ##################################################################################
 # readpagedefs
 ##################################################################################
-sub readpagedefs 
+sub readpagedefs
+{
+
+	my $pagedeffile = shift;
+	
+	# Looking to see if it is an xml file (by name only)
+	if ($pagedeffile =~ /xml$/)
+	{
+	   return readpagedefsfromxml($pagedeffile);
+	}
+	else
+	{
+	   return readpagedefsfromconfig($pagedeffile);
+	}
+}
+
+
+##################################################################################
+# readpagedefsfromxml
+##################################################################################
+sub readpagedefsfromxml 
+{
+
+	my $pagedeffile = shift;
+	
+	
+   my $xml = new XML::Simple(ForceArray => 1);
+
+   # read XML file
+   my $data = $xml->XMLin($pagedeffile);
+   
+   #print Dumper($data);
+   
+	
+	my %currentpage;
+	my $series = {};
+	my @pagedefs;
+	
+   foreach my $seriesdef (@{$data->{series}})
+   {
+		undef @pagedefs;
+		if ($seriesdef->{enabled})
+		{			
+         # Just loop around the pages
+	      foreach my $pagedefin (@{$seriesdef->{page}})
+	      { 
+	         print Dumper($pagedefin);
+			   undef %currentpage;
+			   # only enabled pages
+			   if ($pagedefin->{enabled})
+			   {
+			      # Page properties
+			      $currentpage{'target'} = ${$pagedefin->{'target'}}[0];
+			      $currentpage{'background'} = ${$pagedefin->{'background'}}[0];
+			      $currentpage{'competition'} = ${$pagedefin->{'competition'}}[0];
+			   
+			      # Now the series properties which we copy to the pages
+			      $currentpage{'targetlocation'} = ${$seriesdef->{'targetlocation'}}[0];
+			      $currentpage{'name'} = ${$seriesdef->{'name'}}[0];
+			      $currentpage{'csspath'} = ${$seriesdef->{'csspath'}}[0];
+			      $currentpage{'scriptpath'} = ${$seriesdef->{'scriptpath'}}[0];
+			      $currentpage{'index'} = ${$seriesdef->{'index'}}[0];
+			      $currentpage{'vlistsize'} = ${$seriesdef->{'vlistsize'}}[0];
+			      $currentpage{'entrylistsize'} = ${$seriesdef->{'entrylistsize'}}[0];
+			   
+			   
+				   push @pagedefs, {%currentpage};
+			   }
+			}
+			
+			# Now sort out the next page
+			
+			if (@pagedefs > 0) 
+			{
+				for (my $iter = 0; $iter < @pagedefs; $iter++) 
+				{
+					${$pagedefs[$iter]}{'target'} = "page" . ($iter + 1) . ".html";
+
+					if ($iter < $#pagedefs) 
+					{
+						# ${$pagedefs[$iter]}{'nextpage'} = ${$pagedefs[$iter + 1]}{'target'};
+						${$pagedefs[$iter]}{'nextpage'} = "page" . ($iter + 2) . ".html";
+					} 
+					else 
+					{
+						# ${$pagedefs[$iter]}{'nextpage'} = ${$pagedefs[0]}{'target'};
+						${$pagedefs[$iter]}{'nextpage'} = "page1.html";
+					}
+				}
+			}
+			
+			$series->{${$seriesdef->{'name'}}[0]} = {};
+			$series->{${$seriesdef->{'name'}}[0]}->{'pagedefs'} = [@pagedefs];
+	   }
+   }
+   
+	return $series;
+}
+
+##################################################################################
+# readpagedefsfromconfig
+##################################################################################
+sub readpagedefsfromconfig 
 {
 
 	my $pagedeffile = shift;

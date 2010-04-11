@@ -44,7 +44,7 @@ sub processcomp
 	print "Initial where: $where\n";
 	
 	# write the start of the competition fragment
-	my $compspan = "<span class=\"competition\"><h3>".$comp->titre_ligne."</h3><p>State:";
+	my $compspan = "<span class=\"competition\"><h3>".$comp->titre_ligne."</h3><p><b>State:</b>";
 	my $compbouts = "";
 	
 	# If we are finished then just return a finished fragment of xhtml
@@ -324,7 +324,7 @@ while (1)
 	   if (defined($pistedata{$piste}))
 	   {
 	      # print out the scheduled bouts
-	      print OUTFILE "<h3>Scheduled bouts</h3>\n".$pistedata{$piste};
+	      print OUTFILE "<h4>Scheduled bouts</h4>\n".$pistedata{$piste};
 	   }
 	   else
 	   {

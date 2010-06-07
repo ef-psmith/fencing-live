@@ -2,7 +2,7 @@
 <screensconfig>
 <series>
 <name>Series 1</name>
-<targetlocation>z:/demo/</targetlocation>
+<targetlocation>C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\screens</targetlocation>
 <enabled>true</enabled>
 <csspath>../css/</csspath>
 <scriptpath>../script/</scriptpath>
@@ -42,8 +42,8 @@
 </series>
 <series>
 <name>Series 2</name>
-<targetlocation>z:/demo2/</targetlocation>
-<enabled>true</enabled>
+<targetlocation>C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\screens</targetlocation>
+<enabled>false</enabled>
 <csspath>../css/</csspath>
 <scriptpath>../script/</scriptpath>
 <index>index.html</index>

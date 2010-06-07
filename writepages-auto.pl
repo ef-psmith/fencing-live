@@ -29,6 +29,22 @@ use vars qw($pagedetails);
 $Engarde::DEBUGGING=0;
 
 ##################################################################################
+# writeToFiles
+##################################################################################
+sub writeToFiles 
+{
+   my $text = shift;
+   my $writexml = shift;
+   
+   print WEBPAGE $text;
+   
+   if ($writexml ne 0)
+   {
+      print XMLPAGE $text;
+   }
+}
+
+##################################################################################
 # writeTableauMatch
 ##################################################################################
 sub writeTableauMatch 
@@ -41,9 +57,9 @@ sub writeTableauMatch
 
 	# print "writeTableauMatch: bout = " . Dumper(\$bout);
 
-	print WEBPAGE "$tab\t\t<!-- ************ BOUT ************ -->\n";
-	print WEBPAGE "$tab\t\t<div id=\"container\"><div id=\"position\">\n";
-	print WEBPAGE "$tab\t\t\t<div class=\"bout\">\n";						# BOUT 
+	writeToFiles("$tab\t\t<!-- ************ BOUT ************ -->\n", 0);
+	writeToFiles("$tab\t\t<div id=\"container\"><div id=\"position\">\n",1);
+	writeToFiles("$tab\t\t\t<div class=\"bout\">\n",1);						# BOUT 
 
 	foreach my $key (qw/A B/)
 	{
@@ -59,12 +75,12 @@ sub writeTableauMatch
 
 		$result = "winner" if (defined($bout->{'winner'}) && $bout->{'winner'} eq $fencer);
 
-		print WEBPAGE "$tab\t\t\t\t<div class=\"$key $result\">\n";
-		print WEBPAGE "$tab\t\t\t\t<div id=\"container\"><div id=\"position\">\n";
+		writeToFiles("$tab\t\t\t\t<div class=\"$key $result\">\n",1);
+		writeToFiles("$tab\t\t\t\t<div id=\"container\"><div id=\"position\">\n",1);
 
-		print WEBPAGE "$tab\t\t\t\t\t<span class=\"seed\">$seed</span>\n" if $roundnumber == 1;
+		writeToFiles("$tab\t\t\t\t\t<span class=\"seed\">$seed</span>\n",1) if $roundnumber == 1;
 		
-		print WEBPAGE "$tab\t\t\t\t\t<span class=\"fencer $noseed\">$fencer</span>\n";
+		writeToFiles("$tab\t\t\t\t\t<span class=\"fencer $noseed\">$fencer</span>\n",1);
 
 		if ($roundnumber == 1) 
 		{
@@ -72,12 +88,12 @@ sub writeTableauMatch
 
 			if (defined($country)) 
 			{
-				print WEBPAGE "$tab\t\t\t\t\t<span class=\"country\">$country</span>\n";
+				writeToFiles("$tab\t\t\t\t\t<span class=\"country\">$country</span>\n",1);
 			}
 		} 
 
-		print WEBPAGE "$tab\t\t\t\t</div></div>\n";
-		print WEBPAGE "$tab\t\t\t\t</div>\n";
+		writeToFiles("$tab\t\t\t\t</div></div>\n",1);
+		writeToFiles("$tab\t\t\t\t</div>\n",1);
 
 		my $title = "";
 
@@ -99,15 +115,15 @@ sub writeTableauMatch
 				$title .= " Time: $bout->{'time'}" if $bout->{'time'} && $bout->{'time'} ne "0:00";
 			}
 
-			print WEBPAGE "$tab\t\t\t\t<div class=\"boutinfo\">\n";			
-			print WEBPAGE "$tab\t\t\t\t<div id=\"container\"><div id=\"position\">$title</div></div>\n";
-			print WEBPAGE "$tab\t\t\t\t</div> <!-- boutinfo -->\n";
+			writeToFiles("$tab\t\t\t\t<div class=\"boutinfo\">\n", 1);			
+			writeToFiles("$tab\t\t\t\t<div id=\"container\"><div id=\"position\">$title</div></div>\n", 1);
+			writeToFiles("$tab\t\t\t\t</div>\n", 1);
 		}
 	} 
 
-	print WEBPAGE "$tab\t\t\t</div> <!-- bout -->\n";   # close BOUT div
-	print WEBPAGE "$tab\t\t</div></div>  <!-- container -->\n";								# close 4th DIV
-	print WEBPAGE "$tab\t\t<!-- ************ END BOUT ************ -->\n\n";
+	writeToFiles("$tab\t\t\t</div> <!-- bout -->\n", 1);   # close BOUT div
+	writeToFiles("$tab\t\t</div></div>  <!-- container -->\n", 1);								# close 4th DIV
+	writeToFiles("$tab\t\t<!-- ************ END BOUT ************ -->\n\n", 1);
 }
 
 ##################################################################################
@@ -119,6 +135,9 @@ sub writeBlurb
 	# print "writeBlurb: starting\n";
 
 	my $page = shift;
+	my $hastableau = shift;
+	my $haspoules = shift;
+	my $hasvlist = shift;
 
 	# print "writeBlurb: page = " . Dumper(\$page);
    
@@ -148,8 +167,28 @@ sub writeBlurb
 
 	print WEBPAGE "<script type=\"text/javascript\">\n";
 	print WEBPAGE "\tvar next_location=\"$nextpage\";\n";
-		
-	print WEBPAGE "</script>\n";
+	print WEBPAGE "\tvar areas = [\n";
+	if ($hastableau)
+	{
+	   print WEBPAGE "\t\t{\n\t\t\t'prefix': 'T',\n\t\t\t'titleprefix':'TT',\n\t\t\t'finished': false,\n\t\t\t'currentvalue':0\n\t\t}\n";
+	   if ($hasvlist || $haspoules)
+	   {
+	      print WEBPAGE "\t\t,\n";
+	   }
+	}
+	if ($haspoules)
+	{
+	   print WEBPAGE "\t\t{\n\t\t\t'prefix': 'T',\n\t\t\t'statics': ['ptitle'],\n\t\t\t'finished': false,\n\t\t\t'currentvalue':0\n\t\t}\n";
+	   if ($hasvlist)
+	   {
+	      print WEBPAGE "\t\t,\n";
+	   }
+	}
+	if ($hasvlist)
+	{
+	   print WEBPAGE "\t\t{\n\t\t\t'prefix': 'V',\n\t\t\t'statics': ['vtitle', 'vheader'],\n\t\t\t'finished': false,\n\t\t\t'currentvalue': 0\n\t\t}\n";
+	}
+	print WEBPAGE "\t\t];\n</script>\n";
 
 	# this must come after the local variables above and for some reason the XHTML closure doesn't 
 	# always work so we need to use </script> in full
@@ -162,6 +201,24 @@ sub writeBlurb
 	print WEBPAGE "<div id=\"top\"></div>\n";
 	print WEBPAGE "<div id=\"bottom\"></div>\n";
 
+   # Now the XML header blurb
+   print XMLPAGE '<?xml version="1.0" ?>'."\n<returndata>\n";
+   
+   
+	print XMLPAGE "<page backcolour=\"" . $page->{'background'} . "\" target=\"" . $page->{'nextpage'}. "\">\n";
+	if ($hastableau)
+	{
+	   print XMLPAGE "<area><titleprefix>TT</titleprefix><prefix>T</prefix></area>";
+	}
+	if ($haspoules) 
+	{
+	   print XMLPAGE "<area><static>poulestitle</static><prefix>T</prefix></area>";
+	} 
+	if ($hasvlist) 
+	{
+	   print XMLPAGE "<area><static>poulestitle</static><prefix>T</prefix></area>";
+	} 
+	print XMLPAGE "</page>\n";
 }
 
 ##################################################################################
@@ -186,8 +243,8 @@ sub writePoule
 		$poule_class = $page->{'poule_class'};
 	}
 
-	print WEBPAGE "<div class=\"title\"><h2>$compname Round $round</h2></div>\n";
-	print WEBPAGE "<div class=\"$poule_class\" id=\"$div_id\">\n";
+	writeToFiles("<div class=\"title\" id=\"ptitle\">><h2>$compname Round $round</h2></div>\n", 1);
+	writeToFiles("<div class=\"$poule_class\" id=\"$div_id\">\n", 1);
 	
 	my @poules = @{$page->{'poules'}};
 	
@@ -197,13 +254,13 @@ sub writePoule
 
 		# print "writePoules: grid = " . Dumper(\@g);
 
-		print WEBPAGE "\t<h3>" . $pouledef->{'poule_title'} . "</h3>\n";
-		print WEBPAGE "\t<table class=\"poule\">\n";
+		writeToFiles("\t<h3>" . $pouledef->{'poule_title'} . "</h3>\n", 1);
+		writeToFiles("\t<table class=\"poule\">\n", 1);
 		
 		# my $lineNum = 0;
 		my $titles = $g[0];
 		
-		print WEBPAGE "\t\t<tr>\n";
+		writeToFiles("\t\t<tr>\n", 1);
 
 		my $cellNum;
 		my $resultNum = 1;
@@ -221,10 +278,10 @@ sub writePoule
 				$resultNum++;
 			}
 
-			print WEBPAGE "\t\t\t<th class=\"poule-title-$class\">$text</th>\n";
+			writeToFiles("\t\t\t<th class=\"poule-title-$class\">$text</th>\n", 1);
 		}
 
-		print WEBPAGE "\t\t</tr>\n";
+		writeToFiles("\t\t</tr>\n", 1);
 		my $lineNum = 1;
 
 		foreach my $line (@g)
@@ -233,7 +290,7 @@ sub writePoule
 			# skip titles
 			next if $$line[0] eq "id";
 
-			print WEBPAGE "\t\t<tr>\n";
+			writeToFiles("\t\t<tr>\n", 1);
 
 			# print "writePoules: line = " . Dumper(\$line);
 
@@ -252,18 +309,18 @@ sub writePoule
 					$resultNum++;
 				}
 	
-				print WEBPAGE "\t\t\t<td class=\"poule-grid-$class\">$text</td>\n";
+				writeToFiles("\t\t\t<td class=\"poule-grid-$class\">$text</td>\n", 1);
 			}
 
-			print WEBPAGE "\t\t</tr>\n";
+			writeToFiles("\t\t</tr>\n", 1);
 			$lineNum++;
 		}
 
-		print WEBPAGE "\t</table>\n";
-		print WEBPAGE "\t<p>&nbsp;</p>\n";
+		writeToFiles("\t</table>\n", 1);
+		writeToFiles("\t<p></p>\n", 1);
 	}
 
-	print WEBPAGE "</div>\n";
+	writeToFiles("</div>\n", 1);
 }
 
 
@@ -289,8 +346,8 @@ sub writeTableau
 	# this is the bout before this tableau.  Should be divisible by 2.
 	my $preceeding_bout = $page->{'preceeding_bout'};
 	
-	print WEBPAGE "<div class=\"$page->{title_class}\" id=\"$page->{'title_id'}\"><h2>$page->{'tableau_title'}</h2></div>\n";
-	print WEBPAGE "<div class=\"$page->{tableau_class}\" id=\"$page->{'tableau_div'}\">\n";  # 1st DIV		"tableau"
+	writeToFiles("<div class=\"$page->{title_class}\" id=\"$page->{'title_id'}\"><h2>$page->{'tableau_title'}</h2></div>\n", 1);
+	writeToFiles("<div class=\"$page->{tableau_class}\" id=\"$page->{'tableau_div'}\">\n", 1);  # 1st DIV		"tableau"
 
 	my $numrounds = $page->{'num_cols'};
 	if (!defined($numrounds)  || $numrounds < 2) {
@@ -312,23 +369,23 @@ sub writeTableau
 		print "writeTableau: roundnum = $roundnum, maxbout = $maxbout\n";
 
 		my $colname = $roundnum == 1 ? "col1" : "col";
-		print WEBPAGE "<div class=\"$colname\">\n";						# COLUMN
+		writeToFiles("<div class=\"$colname\">\n", 1);						# COLUMN
 
 		for (my $boutnum = $minbout; $boutnum < $maxbout; $boutnum++) 
 		{
 			if ($boutnum == $minbout || $boutnum == $minbout + 2) 
 			{
-				print WEBPAGE "\t<!-- **************************** HALF **************************** -->\n";
-				print WEBPAGE "\t<div class=\"half\">\n" if ($roundnum < 3 && ($boutnum == $minbout || $boutnum == $minbout + 2));						# VERTICAL DIVIDER
+				writeToFiles("\t<!-- **************************** HALF **************************** -->\n", 1);
+				writeToFiles("\t<div class=\"half\">\n", 1) if ($roundnum < 3 && ($boutnum == $minbout || $boutnum == $minbout + 2));						# VERTICAL DIVIDER
 			}
 
 			if ($roundnum == 1 )
 			{
-				print WEBPAGE "\t\t<!-- *************************** QUARTER **************************** -->\n";
-				print WEBPAGE "\t\t<div class=\"quarter\">\n"; 
+				writeToFiles("\t\t<!-- *************************** QUARTER **************************** -->\n", 1);
+				writeToFiles("\t\t<div class=\"quarter\">\n", 1); 
 			}
 
-			# print WEBPAGE "<!--   MATCH GOES HERE -->\n";
+			# writeToFiles("<!--   MATCH GOES HERE -->\n", 1);
 
 			print "writeTableau: getting round $roundnum, bout $boutnum\n";
 			my $bout = $comp->match($where, $boutnum);
@@ -342,11 +399,11 @@ sub writeTableau
 			print "writeTableau: bout = " . Dumper(\$bout);
 			writeTableauMatch($bout, $roundnum);
 
-			print WEBPAGE "\t\t</div> <!-- quarter -->\n" if $roundnum == 1 ;					# close VERTICAL DIVIDER
-			print WEBPAGE "\t</div>  <!-- half -->\n" if ($roundnum < 3 && ($boutnum == $minbout + 1 || $boutnum == $minbout + 3));	
+			writeToFiles("\t\t</div> <!-- quarter -->\n", 1) if $roundnum == 1 ;					# close VERTICAL DIVIDER
+			writeToFiles("\t</div>  <!-- half -->\n", 1) if ($roundnum < 3 && ($boutnum == $minbout + 1 || $boutnum == $minbout + 3));	
 		}
 
-		print WEBPAGE "</div><!-- col -->\n";				# close 2nd DIV
+		writeToFiles("</div><!-- col -->\n", 1);				# close 2nd DIV
 		# end of col div
 
 		# next round has half as many bouts
@@ -369,27 +426,27 @@ sub writeTableau
 	{
 		print "DEBUG: writeTableau: we have winners!\n" . Dumper (\@winners);
 
-		print WEBPAGE "<div class=\"col\">\n";
+		writeToFiles("<div class=\"col\">\n", 1);
 
 		foreach (@winners)
 		{
-			print WEBPAGE "\t<div class=\"half\">\n";
-			print WEBPAGE "\t\t<div id=\"container\"><div id=\"position\">\n";
+			writeToFiles("\t<div class=\"half\">\n", 1);
+			writeToFiles("\t\t<div id=\"container\"><div id=\"position\">\n", 1);
 			print "writeTableau: winner = $_\n";
-			print WEBPAGE "\t\t<div class=\"A final winner\">\n";
-			print WEBPAGE "\t\t\t<div id=\"container\"><div id=\"position\">\n";
-			print WEBPAGE "\t\t\t\t$_\n";
-			print WEBPAGE "\t\t\t</div></div>\n";
-			print WEBPAGE "\t\t</div>\n";
-			print WEBPAGE "\t\t</div></div>\n";
-			print WEBPAGE "\t</div>\n";
+			writeToFiles("\t\t<div class=\"A final winner\">\n", 1);
+			writeToFiles("\t\t\t<div id=\"container\"><div id=\"position\">\n", 1);
+			writeToFiles("\t\t\t\t$_\n", 1);
+			writeToFiles("\t\t\t</div></div>\n", 1);
+			writeToFiles("\t\t</div>\n", 1);
+			writeToFiles("\t\t</div></div>\n", 1);
+			writeToFiles("\t</div>\n", 1);
 
 		}
 
-		print WEBPAGE "</div>\n";
+		writeToFiles("</div>\n", 1);
 	}
 	
-	print WEBPAGE "</div>  <!-- tableau -->\n";					# close 1st DIV
+	writeToFiles("</div>  <!-- tableau -->\n", 1);					# close 1st DIV
 }
 
 ##################################################################################
@@ -411,7 +468,7 @@ sub writeEntryListFencer {
 		$row_class = "class=\"$group\"" if $group;
 	}
 		
-	print WEBPAGE "\t\t\t<tr $row_class>\n";
+	writeToFiles("\t\t\t<tr $row_class>\n", 1);
 
 	foreach my $column_def (@{$col_details}) 
 	{
@@ -419,10 +476,10 @@ sub writeEntryListFencer {
 		my $col_key = $column_def->{'key'};
 		my $col_val = defined $EGData->{$col_key} ? $EGData->{$col_key} : "&nbsp;";
 
-		print WEBPAGE "\t\t\t\t<td class=\"$col_class\">$col_val</td>\n";
+		writeToFiles("\t\t\t\t<td class=\"$col_class\">$col_val</td>\n", 1);
 	}
 
-	print WEBPAGE "\t\t\t</tr>\n"; 
+	writeToFiles("\t\t\t</tr>\n", 1); 
 
 }
 
@@ -433,14 +490,14 @@ sub writeFencerListDivHeader
 
 	$class .= " hidden" if ($div_id > 0);
 
-	print WEBPAGE "\t<div class=\"$class\" id=\"V$div_id\">\n";
-	print WEBPAGE "\t\t<table class=\"vlist_table\">\n";
+	writeToFiles("\t<div class=\"$class\" id=\"V$div_id\">\n", 1);
+	writeToFiles("\t\t<table class=\"vlist_table\">\n", 1);
 }
 
 
 sub writeFencerListDivFooter
 {
-	print WEBPAGE "\t\t</table>\n\t</div>\n";
+	writeToFiles("\t\t</table>\n\t</div>\n", 1);
 }
 
 
@@ -460,19 +517,19 @@ sub writeFencerList
 	my $ref = ref $pagedetails->{'entry_list'} || "";
 	my $size = $pagedetails->{'size'};
 
-	print WEBPAGE "<div class=\"vlist\">\n";
-	print WEBPAGE "\t<div class=\"vlist_title\"><h2>$list_title</h2></div>\n";
-	print WEBPAGE "\t<div class=\"vlist_header\">\n";
-	print WEBPAGE "\t\t<table class=\"vlist_table\">\n\t\t\t<tr>\n";
+	writeToFiles("<div class=\"vlist\">\n", 1);
+	writeToFiles("\t<div class=\"vlist_title\" id=\"vtitle\"><h2>$list_title</h2></div>\n", 0);
+	writeToFiles("\t<div class=\"vlist_header\" id=\"vheader\">\n", 1);
+	writeToFiles("\t\t<table class=\"vlist_table\">\n\t\t\t<tr>\n", 1);
 	foreach my $column_def (@{$col_details}) 
 	{
 		my $col_class = $column_def->{'class'};
 		my $col_heading = $column_def->{'heading'};
 		
-		print WEBPAGE "\t\t\t\t<td class=\"$col_class\">$col_heading</td>\n";
+		writeToFiles("\t\t\t\t<td class=\"$col_class\">$col_heading</td>\n", 1);
 	}
 
-	print WEBPAGE "\t\t\t\</tr>\n\t\t</table>\n\t</div>\n";
+	writeToFiles("\t\t\t\</tr>\n\t\t</table>\n\t</div>\n", 1);
 
 	my $div_id = 0;
   
@@ -546,7 +603,7 @@ sub writeFencerList
 	
 	writeFencerListDivFooter();
 	
-	print WEBPAGE "\n</div>";
+	writeToFiles("\n</div>", 1);
 }
 
 ##################################################################################
@@ -595,18 +652,18 @@ sub writeEntryList
 			}
 
 			$out .= "<span class=\"$nameclass\">$nom</span>";
-			$out .= "<span class=\"col_club\">$affiliation</span><br>\n";
+			$out .= "<span class=\"col_club\">$affiliation</span><br />\n";
 		}
 	}
 
 	$nif = int($count / 4) if $nif * 4 < $count;
 	
-	print WEBPAGE "<div class=\"vlist_title\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n";
-	print WEBPAGE "<div class=\"col_multi\" id=\"V0\">\n";
+	writeToFiles("<div class=\"vlist_title\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
+	writeToFiles("<div class=\"col_multi\" id=\"V0\">\n", 1);
 
-	print WEBPAGE $out;
+	writeToFiles($out, 1);
 
-	print WEBPAGE "</div>\n";
+	writeToFiles("</div>\n", 1);
 }
 
 ##################################################################################
@@ -1234,6 +1291,8 @@ sub createpage
 
 	my $pagename = $pagedef->{'targetlocation'} . "/" . $pagedef->{'target'};
 	open( WEBPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
+	
+	open( XMLPAGE,"> $pagename.xml.tmp") || die("can't open $pagename.xml.tmp: $!");
 
 	my $fh = select(WEBPAGE);
 	$| = 1;			# unbuffered output
@@ -1241,8 +1300,8 @@ sub createpage
 
 	# WEBPAGE->autoflush(1);
 
-	writeBlurb($pagedef);
-		
+	writeBlurb($pagedef, $hastableau, $haspoules, defined($listdef));
+			
 	# Write the tableaus if appropriate
 	if ($hastableau) 
 	{ 
@@ -1277,10 +1336,13 @@ sub createpage
 	}
 
 	print WEBPAGE "</body>\n</html>";
+	print XMLPAGE "</returndata>";
 
 	close WEBPAGE;
+	close XMLPAGE;
 
 	rename $pagename . ".tmp", $pagename;
+	rename $pagename . ".xml.tmp", $pagename.".xml";
 
 }	# end sub
 

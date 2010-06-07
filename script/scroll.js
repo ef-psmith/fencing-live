@@ -2,13 +2,6 @@
 onerror=handleErr();
 
 // Arrays are used to emulate passing by reference
-var finished = new Array();
-finished[0] = false;  // for tableau
-finished[1] = false;  // for vlist
-
-var counters = new Array();
-counters[0] = 0;
-counters[1] = 0;
 
 var hasTableau = false;
 var hasVlist = false;
@@ -18,29 +11,9 @@ var pauseTime = 20 * 1000;
 var tswapsprefix = "T";
 var vswapsprefix = "V";
 
-function onPageLoaded() 
-{
-	hasTableau = document.getElementById(tswapsprefix + 0);
 
-	if (hasTableau)
-	{
-		startSwapTimers(tswapsprefix, 0);
-	}
-	else
-	{
-		finished[0] = true;
-	}
-
-	hasVlist = document.getElementById(vswapsprefix + 0);
-
-	if (hasVlist)
-	{
-		startSwapTimers(vswapsprefix, 1);
-	}
-	else
-	{
-		finished[1] = true;
-	}
+function onPageLoaded() {
+   startSwapTimers();
 }
 
 
@@ -53,25 +26,25 @@ function handleErr(msg,url,l)
 
 
 
-function onSwapTimer(swaplist, index) 
+function onSwapTimer(swaparea) 
 {
 	// get the divs
 
-	var currentdiv = document.getElementById(swaplist + counters[index]);
-	var nextdiv = document.getElementById(swaplist + (counters[index] + 1));
-	var currenttitlediv = document.getElementById(swaplist + "T" + counters[index]);
-	var nexttitlediv = document.getElementById(swaplist + "T" + (counters[index] +1));
+	var currentdiv = document.getElementById(swaparea.prefix + swaparea.currentvalue);
+	var nextdiv = document.getElementById(swaparea.prefix + (swaparea.currentvalue + 1));
+	var currenttitlediv = document.getElementById(swaparea.titleprefix + swaparea.currentvalue);
+	var nexttitlediv = document.getElementById(swaparea.titleprefix + (swaparea.currentvalue +1));
 
 	// alert("counter = " + counters[index] + ", currentdiv = " + currentdiv + ", nextdiv = " + nextdiv);
 	if (nextdiv)
 	{
-		counters[index] += 1;
+	   swaparea.currentvalue += 1;
 	}
 	else
 	{
-		nextdiv = document.getElementById(swaplist + 0);
-		finished[index] = true;
-		counters[index] = 0;
+	   nextdiv = document.getElementById(swaparea.prefix + 0);
+		swaparea.finished = true;
+		swaparea.currentvalue = 0;
 		checkFinished();
 	}
 
@@ -83,7 +56,7 @@ function onSwapTimer(swaplist, index)
 	{
 		if (!nexttitlediv)
 		{
-			nexttitlediv = document.getElementById(swaplist +"T" + 0);
+		   nexttitlediv = document.getElementById(swaparea.titleprefix + 0);
 		}
 
 		currenttitlediv.style.visibility = "hidden";
@@ -91,15 +64,26 @@ function onSwapTimer(swaplist, index)
 	}
 }
 
-function startSwapTimers(swaplist, index) 
+function startSwapTimers() 
 {
-	// alert(swaplist);
-	setInterval(function() {onSwapTimer(swaplist, index)},pauseTime);
+   // alert(swaplist);
+   var i;
+   for (i in areas) {
+      var area = areas[i];
+      area.timer = function(obj) { setInterval(function() { onSwapTimer(obj) }, pauseTime); } (area);
+   }
 }
 
-function checkFinished() 
-{ 
-	if (true && finished[0] && finished[1])
+function checkFinished() {
+
+   var i;
+   var finished = true;
+   for (i in areas) {
+      if (!areas[i].finished) {
+         finished = false;
+      }
+   }
+	if (finished)
 	{
 		window.location.replace(next_location);
 	}

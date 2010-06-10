@@ -8,11 +8,21 @@ div.tableau {
 	position: absolute; 
 	border-right: thin solid black; 
 	height:  90%; 
-	width: 	62%; 
+	width: 	47%; 
 	top: 8%; 
 	left: 20px; 
 }
 
+div.vlist2
+{
+	overflow: hidden;
+	position: absolute;
+	border-right: thin solid black; 
+	height:  90%;
+	right: 27%;
+	width: 24%;
+	top: 8%;
+}
 
 div.vlist
 {
@@ -21,7 +31,7 @@ div.vlist
 	border: none;
 	height:  95%;
 	right: 25px;
-	width: 34%;
+	width: 24%;
 }
 
 div.innervlist
@@ -64,17 +74,17 @@ div.col {
 	float: left; 
 }
 
-div.A { 
-	margin-left: 5%; 
-	height:25%; 
-	width: 95%; 
-	background-color: #dcdcdc; 
-	position: relative; 
-	font-size: 1.5em;
-	overflow: hidden;
+div.twocol { 
+	width: 34%; 
+	float: left; 
 }
 
-div.B { 
+div.twocol1 { 
+	width: 50% ; 
+	float: left; 
+}
+
+div.A, div.B { 
 	margin-left: 5%; 
 	height:25%; 
 	width: 95%; 
@@ -82,6 +92,7 @@ div.B {
 	position: relative; 
 	font-size: 1.5em;
 	overflow: hidden;
+	white-space: nowrap;
 }
 
 div.final { 
@@ -93,10 +104,10 @@ div.final {
 
 div.winner { 
 	font-weight: bold; 
-	overflow: hidden;
 }
 
 div.boutinfo { 
+	font-size: 1.5em;
 	height:50%; 
 	text-align: right; 
 	padding-right: 5%; 
@@ -135,6 +146,26 @@ div.title {
 	position: absolute;
 	top: 15px;
 	left: 20px;
+	border-right: thin solid black;
+}
+
+div.twotitle { 
+	height: 7%; 
+	text-align: center; 
+	width: 47%; 
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	border-right: thin solid black;
+}
+
+div.mid_title {
+	height: 7%; 
+	text-align: center; 
+	position: absolute;
+	width: 24%; 
+	right: 27%;
+	top: 15px;
 	border-right: thin solid black;
 }
 
@@ -206,20 +237,6 @@ span.col_club {
 	padding-right: 1em;
 }
 
-span.top10 {
-	color: red;
-	font-weight: bold;
-}
-
-span.top20 {
-	color: blue;
-	font-weight: bold;
-}
-
-span.top50 {
-	color: green;
-	font-weight: bold;
-}
 
 	
 div.vlist_title {
@@ -242,6 +259,10 @@ div.vlist_body {
 	width: 95%;
 }
 
+div.vlist2_body {
+	top: 7%;
+}
+
 div.vlist_header {
 	border-top: thin solid black;
 	border-bottom: thin solid black;
@@ -251,15 +272,18 @@ div.vlist_header {
 	width: 95%;
 }
 
+div.vlist2_header {
+	top: 3%;
+}
 
 table.vlist_table {
-	min-width: 460px !important;
+	min-width: 400px !important;
 	border-collapse: collapse;
 	width: 100%;
 }
 
 
-.fencer_country, .init_rank, .vlist_piste, .vlist_poule {
+.fencer_country, .init_rank, .vlist_piste, .vlist_poule, .vlist_round, .vlist_time {
 	width: 3em;
 	text-align: right;
 	font-size: 1.5em;

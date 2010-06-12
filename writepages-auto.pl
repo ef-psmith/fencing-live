@@ -117,6 +117,7 @@ sub writeTableauMatch
 			{
 				$title = "Piste: " . $bout->{'piste'} if $bout->{'piste'};
 				$title .= " Time: $bout->{'time'}" if $bout->{'time'} && $bout->{'time'} ne "0:00";
+				$title .= "&#160;";
 			}
 
 			writeToFiles("$tab\t\t\t\t<div class=\"boutinfo\">\n", 1);			

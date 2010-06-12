@@ -108,6 +108,10 @@ sub writeTableauMatch
 					$title = "by abandonment" if $title =~ /abandon/;
 					$title = "by penalty" if $title =~ /forfait/;
 				}
+				else
+				{  
+				   $title = "&#160;";
+				}
 			}
 			else
 			{
@@ -167,6 +171,10 @@ sub writeBlurb
 
 	print WEBPAGE "<script type=\"text/javascript\">\n";
 	print WEBPAGE "\tvar next_location=\"$nextpage\";\n";
+	
+	
+   print WEBPAGE "\tfunction finished_callback() {\n";
+	print WEBPAGE "\t\twindow.location.replace(next_location);\n\t}\n";
 	print WEBPAGE "\tvar areas = [\n";
 	if ($hastableau)
 	{
@@ -208,15 +216,15 @@ sub writeBlurb
 	print XMLPAGE "<page backcolour=\"" . $page->{'background'} . "\" target=\"" . $page->{'nextpage'}. "\">\n";
 	if ($hastableau)
 	{
-	   print XMLPAGE "<area><titleprefix>TT</titleprefix><prefix>T</prefix></area>";
+	   print XMLPAGE "<area><type>tableau</type><titleprefix>TT</titleprefix><prefix>T</prefix><class>tableau</class><class>tableau hidden</class><class>title</class><class>title hidden</class></area>";
 	}
 	if ($haspoules) 
 	{
-	   print XMLPAGE "<area><static>poulestitle</static><prefix>T</prefix></area>";
+	   print XMLPAGE "<area><type>poules</type><static>poulestitle</static><prefix>T</prefix><class>tableau</class><class>tableau hidden</class><class>title</class></area>";
 	} 
 	if ($hasvlist) 
 	{
-	   print XMLPAGE "<area><static>poulestitle</static><prefix>T</prefix></area>";
+	   print XMLPAGE "<area><type>vlist</type><static>poulestitle</static><prefix>T</prefix><class>vlist</class></area>";
 	} 
 	print XMLPAGE "</page>\n";
 }
@@ -243,7 +251,7 @@ sub writePoule
 		$poule_class = $page->{'poule_class'};
 	}
 
-	writeToFiles("<div class=\"title\" id=\"ptitle\">><h2>$compname Round $round</h2></div>\n", 1);
+	writeToFiles("<div class=\"title\" id=\"ptitle\"><h2>$compname Round $round</h2></div>\n", 1);
 	writeToFiles("<div class=\"$poule_class\" id=\"$div_id\">\n", 1);
 	
 	my @poules = @{$page->{'poules'}};
@@ -393,7 +401,7 @@ sub writeTableau
 			if ($roundnum == $numrounds) 
 			{
 				# last col so collect any winners
-				push @winners, $bout->{winner} || "&nbsp;";
+				push @winners, $bout->{winner} || "&#160;";
 			}
 
 			print "writeTableau: bout = " . Dumper(\$bout);
@@ -474,7 +482,7 @@ sub writeEntryListFencer {
 	{
 		my $col_class = $column_def->{'class'};
 		my $col_key = $column_def->{'key'};
-		my $col_val = defined $EGData->{$col_key} ? $EGData->{$col_key} : "&nbsp;";
+		my $col_val = defined $EGData->{$col_key} ? $EGData->{$col_key} : "&#160;";
 
 		writeToFiles("\t\t\t\t<td class=\"$col_class\">$col_val</td>\n", 1);
 	}
@@ -517,7 +525,7 @@ sub writeFencerList
 	my $ref = ref $pagedetails->{'entry_list'} || "";
 	my $size = $pagedetails->{'size'};
 
-	writeToFiles("<div class=\"vlist\">\n", 1);
+	writeToFiles("<div class=\"vlist\" id=\"vlistid\">\n", 1);
 	writeToFiles("\t<div class=\"vlist_title\" id=\"vtitle\"><h2>$list_title</h2></div>\n", 0);
 	writeToFiles("\t<div class=\"vlist_header\" id=\"vheader\">\n", 1);
 	writeToFiles("\t\t<table class=\"vlist_table\">\n\t\t\t<tr>\n", 1);
@@ -629,7 +637,7 @@ sub writeEntryList
 	{
 		foreach my $entrydetail (sort namesort keys %$entry_list) 
 		{
-			my $affiliation = $entry_list->{$entrydetail}->{'club'} || "&nbsp;";
+			my $affiliation = $entry_list->{$entrydetail}->{'club'} || "&#160;";
 			my $nom = $entry_list->{$entrydetail}->{'nom'};
 			my $serie = $entry_list->{$entrydetail}->{'serie'} || 999;
 

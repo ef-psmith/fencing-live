@@ -72,6 +72,10 @@ function startSwapTimers()
       var area = areas[i];
       area.timer = function(obj) { setInterval(function() { onSwapTimer(obj) }, pauseTime); } (area);
    }
+   if (undefined == i) {
+      //Call the finished callback
+      finished_callback();
+   }
 }
 
 function checkFinished() {
@@ -83,8 +87,9 @@ function checkFinished() {
          finished = false;
       }
    }
-	if (finished)
-	{
-		window.location.replace(next_location);
+	if (finished) {
+
+	   //Call the finished callback
+	   finished_callback();
 	}
 }

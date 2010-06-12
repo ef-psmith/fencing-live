@@ -225,7 +225,7 @@ sub writeBlurb
 	} 
 	if ($hasvlist) 
 	{
-	   print XMLPAGE "<area><type>vlist</type><static>poulestitle</static><prefix>T</prefix><class>vlist</class></area>";
+	   print XMLPAGE "<area><type>vlist</type><static>vtitle</static><static>vheader</static><prefix>V</prefix><class>vlist</class></area>";
 	} 
 	print XMLPAGE "</page>\n";
 }

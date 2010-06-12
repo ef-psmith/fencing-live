@@ -70,6 +70,7 @@ function xmlloaded(xmldoc)
          if (null != bodyobj) {
             bodyobj.parentNode.removeChild(bodyobj);
          }
+         ++j;
       } while (null != titleobj || null != bodyobj);
    }
    // Now sort out the new page

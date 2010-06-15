@@ -335,6 +335,61 @@ sub writePoule
 
 
 ##################################################################################
+# writematchlist
+##################################################################################
+
+sub writeMatchlist
+{
+	my $comp = shift;
+	my $page = shift;
+
+	# my $where = $page->{'where'};
+
+	writeToFiles("<div class=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
+	writeToFiles("<div class=\"vlist2\" id=\"$page->{'tableau_div'}\">\n", 1);  # VLIST2
+
+	writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
+	writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
+
+	writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
+	writeToFiles("\t\t\t\t<tr>", 1);
+	writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
+	writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
+	writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
+	writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
+	writeToFiles("\t\t\t\t</tr>\n", 1);
+	writeToFiles("\t\t\t</table>\n", 1);
+	writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
+	writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
+
+	writeToFiles("\t<div class=\"vlist_body vlist2_body\" id=\"M20\">\n", 1);		# VLIST_BODY
+
+	my $list = $comp->matchlist;
+
+	writeToFiles("\t\t<table class=\"vlist_table\">\n", 1);
+
+	foreach my $m (sort keys %$list)
+	{
+		print STDERR "DEBUG: writeMatchlist(): m = " . Dumper(\$m) if $Engarde::DEBUGGING > 1;
+
+		writeToFiles("\t\t<tr>\n", 1);
+
+		writeToFiles("\t\t\t<td class=\"vlist_name\">$m</td>\n", 1);
+		writeToFiles("\t\t\t<td class=\"vlist_round\">L64</td>\n", 1);
+		writeToFiles("\t\t\t<td class=\"vlist_piste\">22</td>\n", 1);
+		writeToFiles("\t\t\t<td class=\"vlist_time\">12:45</td>\n", 1);
+
+		writeToFiles("\t\t</tr>\n", 1);
+	}
+
+	writeToFiles("\t\t</table>\n", 1);
+
+	writeToFiles("\t</div>\n", 1) ; # /VLIST_BODY
+	writeToFiles("</div>\n", 1) ; # /VLIST2
+
+}
+
+##################################################################################
 # writeTableau
 ##################################################################################
 # Write out a tableau, writeTableau(data, pagedetails)
@@ -343,6 +398,8 @@ sub writeTableau
 	my $comp = shift;
 	my $page = shift;
 
+	print STDERR "DEBUG: writeTableau(): entry\n" if $Engarde::DEBUGGING > 1;
+
 	# print Dumper(\$page);
 
 	my $where = $page->{'where'};
@@ -350,7 +407,7 @@ sub writeTableau
 
 	my @winners;
 	
-	print "**********\nWhere = $where, lastN = $lastN\n";
+	# print "**********\nWhere = $where, lastN = $lastN\n";
 
 	# this is the bout before this tableau.  Should be divisible by 2.
 	my $preceeding_bout = $page->{'preceeding_bout'};
@@ -359,9 +416,8 @@ sub writeTableau
 	writeToFiles("<div class=\"$page->{tableau_class}\" id=\"$page->{'tableau_div'}\">\n", 1);  # 1st DIV		"tableau"
 
 	my $numrounds = $page->{'num_cols'};
-	if (!defined($numrounds)  || $numrounds < 2) {
-		$numrounds = 2;
-	}
+
+	$numrounds = 1 unless defined($numrounds);
 	
 	# Work out the number of bouts
 	my $numbouts = $page->{'num_bouts'};
@@ -375,9 +431,9 @@ sub writeTableau
 	
 	for (my $roundnum = 1; $roundnum <= $numrounds; $roundnum++) 
 	{
-		print "writeTableau: roundnum = $roundnum, maxbout = $maxbout\n";
+		print STDERR "DEBUG: writeTableau(): roundnum = $roundnum, maxbout = $maxbout\n" if $Engarde::DEBUGGING;
 
-		my $colname = $roundnum == 1 ? "col1" : "col";
+		my $colname = $roundnum == 1 ? "twocol1" : "twocol";
 		writeToFiles("<div class=\"$colname\">\n", 1);						# COLUMN
 
 		for (my $boutnum = $minbout; $boutnum < $maxbout; $boutnum++) 
@@ -396,23 +452,25 @@ sub writeTableau
 
 			# writeToFiles("<!--   MATCH GOES HERE -->\n", 1);
 
-			print "writeTableau: getting round $roundnum, bout $boutnum\n";
+			# print "writeTableau: getting round $roundnum, bout $boutnum\n";
 			my $bout = $comp->match($where, $boutnum);
 
 			if ($roundnum == $numrounds) 
 			{
 				# last col so collect any winners
+				#
+				# Not required in the 3 column layout but will leave it in in case we revert to tableau + 1 col for the final later 
 				push @winners, $bout->{winner} || "&#160;";
 			}
 
-			print "writeTableau: bout = " . Dumper(\$bout);
+			# print "writeTableau: bout = " . Dumper(\$bout);
 			writeTableauMatch($bout, $roundnum);
 
 			writeToFiles("\t\t</div> <!-- quarter -->\n", 1) if $roundnum == 1 ;					# close VERTICAL DIVIDER
 			writeToFiles("\t</div>  <!-- half -->\n", 1) if ($roundnum < 3 && ($boutnum == $minbout + 1 || $boutnum == $minbout + 3));	
 		}
 
-		writeToFiles("</div><!-- col -->\n", 1);				# close 2nd DIV
+		writeToFiles("</div><!-- twocol -->\n", 1);				# close 2nd DIV
 		# end of col div
 
 		# next round has half as many bouts
@@ -431,31 +489,37 @@ sub writeTableau
 
 	}
 
-	if (@winners)
-	{
-		print "DEBUG: writeTableau: we have winners!\n" . Dumper (\@winners);
 
-		writeToFiles("<div class=\"col\">\n", 1);
+	# It would be better to have this bit sensitive to the stage of the competition - e.g, when we get to the final
+	# there is no point displayig the middle column since everybody will know what's going on.
+	
 
-		foreach (@winners)
-		{
-			writeToFiles("\t<div class=\"half\">\n", 1);
-			writeToFiles("\t\t<div id=\"container\"><div id=\"position\">\n", 1);
-			print "writeTableau: winner = $_\n";
-			writeToFiles("\t\t<div class=\"A final winner\">\n", 1);
-			writeToFiles("\t\t\t<div id=\"container\"><div id=\"position\">\n", 1);
-			writeToFiles("\t\t\t\t$_\n", 1);
-			writeToFiles("\t\t\t</div></div>\n", 1);
-			writeToFiles("\t\t</div>\n", 1);
-			writeToFiles("\t\t</div></div>\n", 1);
-			writeToFiles("\t</div>\n", 1);
+	#if (@winners)
+	#{
+	#print "DEBUG: writeTableau: we have winners!\n" . Dumper (\@winners);
+	#
+	#writeToFiles("<div class=\"twocol\">\n", 1);
+	#
+	#foreach (@winners)
+	#{
+	#writeToFiles("\t<div class=\"half\">\n", 1);
+	#writeToFiles("\t\t<div id=\"container\"><div id=\"position\">\n", 1);
+	#print "writeTableau: winner = $_\n";
+	#writeToFiles("\t\t<div class=\"A final winner\">\n", 1);
+	#writeToFiles("\t\t\t<div id=\"container\"><div id=\"position\">\n", 1);
+	#writeToFiles("\t\t\t\t$_\n", 1);
+	#writeToFiles("\t\t\t</div></div>\n", 1);
+	#writeToFiles("\t\t</div>\n", 1);
+	#writeToFiles("\t\t</div></div>\n", 1);
+	#writeToFiles("\t</div>\n", 1);
 
-		}
+	#}
 
-		writeToFiles("</div>\n", 1);
-	}
+	#writeToFiles("</div>\n", 1);
+	#}
 	
 	writeToFiles("</div>  <!-- tableau -->\n", 1);					# close 1st DIV
+	print STDERR "DEBUG: writeTableau(): exit\n" if $Engarde::DEBUGGING;
 }
 
 ##################################################################################
@@ -896,12 +960,12 @@ sub createRoundTableaus
 			if ($preceedingbout != 0 && 0 == $chosenpart) 
 			{
 				$def{'tableau_class'} = 'tableau hidden';
-				$def{'title_class'} = 'title hidden';
+				$def{'title_class'} = 'twotitle hidden';
 			}
 			else
 			{
 				$def{'tableau_class'} = 'tableau';
-				$def{'title_class'} = 'title';
+				$def{'title_class'} = 'twotitle';
 			}
 
 			$defs[$defindex] = \%def;
@@ -1316,8 +1380,9 @@ sub createpage
 	{ 
 		foreach my $tabdef (@{$tabdefs->{'definitions'}}) 
 		{
-			# print "\n\ntabdef = " . Dumper(\$tabdef);
+			print STDERR "\n\nDEBUG: createpage(): calling writeTableau() for tabdef = " . Dumper(\$tabdef) if $Engarde::DEBUGGING > 1;
 			writeTableau($comp, $tabdef);
+			writeMatchlist($comp, $tabdef);
 		}
 	}
 
@@ -1339,7 +1404,7 @@ sub createpage
 		}
 		else
 		{
-			# can we get here?
+			# fpp or ranking
 			writeFencerList($listdef)
 		}
 	}
@@ -1440,7 +1505,7 @@ sub which_list
 
 		my @w = split / /, $where;
 
-		print "which_list: w = [@w]\n";
+		print STDERR "DEBUG: which_list(): w = [@w]\n" if $Engarde::DEBUGGING > 1;
 
 		return "ranking" if $w[1] eq $w[2];
 		return "result" unless $w[1] eq $w[2];
@@ -1455,6 +1520,8 @@ sub which_list
 # Main starts here (I think)
 ##################################################################################
 my $pagedeffile = shift || "live.ini";
+
+my $runonce = shift || 0;
 
 # read the page definitions
 
@@ -1479,6 +1546,13 @@ while (1)
 
 	# print "Done\nSleeping...\n";
 
-	sleep 30;
+	unless ($runonce)
+	{
+		sleep 30; 
+	}
+	else
+	{
+		exit ;
+	}
 }
 			

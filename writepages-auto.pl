@@ -26,7 +26,7 @@ use XML::Simple;
 
 use vars qw($pagedetails);
 
-$Engarde::DEBUGGING=0;
+$Engarde::DEBUGGING=2;
 
 ##################################################################################
 # writeToFiles
@@ -370,14 +370,14 @@ sub writeMatchlist
 
 	foreach my $m (sort keys %$list)
 	{
-		print STDERR "DEBUG: writeMatchlist(): m = " . Dumper(\$m) if $Engarde::DEBUGGING > 1;
+		print STDERR "DEBUG: writeMatchlist(): m = $m\n" if $Engarde::DEBUGGING > 1;
 
 		writeToFiles("\t\t<tr>\n", 1);
 
 		writeToFiles("\t\t\t<td class=\"vlist_name\">$m</td>\n", 1);
-		writeToFiles("\t\t\t<td class=\"vlist_round\">L64</td>\n", 1);
-		writeToFiles("\t\t\t<td class=\"vlist_piste\">22</td>\n", 1);
-		writeToFiles("\t\t\t<td class=\"vlist_time\">12:45</td>\n", 1);
+		writeToFiles("\t\t\t<td class=\"vlist_round\">$list->{$m}->{'round'}</td>\n", 1);
+		writeToFiles("\t\t\t<td class=\"vlist_piste\">$list->{$m}->{'piste'}</td>\n", 1);
+		writeToFiles("\t\t\t<td class=\"vlist_time\">$list->{$m}->{'time'}</td>\n", 1);
 
 		writeToFiles("\t\t</tr>\n", 1);
 	}

@@ -1382,6 +1382,10 @@ sub createpage
 		{
 			print STDERR "\n\nDEBUG: createpage(): calling writeTableau() for tabdef = " . Dumper(\$tabdef) if $Engarde::DEBUGGING > 1;
 			writeTableau($comp, $tabdef);
+		}
+
+		foreach my $tabdef (@{$tabdefs->{'definitions'}}) 
+		{
 			writeMatchlist($comp, $tabdef);
 		}
 	}

@@ -68,7 +68,7 @@ sub writeTableauMatch
 
 		if (!defined($fencer)) 
 		{
-			$fencer = '';
+			$fencer = '&#160;';
 			# $seed = '';
 		}
 		my $result = "";
@@ -142,7 +142,8 @@ sub writeBlurb
 	my $page = shift;
 	my $hastableau = shift;
 	my $haspoules = shift;
-	my $hasvlist = shift;
+	my $vertlist = shift;
+	my $hasmidlist = shift;
 
 	# print "writeBlurb: page = " . Dumper(\$page);
    
@@ -180,7 +181,7 @@ sub writeBlurb
 	if ($hastableau)
 	{
 	   print WEBPAGE "\t\t{\n\t\t\t'prefix': 'T',\n\t\t\t'titleprefix':'TT',\n\t\t\t'finished': false,\n\t\t\t'currentvalue':0\n\t\t}\n";
-	   if ($hasvlist || $haspoules)
+	   if (defined($vertlist) || $haspoules)
 	   {
 	      print WEBPAGE "\t\t,\n";
 	   }
@@ -188,12 +189,12 @@ sub writeBlurb
 	if ($haspoules)
 	{
 	   print WEBPAGE "\t\t{\n\t\t\t'prefix': 'T',\n\t\t\t'statics': ['ptitle'],\n\t\t\t'finished': false,\n\t\t\t'currentvalue':0\n\t\t}\n";
-	   if ($hasvlist)
+	   if (defined($vertlist))
 	   {
 	      print WEBPAGE "\t\t,\n";
 	   }
 	}
-	if ($hasvlist)
+	if (defined($vertlist))
 	{
 	   print WEBPAGE "\t\t{\n\t\t\t'prefix': 'V',\n\t\t\t'statics': ['vtitle', 'vheader'],\n\t\t\t'finished': false,\n\t\t\t'currentvalue': 0\n\t\t}\n";
 	}
@@ -214,18 +215,27 @@ sub writeBlurb
    print XMLPAGE '<?xml version="1.0" ?>'."\n<returndata>\n";
    
    
-	print XMLPAGE "<page backcolour=\"" . $page->{'background'} . "\" target=\"" . $page->{'nextpage'}. "\">\n";
+	print XMLPAGE "<page backcolour=\"" . $page->{'background'}. "\" title=\"" . $page->{'pagetitle'} . "\" target=\"" . $page->{'nextpage'}. "\" mtime=\"" .  $page->{'compmtime'}. "\">\n";
 	if ($hastableau)
 	{
-	   print XMLPAGE "<area><type>tableau</type><titleprefix>TT</titleprefix><prefix>T</prefix><class>tableau</class><class>tableau hidden</class><class>title</class><class>title hidden</class></area>";
+	   print XMLPAGE "<area><type>tableau</type><titleprefix>TT</titleprefix><prefix>T</prefix><class>tableau</class><class>tableau hidden</class><class>title</class><class>title hidden</class><class>twotitle</class><class>twotitle hidden</class></area>";
 	}
 	if ($haspoules) 
 	{
-	   print XMLPAGE "<area><type>poules</type><static>poulestitle</static><prefix>T</prefix><class>tableau</class><class>tableau hidden</class><class>title</class></area>";
+	   print XMLPAGE "<area><type>poules</type><static>ptitle</static><prefix>T</prefix><class>tableau</class><class>tableau hidden</class><class>title</class></area>";
 	} 
-	if ($hasvlist) 
+	if (($vertlist eq 'entry')) 
 	{
-	   print XMLPAGE "<area><type>vlist</type><static>vtitle</static><static>vheader</static><prefix>V</prefix><class>vlist</class></area>";
+	   print XMLPAGE "<area><type>vlist</type><static>vlistid</static><prefix>V</prefix><class>col_multi</class></area>";
+	}
+	elsif(defined($vertlist))
+	{
+	   print XMLPAGE "<area><type>vlist</type><static>vlistid</static><static>vheader</static><prefix>V</prefix><class>vlist</class><class>navigation</class></area>";
+	} 
+	
+	if (defined($hasmidlist) && $hasmidlist)
+	{
+	   print XMLPAGE "<area><type>mlist</type><static>mid_title</static><prefix>MT</prefix><class>vlist2</class><class>mid_title</class><class>navigation</class></area>";
 	} 
 	print XMLPAGE "</page>\n";
 }
@@ -345,8 +355,8 @@ sub writeMatchlist
 
 	# my $where = $page->{'where'};
 
-	writeToFiles("<div class=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
-	writeToFiles("<div class=\"vlist2\" id=\"$page->{'tableau_div'}\">\n", 1);  # VLIST2
+	writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
+	writeToFiles("<div class=\"vlist2\" id=\"M$page->{'tableau_div'}\">\n", 1);  # VLIST2
 
 	writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
 	writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
@@ -578,7 +588,7 @@ sub writeFencerListDivFooter
 ##################################################################################
 # writeFencerList
 ##################################################################################
-# Write out the entry list in table format  - used for all vlist divs
+# Write out vertical list in table format  - used for all vlist divs
 sub writeFencerList 
 {
 	local $pagedetails = shift;		# must be scoped as local to allow for sort funcs
@@ -607,6 +617,7 @@ sub writeFencerList
 	my $div_id = 0;
   
 	writeFencerListDivHeader($div_id);
+	my $navlist = "<li><a onclick=\"ChangeView('V$div_id')\">Page ".($div_id+1)."</a></li>";
 
 	if (defined ($entry_list))
 	{
@@ -626,6 +637,7 @@ sub writeFencerList
 						$div_id += 1;
 						$entryindex = 0;
 						writeFencerListDivHeader($div_id);
+						$navlist .= "<li><a onclick=\"ChangeView('V$div_id')\">Page ".($div_id+1)."</a></li>";
 					}
 					else
 					{
@@ -645,6 +657,7 @@ sub writeFencerList
 						$div_id += 1;
 						$entryindex = 0;
 						writeFencerListDivHeader($div_id);
+						$navlist .= "<li><a onclick=\"ChangeView('V$div_id')\">Page ".($div_id+1)."</a></li>";
 					}
 					else
 					{
@@ -665,6 +678,7 @@ sub writeFencerList
 					$div_id += 1;
 					$entryindex = 0;
 					writeFencerListDivHeader($div_id);
+				   $navlist .= "<li><a onclick=\"ChangeView('V$div_id')\">Page ".($div_id+1)."</a></li>";
 				}
 				else
 				{
@@ -675,6 +689,12 @@ sub writeFencerList
 	}
 	
 	writeFencerListDivFooter();
+	
+	
+   writeToFiles("<div class=\"navigation\" id=\"navigation\">", 1);
+   writeToFiles("<ul class=\"navlist\"><li id=\"vlistnav\">Current Status</li><li id=\"mlistnav\">Next Stage</li><li>Up</li></ul>",1);
+   writeToFiles("<ul class=\"pagelist\">".$navlist."</ul>\n</div>", 1);
+
 	
 	writeToFiles("\n</div>", 1);
 }
@@ -731,7 +751,7 @@ sub writeEntryList
 
 	$nif = int($count / 4) if $nif * 4 < $count;
 	
-	writeToFiles("<div class=\"vlist_title\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
+	writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
 	writeToFiles("<div class=\"col_multi\" id=\"V0\">\n", 1);
 
 	writeToFiles($out, 1);
@@ -1220,6 +1240,7 @@ sub createpage
 	}
 	
 	# $pagedef->{'comp'} = $comp;
+	$pagedef->{'compmtime'} = $comp->mtime;
 
 	$pagedef->{'pagetitle'} = $comp->titre_ligne;
 	
@@ -1373,7 +1394,7 @@ sub createpage
 
 	# WEBPAGE->autoflush(1);
 
-	writeBlurb($pagedef, $hastableau, $haspoules, defined($listdef));
+	writeBlurb($pagedef, $hastableau, $haspoules, $vertlist, 1);
 			
 	# Write the tableaus if appropriate
 	if ($hastableau) 

@@ -391,8 +391,8 @@ sub writeMatchlist
 
 		writeToFiles("\t\t\t<td class=\"vlist_name\">$m</td>\n", 1);
 		writeToFiles("\t\t\t<td class=\"vlist_round\">$list->{$m}->{'round'}</td>\n", 1);
-		writeToFiles("\t\t\t<td class=\"vlist_piste\">$list->{$m}->{'piste'}</td>\n", 1);
-		writeToFiles("\t\t\t<td class=\"vlist_time\">$list->{$m}->{'time'}</td>\n", 1);
+		writeToFiles("\t\t\t<td class=\"vlist_piste\">" . ($list->{$m}->{'piste'} || " "). "</td>\n", 1);
+		writeToFiles("\t\t\t<td class=\"vlist_time\">" . ($list->{$m}->{'time'} || " ") . "</td>\n", 1);
 
 		writeToFiles("\t\t</tr>\n", 1);
 
@@ -432,7 +432,7 @@ sub writeTableau
 
 	my $numrounds = $page->{'num_cols'};
 
-	$numrounds = 1 unless defined($numrounds);
+	$numrounds = 2 unless defined($numrounds);
 	
 	# Work out the number of bouts
 	my $numbouts = $page->{'num_bouts'};

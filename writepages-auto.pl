@@ -175,12 +175,13 @@ sub writeBlurb
 	print WEBPAGE "\tvar next_location=\"$nextpage\";\n";
 	
 	
-   print WEBPAGE "\tfunction finished_callback() {\n";
+   	print WEBPAGE "\tfunction finished_callback() {\n";
 	print WEBPAGE "\t\twindow.location.replace(next_location);\n\t}\n";
 	print WEBPAGE "\tvar areas = [\n";
 	if ($hastableau)
 	{
 	   print WEBPAGE "\t\t{\n\t\t\t'prefix': 'T',\n\t\t\t'titleprefix':'TT',\n\t\t\t'finished': false,\n\t\t\t'currentvalue':0\n\t\t}\n";
+	   print WEBPAGE "\t\t,\n\t\t{\n\t\t\t'prefix': 'M',\n\t\t\t'finished': false,\n\t\t\t'currentvalue':0\n\t\t}\n";
 	   if (defined($vertlist) || $haspoules)
 	   {
 	      print WEBPAGE "\t\t,\n";
@@ -351,19 +352,40 @@ sub writePoule
 sub writeMatchlist
 {
 	my $comp = shift;
-	my $page = shift;
+	my $pagesize = shift;
 
-	# my $where = $page->{'where'};
+	my $divid; 
+	my $rownum = 1;
+	my $hidden = "";
 
-	writeToFiles("\t<div class=\"vlist_body vlist2_body\" id=\"M$page->{'tableau_div'}\">\n", 1);		# VLIST_BODY
+	print STDERR "DEBUG: writeMatchlist(): div id = M$divid\n" if $Engarde::DEBUGGING > 1;
 
 	my $list = $comp->matchlist;
 
-	writeToFiles("\t\t<table class=\"vlist_table\">\n", 1);
 
 	foreach my $m (sort keys %$list)
 	{
-		print STDERR "DEBUG: writeMatchlist(): m = $m\n" if $Engarde::DEBUGGING > 1;
+		if ($rownum eq $pagesize || not defined $divid)
+		{
+			if (defined $divid)
+			{
+				writeToFiles("\t\t</table>\n", 1);
+				writeToFiles("\t</div>\n", 1); # /VLIST_BODY
+				$divid++; 
+				$rownum = 1;
+				$hidden = "hidden";
+			}
+			else
+			{
+				$divid=0; 
+			}
+			print STDERR "DEBUG: writeMatchlist(): new div id = $divid\n" if $Engarde::DEBUGGING > 1;
+
+			writeToFiles("\t<div class=\"vlist_body vlist2_body $hidden\" id=\"M$divid\">\n", 1);		# VLIST_BODY
+			writeToFiles("\t\t<table class=\"vlist_table\">\n", 1);
+		}
+
+		print STDERR "DEBUG: writeMatchlist(): rownum = $rownum, m = $m\n" if $Engarde::DEBUGGING > 1;
 
 		writeToFiles("\t\t<tr>\n", 1);
 
@@ -373,10 +395,11 @@ sub writeMatchlist
 		writeToFiles("\t\t\t<td class=\"vlist_time\">$list->{$m}->{'time'}</td>\n", 1);
 
 		writeToFiles("\t\t</tr>\n", 1);
+
+		$rownum++;
 	}
 
 	writeToFiles("\t\t</table>\n", 1);
-
 	writeToFiles("\t</div>\n", 1) ; # /VLIST_BODY
 
 }
@@ -1042,6 +1065,7 @@ sub readpagedefsfromxml
 			      $currentpage{'scriptpath'} = ${$seriesdef->{'scriptpath'}}[0];
 			      $currentpage{'index'} = ${$seriesdef->{'index'}}[0];
 			      $currentpage{'vlistsize'} = ${$seriesdef->{'vlistsize'}}[0];
+			      $currentpage{'vlist2size'} = ${$seriesdef->{'vlist2size'}}[0];
 			      $currentpage{'entrylistsize'} = ${$seriesdef->{'entrylistsize'}}[0];
 			   
 			   
@@ -1381,28 +1405,28 @@ sub createpage
 		}
 
 
-	   writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
-	   writeToFiles("<div class=\"vlist2\" id=\"vlist2\">\n", 1);  # VLIST2
+		writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
+		writeToFiles("<div class=\"vlist2\" id=\"vlist2\">\n", 1);  # VLIST2
 
-	   writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
-	   writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
+		writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
+		writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
 
-	   writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
-	   writeToFiles("\t\t\t\t<tr>", 1);
-	   writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
-	   writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
-	   writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
-	   writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
-	   writeToFiles("\t\t\t\t</tr>\n", 1);
-	   writeToFiles("\t\t\t</table>\n", 1);
-	   writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
-	   writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
+		writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
+		writeToFiles("\t\t\t\t<tr>", 1);
+		writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
+		writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
+		writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
+		writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
+		writeToFiles("\t\t\t\t</tr>\n", 1);
+		writeToFiles("\t\t\t</table>\n", 1);
+		writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
+		writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
+
+		print STDERR "DEBUG: createpage(): calling writeMatchlist - page size = $pagedef->{'vlist2size'}\n" if $Engarde::DEBUGGING > 1;
 	
-		foreach my $tabdef (@{$tabdefs->{'definitions'}}) 
-		{
-			writeMatchlist($comp, $tabdef);
-		}
-	   writeToFiles("</div>\n", 1) ; # /VLIST2
+		writeMatchlist($comp, $pagedef->{'vlist2size'});
+
+		writeToFiles("</div>\n", 1) ; # /VLIST2
 	}
 
 	# Write the poules if appropriate

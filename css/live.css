@@ -2,6 +2,10 @@ div.hidden {
 	visibility: hidden; 
 }
 
+.navigation 
+{
+   display:none;
+}
 
 div.tableau { 
 	overflow: hidden; 

@@ -70,7 +70,7 @@ function startSwapTimers()
    var i;
    for (i in areas) {
       var area = areas[i];
-      area.timer = function(obj) { setInterval(function() { onSwapTimer(obj) }, pauseTime); } (area);
+      area.timer = function(obj) { return setInterval(function() { onSwapTimer(obj) }, pauseTime); } (area);
    }
    if (undefined == i) {
       //Call the finished callback

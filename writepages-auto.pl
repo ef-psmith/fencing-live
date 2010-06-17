@@ -230,12 +230,12 @@ sub writeBlurb
 	}
 	elsif(defined($vertlist))
 	{
-	   print XMLPAGE "<area><type>vlist</type><static>vlistid</static><static>vheader</static><prefix>V</prefix><class>vlist</class><class>navigation</class></area>";
+	   print XMLPAGE "<area><type>vlist</type><static>vlistid</static><static>vheader</static><prefix>V</prefix><class>vlist</class></area>";
 	} 
 	
 	if (defined($hasmidlist) && $hasmidlist)
 	{
-	   print XMLPAGE "<area><type>mlist</type><static>mid_title</static><prefix>MT</prefix><class>vlist2</class><class>mid_title</class><class>navigation</class></area>";
+	   print XMLPAGE "<area><type>mlist</type><static>vlist2</static><static>mid_title</static><prefix>MT</prefix><class>vlist2</class><class>mid_title</class></area>";
 	} 
 	print XMLPAGE "</page>\n";
 }
@@ -355,24 +355,7 @@ sub writeMatchlist
 
 	# my $where = $page->{'where'};
 
-	writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
-	writeToFiles("<div class=\"vlist2\" id=\"M$page->{'tableau_div'}\">\n", 1);  # VLIST2
-
-	writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
-	writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
-
-	writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
-	writeToFiles("\t\t\t\t<tr>", 1);
-	writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
-	writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
-	writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
-	writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
-	writeToFiles("\t\t\t\t</tr>\n", 1);
-	writeToFiles("\t\t\t</table>\n", 1);
-	writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
-	writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
-
-	writeToFiles("\t<div class=\"vlist_body vlist2_body\" id=\"M20\">\n", 1);		# VLIST_BODY
+	writeToFiles("\t<div class=\"vlist_body vlist2_body\" id=\"M$page->{'tableau_div'}\">\n", 1);		# VLIST_BODY
 
 	my $list = $comp->matchlist;
 
@@ -395,7 +378,6 @@ sub writeMatchlist
 	writeToFiles("\t\t</table>\n", 1);
 
 	writeToFiles("\t</div>\n", 1) ; # /VLIST_BODY
-	writeToFiles("</div>\n", 1) ; # /VLIST2
 
 }
 
@@ -617,7 +599,6 @@ sub writeFencerList
 	my $div_id = 0;
   
 	writeFencerListDivHeader($div_id);
-	my $navlist = "<li><a onclick=\"ChangeView('V$div_id')\">Page ".($div_id+1)."</a></li>";
 
 	if (defined ($entry_list))
 	{
@@ -637,7 +618,6 @@ sub writeFencerList
 						$div_id += 1;
 						$entryindex = 0;
 						writeFencerListDivHeader($div_id);
-						$navlist .= "<li><a onclick=\"ChangeView('V$div_id')\">Page ".($div_id+1)."</a></li>";
 					}
 					else
 					{
@@ -657,7 +637,6 @@ sub writeFencerList
 						$div_id += 1;
 						$entryindex = 0;
 						writeFencerListDivHeader($div_id);
-						$navlist .= "<li><a onclick=\"ChangeView('V$div_id')\">Page ".($div_id+1)."</a></li>";
 					}
 					else
 					{
@@ -678,7 +657,6 @@ sub writeFencerList
 					$div_id += 1;
 					$entryindex = 0;
 					writeFencerListDivHeader($div_id);
-				   $navlist .= "<li><a onclick=\"ChangeView('V$div_id')\">Page ".($div_id+1)."</a></li>";
 				}
 				else
 				{
@@ -691,9 +669,6 @@ sub writeFencerList
 	writeFencerListDivFooter();
 	
 	
-   writeToFiles("<div class=\"navigation\" id=\"navigation\">", 1);
-   writeToFiles("<ul class=\"navlist\"><li id=\"vlistnav\">Current Status</li><li id=\"mlistnav\">Next Stage</li><li>Up</li></ul>",1);
-   writeToFiles("<ul class=\"pagelist\">".$navlist."</ul>\n</div>", 1);
 
 	
 	writeToFiles("\n</div>", 1);
@@ -1405,10 +1380,29 @@ sub createpage
 			writeTableau($comp, $tabdef);
 		}
 
+
+	   writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
+	   writeToFiles("<div class=\"vlist2\" id=\"vlist2\">\n", 1);  # VLIST2
+
+	   writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
+	   writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
+
+	   writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
+	   writeToFiles("\t\t\t\t<tr>", 1);
+	   writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
+	   writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
+	   writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
+	   writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
+	   writeToFiles("\t\t\t\t</tr>\n", 1);
+	   writeToFiles("\t\t\t</table>\n", 1);
+	   writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
+	   writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
+	
 		foreach my $tabdef (@{$tabdefs->{'definitions'}}) 
 		{
 			writeMatchlist($comp, $tabdef);
 		}
+	   writeToFiles("</div>\n", 1) ; # /VLIST2
 	}
 
 	# Write the poules if appropriate

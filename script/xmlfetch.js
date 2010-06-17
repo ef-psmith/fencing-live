@@ -39,130 +39,156 @@ var pauseTime = 10 * 1000;
       }
    }
 
+var mtime = "";
+var this_location = "";
+
 function xmlloaded(xmldoc) 
 {
-   // First get rid of the old divs.
-   var i;
-   for (i in areas) {
-      var area = areas[i];
-      // Get rid of any static title block
-      if (null != area.statics) {
-         var k;
-         for (k in area.statics) {
-            var title = document.getElementById(area.statics[k]);
-            if (null != title) {
-               title.parentNode.removeChild(title);
+   var page = xmldoc.getElementsByTagName('page')[0];
+   // Only process if the two pages are different or have different modified times
+   if (null != xmldoc && (this_location != next_location || mtime != page.getAttribute('mtime')))
+   {   
+
+      // First get rid of the old divs.
+      var i;
+      for (i in areas) {
+         var area = areas[i];
+         // Get rid of any static title block
+         if (null != area.statics) {
+            var k;
+            for (k in area.statics) {
+               var title;
+               do
+               {
+                  title = document.getElementById(area.statics[k]);
+                  if (null != title) {
+                     title.parentNode.removeChild(title);
+                  }
+               } while (null != title);
             }
          }
+         // Now do the various prefix nodes
+         var titleobj;
+         var bodyobj;
+         var j = 0;
+         do {
+
+            titleobj = document.getElementById(area.titleprefix + j);
+            if (null != titleobj) {
+               titleobj.parentNode.removeChild(titleobj);
+            }
+
+            bodyobj = document.getElementById(area.prefix + j);
+            if (null != bodyobj) {
+               bodyobj.parentNode.removeChild(bodyobj);
+            }
+            ++j;
+         } while (null != titleobj || null != bodyobj);
       }
-      // Now do the various prefix nodes
-      var titleobj;
-      var bodyobj;
-      var j = 0;
-      do {
+      // Now sort out the new page
 
-         titleobj = document.getElementById(area.titleprefix + j);
-         if (null != titleobj) {
-            titleobj.parentNode.removeChild(titleobj);
+      // Get rid of the old areas
+      areas = new Array();
+      
+      // Allowed classes object being used as a map
+      var allowedclasses = {};
+      
+      document.title = page.getAttribute('title');
+      mtime = page.getAttribute('mtime');
+
+      // Do the surround colour
+      if (null != document.getElementById('top'))
+         document.getElementById('top').style.background = page.getAttribute('backcolour');
+      if (null != document.getElementById('bottom'))
+         document.getElementById('bottom').style.background = page.getAttribute('backcolour');
+      if (null != document.getElementById('left'))
+         document.getElementById('left').style.background = page.getAttribute('backcolour');
+      if (null != document.getElementById('right'))
+         document.getElementById('right').style.background = page.getAttribute('backcolour');
+      if (null != document.getElementById('mlistnav'))
+         document.getElementById('mlistnav').style.background = page.getAttribute('backcolour');
+      if (null != document.getElementById('vlistnav'))
+         document.getElementById('vlistnav').style.background = page.getAttribute('backcolour');
+      if (null != document.getElementById('upnav'))
+         document.getElementById('upnav').style.background = page.getAttribute('backcolour');
+
+      // Sort out the locations
+      this_location = next_location;
+      next_location = page.getAttribute('target');
+
+      var areanodes = xmldoc.getElementsByTagName('area');
+      var n;
+      for (n in areanodes) {
+         var areanode = areanodes[n];
+
+         // We are expecting child nodes defining the prefix, title prefix and various statics
+         var statics = new Array();
+         var prefix = null;
+         var titleprefix = null;
+         var type = null;
+         var classes = new Array();
+         var m;
+         for (m in areanode.childNodes) {
+            if ("prefix" == areanode.childNodes[m].tagName) {
+               prefix = areanode.childNodes[m].childNodes[0].nodeValue;
+            }
+            else if ("titleprefix" == areanode.childNodes[m].tagName) {
+               titleprefix = areanode.childNodes[m].childNodes[0].nodeValue;
+            }
+            else if ("type" == areanode.childNodes[m].tagName) {
+               type = areanode.childNodes[m].childNodes[0].nodeValue;
+            }
+            else if ("static" == areanode.childNodes[m].tagName) {
+               statics[statics.length] = areanode.childNodes[m].childNodes[0].nodeValue;
+            }
+            else if ("class" == areanode.childNodes[m].tagName) {
+               classes[classes.length] = areanode.childNodes[m].childNodes[0].nodeValue;
+            }
          }
-
-         bodyobj = document.getElementById(area.prefix + j);
-         if (null != bodyobj) {
-            bodyobj.parentNode.removeChild(bodyobj);
-         }
-         ++j;
-      } while (null != titleobj || null != bodyobj);
-   }
-   // Now sort out the new page
-
-   // Get rid of the old areas
-   areas = new Array();
-   
-   // Allowed classes object being used as a map
-   var allowedclasses = {};
-   
-   var page = xmldoc.getElementsByTagName('page')[0];
-
-   // Do the surround colour
-   document.getElementById('top').style.background = page.getAttribute('backcolour');
-   document.getElementById('bottom').style.background = page.getAttribute('backcolour');
-   document.getElementById('left').style.background = page.getAttribute('backcolour');
-   document.getElementById('right').style.background = page.getAttribute('backcolour');
-
-   next_location = page.getAttribute('target');
-
-   var areanodes = xmldoc.getElementsByTagName('area');
-   var n;
-   for (n in areanodes) {
-      var areanode = areanodes[n];
-
-      // We are expecting child nodes defining the prefix, title prefix and various statics
-      var statics = new Array();
-      var prefix = null;
-      var titleprefix = null;
-      var type = null;
-      var classes = new Array();
-      var m;
-      for (m in areanode.childNodes) {
-         if ("prefix" == areanode.childNodes[m].tagName) {
-            prefix = areanode.childNodes[m].childNodes[0].nodeValue;
-         }
-         else if ("titleprefix" == areanode.childNodes[m].tagName) {
-            titleprefix = areanode.childNodes[m].childNodes[0].nodeValue;
-         }
-         else if ("type" == areanode.childNodes[m].tagName) {
-            type = areanode.childNodes[m].childNodes[0].nodeValue;
-         }
-         else if ("static" == areanode.childNodes[m].tagName) {
-            statics[statics.length] = areanode.childNodes[m].childNodes[0].nodeValue;
-         }
-         else if ("class" == areanode.childNodes[m].tagName) {
-            classes[classes.length] = areanode.childNodes[m].childNodes[0].nodeValue;
+         
+         // Check that this is one of the desired types
+         var n;
+         for (n in allowedareas) {
+            if (allowedareas[n] == type) {
+               // Add the area
+               areas[areas.length] = {
+                  'prefix': prefix,
+                  'titleprefix': titleprefix,
+                  'type': type,
+                  'statics': statics,
+                  'finished': false,
+                  'currentvalue': 0
+               };
+               
+               // Add all the classes into the allowed classes collection
+               var classit;
+               for (classit in classes)
+               {
+                  allowedclasses[classes[classit]] = true;
+               }
+            }
          }
       }
       
-      // Check that this is one of the desired types
-      var n;
-      for (n in allowedareas) {
-         if (allowedareas[n] == type) {
-            // Add the area
-            areas[areas.length] = {
-               'prefix': prefix,
-               'titleprefix': titleprefix,
-               'type': type,
-               'statics': statics,
-               'finished': false,
-               'currentvalue': 0
-            };
-            
-            // Add all the classes into the allowed classes collection
-            var classit;
-            for (classit in classes)
+      // Now we need to go through the children of the return data adding the divs if they are of the correct class
+      var i;
+      
+      var xmldoc = http_request.responseXML;
+      var returndata = xmldoc.getElementsByTagName('returndata')[0];
+
+      for (i in returndata.childNodes) {
+         var divdata = returndata.childNodes[i];
+
+         // We only care about divs
+         if (divdata.nodeType == returndata.nodeType) {
+
+            if ("div" == divdata.tagName)
             {
-               allowedclasses[classes[classit]] = true;
-            }
-         }
-      }
-   }
-   
-   // Now we need to go through the children of the return data adding the divs if they are of the correct class
-   var i;
-   
-   var xmldoc = http_request.responseXML;
-   var returndata = xmldoc.getElementsByTagName('returndata')[0];
-
-   for (i in returndata.childNodes) {
-      var divdata = returndata.childNodes[i];
-
-      // We only care about divs
-      if (divdata.nodeType == returndata.nodeType) {
-
-         if ("div" == divdata.tagName)
-         {
-            // Check the class against the allowed ones
-            if (allowedclasses.hasOwnProperty(divdata.getAttribute('class')) && allowedclasses[divdata.getAttribute('class')])
-            {
-               translateElement(divdata);
+               // Check the class against the allowed ones
+               if (allowedclasses.hasOwnProperty(divdata.getAttribute('class')) && allowedclasses[divdata.getAttribute('class')])
+               {
+                  translateElement(divdata);
+               }
             }
          }
       }

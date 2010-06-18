@@ -44,6 +44,243 @@ sub writeToFiles
    }
 }
 
+
+#################################################################################
+# CreateCompetitionPage
+#################################################################################
+
+sub CreateCompetitionPage
+{
+   my $target = shift;
+   my $comptitle = shift;
+   my $targetlocation = shift;
+   my $allcomps = shift;
+   my $scriptpath = shift;
+   my $csspath = shift;
+
+   # Now just plug them into the html we have here.
+   
+   
+	
+	my $pagename = $targetlocation . "/comp" . $target;
+	open( COMPPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
+   
+   print COMPPAGE '<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title></title>
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<link href="'.$csspath.'comp.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript">
+	var next_location="'.$target.'";
+	var areas = [];
+	
+	var allowedareas = [\'vlist\',\'mlist\'];
+	
+	function onPageLoaded()
+	{
+	   finished_callback();
+	}
+	
+	function EnableArea(area, enable)
+	{
+	   // We are going to use the display css attribute to hide things
+	   var displayvalue = enable ? \'block\' : \'none\';
+      // Get rid of any static title block
+      if (null != area.statics) {
+         var k;
+         for (k in area.statics) {
+            var title = document.getElementById(area.statics[k]);   
+            if (null != title) {
+               title.style.display = displayvalue;
+            }
+         }
+      }
+      // Now do the various prefix nodes
+      var titleobj;
+      var bodyobj;
+      var j = 0;
+      do {
+
+         titleobj = document.getElementById(area.titleprefix + j);
+         if (null != titleobj) {
+            titleobj.style.display = displayvalue;
+         }
+
+         bodyobj = document.getElementById(area.prefix + j);
+         if (null != bodyobj) {
+            bodyobj.style.display = displayvalue;
+         }
+         ++j;
+      } while (null != titleobj || null != bodyobj);
+	}
+	
+	// the current selection for the navigation
+	var currentselection = \'vlist\';
+	
+	function ChangeSelected(areatype)
+	{
+	   var foundarea = false; 
+	   var i;
+	   for (i in areas)
+	   {
+	      var area = areas[i];
+	      foundarea = foundarea || area.type == areatype;
+	      EnableArea(area, area.type == areatype);
+	   }
+	   if (foundarea)
+	      currentselection = areatype;
+	   else
+	   {
+	      // Go back to where we were
+	      for (i in areas)
+	      {
+	         var area = areas[i];
+	         foundarea = foundarea || area.type == areatype;
+	         EnableArea(area, area.type == currentselection);
+	      }
+	   }
+	   return false;
+	}
+	
+	
+	function callback()
+	{
+	   // Clean up the links
+	   // Go thought the areas looking for the mid list and the vlist
+	   var hasvlist = false;
+	   var hasmidlist = false;
+	   
+	   var i;
+	   for (i in areas)
+	   {
+	      if (areas[i].type == \'mlist\')
+	         hasmidlist = true;
+	      else if (areas[i].type == \'vlist\')
+	         hasvlist = true;
+	   }
+	   var midlistelem = document.getElementById(\'mlistnav\');
+	   if (null != midlistelem)
+	   {
+	      if (hasmidlist)
+	      {
+   	      midlistelem.style.display = \'inline\';
+	      }
+	      else
+	      {
+   	      midlistelem.style.display = \'none\';
+	      }
+	   }
+	   var vlistelem = document.getElementById(\'vlistnav\');
+	   if (null != vlistelem)
+	   {
+	      if (vlistelem)
+	      {
+   	      vlistelem.style.display = \'inline\';
+	      }
+	      else
+	      {
+   	      vlistelem.style.display = \'none\';
+	      }
+	   }
+	   
+	   // Back through the areas getting the enablement correct based on selected
+	   for (i in areas)
+	   {
+	      var area = areas[i];
+	      
+	      EnableArea(area, area.type == currentselection);
+	   }
+	
+	   setTimeout(function() {finished_callback();}, 30000);
+	}
+</script>
+<script src="'.$scriptpath.'xmlfetch.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	this_location="'. $target .'";
+	function finished_callback() {
+	
+	   // Kill the current timers
+	   var i;
+	   for (i in areas) {
+	      clearInterval(areas[i].timer);
+	      areas[i].timer = undefined;
+	   }
+	   // We are going to the same place
+	   next_location = this_location;
+		makeRequest(next_location + ".xml", "");
+	}
+	
+	var currentdivdisplayed = "";
+	function ChangeView(newdivname)
+	{
+	   var currdiv = document.getElementById(currentdivdisplayed);
+	   var newdiv = document.getElementById(newdivname);
+	   if (null != newdiv)
+	   {
+	      if (null != currdiv)
+	      {
+		      currdiv.style.visibility = "hidden";
+		   }
+		   newdiv.style.visibility = "visible";
+		   // Store the new div name
+		   currentdivdisplayed = newdivname;
+	   }
+	}
+</script>
+</head>
+<body onload="onPageLoaded()">
+<h2>'.$comptitle.'</h2>
+ <div class="navigation" id="navigation">
+   <ul class="navlist"><li><a id="vlistnav" onclick="return ChangeSelected(\'vlist\');" href="">Current Status</a></li><li><a id="mlistnav" onclick="return ChangeSelected(\'mlist\');" href="">Next Stage</a></li><li><a id="upnav" href="'. $allcomps .'">Up</a></li></ul>
+ </div>
+</body>
+</html>
+';
+
+	close COMPPAGE;
+
+	rename $pagename . ".tmp", $pagename;
+
+}
+
+
+sub CreateAllCompetitionsPage
+
+{
+   my $competitionlist = shift;
+   my $targetlocation = shift;
+   my $allcompsname = shift;
+   my $csspath = shift;
+   
+	
+	my $pagename = $targetlocation . "/" . $allcompsname;
+	open( ALLCOMPPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
+   
+   print ALLCOMPPAGE '<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>EYC 2010 Competition Portal</title>
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<link href="'.$csspath.'comp.css" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+<body>
+<h2>EYC 2010 Competition Portal</h2>
+ <div class="navigation" id="navigation">
+   <ul class="navlist">'.$competitionlist.'</ul>
+ </div>
+</body>
+</html>
+';
+
+	close ALLCOMPPAGE;
+
+	rename $pagename . ".tmp", $pagename;
+   
+}
+
 ##################################################################################
 # writeTableauMatch
 ##################################################################################
@@ -362,7 +599,6 @@ sub writeMatchlist
 
 	my $list = $comp->matchlist;
 
-
 	foreach my $m (sort keys %$list)
 	{
 		if ($rownum eq $pagesize || not defined $divid)
@@ -399,8 +635,11 @@ sub writeMatchlist
 		$rownum++;
 	}
 
-	writeToFiles("\t\t</table>\n", 1);
-	writeToFiles("\t</div>\n", 1) ; # /VLIST_BODY
+   if (0 < keys(%$list))
+   {
+	   writeToFiles("\t\t</table>\n", 1);
+	   writeToFiles("\t</div>\n", 1) ; # /VLIST_BODY
+	}
 
 }
 
@@ -1048,7 +1287,8 @@ sub readpagedefsfromxml
          # Just loop around the pages
 	      foreach my $pagedefin (@{$seriesdef->{page}})
 	      { 
-	         print Dumper($pagedefin);
+	         #print Dumper($pagedefin);
+	         print Dumper($seriesdef);
 			   undef %currentpage;
 			   # only enabled pages
 			   if ($pagedefin->{enabled})
@@ -1067,8 +1307,10 @@ sub readpagedefsfromxml
 			      $currentpage{'vlistsize'} = ${$seriesdef->{'vlistsize'}}[0];
 			      $currentpage{'vlist2size'} = ${$seriesdef->{'vlist2size'}}[0];
 			      $currentpage{'entrylistsize'} = ${$seriesdef->{'entrylistsize'}}[0];
+			      $currentpage{'allcompsname'} = ${$seriesdef->{'allcompsname'}}[0];
 			   
 			   
+	            print Dumper(%currentpage);
 				   push @pagedefs, {%currentpage};
 			   }
 			}
@@ -1405,28 +1647,32 @@ sub createpage
 		}
 
 
-		writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
-		writeToFiles("<div class=\"vlist2\" id=\"vlist2\">\n", 1);  # VLIST2
+	   my $list = $comp->matchlist;
+      if (0 < keys(%$list))
+      {
+		   writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
+		   writeToFiles("<div class=\"vlist2\" id=\"vlist2\">\n", 1);  # VLIST2
 
-		writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
-		writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
+		   writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
+		   writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
 
-		writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
-		writeToFiles("\t\t\t\t<tr>", 1);
-		writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
-		writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
-		writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
-		writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
-		writeToFiles("\t\t\t\t</tr>\n", 1);
-		writeToFiles("\t\t\t</table>\n", 1);
-		writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
-		writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
+		   writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
+		   writeToFiles("\t\t\t\t<tr>", 1);
+		   writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
+		   writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
+		   writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
+		   writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
+		   writeToFiles("\t\t\t\t</tr>\n", 1);
+		   writeToFiles("\t\t\t</table>\n", 1);
+		   writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
+		   writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
 
-		print STDERR "DEBUG: createpage(): calling writeMatchlist - page size = $pagedef->{'vlist2size'}\n" if $Engarde::DEBUGGING > 1;
-	
-		writeMatchlist($comp, $pagedef->{'vlist2size'});
+		   print STDERR "DEBUG: createpage(): calling writeMatchlist - page size = $pagedef->{'vlist2size'}\n" if $Engarde::DEBUGGING > 1;
+   	
+		   writeMatchlist($comp, $pagedef->{'vlist2size'});
 
-		writeToFiles("</div>\n", 1) ; # /VLIST2
+		   writeToFiles("</div>\n", 1) ; # /VLIST2
+		}
 	}
 
 	# Write the poules if appropriate
@@ -1575,6 +1821,12 @@ $| = 1;
 select($fh);
 # STDOUT->autoflush(1);  # to ease debugging!
 
+my %compmap;
+my $competitionlist;
+my $targetlocation;
+my $allcompsname;
+my $csspath;
+
 while (1)
 {
 	print "\nRunning......";
@@ -1584,8 +1836,36 @@ while (1)
 		foreach my $pagedef (@{$pages->{$series}->{'pagedefs'}}) 
 		{
 			createpage ($pagedef);
+			
+			# First check whether we have this pagedef in our hash already
+			if (!defined($compmap{$pagedef->{'competition'}}))
+			{
+			   # The competition doesn't exist so create it and the file to go with it.
+			   $compmap{$pagedef->{'competition'}} = 1;
+			   
+			   # We use the targetlocation and all competitions name from the first series we find that has one
+			   if (!defined($targetlocation))
+			   {
+			      $targetlocation = $pagedef->{'targetlocation'};
+			   }
+			   if (!defined($allcompsname))
+			   {
+			      $allcompsname = $pagedef->{'allcompsname'};
+			   }
+			   print Dumper $allcompsname;
+			   if (!defined($csspath))
+			   {
+			      $csspath = $pagedef->{'csspath'};
+			   }
+			   print Dumper $csspath;
+			   CreateCompetitionPage($pagedef->{'target'}, $pagedef->{'pagetitle'}, $targetlocation, $allcompsname, $pagedef->{'scriptpath'}, $pagedef->{'csspath'});
+			   
+			   $competitionlist .= "<li><a href=\"comp" . $pagedef->{'target'} ."\" class=\"complink\">" . $pagedef->{'pagetitle'} . "</a></li>\n";
+			}
 		}
 	}	
+	
+	CreateAllCompetitionsPage($competitionlist, $targetlocation, $allcompsname, $csspath);
 
 	# print "Done\nSleeping...\n";
 

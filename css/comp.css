@@ -11,6 +11,12 @@ li
 display:inline;
 margin:3px;
 }
+
+h2
+{
+padding-top:6px;  
+text-align:center;
+}
 a
 {
 font-weight:bold;
@@ -28,11 +34,15 @@ background-color:#7A991A;
 
 div.navigation
 {
-	position:relative;
-	top: 20px;
-	left: 20px;
-	z-index:50;
+	margin-top: 6px;
+	margin-left: 20px;
 	display:block;
+}
+
+a.complink
+{
+   display: block;
+   margin-top: 4px;
 }
 
 /* Don't want to deal with pagelists just yet */

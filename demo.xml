@@ -3,11 +3,13 @@
 <series>
 <name>Series 1</name>
 <targetlocation>C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\screens</targetlocation>
+<allcompsname>allcomps.html</allcompsname>
 <enabled>true</enabled>
 <csspath>../css/</csspath>
 <scriptpath>../script/</scriptpath>
 <index>index.html</index>
 <vlistsize>23</vlistsize>
+<vlist2size>30</vlist2size>
 <entrylistsize>92</entrylistsize>
 <page>
 <target>page1.html</target>

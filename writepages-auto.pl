@@ -65,7 +65,8 @@ sub CreateCompetitionPage
 	my $pagename = $targetlocation . "/comp" . $target;
 	open( COMPPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
    
-   print COMPPAGE '<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+   print COMPPAGE <<EOF
+   <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title></title>
 <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
@@ -231,29 +232,29 @@ sub CreateCompetitionPage
 </script>
 </head>
 <body onload="onPageLoaded()">
-<h2>'.$comptitle.'</h2>
+<h2>$comptitle</h2>
  <div class="navigation" id="navigation">
-   <ul class="navlist"><li><a id="vlistnav" onclick="return ChangeSelected(\'vlist\');" href="">Current Status</a></li><li><a id="mlistnav" onclick="return ChangeSelected(\'mlist\');" href="">Next Stage</a></li><li><a id="upnav" href="'. $allcomps .'">Up</a></li></ul>
+   <ul class="navlist"><li><a id="vlistnav" onclick="return ChangeSelected(\'vlist\');" href="">Current Status</a></li><li><a id="mlistnav" onclick="return ChangeSelected(\'mlist\');" href="">Next Stage</a></li><li><a id="upnav" href="$allcomps">Up</a></li></ul>
  </div>
 </body>
 </html>
-';
+
+EOF
+;
+
 
 	close COMPPAGE;
-
 	rename $pagename . ".tmp", $pagename;
 
 }
 
 
 sub CreateAllCompetitionsPage
-
 {
-   my $competitionlist = shift;
-   my $targetlocation = shift;
-   my $allcompsname = shift;
-   my $csspath = shift;
-   
+	my $competitionlist = shift;
+	my $targetlocation = shift;
+	my $allcompsname = shift;
+	my $csspath = shift;
 	
 	my $pagename = $targetlocation . "/" . $allcompsname;
 	open( ALLCOMPPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
@@ -599,6 +600,23 @@ sub writeMatchlist
 
 	my $list = $comp->matchlist;
 
+   writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
+   writeToFiles("<div class=\"vlist2\" id=\"vlist2\">\n", 1);  # VLIST2
+
+   writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
+   writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
+
+   writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
+   writeToFiles("\t\t\t\t<tr>", 1);
+   writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
+   writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
+   writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
+   writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
+   writeToFiles("\t\t\t\t</tr>\n", 1);
+   writeToFiles("\t\t\t</table>\n", 1);
+   writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
+   writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
+
 	foreach my $m (sort keys %$list)
 	{
 		if ($rownum eq $pagesize || not defined $divid)
@@ -635,11 +653,10 @@ sub writeMatchlist
 		$rownum++;
 	}
 
-   if (0 < keys(%$list))
-   {
-	   writeToFiles("\t\t</table>\n", 1);
-	   writeToFiles("\t</div>\n", 1) ; # /VLIST_BODY
-	}
+	writeToFiles("\t\t</table>\n", 1);
+	writeToFiles("\t</div>\n", 1) ; # /VLIST_BODY
+
+	writeToFiles("</div>\n", 1) ; # /VLIST2
 
 }
 
@@ -1647,32 +1664,11 @@ sub createpage
 		}
 
 
-	   my $list = $comp->matchlist;
-      if (0 < keys(%$list))
-      {
-		   writeToFiles("<div class=\"mid_title\" id=\"mid_title\"><h2>Where should I be?</h2></div>\n", 1);
-		   writeToFiles("<div class=\"vlist2\" id=\"vlist2\">\n", 1);  # VLIST2
 
-		   writeToFiles("\t<div class=\"vlist_header vlist2_header\">\n", 1);	# VLIST_HEADER
-		   writeToFiles("\t\t<div class=\"vlist_table\">\n", 1);				# VLIST_TABLE
-
-		   writeToFiles("\t\t\t<table class=\"vlist_table\">\n", 1);
-		   writeToFiles("\t\t\t\t<tr>", 1);
-		   writeToFiles("\t\t\t\t\t<td class=\"vlist_name\">Name</td>\n", 1);
-		   writeToFiles("\t\t\t\t\t<td class=\"vlist_round\">Round</td>\n", 1);
-		   writeToFiles("\t\t\t\t\t<td class=\"vlist_piste\">Piste</td>\n", 1);
-		   writeToFiles("\t\t\t\t\t<td class=\"vlist_time\">Time</td>\n", 1);
-		   writeToFiles("\t\t\t\t</tr>\n", 1);
-		   writeToFiles("\t\t\t</table>\n", 1);
-		   writeToFiles("\t\t</div>\n", 1) ; # /VLIST_TABLE
-		   writeToFiles("\t</div>\n", 1) ; # /VLIST_HEADER
-
-		   print STDERR "DEBUG: createpage(): calling writeMatchlist - page size = $pagedef->{'vlist2size'}\n" if $Engarde::DEBUGGING > 1;
+	   print STDERR "DEBUG: createpage(): calling writeMatchlist - page size = $pagedef->{'vlist2size'}\n" if $Engarde::DEBUGGING > 1;
    	
-		   writeMatchlist($comp, $pagedef->{'vlist2size'});
+	   writeMatchlist($comp, $pagedef->{'vlist2size'});
 
-		   writeToFiles("</div>\n", 1) ; # /VLIST2
-		}
 	}
 
 	# Write the poules if appropriate
@@ -1852,7 +1848,9 @@ while (1)
 			   {
 			      $allcompsname = $pagedef->{'allcompsname'};
 			   }
-			   print Dumper $allcompsname;
+
+			   print "DEBUG: main(): allcompsname = " . Dumper $allcompsname if $Engarde::DEBUGGING > 1;
+
 			   if (!defined($csspath))
 			   {
 			      $csspath = $pagedef->{'csspath'};

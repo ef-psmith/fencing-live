@@ -41,14 +41,11 @@
 	
 	function ChangeSelected(areatype)
 	{
-   		alert('ChangeSelected');	   
 	   var foundarea = false; 
 	   var i;
-	   alert(areas);
 	   for (i in areas)
 	   {
 	      var area = areas[i];
-		  alert(area);
 	      foundarea = foundarea || area.type == areatype;
 	      EnableArea(area, area.type == areatype);
 	   }

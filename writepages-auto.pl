@@ -66,170 +66,24 @@ sub CreateCompetitionPage
 	open( COMPPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
    
    print COMPPAGE <<EOF
-   <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title></title>
 <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-<link href="'.$csspath.'comp.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="$csspath/comp.css" rel="stylesheet" type="text/css" media="screen" />
 <script type="text/javascript">
-	var next_location="'.$target.'";
+	var next_location="$target";
 	var areas = [];
 	
 	var allowedareas = [\'vlist\',\'mlist\'];
-	
-	function onPageLoaded()
-	{
-	   finished_callback();
-	}
-	
-	function EnableArea(area, enable)
-	{
-	   // We are going to use the display css attribute to hide things
-	   var displayvalue = enable ? \'block\' : \'none\';
-      // Get rid of any static title block
-      if (null != area.statics) {
-         var k;
-         for (k in area.statics) {
-            var title = document.getElementById(area.statics[k]);   
-            if (null != title) {
-               title.style.display = displayvalue;
-            }
-         }
-      }
-      // Now do the various prefix nodes
-      var titleobj;
-      var bodyobj;
-      var j = 0;
-      do {
-
-         titleobj = document.getElementById(area.titleprefix + j);
-         if (null != titleobj) {
-            titleobj.style.display = displayvalue;
-         }
-
-         bodyobj = document.getElementById(area.prefix + j);
-         if (null != bodyobj) {
-            bodyobj.style.display = displayvalue;
-         }
-         ++j;
-      } while (null != titleobj || null != bodyobj);
-	}
-	
-	// the current selection for the navigation
-	var currentselection = \'vlist\';
-	
-	function ChangeSelected(areatype)
-	{
-	   var foundarea = false; 
-	   var i;
-	   for (i in areas)
-	   {
-	      var area = areas[i];
-	      foundarea = foundarea || area.type == areatype;
-	      EnableArea(area, area.type == areatype);
-	   }
-	   if (foundarea)
-	      currentselection = areatype;
-	   else
-	   {
-	      // Go back to where we were
-	      for (i in areas)
-	      {
-	         var area = areas[i];
-	         foundarea = foundarea || area.type == areatype;
-	         EnableArea(area, area.type == currentselection);
-	      }
-	   }
-	   return false;
-	}
-	
-	
-	function callback()
-	{
-	   // Clean up the links
-	   // Go thought the areas looking for the mid list and the vlist
-	   var hasvlist = false;
-	   var hasmidlist = false;
-	   
-	   var i;
-	   for (i in areas)
-	   {
-	      if (areas[i].type == \'mlist\')
-	         hasmidlist = true;
-	      else if (areas[i].type == \'vlist\')
-	         hasvlist = true;
-	   }
-	   var midlistelem = document.getElementById(\'mlistnav\');
-	   if (null != midlistelem)
-	   {
-	      if (hasmidlist)
-	      {
-   	      midlistelem.style.display = \'inline\';
-	      }
-	      else
-	      {
-   	      midlistelem.style.display = \'none\';
-	      }
-	   }
-	   var vlistelem = document.getElementById(\'vlistnav\');
-	   if (null != vlistelem)
-	   {
-	      if (vlistelem)
-	      {
-   	      vlistelem.style.display = \'inline\';
-	      }
-	      else
-	      {
-   	      vlistelem.style.display = \'none\';
-	      }
-	   }
-	   
-	   // Back through the areas getting the enablement correct based on selected
-	   for (i in areas)
-	   {
-	      var area = areas[i];
-	      
-	      EnableArea(area, area.type == currentselection);
-	   }
-	
-	   setTimeout(function() {finished_callback();}, 30000);
-	}
-</script>
-<script src="'.$scriptpath.'xmlfetch.js" type="text/javascript"></script>
-<script type="text/javascript">
-
-	this_location="'. $target .'";
-	function finished_callback() {
-	
-	   // Kill the current timers
-	   var i;
-	   for (i in areas) {
-	      clearInterval(areas[i].timer);
-	      areas[i].timer = undefined;
-	   }
-	   // We are going to the same place
-	   next_location = this_location;
-		makeRequest(next_location + ".xml", "");
-	}
-	
+	this_location="$target";
 	var currentdivdisplayed = "";
-	function ChangeView(newdivname)
-	{
-	   var currdiv = document.getElementById(currentdivdisplayed);
-	   var newdiv = document.getElementById(newdivname);
-	   if (null != newdiv)
-	   {
-	      if (null != currdiv)
-	      {
-		      currdiv.style.visibility = "hidden";
-		   }
-		   newdiv.style.visibility = "visible";
-		   // Store the new div name
-		   currentdivdisplayed = newdivname;
-	   }
-	}
 </script>
+
+<script src="$scriptpath/xmlfetch.js" type="text/javascript"></script>
+
+
 </head>
 <body onload="onPageLoaded()">
 <h2>$comptitle</h2>

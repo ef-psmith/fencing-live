@@ -1,7 +1,159 @@
+	function onPageLoaded()
+	{
+	   finished_callback();
+	}
+	
+	function EnableArea(area, enable)
+	{
+	   // We are going to use the display css attribute to hide things
+	   var displayvalue = enable ? 'block' : 'none';
+      // Get rid of any static title block
+      if (null != area.statics) {
+         var k;
+         for (k in area.statics) {
+            var title = document.getElementById(area.statics[k]);   
+            if (null != title) {
+               title.style.display = displayvalue;
+            }
+         }
+      }
+      // Now do the various prefix nodes
+      var titleobj;
+      var bodyobj;
+      var j = 0;
+      do {
+
+         titleobj = document.getElementById(area.titleprefix + j);
+         if (null != titleobj) {
+            titleobj.style.display = displayvalue;
+         }
+
+         bodyobj = document.getElementById(area.prefix + j);
+         if (null != bodyobj) {
+            bodyobj.style.display = displayvalue;
+         }
+         ++j;
+      } while (null != titleobj || null != bodyobj);
+	}
+	
+	// the current selection for the navigation
+	var currentselection = 'vlist';
+	
+	function ChangeSelected(areatype)
+	{
+   		alert('ChangeSelected');	   
+	   var foundarea = false; 
+	   var i;
+	   alert(areas);
+	   for (i in areas)
+	   {
+	      var area = areas[i];
+		  alert(area);
+	      foundarea = foundarea || area.type == areatype;
+	      EnableArea(area, area.type == areatype);
+	   }
+	   if (foundarea)
+	      currentselection = areatype;
+	   else
+	   {
+	      // Go back to where we were
+	      for (i in areas)
+	      {
+	         var area = areas[i];
+	         foundarea = foundarea || area.type == areatype;
+	         EnableArea(area, area.type == currentselection);
+	      }
+	   }
+	   return false;
+	}
+	
+	
+	function callback()
+	{
+	   // Clean up the links
+	   // Go thought the areas looking for the mid list and the vlist
+	   var hasvlist = false;
+	   var hasmidlist = false;
+	   
+	   var i;
+	   for (i in areas)
+	   {
+	      if (areas[i].type == 'mlist')
+	         hasmidlist = true;
+	      else if (areas[i].type == 'vlist')
+	         hasvlist = true;
+	   }
+	   var midlistelem = document.getElementById('mlistnav');
+	   if (null != midlistelem)
+	   {
+	      if (hasmidlist)
+	      {
+   	      midlistelem.style.display = 'inline';
+	      }
+	      else
+	      {
+   	      midlistelem.style.display = 'none';
+	      }
+	   }
+	   var vlistelem = document.getElementById('vlistnav');
+	   if (null != vlistelem)
+	   {
+	      if (vlistelem)
+	      {
+   	      vlistelem.style.display = 'inline';
+	      }
+	      else
+	      {
+   	      vlistelem.style.display = 'none';
+	      }
+	   }
+	   
+	   // Back through the areas getting the enablement correct based on selected
+	   for (i in areas)
+	   {
+	      var area = areas[i];
+	      
+	      EnableArea(area, area.type == currentselection);
+	   }
+	
+	   setTimeout(function() {finished_callback();}, 30000);
+	}
+
+
+	function ChangeView(newdivname)
+	{
+	   var currdiv = document.getElementById(currentdivdisplayed);
+	   var newdiv = document.getElementById(newdivname);
+	   if (null != newdiv)
+	   {
+	      if (null != currdiv)
+	      {
+		      currdiv.style.visibility = "hidden";
+		   }
+		   newdiv.style.visibility = "visible";
+		   // Store the new div name
+		   currentdivdisplayed = newdivname;
+	   }
+	}
+	function finished_callback() {
+
+	   // Kill the current timers
+	   var i;
+	   for (i in areas) {
+	      clearInterval(areas[i].timer);
+	      areas[i].timer = undefined;
+	   }
+	   // We are going to the same place
+	   next_location = this_location;
+		makeRequest(next_location + ".xml", "");
+	}
+	
+
 
    var http_request = false;
 
    function makeRequest(url, parameters) {
+
       http_request = false;
       if (window.XMLHttpRequest) { // Mozilla, Safari,...
          http_request = new XMLHttpRequest();

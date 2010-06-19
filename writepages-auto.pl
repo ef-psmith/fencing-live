@@ -26,7 +26,7 @@ use XML::Simple;
 
 use vars qw($pagedetails);
 
-$Engarde::DEBUGGING=2;
+$Engarde::DEBUGGING=1;
 
 ##################################################################################
 # writeToFiles
@@ -106,11 +106,10 @@ EOF
 sub CreateAllCompetitionsPage
 {
 	my $competitionlist = shift;
-	my $targetlocation = shift;
 	my $allcompsname = shift;
 	my $csspath = shift;
 	
-	my $pagename = $targetlocation . "/" . $allcompsname;
+	my $pagename = $allcompsname;
 	open( ALLCOMPPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
    
    print ALLCOMPPAGE '<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -315,7 +314,7 @@ sub writeBlurb
 	}
 	if ($haspoules) 
 	{
-	   print XMLPAGE "<area><type>poules</type><static>ptitle</static><prefix>T</prefix><class>tableau</class><class>tableau hidden</class><class>title</class></area>";
+	   print XMLPAGE "<area><type>poules</type><static>ptitle</static><prefix>T</prefix><class>poule</class><class>poule hidden</class><class>title</class></area>";
 	} 
 	if (($vertlist eq 'entry')) 
 	{
@@ -323,7 +322,7 @@ sub writeBlurb
 	}
 	elsif(defined($vertlist))
 	{
-	   print XMLPAGE "<area><type>vlist</type><static>vlistid</static><static>vheader</static><prefix>V</prefix><class>vlist</class></area>";
+	   print XMLPAGE "<area><type>vlist</type><static>vlistid</static><static>vheader</static><prefix>V</prefix><class>pvlist</class></area>";
 	} 
 	
 	if (defined($hasmidlist) && $hasmidlist)
@@ -348,7 +347,7 @@ sub writePoule
 	my $div_id = $page->{'poule_div'};
 
 	# Note that we are going to use tableau as the generic container for poules as well.
-	my $poule_class = 'tableau';
+	my $poule_class = 'poule';
 
 	if (defined($page->{'poule_class'})) 
 	{
@@ -714,8 +713,9 @@ sub writeFencerList
 	my $entry_list = $pagedetails->{'entry_list'};
 	my $ref = ref $pagedetails->{'entry_list'} || "";
 	my $size = $pagedetails->{'size'};
+	my $class = $pagedetails->{'class'} || "vlist";
 
-	writeToFiles("<div class=\"vlist\" id=\"vlistid\">\n", 1);
+	writeToFiles("<div class=\"$class\" id=\"vlistid\">\n", 1); 
 	writeToFiles("\t<div class=\"vlist_title\" id=\"vtitle\"><h2>$list_title</h2></div>\n", 0);
 	writeToFiles("\t<div class=\"vlist_header\" id=\"vheader\">\n", 1);
 	writeToFiles("\t\t<table class=\"vlist_table\">\n\t\t\t<tr>\n", 1);
@@ -802,8 +802,6 @@ sub writeFencerList
 	writeFencerListDivFooter();
 	
 	
-
-	
 	writeToFiles("\n</div>", 1);
 }
 
@@ -859,7 +857,8 @@ sub writeEntryList
 
 	$nif = int($count / 4) if $nif * 4 < $count;
 	
-	writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
+	# writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
+	writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title</h2></div>\n", 1);
 	writeToFiles("<div class=\"col_multi\" id=\"V0\">\n", 1);
 
 	writeToFiles($out, 1);
@@ -905,7 +904,7 @@ sub createPouleDefinitions
 
 				$def{'poule_div'} = $divname;
 			
-				$def{'poule_class'} = 'tableau hidden' if ($defindex / $numPoulesPerPage > 0); 
+				$def{'poule_class'} = 'poule hidden' if ($defindex / $numPoulesPerPage > 0); 
 
 				$defs[$defindex / $numPoulesPerPage] = \%def;
 				
@@ -1116,6 +1115,8 @@ sub readpagedefs
 {
 
 	my $pagedeffile = shift;
+
+	print STDERR "DEBUG: readpagedefs(): pagedeffile = $pagedeffile\n" if $Engarde::DEBUGGING;
 	
 	# Looking to see if it is an xml file (by name only)
 	if ($pagedeffile =~ /xml$/)
@@ -1173,6 +1174,7 @@ sub readpagedefsfromxml
 			      $currentpage{'targetlocation'} = ${$seriesdef->{'targetlocation'}}[0];
 			      $currentpage{'name'} = ${$seriesdef->{'name'}}[0];
 			      $currentpage{'csspath'} = ${$seriesdef->{'csspath'}}[0];
+			      $currentpage{'htmlpath'} = ${$seriesdef->{'htmlpath'}}[0];
 			      $currentpage{'scriptpath'} = ${$seriesdef->{'scriptpath'}}[0];
 			      $currentpage{'index'} = ${$seriesdef->{'index'}}[0];
 			      $currentpage{'vlistsize'} = ${$seriesdef->{'vlistsize'}}[0];
@@ -1238,7 +1240,7 @@ sub readpagedefsfromconfig
 		my $name = "";
 		my $value = "";
 
-		if (/^\[SERIES\]$/)
+		if (/^\[SERIES\]/)
 		{
 			$inseries = 1;
 			undef %currentseries;
@@ -1425,7 +1427,7 @@ sub createpage
    
 			$listdef = { 'sort' => \&namesort, 'size'=> $pagedef->{'vlistsize'},
 						'list_title' => 'Fencers - Pools - Pistes', 
-						'entry_list' => $listdataref, 'column_defs' => $entrylistdef };
+						'entry_list' => $listdataref, 'column_defs' => $entrylistdef, 'class' => 'pvlist' };
 
 		} 
 		elsif ($vertlist =~ /ranking/) 
@@ -1688,36 +1690,37 @@ while (1)
 			createpage ($pagedef);
 			
 			# First check whether we have this pagedef in our hash already
-			if (!defined($compmap{$pagedef->{'competition'}}))
-			{
-			   # The competition doesn't exist so create it and the file to go with it.
-			   $compmap{$pagedef->{'competition'}} = 1;
-			   
-			   # We use the targetlocation and all competitions name from the first series we find that has one
-			   if (!defined($targetlocation))
-			   {
-			      $targetlocation = $pagedef->{'targetlocation'};
-			   }
-			   if (!defined($allcompsname))
-			   {
-			      $allcompsname = $pagedef->{'allcompsname'};
-			   }
+			#if (!defined($compmap{$pagedef->{'competition'}}))
+			#{
+				#print STDERR "DEBUG: main(): compmap = " . Dumper (\%compmap);
+			   ## The competition doesn't exist so create it and the file to go with it.
+			   #$compmap{$pagedef->{'competition'}} = 1;
+			  # 
+			   ## We use the targetlocation and all competitions name from the first series we find that has one
+#
+			   #if (!defined($allcompsname))
+			   #{
+			      #$allcompsname = $pagedef->{'allcompsname'};
+			   #}
+				#print STDERR "DEBUG: main(): allcompsname = $allcompsname\n";
+#
+			   #print "DEBUG: main(): allcompsname = " . Dumper $allcompsname if $Engarde::DEBUGGING > 1;
+#
+			   #if (!defined($csspath))
+			   #{
+			      #$csspath = $pagedef->{'csspath'};
+			   #}
 
-			   print "DEBUG: main(): allcompsname = " . Dumper $allcompsname if $Engarde::DEBUGGING > 1;
-
-			   if (!defined($csspath))
-			   {
-			      $csspath = $pagedef->{'csspath'};
-			   }
-			   print Dumper $csspath;
-			   CreateCompetitionPage($pagedef->{'target'}, $pagedef->{'pagetitle'}, $targetlocation, $allcompsname, $pagedef->{'scriptpath'}, $pagedef->{'csspath'});
+			   #print Dumper $csspath;
+			   #CreateCompetitionPage($pagedef->{'target'}, $pagedef->{'pagetitle'}, $pagedef->{'targetlocation'}, $allcompsname, $pagedef->{'scriptpath'}, $pagedef->{'csspath'});
+#
 			   
-			   $competitionlist .= "<li><a href=\"comp" . $pagedef->{'target'} ."\" class=\"complink\">" . $pagedef->{'pagetitle'} . "</a></li>\n";
-			}
+			   #$competitionlist .= "<li><a href=\"$pagedef->{'htmlpath'}/comp" . $pagedef->{'target'} ."\" class=\"complink\">" . $pagedef->{'pagetitle'} . "</a></li>\n";
+			#}
 		}
 	}	
 	
-	CreateAllCompetitionsPage($competitionlist, $targetlocation, $allcompsname, $csspath);
+	# CreateAllCompetitionsPage($competitionlist, $allcompsname, $csspath);
 
 	# print "Done\nSleeping...\n";
 

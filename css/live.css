@@ -17,6 +17,16 @@ div.tableau {
 	left: 20px; 
 }
 
+div.poule { 
+	overflow: hidden; 
+	position: absolute; 
+	border-right: thin solid black; 
+	height:  90%; 
+	width: 	62%; 
+	top: 8%; 
+	left: 20px; 
+}
+
 div.vlist2
 {
 	overflow: hidden;
@@ -36,6 +46,16 @@ div.vlist
 	height:  95%;
 	right: 25px;
 	width: 24%;
+}
+
+div.pvlist
+{
+	overflow: hidden;
+	position: absolute;
+	border: none;
+	height:  95%;
+	right: 25px;
+	width: 34%;
 }
 
 div.innervlist
@@ -290,13 +310,13 @@ table.vlist_table {
 .fencer_country, .init_rank, .vlist_piste, .vlist_poule, .vlist_round, .vlist_time {
 	width: 3em;
 	text-align: right;
-	font-size: 1.5em;
+	font-size: 1.1em;
 }
 
 .vlist_name {
 	width: 12em;
 	text-align: left;
-	font-size: 1.5em;
+	font-size: 1.1em;
 	overflow: hidden;
 }
 
@@ -315,7 +335,7 @@ table.vlist_table {
 .vlist_position {
 	width: 3em;
 	text-align: left;
-	font-size: 1.5em;
+	font-size: 1.1em;
 }
 
 

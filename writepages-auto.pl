@@ -40,6 +40,8 @@ sub writeToFiles
    
    if ($writexml ne 0)
    {
+	$text =~ s/&/&amp;/g;
+	$text =~ s/'/&apos;/g;
       print XMLPAGE $text;
    }
 }
@@ -52,8 +54,9 @@ sub writeToFiles
 sub CreateCompetitionPage
 {
    my $target = shift;
+   my $serieslocation = shift;
    my $comptitle = shift;
-   my $targetlocation = shift;
+   my $complocation = shift;
    my $allcomps = shift;
    my $scriptpath = shift;
    my $csspath = shift;
@@ -61,34 +64,35 @@ sub CreateCompetitionPage
    # Now just plug them into the html we have here.
    
    
-	
-	my $pagename = $targetlocation . "/comp" . $target;
+	my $pagename = $complocation . "/comp" . $target;
 	open( COMPPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
    
    print COMPPAGE <<EOF
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title></title>
+<title></title
 <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 <link href="$csspath/comp.css" rel="stylesheet" type="text/css" media="screen" />
 <script type="text/javascript">
-	var next_location="$target";
+	var next_location="/$serieslocation/$target";
 	var areas = [];
 	
 	var allowedareas = [\'vlist\',\'mlist\'];
-	this_location="$target";
 	var currentdivdisplayed = "";
 </script>
 
 <script src="$scriptpath/xmlfetch.js" type="text/javascript"></script>
 
+<script type="text/javascript">
 
+	this_location="/$serieslocation/$target";
+</script>
 </head>
 <body onload="onPageLoaded()">
 <h2>$comptitle</h2>
  <div class="navigation" id="navigation">
-   <ul class="navlist"><li><a id="vlistnav" onclick="return ChangeSelected(\'vlist\');" href="">Current Status</a></li><li><a id="mlistnav" onclick="return ChangeSelected(\'mlist\');" href="">Next Stage</a></li><li><a id="upnav" href="$allcomps">Up</a></li></ul>
+   <ul class="navlist"><li><a id="vlistnav" onclick="return ChangeSelected(\'vlist\');" href="">Current Status</a></li><li><a id="mlistnav" onclick="return ChangeSelected(\'mlist\');" href="">Next Stage</a></li><li><a id="upnav" href="/$allcomps">Up</a></li></ul>
  </div>
 </body>
 </html>
@@ -322,7 +326,7 @@ sub writeBlurb
 	}
 	elsif(defined($vertlist))
 	{
-	   print XMLPAGE "<area><type>vlist</type><static>vlistid</static><static>vheader</static><prefix>V</prefix><class>pvlist</class></area>";
+	   print XMLPAGE "<area><type>vlist</type><static>vlistid</static><static>vheader</static><prefix>V</prefix><class>vlist</class><class>pvlist</class></area>";
 	} 
 	
 	if (defined($hasmidlist) && $hasmidlist)
@@ -1172,6 +1176,7 @@ sub readpagedefsfromxml
 			   
 			      # Now the series properties which we copy to the pages
 			      $currentpage{'targetlocation'} = ${$seriesdef->{'targetlocation'}}[0];
+			      $currentpage{'serieslocation'} = ${$seriesdef->{'serieslocation'}}[0];
 			      $currentpage{'name'} = ${$seriesdef->{'name'}}[0];
 			      $currentpage{'csspath'} = ${$seriesdef->{'csspath'}}[0];
 			      $currentpage{'htmlpath'} = ${$seriesdef->{'htmlpath'}}[0];
@@ -1497,7 +1502,7 @@ sub createpage
 	}
 	
 
-	my $pagename = $pagedef->{'targetlocation'} . "/" . $pagedef->{'target'};
+	my $pagename = $pagedef->{'targetlocation'} . "/" . $pagedef->{'serieslocation'} . "/" . $pagedef->{'target'};
 	open( WEBPAGE,"> $pagename.tmp") || die("can't open $pagename.tmp: $!");
 	
 	open( XMLPAGE,"> $pagename.xml.tmp") || die("can't open $pagename.xml.tmp: $!");
@@ -1690,37 +1695,41 @@ while (1)
 			createpage ($pagedef);
 			
 			# First check whether we have this pagedef in our hash already
-			#if (!defined($compmap{$pagedef->{'competition'}}))
-			#{
-				#print STDERR "DEBUG: main(): compmap = " . Dumper (\%compmap);
-			   ## The competition doesn't exist so create it and the file to go with it.
-			   #$compmap{$pagedef->{'competition'}} = 1;
-			  # 
-			   ## We use the targetlocation and all competitions name from the first series we find that has one
-#
-			   #if (!defined($allcompsname))
-			   #{
-			      #$allcompsname = $pagedef->{'allcompsname'};
-			   #}
-				#print STDERR "DEBUG: main(): allcompsname = $allcompsname\n";
-#
-			   #print "DEBUG: main(): allcompsname = " . Dumper $allcompsname if $Engarde::DEBUGGING > 1;
-#
-			   #if (!defined($csspath))
-			   #{
-			      #$csspath = $pagedef->{'csspath'};
-			   #}
+			if (!defined($compmap{$pagedef->{'competition'}}))
+			{
+				print STDERR "DEBUG: main(): compmap = " . Dumper (\%compmap);
+			   	# The competition doesn't exist so create it and the file to go with it.
+			   	$compmap{$pagedef->{'competition'}} = 1;
+			   
+			   	# We use the targetlocation and all competitions name from the first series we find that has one
+
+				if (!defined($targetlocation))
+				{
+					$targetlocation = $pagedef->{'targetlocation'};
+				} 
+				if (!defined($allcompsname))
+				{
+					$allcompsname = $pagedef->{'allcompsname'};
+				} 
+				print STDERR "DEBUG: main(): allcompsname = $allcompsname\n";
+
+			   	print "DEBUG: main(): allcompsname = " . Dumper $allcompsname if $Engarde::DEBUGGING > 1;
+
+			   	if (!defined($csspath))
+			   	{
+			     	$csspath = $pagedef->{'csspath'};
+			   	}
 
 			   #print Dumper $csspath;
-			   #CreateCompetitionPage($pagedef->{'target'}, $pagedef->{'pagetitle'}, $pagedef->{'targetlocation'}, $allcompsname, $pagedef->{'scriptpath'}, $pagedef->{'csspath'});
+			   CreateCompetitionPage($pagedef->{'target'}, $pagedef->{'serieslocation'}, $pagedef->{'pagetitle'}, $pagedef->{'targetlocation'} . "/" . $pagedef->{'serieslocation'}, $allcompsname, $pagedef->{'scriptpath'}, $pagedef->{'csspath'});
 #
 			   
-			   #$competitionlist .= "<li><a href=\"$pagedef->{'htmlpath'}/comp" . $pagedef->{'target'} ."\" class=\"complink\">" . $pagedef->{'pagetitle'} . "</a></li>\n";
-			#}
+			   $competitionlist .= "<li><a href=\"$pagedef->{'serieslocation'}/comp" . $pagedef->{'target'} ."\" class=\"complink\">" . $pagedef->{'pagetitle'} . "</a></li>\n";
+			}
 		}
 	}	
 	
-	# CreateAllCompetitionsPage($competitionlist, $allcompsname, $csspath);
+	CreateAllCompetitionsPage($competitionlist, $targetlocation . "/" . $allcompsname, $csspath);
 
 	# print "Done\nSleeping...\n";
 

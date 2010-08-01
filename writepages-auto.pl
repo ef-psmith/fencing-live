@@ -702,6 +702,21 @@ sub writeFencerListDivFooter
 }
 
 
+sub entryListDivHeader
+{
+	my $div_id = shift;
+	my $class = "col_multi";
+
+	$class .= " hidden" if ($div_id > 0);
+
+	return "\t<div class=\"$class\" id=\"V$div_id\">\n";
+}
+
+
+sub entryListDivFooter
+{
+	return "\t</div>\n";
+}
 
 ##################################################################################
 # writeFencerList
@@ -825,11 +840,19 @@ sub writeEntryList
 
 	my $count = scalar keys %$entry_list;
 
+	my $divid = 0;
+
 	my $out = "";
+
+	
+
 	my $nif = 0;
 
 	if (defined ($entry_list))
 	{
+		my $i=0;
+		$out .= entryListDivHeader($divid);
+
 		foreach my $entrydetail (sort namesort keys %$entry_list) 
 		{
 			my $affiliation = $entry_list->{$entrydetail}->{'club'} || "&#160;";
@@ -856,18 +879,29 @@ sub writeEntryList
 
 			$out .= "<span class=\"$nameclass\">$nom</span>";
 			$out .= "<span class=\"col_club\">$affiliation</span><br />\n";
+
+			if ($i++ > $pagedetails->{'size'})
+			{
+				$out .= entryListDivFooter();
+				$divid++;
+				$out .= entryListDivHeader($divid);
+				$i=0;
+			}
 		}
+
+		$out .= entryListDivFooter();
 	}
 
 	$nif = int($count / 4) if $nif * 4 < $count;
 	
-	# writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
-	writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title</h2></div>\n", 1);
-	writeToFiles("<div class=\"col_multi\" id=\"V0\">\n", 1);
+	writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
+	# writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title</h2></div>\n", 1);
+
+	# writeToFiles("<div class=\"col_multi\" id=\"V0\">\n", 1);
 
 	writeToFiles($out, 1);
 
-	writeToFiles("</div>\n", 1);
+	# writeToFiles("</div>\n", 1);
 }
 
 ##################################################################################

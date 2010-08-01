@@ -472,3 +472,14 @@ th.poule-title-result {
 	border: 1px solid black;
 }
 
+.top10 {
+	color: red;
+}
+
+.top20 {
+	color: blue;
+}
+
+.top50 {
+	color: green;
+}

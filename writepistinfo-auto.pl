@@ -278,7 +278,7 @@ sub readfilenames
 # Main starts here
 ##################################################################################
 my $pagedeffile = shift || "comps.ini";
-my $outputfile = shift || "/share/Qweb/dtsummary.xml";
+my $outputfile = shift || "dtsummary.xml";
 # read the page definitions
 
 # print "MAIN: pages = " . Dumper(\@pages);

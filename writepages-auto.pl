@@ -1610,6 +1610,7 @@ sub namesort
 
 sub ranksort
 {
+	print STDERR "DEBUG: ranksort(): a = $a, b = $b\n" if $Engarde::DEBUGGING > 1;
 	$pagedetails->{'entry_list'}->{$a}->{seed} <=> $pagedetails->{'entry_list'}->{$b}->{seed};
 }
 
@@ -1619,10 +1620,10 @@ sub ranksort
 
 #		Whereami					Poules?				Tableau?		List
 #
-#		???								N					N			entry
+#		???						N					N			entry
 #		poules x y y y 					Y					N			fpp
 #		poules x finished				Y					N			ranking
-#		tableau z99						N					Y			result
+#		tableau z99					N					Y			result
 #
 #
 

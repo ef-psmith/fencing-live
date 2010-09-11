@@ -140,21 +140,31 @@ sub CreateAllCompetitionsPage
 }
 
 ##################################################################################
-# writeTableauMatch
+# writeTableauMatch(bout, roundnumber, istableau)
 ##################################################################################
 sub writeTableauMatch 
 {
+	# The bout hash
+		# fencerA
+		# fencerB
+		# seedA
+		# seedB
+		# nationA
+		# nationB
+		# winner
 	my $bout = shift;
+	# Nth round displayed in this div (only the first has the seed)
 	my $roundnumber = shift;
+	my $withborder = shift;
+
 
 	my $tab = $roundnumber == 1 ? "" : "\t";
 	my $noseed = $roundnumber == 1 ? "" : "noseed";
-
 	# print "writeTableauMatch: bout = " . Dumper(\$bout);
 
 	writeToFiles("$tab\t\t<!-- ************ BOUT ************ -->\n", 0);
 	writeToFiles("$tab\t\t<div id=\"container\"><div id=\"position\">\n",1);
-	writeToFiles("$tab\t\t\t<div class=\"bout\">\n",1);						# BOUT 
+	writeToFiles("$tab\t\t\t<div class=\"bout boutborder\">\n",1);						# BOUT 
 
 	foreach my $key (qw/A B/)
 	{
@@ -192,7 +202,7 @@ sub writeTableauMatch
 
 		my $title = "";
 
-		if ($key eq "A")
+		if ($key eq "A" && $withborder)
 		{
 			if ($bout->{'winner'})
 			{
@@ -534,6 +544,7 @@ sub writeTableau
 	my $lastN = $page->{'lastN'};
 
 	my @winners;
+	my @pseudobouts;
 	
 	# print "**********\nWhere = $where, lastN = $lastN\n";
 
@@ -550,19 +561,28 @@ sub writeTableau
 	# Work out the number of bouts
 	my $numbouts = $page->{'num_bouts'};
 	
-	# print "writeTableau: Number of rounds: $numrounds Number of bouts: $numbouts\n";
+	print "writeTableau: Number of rounds: $numrounds Number of bouts: $numbouts\n";
 
 	my $minbout = $preceeding_bout + 1;
 	my $maxbout = $minbout + $numbouts;
-
-	# my $bout;
 	
 	for (my $roundnum = 1; $roundnum <= $numrounds; $roundnum++) 
 	{
 		print STDERR "DEBUG: writeTableau(): roundnum = $roundnum, maxbout = $maxbout\n" if $Engarde::DEBUGGING;
 
+
+			print "writeTableau: getting round $roundnum\n";
+
+		my $hasnexttableau = defined($comp->next_tableau_in_suite($where));
+
+			print "Using a tableau for next round\n" if $hasnexttableau;
+
+
 		my $colname = $roundnum == 1 ? "twocol1" : "twocol";
 		writeToFiles("<div class=\"$colname\">\n", 1);						# COLUMN
+
+		# Pseudobout for when we don't have a next round
+		my %pseudobout;
 
 		for (my $boutnum = $minbout; $boutnum < $maxbout; $boutnum++) 
 		{
@@ -581,7 +601,21 @@ sub writeTableau
 			# writeToFiles("<!--   MATCH GOES HERE -->\n", 1);
 
 			# print "writeTableau: getting round $roundnum, bout $boutnum\n";
-			my $bout = $comp->match($where, $boutnum);
+
+			# Get the bout.  If we have a list of pseudobouts then get it from there otherwise from the comp
+
+			my $bout;
+			if (@pseudobouts)
+			{
+			   print "Getting bout from Pseudobouts**********************\n";
+				$bout = $pseudobouts[$boutnum - $minbout];
+
+			}
+			else
+			{
+				$bout = $comp->match($where, $boutnum);
+			}
+			# If not we have to build it from the winners
 
 			if ($roundnum == $numrounds) 
 			{
@@ -590,9 +624,30 @@ sub writeTableau
 				# Not required in the 3 column layout but will leave it in in case we revert to tableau + 1 col for the final later 
 				push @winners, $bout->{winner} || "&#160;";
 			}
+			
+			if (!$hasnexttableau )
+			{
+				if (%pseudobout)
+				{
+					# We are doing fencer B
+					$pseudobout{fencerB} = $bout->{winner} || "&#160;";
+					push @pseudobouts, \%pseudobout;
+
+					# Now get rid of the local variable
+					undef(%pseudobout);
+				}
+				else
+				{
+				
+					# We are doing fencer A
+					$pseudobout{fencerA} = $bout->{winner} || "&#160;";
+
+				}
+			}
 
 			# print "writeTableau: bout = " . Dumper(\$bout);
-			writeTableauMatch($bout, $roundnum);
+			# Write a match that has a border because this match came from a tableau
+			writeTableauMatch($bout, $roundnum, 1);
 
 			writeToFiles("\t\t</div> <!-- quarter -->\n", 1) if $roundnum == 1 ;					# close VERTICAL DIVIDER
 			writeToFiles("\t</div>  <!-- half -->\n", 1) if ($roundnum < 3 && ($boutnum == $minbout + 1 || $boutnum == $minbout + 3));	
@@ -1004,31 +1059,15 @@ sub createRoundTableaus
 	# PRS - minroundsize controls the number of fencers in col1 - now fixed at 8
 	my $minroundsize = 8; 
 	  
-   	my $where = $competition->whereami;
+   my $where = $competition->whereami;
 
 	# print "createRoundTableaus: where = $where\n";
+	
+	my $repechargewhere;
 
  	if ($where =~ /tableau/ || $where eq "termine")
 	{
-		if ($where =~ /tableau/)
-		{
-			$where =~ s/tableau //;
-
-			my @w = split / /, $where;
-
-			$where = $w[0];
-
-			# start at the last complete tableau if possible.
-			#
-			# my @t = $competition->tableaux;
-			# print "\ncreateRoundTableaus: t = @t\n";
-
-			#if (defined $t[0])
-			#{
-			#	$where = $t[0];
-			#}
-		}
-		elsif ($where eq "termine")
+	   if ($where eq "termine")
 		{
 			my @tableaux = $competition->tableaux;
 			# print "createRoundTableaus: tableaux (where=termine) = @tableaux\n";
@@ -1039,33 +1078,30 @@ sub createRoundTableaus
 		{
 			my @tableaux = $competition->tableaux(1);
 			$where = $tableaux[0];
-		}
-
-		# Move to the specified place in the tableau
-		# PRS - not used in current "auto" config
-		if ($numparts) 
-		{
-			$roundsize = $numparts * $minroundsize;
 			
-			# print "where = $where\n";
-			$where =~ s/\d+/$roundsize/;
-			# print "Now where is (after round definition)  $where\n";
-		}	
-
-		# print "where99 = $where\n";
-		$tab = $competition->tableau($where);
-
-		#print "$where = " . Dumper(\$tab);
-
-		$roundsize = $tab->taille if ref $tab;
-		print "Roundsize $roundsize, Minroundsize $minroundsize\n";
-
-		if ($roundsize < $minroundsize)	# assume it's the final - wouldn't be true if all the DE places were fought
-		{
-			# do it this way since we can't be certain that the tableau letter is "a" - e.g. A grade formula would be "bf"
-			# after the preliminary tableau
-			$where =~ s/$roundsize/$minroundsize/;
-			$roundsize = $minroundsize;
+			my $iter = 1;
+			
+			# Go looking for a repecharge
+			# We move the first tableau on to its next round and compare to the next tableau in the comp
+			# if they are equal then carry on trying until they aren't or we run out of tableaux
+			my $thistab = $where;
+			my $nexttab = $competition->next_tableau_in_suite($thistab);
+			foreach $iter (@tableaux)
+			{
+			   if ($iter != $nexttab)
+			   {
+			      if (!defined($repechargewhere))
+			      {
+			         # We have found a different suite so have our repecharge
+			         $repechargewhere = $iter;
+			      }
+			   }
+			   else
+			   {
+			      $thistab = $nexttab;
+			      $nexttab = $competition->next_tableau_in_suite($thistab);
+			   }
+			}
 		}
 	}
 	else
@@ -1076,74 +1112,109 @@ sub createRoundTableaus
 
 	# my @localswaps;
 
-	my @defs;
-	my $defindex = 0;
 
-	my $preceedingbout = 0;
-	while ($preceedingbout < $roundsize / 2) 
+	# Move to the specified place in the tableau
+	# PRS - not used in current "auto" config
+	if ($numparts) 
 	{
-		# print "Preceeding Bout: $preceedingbout Chosen part: $chosenpart \n";
-	
-		if (0 == $chosenpart || $preceedingbout == ($minroundsize /2) * $chosenpart) 
-		{
-			my %def;
-
-			$def{'where'} = $where;
-			$def{'num_bouts'} = $minroundsize /2;
-			
-			my $part = ($defindex + 1);
-			if (0 != $chosenpart) {
-				$part = $chosenpart;
-			}
-
-			# $part is 1 indexed and our divs are 0 indexed to avoid confusing me.
-			my $divname = "T" . ($part - 1);
-			my $title_id = "TT" . ($part - 1);
+		$roundsize = $numparts * $minroundsize;
 		
-			# $localswaps[$defindex] = $divname;
-		
-			$def{'tableau_div'} = $divname;
-			$def{'title_id'} = $title_id;
-			$def{'num_cols'} = $numcols;
+		# print "where = $where\n";
+		$where =~ s/\d+/$roundsize/;
+		# print "Now where is (after round definition)  $where\n";
+	}	
 
-			if ($preceedingbout == 0 && $roundsize <= 8) 
-			{
-				$def{'tableau_title'} = $compname . " Final";
-			} 
-			elsif ($preceedingbout == 0 && $roundsize == $minroundsize)
-			{
-				$def{'tableau_title'} = $compname . " Last $minroundsize";
-			}
-			else 
-			{
-				$def{'tableau_title'} = $compname . " Last ". $roundsize . " part " . $part;
-			}
+   
+   my @defs;
+   my $defindex = 0;
+   my @tabs;
+   push(@tabs, $where) if defined($where);  
+   push(@tabs, $repechargewhere) if defined($repechargewhere);   
+   foreach my $tabwhere (@tabs)
+   {
+	   # print "where99 = $where\n";
+	   $tab = $competition->tableau($tabwhere);
 
-			$def{'lastN'} = $roundsize;
-			$def{'preceeding_bout'} = $preceedingbout;
-		
-			if ($preceedingbout != 0 && 0 == $chosenpart) 
-			{
-				$def{'tableau_class'} = 'tableau hidden';
-				$def{'title_class'} = 'twotitle hidden';
-			}
-			else
-			{
-				$def{'tableau_class'} = 'tableau';
-				$def{'title_class'} = 'twotitle';
-			}
+	   #print "$where = " . Dumper(\$tab);
 
-			$defs[$defindex] = \%def;
-			$defindex++;
-		}
+	   $roundsize = $tab->taille if ref $tab;
+	   print "Roundsize $roundsize, Minroundsize $minroundsize\n";
 
-		$preceedingbout += 4;
-   	}
+	   if ($roundsize < $minroundsize)	# assume it's the final - wouldn't be true if all the DE places were fought
+	   {
+		   # do it this way since we can't be certain that the tableau letter is "a" - e.g. A grade formula would be "bf"
+		   # after the preliminary tableau
+		   $where =~ s/$roundsize/$minroundsize/;
+		   $roundsize = $minroundsize;
+	   }
+   	
 
-   	$retval->{'definitions'} = \@defs;
+	   my $preceedingbout = 0;
+	   while ($preceedingbout < $roundsize / 2) 
+	   {
+		   # print "Preceeding Bout: $preceedingbout Chosen part: $chosenpart \n";
+   	
+		   if (0 == $chosenpart || $preceedingbout == ($minroundsize /2) * $chosenpart) 
+		   {
+			   my %def;
+
+			   $def{'where'} = $where;
+			   $def{'num_bouts'} = $minroundsize /2;
+   			
+			   my $part = ($defindex + 1);
+			   if (0 != $chosenpart) {
+				   $part = $chosenpart;
+			   }
+
+			   # $part is 1 indexed and our divs are 0 indexed to avoid confusing me.
+			   my $divname = "T" . ($part - 1);
+			   my $title_id = "TT" . ($part - 1);
+   		
+			   # $localswaps[$defindex] = $divname;
+   		
+			   $def{'tableau_div'} = $divname;
+			   $def{'title_id'} = $title_id;
+			   $def{'num_cols'} = $numcols;
+
+			   if ($preceedingbout == 0 && $roundsize <= 8) 
+			   {
+				   $def{'tableau_title'} = $compname . " Final";
+			   } 
+			   elsif ($preceedingbout == 0 && $roundsize == $minroundsize)
+			   {
+				   $def{'tableau_title'} = $compname . " Last $minroundsize";
+			   }
+			   else 
+			   {
+				   $def{'tableau_title'} = $compname . " Last ". $roundsize . " part " . $part;
+			   }
+
+			   $def{'lastN'} = $roundsize;
+			   $def{'preceeding_bout'} = $preceedingbout;
+   		
+			   if ($preceedingbout != 0 && 0 == $chosenpart) 
+			   {
+				   $def{'tableau_class'} = 'tableau hidden';
+				   $def{'title_class'} = 'twotitle hidden';
+			   }
+			   else
+			   {
+				   $def{'tableau_class'} = 'tableau';
+				   $def{'title_class'} = 'twotitle';
+			   }
+
+			   $defs[$defindex] = \%def;
+			   $defindex++;
+		   }
+
+	      $preceedingbout += 4;
+	   }
+	}
+
+   $retval->{'definitions'} = \@defs;
 	# $retval->{'swaps'} = \@localswaps;
    	
-   	return $retval;
+   return $retval;
 }
 
 ##################################################################################

@@ -140,8 +140,11 @@ div.boutinfo {
 div.bout { 
 	width: 95%; 
 	height: 66%; 
+}
+div.boutborder { 
 	border-right: 6px solid lightblue; 
 }
+
 
 span.seed { 
 	width: 2em; 

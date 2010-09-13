@@ -20,6 +20,7 @@ use lib "../eng-perl";
 use strict;
 use Engarde;
 use Data::Dumper;
+use Carp qw(cluck);
 
 use XML::Simple;
 # use IO::Handle;
@@ -160,7 +161,8 @@ sub writeTableauMatch
 
 	my $tab = $roundnumber == 1 ? "" : "\t";
 	my $noseed = $roundnumber == 1 ? "" : "noseed";
-	# print "writeTableauMatch: bout = " . Dumper(\$bout);
+	print "writeTableauMatch: bout = " . Dumper(\$bout);
+	cluck;
 
 	writeToFiles("$tab\t\t<!-- ************ BOUT ************ -->\n", 0);
 	writeToFiles("$tab\t\t<div id=\"container\"><div id=\"position\">\n",1);
@@ -565,18 +567,17 @@ sub writeTableau
 
 	my $minbout = $preceeding_bout + 1;
 	my $maxbout = $minbout + $numbouts;
+		
+	my $hasnexttableau = $comp->next_tableau_in_suite($where);
 	
 	for (my $roundnum = 1; $roundnum <= $numrounds; $roundnum++) 
 	{
 		print STDERR "DEBUG: writeTableau(): roundnum = $roundnum, maxbout = $maxbout\n" if $Engarde::DEBUGGING;
 
+		print "writeTableau: getting round $roundnum\n";
 
-			print "writeTableau: getting round $roundnum\n";
-
-		my $hasnexttableau = defined($comp->next_tableau_in_suite($where));
-
-			print "Using a tableau for next round\n" if $hasnexttableau;
-
+		print "Using a tableau for next round\n" if $hasnexttableau;
+		print "Using pseudobouts for next round\n" unless $hasnexttableau;
 
 		my $colname = $roundnum == 1 ? "twocol1" : "twocol";
 		writeToFiles("<div class=\"$colname\">\n", 1);						# COLUMN
@@ -586,6 +587,8 @@ sub writeTableau
 
 		for (my $boutnum = $minbout; $boutnum < $maxbout; $boutnum++) 
 		{
+			print STDERR "boutnum = $boutnum, maxbout = $maxbout\n";
+
 			if ($boutnum == $minbout || $boutnum == $minbout + 2) 
 			{
 				writeToFiles("\t<!-- **************************** HALF **************************** -->\n", 1);
@@ -605,14 +608,16 @@ sub writeTableau
 			# Get the bout.  If we have a list of pseudobouts then get it from there otherwise from the comp
 
 			my $bout;
-			if (@pseudobouts)
+			if ($roundnum > 1 && @pseudobouts)
 			{
 			   print "Getting bout from Pseudobouts**********************\n";
+			   print Dumper(\@pseudobouts);
 				$bout = $pseudobouts[$boutnum - $minbout];
 
 			}
 			else
 			{
+			   print "Getting bout from tableau**********************\n";
 				$bout = $comp->match($where, $boutnum);
 			}
 			# If not we have to build it from the winners
@@ -638,10 +643,8 @@ sub writeTableau
 				}
 				else
 				{
-				
 					# We are doing fencer A
 					$pseudobout{fencerA} = $bout->{winner} || "&#160;";
-
 				}
 			}
 
@@ -676,7 +679,6 @@ sub writeTableau
 	# It would be better to have this bit sensitive to the stage of the competition - e.g, when we get to the final
 	# there is no point displayig the middle column since everybody will know what's going on.
 	
-
 	#if (@winners)
 	#{
 	#print "DEBUG: writeTableau: we have winners!\n" . Dumper (\@winners);
@@ -1084,17 +1086,21 @@ sub createRoundTableaus
 			# Go looking for a repecharge
 			# We move the first tableau on to its next round and compare to the next tableau in the comp
 			# if they are equal then carry on trying until they aren't or we run out of tableaux
+
 			my $thistab = $where;
-			my $nexttab = $competition->next_tableau_in_suite($thistab);
+			my $nexttab = $competition->next_tableau_in_suite($thistab) || "none";
+
+			print STDERR "tableaux = [@tableaux]\n";
+
 			foreach $iter (@tableaux)
 			{
-			   if ($iter != $nexttab)
-			   {
-			      if (!defined($repechargewhere))
-			      {
-			         # We have found a different suite so have our repecharge
-			         $repechargewhere = $iter;
-			      }
+				if ($iter ne $nexttab)
+				{
+					if (!defined($repechargewhere))
+					{ 
+						# We have found a different suite so have our repecharge 
+						$repechargewhere = $iter; 
+					}
 			   }
 			   else
 			   {

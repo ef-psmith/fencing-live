@@ -157,6 +157,13 @@ sub writeTableauMatch
 	# Nth round displayed in this div (only the first has the seed)
 	my $roundnumber = shift;
 	my $withborder = shift;
+	
+	my $boutclass = "bout";
+	if ($withborder)
+	{
+	   $boutclass = "bout boutborder";
+	}
+	
 
 
 	my $tab = $roundnumber == 1 ? "" : "\t";
@@ -166,7 +173,7 @@ sub writeTableauMatch
 
 	writeToFiles("$tab\t\t<!-- ************ BOUT ************ -->\n", 0);
 	writeToFiles("$tab\t\t<div id=\"container\"><div id=\"position\">\n",1);
-	writeToFiles("$tab\t\t\t<div class=\"bout boutborder\">\n",1);						# BOUT 
+	writeToFiles("$tab\t\t\t<div class=\"$boutclass\">\n",1);						# BOUT 
 
 	foreach my $key (qw/A B/)
 	{
@@ -635,7 +642,8 @@ sub writeTableau
 				if (%pseudobout)
 				{
 					# We are doing fencer B
-					$pseudobout{fencerB} = $bout->{winner} || "&#160;";
+					$pseudobout{'fencerB'} = $bout->{winner} || "&#160;";
+			   print Dumper(\%pseudobout);
 					push @pseudobouts, \%pseudobout;
 
 					# Now get rid of the local variable
@@ -644,13 +652,13 @@ sub writeTableau
 				else
 				{
 					# We are doing fencer A
-					$pseudobout{fencerA} = $bout->{winner} || "&#160;";
+					$pseudobout{'fencerA'} = $bout->{winner} || "&#160;";
 				}
 			}
 
 			# print "writeTableau: bout = " . Dumper(\$bout);
 			# Write a match that has a border because this match came from a tableau
-			writeTableauMatch($bout, $roundnum, 1);
+			writeTableauMatch($bout, $roundnum, $hasnexttableau);
 
 			writeToFiles("\t\t</div> <!-- quarter -->\n", 1) if $roundnum == 1 ;					# close VERTICAL DIVIDER
 			writeToFiles("\t</div>  <!-- half -->\n", 1) if ($roundnum < 3 && ($boutnum == $minbout + 1 || $boutnum == $minbout + 3));	
@@ -1130,7 +1138,6 @@ sub createRoundTableaus
 		# print "Now where is (after round definition)  $where\n";
 	}	
 
-   
    my @defs;
    my $defindex = 0;
    my @tabs;
@@ -1150,7 +1157,7 @@ sub createRoundTableaus
 	   {
 		   # do it this way since we can't be certain that the tableau letter is "a" - e.g. A grade formula would be "bf"
 		   # after the preliminary tableau
-		   $where =~ s/$roundsize/$minroundsize/;
+		   $tabwhere =~ s/$roundsize/$minroundsize/;
 		   $roundsize = $minroundsize;
 	   }
    	
@@ -1164,7 +1171,7 @@ sub createRoundTableaus
 		   {
 			   my %def;
 
-			   $def{'where'} = $where;
+			   $def{'where'} = $tabwhere;
 			   $def{'num_bouts'} = $minroundsize /2;
    			
 			   my $part = ($defindex + 1);
@@ -1181,18 +1188,35 @@ sub createRoundTableaus
 			   $def{'tableau_div'} = $divname;
 			   $def{'title_id'} = $title_id;
 			   $def{'num_cols'} = $numcols;
-
-			   if ($preceedingbout == 0 && $roundsize <= 8) 
+			   
+			   # If we have a repecharge then we need to distinguish between 
+			   my $extratitle = "";
+			   if (defined($repechargewhere))
 			   {
+			      if ($tabwhere eq $repechargewhere)
+			      {
+			         # Repecharge Tableau
+			         $extratitle = " Repecharge";
+			      }
+			      else
+			      {
+			         # Main Tableau
+			         $extratitle = " Main";
+			      }
+			   }
+
+			   if ($preceedingbout == 0 && $roundsize <= 8 && !defined($repechargewhere)) 
+			   {
+			      # We can't have a repecharge when doing the final (or it wouldn't be the final)
 				   $def{'tableau_title'} = $compname . " Final";
 			   } 
 			   elsif ($preceedingbout == 0 && $roundsize == $minroundsize)
 			   {
-				   $def{'tableau_title'} = $compname . " Last $minroundsize";
+				   $def{'tableau_title'} = $compname . $extratitle . " Last $minroundsize";
 			   }
 			   else 
 			   {
-				   $def{'tableau_title'} = $compname . " Last ". $roundsize . " part " . $part;
+				   $def{'tableau_title'} = $compname . $extratitle . " Last ". $roundsize . " part " . $part;
 			   }
 
 			   $def{'lastN'} = $roundsize;
@@ -1833,15 +1857,15 @@ while (1)
 			   	}
 
 			   #print Dumper $csspath;
-			   CreateCompetitionPage($pagedef->{'target'}, $pagedef->{'serieslocation'}, $pagedef->{'pagetitle'}, $pagedef->{'targetlocation'} . "/" . $pagedef->{'serieslocation'}, $allcompsname, $pagedef->{'scriptpath'}, $pagedef->{'csspath'});
-#
+			   #CreateCompetitionPage($pagedef->{'target'}, $pagedef->{'serieslocation'}, $pagedef->{'pagetitle'}, $pagedef->{'targetlocation'} . "/" . $pagedef->{'serieslocation'}, $allcompsname, $pagedef->{'scriptpath'}, $pagedef->{'csspath'});
+
 			   
-			   $competitionlist .= "<li><a href=\"$pagedef->{'serieslocation'}/comp" . $pagedef->{'target'} ."\" class=\"complink\">" . $pagedef->{'pagetitle'} . "</a></li>\n";
+			   #$competitionlist .= "<li><a href=\"$pagedef->{'serieslocation'}/comp" . $pagedef->{'target'} ."\" class=\"complink\">" . $pagedef->{'pagetitle'} . "</a></li>\n";
 			}
 		}
 	}	
 	
-	CreateAllCompetitionsPage($competitionlist, $targetlocation . "/" . $allcompsname, $csspath);
+	#CreateAllCompetitionsPage($competitionlist, $targetlocation . "/" . $allcompsname, $csspath);
 
 	# print "Done\nSleeping...\n";
 

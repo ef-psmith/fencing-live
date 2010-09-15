@@ -156,10 +156,9 @@ sub writeTableauMatch
 	my $bout = shift;
 	# Nth round displayed in this div (only the first has the seed)
 	my $roundnumber = shift;
-	my $withborder = shift;
 	
 	my $boutclass = "bout";
-	if ($withborder)
+	if (!defined($bout->{'pseudobout'}) || 1 != $bout->{'pseudobout'})
 	{
 	   $boutclass = "bout boutborder";
 	}
@@ -211,27 +210,34 @@ sub writeTableauMatch
 
 		my $title = "";
 
-		if ($key eq "A" && $withborder)
+		if ($key eq "A")
 		{
-			if ($bout->{'winner'})
-			{
-				if ($bout->{'fencerA'} && $bout->{'fencerB'})
-				{
-					$title = "$bout->{'scoreA'} / $bout->{'scoreB'}";
-					$title = "by exclusion" if $title =~ /exclusion/;
-					$title = "by abandonment" if $title =~ /abandon/;
-					$title = "by penalty" if $title =~ /forfait/;
-				}
-				else
-				{  
-				   $title = "&#160;";
-				}
+		   if (!defined($bout->{'pseudobout'}) || 1 != $bout->{'pseudobout'})
+		   {
+			   if ($bout->{'winner'})
+			   {
+				   if ($bout->{'fencerA'} && $bout->{'fencerB'})
+				   {
+					   $title = "$bout->{'scoreA'} / $bout->{'scoreB'}";
+					   $title = "by exclusion" if $title =~ /exclusion/;
+					   $title = "by abandonment" if $title =~ /abandon/;
+					   $title = "by penalty" if $title =~ /forfait/;
+				   }
+				   else
+				   {  
+				      $title = "&#160;";
+				   }
+			   }
+			   else
+			   {
+				   $title = "Piste: " . $bout->{'piste'} if $bout->{'piste'};
+				   $title .= " Time: $bout->{'time'}" if $bout->{'time'} && $bout->{'time'} ne "0:00";
+				   $title .= "&#160;";
+			   }
 			}
 			else
 			{
-				$title = "Piste: " . $bout->{'piste'} if $bout->{'piste'};
-				$title .= " Time: $bout->{'time'}" if $bout->{'time'} && $bout->{'time'} ne "0:00";
-				$title .= "&#160;";
+			   $title = "&#160;";
 			}
 
 			writeToFiles("$tab\t\t\t\t<div class=\"boutinfo\">\n", 1);			
@@ -620,12 +626,14 @@ sub writeTableau
 			   print "Getting bout from Pseudobouts**********************\n";
 			   print Dumper(\@pseudobouts);
 				$bout = $pseudobouts[$boutnum - $minbout];
+				$bout->{'pseudobout'} = 1;
 
 			}
 			else
 			{
 			   print "Getting bout from tableau**********************\n";
 				$bout = $comp->match($where, $boutnum);
+				$bout->{'pseudobout'} = 0;
 			}
 			# If not we have to build it from the winners
 
@@ -644,7 +652,7 @@ sub writeTableau
 					# We are doing fencer B
 					$pseudobout{'fencerB'} = $bout->{winner} || "&#160;";
 			   print Dumper(\%pseudobout);
-					push @pseudobouts, \%pseudobout;
+					push @pseudobouts, {%pseudobout};
 
 					# Now get rid of the local variable
 					undef(%pseudobout);
@@ -658,7 +666,7 @@ sub writeTableau
 
 			# print "writeTableau: bout = " . Dumper(\$bout);
 			# Write a match that has a border because this match came from a tableau
-			writeTableauMatch($bout, $roundnum, $hasnexttableau);
+			writeTableauMatch($bout, $roundnum);
 
 			writeToFiles("\t\t</div> <!-- quarter -->\n", 1) if $roundnum == 1 ;					# close VERTICAL DIVIDER
 			writeToFiles("\t</div>  <!-- half -->\n", 1) if ($roundnum < 3 && ($boutnum == $minbout + 1 || $boutnum == $minbout + 3));	
@@ -1074,6 +1082,7 @@ sub createRoundTableaus
 	# print "createRoundTableaus: where = $where\n";
 	
 	my $repechargewhere;
+	my $mainwhere;
 
  	if ($where =~ /tableau/ || $where eq "termine")
 	{
@@ -1081,28 +1090,28 @@ sub createRoundTableaus
 		{
 			my @tableaux = $competition->tableaux;
 			# print "createRoundTableaus: tableaux (where=termine) = @tableaux\n";
-			$where = $tableaux[-3];
+			$mainwhere = $tableaux[-3];
 			# print "createRoundTableaus: where (where=termine) = $where\n";
 		}
 		else
 		{
 			my @tableaux = $competition->tableaux(1);
-			$where = $tableaux[0];
-			
-			my $iter = 1;
 			
 			# Go looking for a repecharge
 			# We move the first tableau on to its next round and compare to the next tableau in the comp
 			# if they are equal then carry on trying until they aren't or we run out of tableaux
 
-			my $thistab = $where;
-			my $nexttab = $competition->next_tableau_in_suite($thistab) || "none";
+			my $nexttab = "none";
 
 			print STDERR "tableaux = [@tableaux]\n";
 
-			foreach $iter (@tableaux)
+			foreach my $iter (@tableaux)
 			{
-				if ($iter ne $nexttab)
+			   if (!defined($mainwhere))
+			   {
+			      $mainwhere = $iter;
+			   }
+				elsif ($iter ne $nexttab)
 				{
 					if (!defined($repechargewhere))
 					{ 
@@ -1110,11 +1119,7 @@ sub createRoundTableaus
 						$repechargewhere = $iter; 
 					}
 			   }
-			   else
-			   {
-			      $thistab = $nexttab;
-			      $nexttab = $competition->next_tableau_in_suite($thistab);
-			   }
+			   my $nexttab = $competition->next_tableau_in_suite($iter) || "none";
 			}
 		}
 	}
@@ -1139,19 +1144,21 @@ sub createRoundTableaus
 	}	
 
    my @defs;
-   my $defindex = 0;
+   my $secondtableau = 0; 
    my @tabs;
-   push(@tabs, $where) if defined($where);  
-   push(@tabs, $repechargewhere) if defined($repechargewhere);   
+   push(@tabs, $mainwhere) if defined($mainwhere);  
+   push(@tabs, $repechargewhere) if defined($repechargewhere); 
+   print Dumper(\@tabs); 
    foreach my $tabwhere (@tabs)
    {
+      my $defindex = 0;
 	   # print "where99 = $where\n";
 	   $tab = $competition->tableau($tabwhere);
 
-	   #print "$where = " . Dumper(\$tab);
+	   #print "$tabwhere = " . Dumper(\$tab);
 
 	   $roundsize = $tab->taille if ref $tab;
-	   print "Roundsize $roundsize, Minroundsize $minroundsize\n";
+	   #print "Roundsize $roundsize, Minroundsize $minroundsize\n";
 
 	   if ($roundsize < $minroundsize)	# assume it's the final - wouldn't be true if all the DE places were fought
 	   {
@@ -1218,11 +1225,12 @@ sub createRoundTableaus
 			   {
 				   $def{'tableau_title'} = $compname . $extratitle . " Last ". $roundsize . " part " . $part;
 			   }
+			   print "Tableau Where : $tabwhere - Repecharge Where: $repechargewhere - Title: ". $def{'tableau_title'} ."\n";
 
 			   $def{'lastN'} = $roundsize;
 			   $def{'preceeding_bout'} = $preceedingbout;
    		
-			   if ($preceedingbout != 0 && 0 == $chosenpart) 
+			   if (($preceedingbout != 0 && 0 == $chosenpart) || 1 == $secondtableau) 
 			   {
 				   $def{'tableau_class'} = 'tableau hidden';
 				   $def{'title_class'} = 'twotitle hidden';
@@ -1232,13 +1240,14 @@ sub createRoundTableaus
 				   $def{'tableau_class'} = 'tableau';
 				   $def{'title_class'} = 'twotitle';
 			   }
-
-			   $defs[$defindex] = \%def;
+            print Dumper(\%def);
+			   push @defs, {%def};
 			   $defindex++;
 		   }
 
 	      $preceedingbout += 4;
 	   }
+	   $secondtableau = 1;
 	}
 
    $retval->{'definitions'} = \@defs;

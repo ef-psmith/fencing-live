@@ -426,8 +426,9 @@ td.poule-grid-result {
 	border: 1px solid black;
 }
 
-td.poule-grid-name, td.poule-grid-club {
+td.poule-grid-name, td.poule-grid-club, td.poule-grid-nation {
 	border: 1px solid black;
+	padding: 5px;
 }
 
 td.poule-grid-vm, td.poule-grid-hs, td.poule-grid-ind, td.poule-grid-pl {
@@ -443,13 +444,17 @@ th.poule-title-blank {
 	background: blue;
 }
 
-th.poule-title-name, th.poule-title-club {
+th.poule-title-name, th.poule-title-club, th.poule-title-nation {
 	border: none;
 	width: 20%;
 	text-transform: capitalize;
 	text-align: left;
 	overflow: hidden;
 	padding-left: 3px;
+}
+
+th.poule-title-nation {
+	width: 10%;
 }
 
 th.poule-title-result {

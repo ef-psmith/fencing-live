@@ -308,6 +308,7 @@ sub writeBlurb
 			 print WEBPAGE "\t\t,\n";
 		 }
 	 }
+
 	 if ($haspoules)
 	 {
 		 print WEBPAGE "\t\t{\n\t\t\t'prefix': 'T',\n\t\t\t'statics': ['ptitle'],\n\t\t\t'finished': false,\n\t\t\t'currentvalue':0\n\t\t}\n";
@@ -342,6 +343,7 @@ sub writeBlurb
 	 {
 		 print XMLPAGE "<area><type>tableau</type><titleprefix>TT</titleprefix><prefix>T</prefix><class>tableau</class><class>tableau hidden</class><class>title</class><class>title hidden</class><class>twotitle</class><class>twotitle hidden</class></area>";
 	 }
+
 	 if ($haspoules) 
 	 {
 		 print XMLPAGE "<area><type>poules</type><static>ptitle</static><prefix>T</prefix><class>poule</class><class>poule hidden</class><class>title</class></area>";
@@ -359,6 +361,7 @@ sub writeBlurb
 	 {
 		 print XMLPAGE "<area><type>mlist</type><static>vlist2</static><static>mid_title</static><prefix>MT</prefix><class>vlist2</class><class>mid_title</class></area>";
 	 } 
+
 	 print XMLPAGE "</page>\n";
 }
 
@@ -829,6 +832,9 @@ sub writeFencerList
 	 if (defined ($entry_list))
 	 {
 		  my $entryindex = 0;
+		  my $listsize = scalar keys %$entry_list;
+		  my $count = 0;
+
 		  if ($ref)
 		  {
 				if ($sort_func)
@@ -837,8 +843,9 @@ sub writeFencerList
 					 {
 						  # print "entry = " . Dumper($entry_list->{$entrydetail});
 						  writeEntryListFencer($entry_list->{$entrydetail}, $col_details, 1);
+						  $count++;
 
-						  if ($entryindex == $size)
+						  if ($entryindex == $size && $count < $listsize)
 						  {
 								writeFencerListDivFooter();
 								$div_id += 1;
@@ -1541,7 +1548,7 @@ sub createpage
 
 	 my @hp = want($comp, "poules");
 
-	 # print "createpage: hp = @hp\n";
+	 print "createpage: hp = @hp\n";
 
 	 my $haspoules = $hp[1];
 
@@ -1581,11 +1588,14 @@ sub createpage
 
 				$fencers = $comp->fpp();
 
+				my $dom = $comp->domaine_compe;
+
+				my $aff = $dom eq "national" ? "Club" : "Nation";
+
 				my $listdataref = $fencers;
 
 				my $entrylistdef = [ {'class' => 'vlist_name', 'heading' => 'Name', key=> 'nom'},
-								{'class' => 'vlist_club', 'heading' => 'Club', key => 'club'},
-								# {'class' => 'init_rank', 'heading' => 'Ranking', key => 'fencer_rank'},
+								{'class' => 'vlist_club', 'heading' => $aff, key => 'club'},
 								{'class' => 'vlist_poule', 'heading' => 'Poule', key=> 'poule'},
 								{'class' => 'vlist_piste', 'heading' => 'Piste', key=> 'piste_no'}];								  
 	
@@ -1604,7 +1614,13 @@ sub createpage
 				# Need to check the round no
 				if (defined($hp[2]) && $hp[2] eq "finished")
 				{
-					 $fencers = $comp->ranking("p", $haspoules);
+					print "getting ranking for round $haspoules\n";
+					$fencers = $comp->ranking("p", $haspoules);
+				}
+				elsif (defined($hp[2]) && $hp[2] eq "constitution")
+				{
+					print "getting ranking for round $haspoules - 1\n";
+					$fencers = $comp->ranking("p", $haspoules - 1);
 				}
 				else
 				{

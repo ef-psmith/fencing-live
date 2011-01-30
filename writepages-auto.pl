@@ -942,6 +942,8 @@ sub writeEntryList
 
 				my $nameclass = "col_name";
 
+
+				# PRS - change here
 				if ($serie < 11)
 				{
 					 $nameclass .= " top10"; 
@@ -975,7 +977,8 @@ sub writeEntryList
 
 	 $nif = int($count / 4) if $nif * 4 < $count;
 	 
-	 writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
+	 #writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title ($count - NIF estimate $nif)</h2></div>\n", 1);
+	 writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title ($count)</h2></div>\n", 1);
 	 # writeToFiles("<div class=\"vlist_title\" id=\"vlistid\"><h2>$list_title</h2></div>\n", 1);
 
 	 # writeToFiles("<div class=\"col_multi\" id=\"V0\">\n", 1);

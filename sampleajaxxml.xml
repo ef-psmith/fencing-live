@@ -1,0 +1,40 @@
+<document>
+<series id="series1">
+<comp>comp1</comp>
+<comp>comp2</comp>
+</series>
+<competition id="comp1">
+<topdiv class="bigandbold" id="numberone" name="topdiv">
+<pages>
+<page>tabl_A32_1</page>
+<page>tabl_A32_2</page>
+<page>tabl_A32_3</page>
+<page>tabl_A32_4</page>
+</pages>
+<content>
+<h1>static title</h1>
+<div id="tabl_A32_1" class="visible"><h3>Dynamic content 1</h3></div>
+<div id="tabl_A32_2" class="hidden"><h3>Dynamic content 2</h3></div>
+<div id="tabl_A32_3" class="hidden"><h3>Dynamic content 3</h3></div>
+<div id="tabl_A32_4" class="hidden"><h3>Dynamic content 4</h3></div>
+</content>
+</topdiv>
+</competition>
+<competition id="comp2">
+<topdiv class="bigandbold" id="numberone" name="topdiv">
+<pages>
+<page>tabl_A32_1</page>
+<page>tabl_A32_2</page>
+<page>tabl_A32_3</page>
+<page>tabl_A32_4</page>
+</pages>
+<content>
+<h1>Mainly static title</h1>
+<div id="tabl_A32_1" class="visible"><h3>Very Dynamic content 1</h3></div>
+<div id="tabl_A32_2" class="hidden"><h3>Very Dynamic content 2</h3></div>
+<div id="tabl_A32_3" class="hidden"><h3>Very Dynamic content 3</h3></div>
+<div id="tabl_A32_4" class="hidden"><h3>Very Dynamic content 4</h3></div>
+</content>
+</topdiv>
+</competition>
+</document>

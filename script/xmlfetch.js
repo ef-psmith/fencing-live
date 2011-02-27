@@ -1,66 +1,5 @@
 
 	
-	function EnableArea(area, enable)
-	{
-	   // We are going to use the display css attribute to hide things
-	   var displayvalue = enable ? 'block' : 'none';
-      // Get rid of any static title block
-      if (null != area.statics) {
-         var k;
-         for (k in area.statics) {
-            var title = document.getElementById(area.statics[k]);   
-            if (null != title) {
-               title.style.display = displayvalue;
-            }
-         }
-      }
-      // Now do the various prefix nodes
-      var titleobj;
-      var bodyobj;
-      var j = 0;
-      do {
-
-         titleobj = document.getElementById(area.titleprefix + j);
-         if (null != titleobj) {
-            titleobj.style.display = displayvalue;
-         }
-
-         bodyobj = document.getElementById(area.prefix + j);
-         if (null != bodyobj) {
-            bodyobj.style.display = displayvalue;
-         }
-         ++j;
-      } while (null != titleobj || null != bodyobj);
-	}
-	
-	// the current selection for the navigation
-	var currentselection = 'vlist';
-	
-	function ChangeSelected(areatype)
-	{
-	   var foundarea = false; 
-	   var i;
-	   for (i in areas)
-	   {
-	      var area = areas[i];
-	      foundarea = foundarea || area.type == areatype;
-	      EnableArea(area, area.type == areatype);
-	   }
-	   if (foundarea)
-	      currentselection = areatype;
-	   else
-	   {
-	      // Go back to where we were
-	      for (i in areas)
-	      {
-	         var area = areas[i];
-	         foundarea = foundarea || area.type == areatype;
-	         EnableArea(area, area.type == currentselection);
-	      }
-	   }
-	   return false;
-	}
-
 
 
 	var http_request = false;
@@ -135,4 +74,32 @@ function translateElement(xmlelem, myElement)
    myElement.innerHTML = newhtml;
    
    document.body.appendChild(myElement);
+}
+
+
+function loadXMLDoc(dname) {
+   if (window.XMLHttpRequest) {
+      xhttp = new XMLHttpRequest();
+   }
+   else {
+      xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   xhttp.open("GET", dname, false);
+   xhttp.send("");
+   return xhttp.responseXML;
+}
+
+function transformDoc(xml, xsl, elem) {
+   // code for IE
+   if (window.ActiveXObject) {
+      ex = xml.transformNode(xsl);
+      elem.innerHTML = ex;
+   }
+   // code for Mozilla, Firefox, Opera, etc.
+   else if (document.implementation && document.implementation.createDocument) {
+      xsltProcessor = new XSLTProcessor();
+      xsltProcessor.importStylesheet(xsl);
+      resultDocument = xsltProcessor.transformToFragment(xml, document);
+      elem.appendChild(resultDocument);
+   }
 }

@@ -1,39 +1,226 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
 <series id="series1">
 <comp>comp1</comp>
 <comp>comp2</comp>
 </series>
-<competition id="comp1">
+<competition id="comp1" colour="lightgreen">
 <topdiv class="bigandbold" id="numberone" name="topdiv">
 <pages>
-<page>tabl_A32_1</page>
-<page>tabl_A32_2</page>
-<page>tabl_A32_3</page>
-<page>tabl_A32_4</page>
 </pages>
 <content>
-<h1>static title</h1>
-<div id="tabl_A32_1" class="visible"><h3>Dynamic content 1</h3></div>
-<div id="tabl_A32_2" class="hidden"><h3>Dynamic content 2</h3></div>
-<div id="tabl_A32_3" class="hidden"><h3>Dynamic content 3</h3></div>
-<div id="tabl_A32_4" class="hidden"><h3>Dynamic content 4</h3></div>
+<pool>
+	<number>1</number>
+	<size>7</size>
+    <fencer id="1" name="BLOGGS, Fred" affiliation="Crawley">
+		<result id="1" score=""/>
+        <result id="2" score="3" />
+		<result id="3" score="V" />
+		<result id="4" score="V4" />
+        <result id="5" score="2" />
+        <result id="6" score="1" />
+		 <result id="7" score="8" />
+        <vm>2/6</vm>
+        <hs>15</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+    
+	<fencer id="2" name="DOE, John" affiliation="GBR">
+		<result id="1" score="V" />
+		<result id="2"/>
+		<result id="3" score="V" />
+		<result id="4" score="V" />
+		<result id="5" score="V" />
+		<result id="6" score="V" />
+		<result id="7" score="V" />
+		<vm>2/6</vm>
+        <hs>15</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="3" name="FENCER, Three" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2"/>
+		<result id="3"  />
+		<result id="4" score="4" />
+		<result id="5" score="V" />
+		<result id="6" score="1" />
+		<result id="7" score="2" />
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="4" name="FENCER, Four" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2" />
+		<result id="3" score="3" />
+		<result id="4"/>
+		<result id="5" score="V" />
+		<result id="6" score="1" />
+		<result id="7" score="2" />
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="7" name="FENCER, Seven" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2"/>
+		<result id="3" score="3" />
+		<result id="4" score="4" />
+		<result id="5" score="5" />
+		<result id="6" score="1" />
+		<result id="7"/>
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="5" name="FENCER, Five" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2"/>
+		<result id="3" score="3" />
+		<result id="4" score="4" />
+		<result id="5"/>
+		<result id="6" score="1" />
+		<result id="7" score="2" />
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="6" name="FENCER, Six" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2"/>
+		<result id="3" score="3" />
+		<result id="4" score="4" />
+		<result id="5" score="5" />
+		<result id="6" />
+		<result id="7" score="7" />
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+</pool>
+
 </content>
 </topdiv>
 </competition>
-<competition id="comp2">
+<competition id="comp2" colour="pink">
 <topdiv class="bigandbold" id="numberone" name="topdiv">
 <pages>
-<page>tabl_A32_1</page>
-<page>tabl_A32_2</page>
-<page>tabl_A32_3</page>
-<page>tabl_A32_4</page>
 </pages>
 <content>
-<h1>Mainly static title</h1>
-<div id="tabl_A32_1" class="visible"><h3>Very Dynamic content 1</h3></div>
-<div id="tabl_A32_2" class="hidden"><h3>Very Dynamic content 2</h3></div>
-<div id="tabl_A32_3" class="hidden"><h3>Very Dynamic content 3</h3></div>
-<div id="tabl_A32_4" class="hidden"><h3>Very Dynamic content 4</h3></div>
+<pool>
+	<number>1</number>
+	<size>7</size>
+    <fencer id="1" name="SMITH, Peter" affiliation="Crawley">
+		<result id="1" score=""/>
+        <result id="2" score="3" />
+		<result id="3" score="V" />
+		<result id="4" score="V4" />
+        <result id="5" score="2" />
+        <result id="6" score="1" />
+		 <result id="7" score="8" />
+        <vm>2/6</vm>
+        <hs>15</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+    
+	<fencer id="2" name="SMITH, Oliver" affiliation="GBR">
+		<result id="1" score="V" />
+		<result id="2"/>
+		<result id="3" score="V" />
+		<result id="4" score="V" />
+		<result id="5" score="V" />
+		<result id="6" score="V" />
+		<result id="7" score="V" />
+		<vm>2/6</vm>
+        <hs>15</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="3" name="FENCER, Three" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2"/>
+		<result id="3"  />
+		<result id="4" score="4" />
+		<result id="5" score="V" />
+		<result id="6" score="1" />
+		<result id="7" score="2" />
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="4" name="FENCER, Four" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2" />
+		<result id="3" score="3" />
+		<result id="4"/>
+		<result id="5" score="V" />
+		<result id="6" score="1" />
+		<result id="7" score="2" />
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="7" name="FENCER, Seven" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2"/>
+		<result id="3" score="3" />
+		<result id="4" score="4" />
+		<result id="5" score="5" />
+		<result id="6" score="1" />
+		<result id="7"/>
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="5" name="FENCER, Five" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2"/>
+		<result id="3" score="3" />
+		<result id="4" score="4" />
+		<result id="5"/>
+		<result id="6" score="1" />
+		<result id="7" score="2" />
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+	
+	<fencer id="6" name="FENCER, Six" affiliation="Salle Wellard">
+		<result id="1" score="1" />
+		<result id="2" score="2"/>
+		<result id="3" score="3" />
+		<result id="4" score="4" />
+		<result id="5" score="5" />
+		<result id="6" />
+		<result id="7" score="7" />
+		<vm>1/6</vm>
+        <hs>16</hs>
+        <hr>22</hr>
+        <pl>4</pl>
+    </fencer>
+</pool>
+
 </content>
 </topdiv>
 </competition>

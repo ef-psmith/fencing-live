@@ -1,6 +1,17 @@
 
 
 
+
+var pageloader;
+var xsl;
+
+function onPageLoaded() {
+   pageloader = new pageload();
+   pageloader.fetch();
+
+   xsl = loadXMLDoc(xsldoc);
+}
+
 // Scroll delay of 30 seconds
 var scrolldelay = 30000;
 
@@ -97,7 +108,7 @@ function scroller(div, pageloader) {
             this.pages.push(pages[p].textContent);
          }
          // Overwrite the inner HTML of the node.
-         translateElement(xmlelem.getElementsByTagName('content')[0], this.myElement);
+         transformDoc(xmlelem.getElementsByTagName('content')[0], xsl, this.myElement);
       }
    };
 
@@ -128,104 +139,104 @@ function pageload() {
    this.currentpage = null;
 
    this.reload =
-function reloadpage(xmldoc, force) {
-   var serieses = xmldoc.getElementsByTagName('series');
-   var comp_id = null;
-   for (var s = 0; s < serieses.length; ++s) {
-      var series = serieses[s];
-      if (series_id = series.getAttribute('id')) {
-         // We have found the series we want.
+      function reloadpage(xmldoc, force) {
+         var serieses = xmldoc.getElementsByTagName('series');
+         var comp_id = null;
+         for (var s = 0; s < serieses.length; ++s) {
+            var series = serieses[s];
+            if (series_id = series.getAttribute('id')) {
+               // We have found the series we want.
 
-         var seriescomps = series.getElementsByTagName('comp');
-         // Default the competition we want to the first one
-         if (0 < seriescomps.length) {
-            comp_id = seriescomps[0].textContent;
-         }
+               var seriescomps = series.getElementsByTagName('comp');
+               // Default the competition we want to the first one
+               if (0 < seriescomps.length) {
+                  comp_id = seriescomps[0].textContent;
+               }
 
-         // Go looking for the competition we have. 
-         // (we don't care about the last one as we will use the default first one in that case)
-         for (var c = 0; c < seriescomps.length - 1; ++c) {
-            if (seriescomps[c].textContent == this.currentpage) {
-               // We want the next one, this is safe as we don't iterate over the last member of the list
-               comp_id = seriescomps[c + 1].textContent;
-               break;
+               // Go looking for the competition we have. 
+               // (we don't care about the last one as we will use the default first one in that case)
+               for (var c = 0; c < seriescomps.length - 1; ++c) {
+                  if (seriescomps[c].textContent == this.currentpage) {
+                     // We want the next one, this is safe as we don't iterate over the last member of the list
+                     comp_id = seriescomps[c + 1].textContent;
+                     break;
+                  }
+               }
+
             }
          }
 
-      }
-   }
-
-   // If we haven't a compid then return.  Or if we haven't changed since last time.
-   if (null == comp_id /*|| lastrefresh == xmldoc.getAttribute('time')*/) {
-      var ploader = this;
-      // Reload in 10 seconds.
-      setTimeout(function() { ploader.fetch(); }, 10000);
-      return;
-   }
-
-
-   var comps = xmldoc.getElementsByTagName('competition');
-   // Look for our page and check the time as well.
-   for (var p = 0; p < comps.length; ++p) {
-
-      var comp = comps[p];
-      if (comp_id == comp.getAttribute('id')) {
-         // This is our page and the time has changed so reset the time.
-         //lastrefresh = xmldoc.getAttribute('time');
-
-         // Kill all the div timers
-         for (var s in this.scrollers) {
-            this.scrollers[s].stop();
-         }
-         // clear the array
-         this.scrollers = new Array();
-
-         // Since we are repainting the page we want to get rid of all the divs below the body.
-         var topdivs = document.getElementsByName('topdiv');
-         for (var q = 0; q < topdivs.length; ++q) {
-            // Remove the top divs
-            document.body.removeChild(topdivs[q]);
+         // If we haven't a compid then return.  Or if we haven't changed since last time.
+         if (null == comp_id /*|| lastrefresh == xmldoc.getAttribute('time')*/) {
+            var ploader = this;
+            // Reload in 10 seconds.
+            setTimeout(function() { ploader.fetch(); }, 10000);
+            return;
          }
 
-         // Now get the new div definitions
-         var newdivs = comp.getElementsByTagName('topdiv');
 
-         for (var d = 0; d < newdivs.length; ++d) {
-            // Create the div.
-            var divelem = newdivs[d];
+         var comps = xmldoc.getElementsByTagName('competition');
+         // Look for our page and check the time as well.
+         for (var p = 0; p < comps.length; ++p) {
 
-            var myElement = document.createElement('div');
+            var comp = comps[p];
+            if (comp_id == comp.getAttribute('id')) {
+               // This is our page and the time has changed so reset the time.
+               //lastrefresh = xmldoc.getAttribute('time');
 
-            myElement.className = divelem.getAttribute("class");
-            myElement.id = divelem.getAttribute("id");
-            myElement.setAttribute('name', 'topdiv');
+               // Kill all the div timers
+               for (var s in this.scrollers) {
+                  this.scrollers[s].stop();
+               }
+               // clear the array
+               this.scrollers = new Array();
 
-            // Add the new scroller, this will fill in the div
-            var newscroller = new scroller(myElement, this);
-            newscroller.load(divelem, true);
-            this.scrollers.push(newscroller);
+               // Since we are repainting the page we want to get rid of all the divs below the body.
+               var topdivs = document.getElementsByName('topdiv');
+               for (var q = 0; q < topdivs.length; ++q) {
+                  // Remove the top divs
+                  document.body.removeChild(topdivs[q]);
+               }
 
-            document.body.appendChild(myElement);
+               // Now get the new div definitions
+               var newdivs = comp.getElementsByTagName('topdiv');
+
+               for (var d = 0; d < newdivs.length; ++d) {
+                  // Create the div.
+                  var divelem = newdivs[d];
+
+                  var myElement = document.createElement('div');
+
+                  myElement.className = divelem.getAttribute("class");
+                  myElement.id = divelem.getAttribute("id");
+                  myElement.setAttribute('name', 'topdiv');
+
+                  // Add the new scroller, this will fill in the div
+                  var newscroller = new scroller(myElement, this);
+                  newscroller.load(divelem, true);
+                  this.scrollers.push(newscroller);
+
+                  document.body.appendChild(myElement);
+               }
+
+               // Start all the div timers
+               for (var s in this.scrollers) {
+                  this.scrollers[s].start();
+               }
+               // We have changed page.
+               this.currentpage = comp_id;
+               // Early return to avoid a reload
+               return;
+            }
          }
-
-         // Start all the div timers
-         for (var s in this.scrollers) {
-            this.scrollers[s].start();
+         {
+            // Failed so reload
+            var ploader = this;
+            // Reload in 10 seconds.
+            setTimeout(function() { ploader.fetch(); }, 10000);
+            return;
          }
-         // We have changed page.
-         this.currentpage = comp_id;
-         // Early return to avoid a reload
-         return;
-      }
-   }
-   {
-      // Failed so reload
-      var ploader = this;
-      // Reload in 10 seconds.
-      setTimeout(function() { ploader.fetch(); }, 10000);
-      return;
-   }
-};
+      };
    this.fetch = makeRequest;
    this.scrollers = new Array();
 
@@ -242,11 +253,4 @@ function reloadpage(xmldoc, force) {
    }
 }
 
-
-var pageloader;
-
-function onPageLoaded() {
-   pageloader = new pageload();
-   pageloader.fetch();
-}
 

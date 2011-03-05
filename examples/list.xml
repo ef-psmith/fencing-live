@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="list.xsl"?>
+
+<list>
+
+<fpp>
+	<fencer sequence="1">
+		<name>SMITH, Peter</name>
+		<affiliation>Crawley</affiliation>
+		<poule>1</poule>
+        <piste>X</piste>
+    </fencer>
+    
+	<fencer sequence="3">
+		<name>SMITH2, Peter</name>
+		<affiliation>Crawley</affiliation>
+		<poule>1</poule>
+        <piste>X</piste>
+    </fencer>
+    <fencer sequence="2">
+		<name>SMITH3, Peter</name>
+		<affiliation>Crawley</affiliation>
+		<poule>1</poule>
+        <piste>X</piste>
+    </fencer>
+    
+	<fencer sequence="4">
+		<name>SMITH4, Peter</name>
+		<affiliation>Crawley</affiliation>
+		<poule>1</poule>
+        <piste>X</piste>
+    </fencer>
+    
+	<fencer sequence="5">
+		<name>SMITH5, Peter</name>
+		<affiliation>Crawley</affiliation>
+		<poule>1</poule>
+        <piste>X</piste>
+    </fencer>
+    
+	<fencer sequence="6">
+		<name>SMITH6, Peter</name>
+		<affiliation>Crawley</affiliation>
+		<poule>1</poule>
+        <piste>X</piste>
+    </fencer>
+    
+</fpp>
+
+
+<ranking>
+	<fencer sequence="1">
+		<name>Kruse Richard</name>
+		<affiliation>GBR</affiliation>
+		<position>1</position>
+	</fencer>
+</ranking>
+
+</list>

@@ -5,19 +5,31 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:template match="pools">
+<pages><page>P0</page>
+	<xsl:apply-templates select="pool" mode="pages">
+		<xsl:sort select="number" />
+	</xsl:apply-templates>
+</pages>
+<content>
 	<xsl:text disable-output-escaping="yes">
-		&lt;div class=&quot;pools&quot; id=&quot;P0&quot; name=&quot;scroller&quot;&gt;
+		&lt;div class=&quot;pools&quot; id=&quot;P0&quot; &gt;
 	</xsl:text>
-	<xsl:apply-templates select="pool">
+	<xsl:apply-templates select="pool" mode="pool">
 		<xsl:sort select="number" />
 	</xsl:apply-templates>
 	<xsl:text disable-output-escaping="yes">
 		&lt;/div&gt;
 	</xsl:text>
+</content>
 </xsl:template>
 
+<xsl:template match="pool" mode="pages">
+	<xsl:if test="number mod 2 = 0">
+		<page>P<xsl:value-of select="number div 2" /></page>
+	</xsl:if>
+</xsl:template>
 
-<xsl:template match="pool" name="pool">
+<xsl:template match="pool" mode="pool">
 	<h2>Pool <xsl:value-of select="number" /></h2>
 	
 	<table	class="poule">
@@ -79,8 +91,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:if test="number mod 2 = 0">
 		<xsl:text disable-output-escaping="yes">
 			&lt;/div&gt;
-			&lt;div class=&quot;pools hidden&quot; name=&quot;scroller&quot; id=&quot; P
-		</xsl:text>
+			&lt;div class=&quot;pools hidden&quot; id=&quot; P</xsl:text>
 		<xsl:value-of select="number div 2" />
 		<xsl:text disable-output-escaping="yes">&quot;&gt;</xsl:text>
 	</xsl:if>

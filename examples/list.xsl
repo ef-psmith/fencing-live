@@ -3,6 +3,8 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:variable name="pagesize" select="number(20)" />
+
 <xsl:template match="fpp">
 	<xsl:text disable-output-escaping="yes">
 		&lt;div class=&quot;vlist&quot; id=&quot;V0&quot;&gt;
@@ -19,19 +21,18 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 
-<xsl:template match="fencer">
+<xsl:template match="fpp/fencer">
 	<!-- <xsl:for-each select="fencer">
 	<xsl:sort select="sequence" /> -->
 		<tr >
-			<td class="vlist_name"><xsl:value-of select="name" /></td>
-			<td class="vlist_club"><xsl:value-of select="affiliation" /></td>
-			<td class="vlist_poule"><xsl:value-of select="poule" /></td>
-			<td class="vlist_piste"><xsl:value-of select="piste" /></td>
-			<td><xsl:value-of select="@sequence" /></td>
+			<td class="vlist_name"><xsl:value-of select="@name" /></td>
+			<td class="vlist_club"><xsl:value-of select="@affiliation" /></td>
+			<td class="vlist_poule"><xsl:value-of select="@poule" /></td>
+			<td class="vlist_piste"><xsl:value-of select="@piste" /></td>
 		</tr>
 	<!-- </xsl:for-each> -->
 	
-	<xsl:if test="@sequence mod 4 = 0">
+	<xsl:if test="@sequence mod $pagesize = 0">
 		<xsl:text disable-output-escaping="yes">
 			&lt;/table&gt;
 			&lt;/div&gt;

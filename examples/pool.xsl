@@ -5,31 +5,42 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:template match="pools">
-<pages><page>P0</page>
+<pages>
 	<xsl:apply-templates select="pool" mode="pages">
 		<xsl:sort select="@number" />
 	</xsl:apply-templates>
 </pages>
 <content>
-	<xsl:text disable-output-escaping="yes">
-		&lt;div class=&quot;pools&quot; id=&quot;P0&quot; &gt;
-	</xsl:text>
 	<xsl:apply-templates select="pool" mode="pool">
 		<xsl:sort select="@number" />
 	</xsl:apply-templates>
-	<xsl:text disable-output-escaping="yes">
-		&lt;/div&gt;
-	</xsl:text>
 </content>
 </xsl:template>
 
+<xsl:variable name="poolsperpage" select="number(2)"/>
+
 <xsl:template match="pool" mode="pages">
-	<xsl:if test="@number mod 2 = 0 and @number &lt; ../@count">
-		<page>P<xsl:value-of select="@number div 2" /></page>
+	<xsl:if test="@number mod $poolsperpage = 1">
+		<page>P<xsl:value-of select="(@number - 1) div $poolsperpage" /></page>
 	</xsl:if>
 </xsl:template>
 
+
 <xsl:template match="pool" mode="pool">
+	<xsl:if test="@number mod $poolsperpage = 1">
+		<div class="pools">
+			<xsl:attribute name="id">P<xsl:value-of select="(@number - 1) div $poolsperpage" /></xsl:attribute>
+		
+		<xsl:apply-templates select="." mode="render" />
+		<xsl:apply-templates select="../pool[./@number &lt; (current()/@number + $poolsperpage) and ./@number &gt; current()/@number ]" mode="render" >
+
+		<xsl:sort select="@number" />
+	</xsl:apply-templates>
+		</div>
+	</xsl:if>
+</xsl:template>
+
+<xsl:template match="pool" mode="render">
 	<h2>Pool <xsl:value-of select="@number" /></h2>
 	
 	<table	class="poule">
@@ -88,13 +99,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</xsl:for-each>
 	</table>
 
-	<xsl:if test="@number mod 2 = 0 and @number &lt; ../@count">
-		<xsl:text disable-output-escaping="yes">
-			&lt;/div&gt;
-			&lt;div class=&quot;pools hidden&quot; id=&quot; P</xsl:text>
-		<xsl:value-of select="@number div 2" />
-		<xsl:text disable-output-escaping="yes">&quot;&gt;</xsl:text>
-	</xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>

@@ -94,7 +94,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			&lt;div class=&quot;pools hidden&quot; id=&quot; P</xsl:text>
 		<xsl:value-of select="@number div 2" />
 		<xsl:text disable-output-escaping="yes">&quot;&gt;</xsl:text>
-	<xsl:value-of select="../@count" />
 	</xsl:if>
 </xsl:template>
 

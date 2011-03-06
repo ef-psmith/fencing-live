@@ -24,7 +24,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="pool" mode="pages">
-	<xsl:if test="@number mod 2 = 0">
+	<xsl:if test="@number mod 2 = 0 and @number &lt; ../@count">
 		<page>P<xsl:value-of select="@number div 2" /></page>
 	</xsl:if>
 </xsl:template>

@@ -3,39 +3,31 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-
-<xsl:template match="pools">
-<pages>
-	<xsl:apply-templates select="pool" mode="pages">
-		<xsl:sort select="@number" />
-	</xsl:apply-templates>
-</pages>
-<content>
-	<xsl:apply-templates select="pool" mode="pool" />
-</content>
-</xsl:template>
-
 <xsl:variable name="poolsperpage" select="number(2)"/>
 
-<xsl:template match="pool" mode="pages">
-	<xsl:if test="@number mod $poolsperpage = 1">
+<xsl:template match="pools">
+<topdiv class="pools" id="pools" name="topdiv">
+<pages>
+	<xsl:for-each select="pool[@number mod $poolsperpage = 1]">
+		<xsl:sort select="@number" />
 		<page>P<xsl:value-of select="(@number - 1) div $poolsperpage" /></page>
-	</xsl:if>
+	</xsl:for-each>
+</pages>
+<content>
+	<xsl:apply-templates select="pool[@number mod $poolsperpage = 1]" mode="pool" />
+</content>
+</topdiv>
 </xsl:template>
 
 
 <xsl:template match="pool" mode="pool">
-	<xsl:if test="@number mod $poolsperpage = 1">
 		<div class="pools">
 			<xsl:attribute name="id">P<xsl:value-of select="(@number - 1) div $poolsperpage" /></xsl:attribute>
-		
 			<xsl:apply-templates select="." mode="render" />
-
 			<xsl:apply-templates select="../pool[./@number &lt; (current()/@number + $poolsperpage) and ./@number &gt; current()/@number ]" mode="render" >
 				<xsl:sort select="@number" data-type="number" />
 			</xsl:apply-templates>
 		</div>
-	</xsl:if>
 </xsl:template>
 
 <xsl:template match="pool" mode="render">

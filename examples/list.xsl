@@ -6,38 +6,29 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:variable name="pagesize" select="number(20)" />
 
 <xsl:template match="fpp">
+<topdiv class="vlist" name="topdiv" id="fpp">
 	<pages>
-		<xsl:apply-templates select="fencer" mode="fpppages">
+		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
 			<xsl:sort select="@sequence" />
-		</xsl:apply-templates>
+			<page>FPP<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
+		</xsl:for-each >
 	</pages>
 	<content>
-		<xsl:apply-templates select="fencer" mode="fpplist"/>
+		<xsl:apply-templates select="fencer[@sequence mod $pagesize = 1]" mode="fpplist"/>
 	</content>
-</xsl:template>
-
-
-<xsl:template match="fencer" mode="fpppages">
-	<xsl:if test="@sequence mod $pagesize = 1">
-		<page>FPP<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
-	</xsl:if>
+</topdiv>
 </xsl:template>
 
 <xsl:template match="fencer" mode="fpplist">
-
-	<xsl:if test="@sequence mod $pagesize = 1">
 		<div class="vlist">
 			<table>
 				<xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
-		
 				<xsl:apply-templates select="." mode="fppfencer" />
-
 				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="fppfencer" >
 					<xsl:sort select="@sequence" data-type="number" />
 				</xsl:apply-templates>
 			</table>
 		</div>
-	</xsl:if>
 </xsl:template>
 
 <xsl:template match="fencer" mode="fppfencer">

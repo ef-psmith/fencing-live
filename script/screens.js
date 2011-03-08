@@ -108,7 +108,7 @@ function scroller(div, pageloader) {
             this.pages.push(pages[p].textContent);
          }
          // Overwrite the inner HTML of the node.
-         transformDoc(xmlelem.getElementsByTagName('content')[0], xsl, this.myElement);
+         translateElement(xmlelem.getElementsByTagName('content')[0], this.myElement);
       }
    };
 
@@ -139,7 +139,12 @@ function pageload() {
    this.currentpage = null;
 
    this.reload =
-      function reloadpage(xmldoc, force) {
+      function(xmldoc, force) {
+
+         if (null == xmldoc) {
+            this.fetch();
+            return;
+         }
          var serieses = xmldoc.getElementsByTagName('series');
          var comp_id = null;
          for (var s = 0; s < serieses.length; ++s) {
@@ -179,8 +184,11 @@ function pageload() {
          // Look for our page and check the time as well.
          for (var p = 0; p < comps.length; ++p) {
 
-            var comp = comps[p];
+            var comp = transformDoc(comps[p], xsl);
             if (comp_id == comp.getAttribute('id')) {
+               // We have changed page.
+               this.currentpage = comp_id;
+               
                // This is our page and the time has changed so reset the time.
                //lastrefresh = xmldoc.getAttribute('time');
 
@@ -200,33 +208,42 @@ function pageload() {
 
                // Now get the new div definitions
                var newdivs = comp.getElementsByTagName('topdiv');
+               if (0 < newdivs.length) {
+                  for (var d = 0; d < newdivs.length; ++d) {
+                     // Create the div.
+                     var divelem = newdivs[d];
 
-               for (var d = 0; d < newdivs.length; ++d) {
-                  // Create the div.
-                  var divelem = newdivs[d];
+                     var myElement = document.createElement('div');
 
+                     myElement.className = divelem.getAttribute("class");
+                     myElement.id = divelem.getAttribute("id");
+                     myElement.setAttribute('name', 'topdiv');
+
+                     // Add the new scroller, this will fill in the div
+                     var newscroller = new scroller(myElement, this);
+                     newscroller.load(divelem, true);
+                     this.scrollers.push(newscroller);
+
+                     document.body.appendChild(myElement);
+                  }
+
+                  // Start all the div timers
+                  for (var s in this.scrollers) {
+                     this.scrollers[s].start();
+                  }
+                  // Early return to avoid a reload
+                  return;
+               }
+               else {
                   var myElement = document.createElement('div');
 
-                  myElement.className = divelem.getAttribute("class");
-                  myElement.id = divelem.getAttribute("id");
+                  myElement.className = "centreinfo";
+                  myElement.id = "compinfo";
                   myElement.setAttribute('name', 'topdiv');
-
-                  // Add the new scroller, this will fill in the div
-                  var newscroller = new scroller(myElement, this);
-                  newscroller.load(divelem, true);
-                  this.scrollers.push(newscroller);
+                  myElement.innerHTML = "<h1>" + comp.getAttribute('titre_ligne') + "</h1>";
 
                   document.body.appendChild(myElement);
                }
-
-               // Start all the div timers
-               for (var s in this.scrollers) {
-                  this.scrollers[s].start();
-               }
-               // We have changed page.
-               this.currentpage = comp_id;
-               // Early return to avoid a reload
-               return;
             }
          }
          {

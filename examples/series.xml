@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<?xml-stylesheet type="text/xsl" href="list.xsl"?>
+<?xml-stylesheet type="text/xsl" href="series.xsl"?>
 
 <opt>
+
+<series id="series1">
+<comp>1</comp>
+<comp>2</comp>
+</series>
   <competition id="1" titre_ligne="Example Competition Stage 1" />
   <competition id="2" titre_ligne="Example Competition Stage 2">
     <lists>

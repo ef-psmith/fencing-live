@@ -2,11 +2,10 @@
 	
 
 
-	var http_request = false;
 
 	function makeRequest() {
 
-	   http_request = false;
+	   var http_request = false;
 	   if (window.XMLHttpRequest) { // Mozilla, Safari,...
 	      http_request = new XMLHttpRequest();
 	      if (http_request.overrideMimeType) {
@@ -28,19 +27,20 @@
 
 	   var requestor = this;
 	   http_request.onreadystatechange =
-   function() {
-      if (http_request.readyState == 4) {
-         if (http_request.status == 200) {
+         function() {
+            if (http_request.readyState == 4) {
+               if (http_request.status == 200 || http_request.status == 0) {
 
-            var xmldoc = http_request.responseXML;
-            requestor.reload(xmldoc, false);
+                  var xmldoc = http_request.responseXML;
+                  requestor.reload(xmldoc, false);
 
-         }
-      }
-   };
+               } else {
+                  setTimeout(requestor.fetch(), 5000);
+               }
+            }
+         };
 	   http_request.open('GET', filelocation, true);
 	   http_request.send(null);
-	   http_request.requestor = this;
 	}
 
 
@@ -89,17 +89,17 @@ function loadXMLDoc(dname) {
    return xhttp.responseXML;
 }
 
-function transformDoc(xml, xsl, elem) {
+function transformDoc(xml, xsl) {
    // code for IE
    if (window.ActiveXObject) {
-      ex = xml.transformNode(xsl);
-      elem.innerHTML = ex;
+      return xml.transformNode(xsl);
    }
    // code for Mozilla, Firefox, Opera, etc.
    else if (document.implementation && document.implementation.createDocument) {
       xsltProcessor = new XSLTProcessor();
       xsltProcessor.importStylesheet(xsl);
-      resultDocument = xsltProcessor.transformToFragment(xml, document);
-      elem.appendChild(resultDocument);
+      var fragment = xsltProcessor.transformToFragment(xml, document);
+      xml.appendChild(fragment);
+      return xml;
    }
 }

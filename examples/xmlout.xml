@@ -1,11 +1,7 @@
-<<<<<<< .mine
-=======
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <?xml-stylesheet type="text/xsl" href="series.xsl"?>
 
->>>>>>> .r87
 <opt>
-<<<<<<< .mine
   <competition id="1" titre_ligne="Example Competition Stage 1">
     <lists>
       <entry count="54" nif="1">
@@ -66,14 +62,6 @@
       </entry>
     </lists>
   </competition>
-=======
-
-<series id="series1">
-<comp>1</comp>
-<comp>2</comp>
-</series>
-  <competition id="1" titre_ligne="Example Competition Stage 1" />
->>>>>>> .r87
   <competition id="2" titre_ligne="Example Competition Stage 2">
     <lists>
       <fpp count="55" round="1">

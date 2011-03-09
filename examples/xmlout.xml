@@ -1,0 +1,1247 @@
+<<<<<<< .mine
+=======
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="series.xsl"?>
+
+>>>>>>> .r87
+<opt>
+<<<<<<< .mine
+  <competition id="1" titre_ligne="Example Competition Stage 1">
+    <lists>
+      <entry count="54" nif="1">
+        <fencer affiliation="SALLE BOSTON" name="ALEXANDER Kevin" seed="290" sequence="1" />
+        <fencer affiliation="" name="APCAR Saka" seed="" sequence="2" />
+        <fencer affiliation="STREATHAM" name="ARMSTRONG Neil" seed="" sequence="3" />
+        <fencer affiliation="LANDSDOWNE" name="BELL Nick" seed="" sequence="4" />
+        <fencer affiliation="ESCRIME" name="BIGGS Richard" seed="99" sequence="5" />
+        <fencer affiliation="TENTERDEN" name="CAREY Dominic" seed="352" sequence="6" />
+        <fencer affiliation="CRAWLEY" name="CHEN Aaron" seed="429" sequence="7" />
+        <fencer affiliation="SALLE PAUL" name="CONYARD Anthony" seed="95" sequence="8" />
+        <fencer affiliation="CARDIFF UNI" name="CROWTHER Gareth" seed="" sequence="9" />
+        <fencer affiliation="BEXLEY" name="CUE Gary" seed="" sequence="10" />
+        <fencer affiliation="SMT" name="DARRAUX Steven" seed="48" sequence="11" />
+        <fencer affiliation="ESTIME" name="DAVIS Adrian" seed="200" sequence="12" />
+        <fencer affiliation="SALLE BOSTON" name="ELLIS REES Thomas" seed="56" sequence="13" />
+        <fencer affiliation="PORTSLADE" name="FEENEY Cliff" seed="" sequence="14" />
+        <fencer affiliation="SALLE POISSON" name="FRUEN John" seed="124" sequence="15" />
+        <fencer affiliation="SOLENT SWORDS" name="GANT Aidan" seed="" sequence="16" />
+        <fencer affiliation="126" name="HENDRIE George" seed="103" sequence="17" />
+        <fencer affiliation="126" name="HENDRIE Thomas" seed="20" sequence="18" />
+        <fencer affiliation="RCP" name="HESLOP Adam" seed="125" sequence="19" />
+        <fencer affiliation="SOLENT SWORDS" name="JURY Joe" seed="419" sequence="20" />
+        <fencer affiliation="" name="KOFITIA Dennis" seed="" sequence="21" />
+        <fencer affiliation="SALLE PAUL" name="KWAN Aaron" seed="108" sequence="22" />
+        <fencer affiliation="ALDERSHOT" name="LEE Toby" seed="152" sequence="23" />
+        <fencer affiliation="STREATHAM" name="LOWE David" seed="" sequence="24" />
+        <fencer affiliation="SOUTHAMPTON" name="LYONS AMOS Mark" seed="304" sequence="25" />
+        <fencer affiliation="STAR SWORD" name="MARTIN Thomas" seed="356" sequence="26" />
+        <fencer affiliation="BATH" name="MCKAY David" seed="310" sequence="27" />
+        <fencer affiliation="CARDIFF UNI" name="MCLEOD Andrew" seed="129" sequence="28" />
+        <fencer affiliation="ESCRIME" name="MCQUEEN Ian" seed="387" sequence="29" />
+        <fencer affiliation="SALLE BOSTON" name="MOON Sam" seed="404" sequence="30" />
+        <fencer affiliation="STAR SWORD" name="POWELL Chris" seed="154" sequence="31" />
+        <fencer affiliation="TENTERDEN" name="PRYOR John" seed="339" sequence="32" />
+        <fencer affiliation="SOLENT SWORDS" name="RACKETT Simon" seed="" sequence="33" />
+        <fencer affiliation="" name="REYNOLDS Andy" seed="" sequence="34" />
+        <fencer affiliation="RADCLIFFE" name="ROSE Darren" seed="348" sequence="35" />
+        <fencer affiliation="SAILSBURY" name="ROUTLEDGE John" seed="47" sequence="36" />
+        <fencer affiliation="ALDERSHOT" name="SALE Joseph" seed="64" sequence="37" />
+        <fencer affiliation="CRAWLEY" name="SMITH Oliver" seed="" sequence="38" />
+        <fencer affiliation="" name="STANDEN David" seed="194" sequence="39" />
+        <fencer affiliation="STREATHAM" name="STUART Nick" seed="" sequence="40" />
+        <fencer affiliation="CRAWLEY" name="TREDGER Dudley" seed="115" sequence="41" />
+        <fencer affiliation="CRAWLEY" name="TUCKER Mark" seed="267" sequence="42" />
+        <fencer affiliation="SUTTON COLDFIELDS" name="TURNER Martin" seed="43" sequence="43" />
+        <fencer affiliation="TENTERDEN" name="WARD Alec" seed="228" sequence="44" />
+        <fencer affiliation="CRAWLEY" name="WATTS Iain" seed="" sequence="45" />
+        <fencer affiliation="" name="WATTS John" seed="192" sequence="46" />
+        <fencer affiliation="AMY" name="WEEDON Max" seed="65" sequence="47" />
+        <fencer affiliation="PORTSLADE" name="WHELAN Jim" seed="232" sequence="48" />
+        <fencer affiliation="KCSWHS" name="WILLIAMS Rowan" seed="" sequence="49" />
+        <fencer affiliation="NORTHAMPTON" name="WILLMOTT Paul" seed="" sequence="50" />
+        <fencer affiliation="SALLE BOSTON" name="WOOD Adam" seed="28" sequence="51" />
+        <fencer affiliation="RADCLIFFE" name="WOOD Chris" seed="" sequence="52" />
+        <fencer affiliation="GWENT SWORD" name="WOOD FISHER James" seed="127" sequence="53" />
+        <fencer affiliation="SOUTHSIDE" name="WOODS Colin" seed="161" sequence="54" />
+      </entry>
+    </lists>
+  </competition>
+=======
+
+<series id="series1">
+<comp>1</comp>
+<comp>2</comp>
+</series>
+  <competition id="1" titre_ligne="Example Competition Stage 1" />
+>>>>>>> .r87
+  <competition id="2" titre_ligne="Example Competition Stage 2">
+    <lists>
+      <fpp count="55" round="1">
+        <fencer affiliation="SALLE D'ARTISTES" name="APCAR Sarkis" piste="" poule="4" sequence="1" />
+        <fencer affiliation="STREATHAM" name="ARMSTRONG Neil" piste="" poule="5" sequence="2" />
+        <fencer affiliation="LANDSDOWNE" name="BELL Nick" piste="" poule="7" sequence="3" />
+        <fencer affiliation="ESCRIME" name="BIGGS Richard" piste="" poule="6" sequence="4" />
+        <fencer affiliation="TENTERDEN" name="CAREY Dominic" piste="" poule="4" sequence="5" />
+        <fencer affiliation="CRAWLEY" name="CHEN Aaron" piste="" poule="8" sequence="6" />
+        <fencer affiliation="SALLE PAUL" name="CONYARD Anthony" piste="" poule="7" sequence="7" />
+        <fencer affiliation="CARDIFF UNI" name="CROWTHER Gareth" piste="" poule="3" sequence="8" />
+        <fencer affiliation="SMT" name="DARROUX Steven" piste="" poule="6" sequence="9" />
+        <fencer affiliation="ESCRIME" name="DAVIS Adrian" piste="" poule="7" sequence="10" />
+        <fencer affiliation="PORTSLADE" name="FEENEY Cliff" piste="" poule="2" sequence="11" />
+        <fencer affiliation="SALLE POISSON" name="FRUEN John" piste="" poule="2" sequence="12" />
+        <fencer affiliation="ACADEMY" name="GAL Jonathan" piste="" poule="2" sequence="13" />
+        <fencer affiliation="126" name="HENDRIE George" piste="" poule="5" sequence="14" />
+        <fencer affiliation="126" name="HENDRIE Thomas" piste="" poule="1" sequence="15" />
+        <fencer affiliation="RCP" name="HESLOP Adam" piste="" poule="1" sequence="16" />
+        <fencer affiliation="SOLENT SWORDS" name="JURY Joe" piste="" poule="7" sequence="17" />
+        <fencer affiliation="ACADEMY" name="KNOTT David" piste="" poule="1" sequence="18" />
+        <fencer affiliation="ARMY" name="KOFITIA Dennis" piste="" poule="3" sequence="19" />
+        <fencer affiliation="SALLE PAUL" name="KWAN Aaron" piste="" poule="4" sequence="20" />
+        <fencer affiliation="ACADEMY" name="KWOK Kelvin" piste="" poule="7" sequence="21" />
+        <fencer affiliation="ALDERSHOT" name="LEE Toby" piste="" poule="5" sequence="22" />
+        <fencer affiliation="STREATHAM" name="LOWE David" piste="" poule="1" sequence="23" />
+        <fencer affiliation="SOUTHAMPTON" name="LYONS AMOS Mark" piste="" poule="3" sequence="24" />
+        <fencer affiliation="ACADEMY" name="MACCIAROLA Alessandro" piste="" poule="6" sequence="25" />
+        <fencer affiliation="STAR SWORD" name="MARTIN Thomas" piste="" poule="5" sequence="26" />
+        <fencer affiliation="BATH" name="MCKAY David" piste="" poule="1" sequence="27" />
+        <fencer affiliation="CARDIFF UNI" name="MCLEOD Andrew" piste="" poule="2" sequence="28" />
+        <fencer affiliation="ESCRIME" name="MCQUEEN Ian" piste="" poule="8" sequence="29" />
+        <fencer affiliation="SALLE BOSTON" name="MOON Sam" piste="" poule="6" sequence="30" />
+        <fencer affiliation="STAR SWORD" name="POWELL Chris" piste="" poule="6" sequence="31" />
+        <fencer affiliation="TENTERDEN" name="PRYOR John" piste="" poule="2" sequence="32" />
+        <fencer affiliation="SOLENT SWORDS" name="RACKETT Simon" piste="" poule="1" sequence="33" />
+        <fencer affiliation="WOKING" name="REYNOLDS Andy" piste="" poule="3" sequence="34" />
+        <fencer affiliation="RADCLIFFE" name="ROSE Darren" piste="" poule="3" sequence="35" />
+        <fencer affiliation="SAILSBURY" name="ROUTLEDGE John" piste="" poule="5" sequence="36" />
+        <fencer affiliation="ACADEMY" name="SADIQ Aladdin" piste="" poule="3" sequence="37" />
+        <fencer affiliation="ACADEMY" name="SADIQ Hussain" piste="" poule="4" sequence="38" />
+        <fencer affiliation="ALDERSHOT" name="SALE Joseph" piste="" poule="8" sequence="39" />
+        <fencer affiliation="CRAWLEY" name="SMITH Oliver" piste="" poule="7" sequence="40" />
+        <fencer affiliation="ST BENEDICT" name="STANDEN David" piste="" poule="8" sequence="41" />
+        <fencer affiliation="STREATHAM" name="STUART Nick" piste="" poule="2" sequence="42" />
+        <fencer affiliation="CRAWLEY" name="TREDGER Dudley" piste="" poule="3" sequence="43" />
+        <fencer affiliation="CRAWLEY" name="TUCKER Mark" piste="" poule="4" sequence="44" />
+        <fencer affiliation="SUTTON COLDFIELD" name="TURNER Martin" piste="" poule="4" sequence="45" />
+        <fencer affiliation="ACADEMY" name="VAROTSIS Dimitri" piste="" poule="5" sequence="46" />
+        <fencer affiliation="CRAWLEY" name="WATTS John" piste="" poule="6" sequence="47" />
+        <fencer affiliation="ARMY" name="WEEDON Max" piste="" poule="8" sequence="48" />
+        <fencer affiliation="PORTSLADE" name="WHELAN Jim" piste="" poule="5" sequence="49" />
+        <fencer affiliation="NORTHAMPTON" name="WILLMOTT Paul" piste="" poule="4" sequence="50" />
+        <fencer affiliation="SALLE BOSTON" name="WOOD Adam" piste="" poule="2" sequence="51" />
+        <fencer affiliation="RADCLIFFE" name="WOOD Chris" piste="" poule="6" sequence="52" />
+        <fencer affiliation="GWENT SWORD" name="WOOD FISHER James" piste="" poule="1" sequence="53" />
+        <fencer affiliation="SOUTHSIDE" name="WOODS Colin" piste="" poule="7" sequence="54" />
+        <fencer affiliation="PORTSLADE" name="ZIENKIEWICZ Jan" piste="" poule="8" sequence="55" />
+      </fpp>
+    </lists>
+    <pools count="8" round="1">
+      <pool heure="" number="1" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="GWENT SWORD" hs="" id="1" ind="" name="WOOD FISHER James" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="" id="2" ind="" name="KNOTT David" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="RCP" hs="" id="3" ind="" name="HESLOP Adam" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="STREATHAM" hs="" id="4" ind="" name="LOWE David" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="126" hs="" id="5" ind="" name="HENDRIE Thomas" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="BATH" hs="" id="6" ind="" name="MCKAY David" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SOLENT SWORDS" hs="" id="7" ind="" name="RACKETT Simon" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="" number="2" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="TENTERDEN" hs="" id="1" ind="" name="PRYOR John" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="STREATHAM" hs="" id="2" ind="" name="STUART Nick" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="" id="3" ind="" name="GAL Jonathan" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="CARDIFF UNI" hs="" id="4" ind="" name="MCLEOD Andrew" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="PORTSLADE" hs="" id="5" ind="" name="FEENEY Cliff" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SALLE POISSON" hs="" id="6" ind="" name="FRUEN John" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SALLE BOSTON" hs="" id="7" ind="" name="WOOD Adam" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="" number="3" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="ACADEMY" hs="" id="1" ind="" name="SADIQ Aladdin" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="CARDIFF UNI" hs="" id="2" ind="" name="CROWTHER Gareth" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SOUTHAMPTON" hs="" id="3" ind="" name="LYONS AMOS Mark" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="CRAWLEY" hs="" id="4" ind="" name="TREDGER Dudley" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="RADCLIFFE" hs="" id="5" ind="" name="ROSE Darren" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ARMY" hs="" id="6" ind="" name="KOFITIA Dennis" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="WOKING" hs="" id="7" ind="" name="REYNOLDS Andy" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="" number="4" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="CRAWLEY" hs="" id="1" ind="" name="TUCKER Mark" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="" id="2" ind="" name="SADIQ Hussain" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="TENTERDEN" hs="" id="3" ind="" name="CAREY Dominic" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SUTTON COLDFIELD" hs="" id="4" ind="" name="TURNER Martin" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="NORTHAMPTON" hs="" id="5" ind="" name="WILLMOTT Paul" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SALLE D'ARTISTES" hs="" id="6" ind="" name="APCAR Sarkis" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SALLE PAUL" hs="" id="7" ind="" name="KWAN Aaron" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="" number="5" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="STAR SWORD" hs="" id="1" ind="" name="MARTIN Thomas" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="PORTSLADE" hs="" id="2" ind="" name="WHELAN Jim" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SAILSBURY" hs="" id="3" ind="" name="ROUTLEDGE John" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="STREATHAM" hs="" id="4" ind="" name="ARMSTRONG Neil" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="126" hs="" id="5" ind="" name="HENDRIE George" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ALDERSHOT" hs="" id="6" ind="" name="LEE Toby" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="" id="7" ind="" name="VAROTSIS Dimitri" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="" number="6" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="ACADEMY" hs="" id="1" ind="" name="MACCIAROLA Alessandro" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SMT" hs="" id="2" ind="" name="DARROUX Steven" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ESCRIME" hs="" id="3" ind="" name="BIGGS Richard" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="RADCLIFFE" hs="" id="4" ind="" name="WOOD Chris" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="STAR SWORD" hs="" id="5" ind="" name="POWELL Chris" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="CRAWLEY" hs="" id="6" ind="" name="WATTS John" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SALLE BOSTON" hs="" id="7" ind="" name="MOON Sam" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="" number="7" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="LANDSDOWNE" hs="" id="1" ind="" name="BELL Nick" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="" id="2" ind="" name="KWOK Kelvin" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SALLE PAUL" hs="" id="3" ind="" name="CONYARD Anthony" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="ESCRIME" hs="" id="4" ind="" name="DAVIS Adrian" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="CRAWLEY" hs="" id="5" ind="" name="SMITH Oliver" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SOUTHSIDE" hs="" id="6" ind="" name="WOODS Colin" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+          <fencer affiliation="SOLENT SWORDS" hs="" id="7" ind="" name="JURY Joe" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="" number="8" piste="" size="6">
+        <fencers count="6">
+          <fencer affiliation="ARMY" hs="" id="1" ind="" name="WEEDON Max" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+          </fencer>
+          <fencer affiliation="ESCRIME" hs="" id="2" ind="" name="MCQUEEN Ian" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+          </fencer>
+          <fencer affiliation="CRAWLEY" hs="" id="3" ind="" name="CHEN Aaron" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+          </fencer>
+          <fencer affiliation="ALDERSHOT" hs="" id="4" ind="" name="SALE Joseph" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+          </fencer>
+          <fencer affiliation="ST BENEDICT" hs="" id="5" ind="" name="STANDEN David" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+          </fencer>
+          <fencer affiliation="PORTSLADE" hs="" id="6" ind="" name="ZIENKIEWICZ Jan" pl="" vm="">
+            <result id="1" score="" />
+            <result id="2" score="" />
+            <result id="3" score="" />
+            <result id="4" score="" />
+            <result id="5" score="" />
+            <result id="6" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+    </pools>
+  </competition>
+  <competition id="3" titre_ligne="Example Competition Stage 3">
+    <lists>
+      <ranking count="55" round="1">
+        <fencer affiliation="LANDSDOWNE" elimround="p" name="BELL N" position="1" sequence="1" />
+        <fencer affiliation="SAILSBURY" elimround="p" name="ROUTLEDGE J" position="2" sequence="2" />
+        <fencer affiliation="126" elimround="p" name="HENDRIE T" position="3" sequence="3" />
+        <fencer affiliation="CRAWLEY" elimround="p" name="TREDGER D" position="4" sequence="4" />
+        <fencer affiliation="SALLE BOSTON" elimround="p" name="WOOD A" position="4" sequence="5" />
+        <fencer affiliation="STAR SWORD" elimround="p" name="POWELL C" position="6" sequence="6" />
+        <fencer affiliation="ALDERSHOT" elimround="p" name="SALE J" position="7" sequence="7" />
+        <fencer affiliation="SUTTON COLDFIELD" elimround="p" name="TURNER M" position="8" sequence="8" />
+        <fencer affiliation="SALLE PAUL" elimround="p" name="KWAN A" position="9" sequence="9" />
+        <fencer affiliation="SOUTHAMPTON" elimround="p" name="LYONS AMOS M" position="10" sequence="10" />
+        <fencer affiliation="GWENT SWORD" elimround="p" name="WOOD FISHER J" position="11" sequence="11" />
+        <fencer affiliation="SMT" elimround="p" name="DARROUX S" position="12" sequence="12" />
+        <fencer affiliation="CARDIFF UNI" elimround="p" name="MCLEOD A" position="13" sequence="13" />
+        <fencer affiliation="SALLE PAUL" elimround="p" name="CONYARD A" position="14" sequence="14" />
+        <fencer affiliation="ARMY" elimround="p" name="WEEDON M" position="15" sequence="15" />
+        <fencer affiliation="ESCRIME" elimround="p" name="DAVIS A" position="16" sequence="16" />
+        <fencer affiliation="ACADEMY" elimround="p" name="SADIQ H" position="17" sequence="17" />
+        <fencer affiliation="WOKING" elimround="p" name="REYNOLDS A" position="18" sequence="18" />
+        <fencer affiliation="STAR SWORD" elimround="p" name="MARTIN T" position="19" sequence="19" />
+        <fencer affiliation="NORTHAMPTON" elimround="p" name="WILLMOTT P" position="20" sequence="20" />
+        <fencer affiliation="SALLE BOSTON" elimround="p" name="MOON S" position="21" sequence="21" />
+        <fencer affiliation="PORTSLADE" elimround="p" name="ZIENKIEWICZ J" position="22" sequence="22" />
+        <fencer affiliation="SALLE POISSON" elimround="p" name="FRUEN J" position="23" sequence="23" />
+        <fencer affiliation="ESCRIME" elimround="p" name="BIGGS R" position="24" sequence="24" />
+        <fencer affiliation="TENTERDEN" elimround="p" name="PRYOR J" position="25" sequence="25" />
+        <fencer affiliation="126" elimround="p" name="HENDRIE G" position="26" sequence="26" />
+        <fencer affiliation="RADCLIFFE" elimround="p" name="ROSE D" position="27" sequence="27" />
+        <fencer affiliation="RCP" elimround="p" name="HESLOP A" position="28" sequence="28" />
+        <fencer affiliation="ALDERSHOT" elimround="p" name="LEE T" position="29" sequence="29" />
+        <fencer affiliation="PORTSLADE" elimround="p" name="WHELAN J" position="30" sequence="30" />
+        <fencer affiliation="ST BENEDICT" elimround="p" name="STANDEN D" position="31" sequence="31" />
+        <fencer affiliation="ACADEMY" elimround="p" name="MACCIAROLA A" position="32" sequence="32" />
+        <fencer affiliation="SOUTHSIDE" elimround="p" name="WOODS C" position="33" sequence="33" />
+        <fencer affiliation="SOLENT SWORDS" elimround="p" name="JURY J" position="34" sequence="34" />
+        <fencer affiliation="STREATHAM" elimround="p" name="LOWE D" position="35" sequence="35" />
+        <fencer affiliation="SOLENT SWORDS" elimround="p" name="RACKETT S" position="36" sequence="36" />
+        <fencer affiliation="ACADEMY" elimround="p" name="VAROTSIS D" position="37" sequence="37" />
+        <fencer affiliation="CRAWLEY" elimround="p" name="TUCKER M" position="38" sequence="38" />
+        <fencer affiliation="ACADEMY" elimround="p" name="GAL J" position="38" sequence="39" />
+        <fencer affiliation="BATH" elimround="p" name="MCKAY D" position="40" sequence="40" />
+        <fencer affiliation="STREATHAM" elimround="p" name="STUART N" position="41" sequence="41" />
+        <fencer affiliation="CRAWLEY" elimround="p" name="SMITH O" position="42" sequence="42" />
+        <fencer affiliation="CRAWLEY" elimround="p" name="CHEN A" position="43" sequence="43" />
+        <fencer affiliation="ACADEMY" elimround="p" name="SADIQ A" position="44" sequence="44" />
+        <fencer affiliation="ACADEMY" elimround="p" name="KNOTT D" position="45" sequence="45" />
+        <fencer affiliation="RADCLIFFE" elimround="p" name="WOOD C" position="46" sequence="46" />
+        <fencer affiliation="TENTERDEN" elimround="p" name="CAREY D" position="47" sequence="47" />
+        <fencer affiliation="CARDIFF UNI" elimround="p" name="CROWTHER G" position="48" sequence="48" />
+        <fencer affiliation="ARMY" elimround="p" name="KOFITIA D" position="49" sequence="49" />
+        <fencer affiliation="ESCRIME" elimround="p" name="MCQUEEN I" position="50" sequence="50" />
+        <fencer affiliation="PORTSLADE" elimround="p" name="FEENEY C" position="51" sequence="51" />
+        <fencer affiliation="CRAWLEY" elimround="p" name="WATTS I" position="52" sequence="52" />
+        <fencer affiliation="ACADEMY" elimround="p" name="KWOK K" position="53" sequence="53" />
+        <fencer affiliation="SALLE D'ARTISTES" elimround="p" name="APCAR S" position="54" sequence="54" />
+        <fencer affiliation="STREATHAM" elimround="p" name="ARMSTRONG N" position="55" sequence="55" />
+      </ranking>
+    </lists>
+    <pools count="8" round="1">
+      <pool heure="0:00" number="1" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="GWENT SWORD" hs="25" id="1" ind="11" name="WOOD FISHER James" pl="2" vm="5/6">
+            <result id="1" score="" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="V" />
+            <result id="5" score="0" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="18" id="2" ind="-10" name="KNOTT David" pl="7" vm="1/6">
+            <result id="1" score="2" />
+            <result id="2" score="" />
+            <result id="3" score="4" />
+            <result id="4" score="V" />
+            <result id="5" score="2" />
+            <result id="6" score="4" />
+            <result id="7" score="1" />
+          </fencer>
+          <fencer affiliation="RCP" hs="23" id="3" ind="0" name="HESLOP Adam" pl="3" vm="3/6">
+            <result id="1" score="2" />
+            <result id="2" score="V" />
+            <result id="3" score="" />
+            <result id="4" score="4" />
+            <result id="5" score="2" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="STREATHAM" hs="19" id="4" ind="-7" name="LOWE David" pl="4" vm="2/6">
+            <result id="1" score="2" />
+            <result id="2" score="3" />
+            <result id="3" score="V" />
+            <result id="4" score="" />
+            <result id="5" score="1" />
+            <result id="6" score="3" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="126" hs="30" id="5" ind="22" name="HENDRIE Thomas" pl="1" vm="6/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="V" />
+            <result id="5" score="" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="BATH" hs="18" id="6" ind="-9" name="MCKAY David" pl="6" vm="2/6">
+            <result id="1" score="1" />
+            <result id="2" score="V" />
+            <result id="3" score="3" />
+            <result id="4" score="V4" />
+            <result id="5" score="2" />
+            <result id="6" score="" />
+            <result id="7" score="3" />
+          </fencer>
+          <fencer affiliation="SOLENT SWORDS" hs="17" id="7" ind="-7" name="RACKETT Simon" pl="5" vm="2/6">
+            <result id="1" score="2" />
+            <result id="2" score="V" />
+            <result id="3" score="1" />
+            <result id="4" score="3" />
+            <result id="5" score="1" />
+            <result id="6" score="V" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="0:00" number="2" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="TENTERDEN" hs="22" id="1" ind="2" name="PRYOR John" pl="4" vm="3/6">
+            <result id="1" score="" />
+            <result id="2" score="V4" />
+            <result id="3" score="V" />
+            <result id="4" score="2" />
+            <result id="5" score="V" />
+            <result id="6" score="3" />
+            <result id="7" score="3" />
+          </fencer>
+          <fencer affiliation="STREATHAM" hs="15" id="2" ind="-10" name="STUART Nick" pl="6" vm="2/6">
+            <result id="1" score="2" />
+            <result id="2" score="" />
+            <result id="3" score="2" />
+            <result id="4" score="1" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="0" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="16" id="3" ind="-8" name="GAL Jonathan" pl="5" vm="2/6">
+            <result id="1" score="1" />
+            <result id="2" score="V" />
+            <result id="3" score="" />
+            <result id="4" score="3" />
+            <result id="5" score="V" />
+            <result id="6" score="0" />
+            <result id="7" score="2" />
+          </fencer>
+          <fencer affiliation="CARDIFF UNI" hs="26" id="4" ind="10" name="MCLEOD Andrew" pl="2" vm="5/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="1" />
+          </fencer>
+          <fencer affiliation="PORTSLADE" hs="9" id="5" ind="-21" name="FEENEY Cliff" pl="7" vm="0/6">
+            <result id="1" score="3" />
+            <result id="2" score="2" />
+            <result id="3" score="2" />
+            <result id="4" score="2" />
+            <result id="5" score="" />
+            <result id="6" score="0" />
+            <result id="7" score="0" />
+          </fencer>
+          <fencer affiliation="SALLE POISSON" hs="24" id="6" ind="6" name="FRUEN John" pl="3" vm="3/6">
+            <result id="1" score="V4" />
+            <result id="2" score="4" />
+            <result id="3" score="V" />
+            <result id="4" score="3" />
+            <result id="5" score="V" />
+            <result id="6" score="" />
+            <result id="7" score="3" />
+          </fencer>
+          <fencer affiliation="SALLE BOSTON" hs="30" id="7" ind="21" name="WOOD Adam" pl="1" vm="6/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="V" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="0:00" number="3" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="ACADEMY" hs="18" id="1" ind="-9" name="SADIQ Aladdin" pl="5" vm="1/6">
+            <result id="1" score="" />
+            <result id="2" score="V" />
+            <result id="3" score="1" />
+            <result id="4" score="2" />
+            <result id="5" score="3" />
+            <result id="6" score="3" />
+            <result id="7" score="4" />
+          </fencer>
+          <fencer affiliation="CARDIFF UNI" hs="10" id="2" ind="-16" name="CROWTHER Gareth" pl="6" vm="1/6">
+            <result id="1" score="2" />
+            <result id="2" score="" />
+            <result id="3" score="2" />
+            <result id="4" score="1" />
+            <result id="5" score="1" />
+            <result id="6" score="V4" />
+            <result id="7" score="0" />
+          </fencer>
+          <fencer affiliation="SOUTHAMPTON" hs="26" id="3" ind="12" name="LYONS AMOS Mark" pl="2" vm="5/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="" />
+            <result id="4" score="1" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="CRAWLEY" hs="30" id="4" ind="21" name="TREDGER Dudley" pl="1" vm="6/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="RADCLIFFE" hs="22" id="5" ind="1" name="ROSE Darren" pl="4" vm="3/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="2" />
+            <result id="4" score="1" />
+            <result id="5" score="" />
+            <result id="6" score="V" />
+            <result id="7" score="4" />
+          </fencer>
+          <fencer affiliation="ARMY" hs="10" id="6" ind="-17" name="KOFITIA Dennis" pl="7" vm="1/6">
+            <result id="1" score="V" />
+            <result id="2" score="1" />
+            <result id="3" score="1" />
+            <result id="4" score="1" />
+            <result id="5" score="2" />
+            <result id="6" score="" />
+            <result id="7" score="0" />
+          </fencer>
+          <fencer affiliation="WOKING" hs="26" id="7" ind="8" name="REYNOLDS Andy" pl="3" vm="4/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="3" />
+            <result id="4" score="3" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="0:00" number="4" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="CRAWLEY" hs="16" id="1" ind="-8" name="TUCKER Mark" pl="5" vm="2/6">
+            <result id="1" score="" />
+            <result id="2" score="0" />
+            <result id="3" score="V" />
+            <result id="4" score="1" />
+            <result id="5" score="3" />
+            <result id="6" score="V" />
+            <result id="7" score="2" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="24" id="2" ind="9" name="SADIQ Hussain" pl="3" vm="4/6">
+            <result id="1" score="V" />
+            <result id="2" score="" />
+            <result id="3" score="V" />
+            <result id="4" score="3" />
+            <result id="5" score="2" />
+            <result id="6" score="V" />
+            <result id="7" score="V4" />
+          </fencer>
+          <fencer affiliation="TENTERDEN" hs="11" id="3" ind="-15" name="CAREY Dominic" pl="6" vm="1/6">
+            <result id="1" score="3" />
+            <result id="2" score="1" />
+            <result id="3" score="" />
+            <result id="4" score="0" />
+            <result id="5" score="0" />
+            <result id="6" score="V" />
+            <result id="7" score="2" />
+          </fencer>
+          <fencer affiliation="SUTTON COLDFIELD" hs="28" id="4" ind="18" name="TURNER Martin" pl="1" vm="5/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="3" />
+          </fencer>
+          <fencer affiliation="NORTHAMPTON" hs="21" id="5" ind="5" name="WILLMOTT Paul" pl="4" vm="4/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="0" />
+            <result id="5" score="" />
+            <result id="6" score="V" />
+            <result id="7" score="1" />
+          </fencer>
+          <fencer affiliation="SALLE D'ARTISTES" hs="6" id="6" ind="-24" name="APCAR Sarkis" pl="7" vm="0/6">
+            <result id="1" score="1" />
+            <result id="2" score="1" />
+            <result id="3" score="1" />
+            <result id="4" score="1" />
+            <result id="5" score="1" />
+            <result id="6" score="" />
+            <result id="7" score="1" />
+          </fencer>
+          <fencer affiliation="SALLE PAUL" hs="28" id="7" ind="15" name="KWAN Aaron" pl="2" vm="5/6">
+            <result id="1" score="V" />
+            <result id="2" score="3" />
+            <result id="3" score="V" />
+            <result id="4" score="V" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="0:00" number="5" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="STAR SWORD" hs="23" id="1" ind="8" name="MARTIN Thomas" pl="2" vm="4/6">
+            <result id="1" score="" />
+            <result id="2" score="V" />
+            <result id="3" score="0" />
+            <result id="4" score="V" />
+            <result id="5" score="V" />
+            <result id="6" score="3" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="PORTSLADE" hs="20" id="2" ind="0" name="WHELAN Jim" pl="5" vm="3/6">
+            <result id="1" score="0" />
+            <result id="2" score="" />
+            <result id="3" score="1" />
+            <result id="4" score="V" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="4" />
+          </fencer>
+          <fencer affiliation="SAILSBURY" hs="27" id="3" ind="23" name="ROUTLEDGE John" pl="1" vm="6/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="" />
+            <result id="4" score="V" />
+            <result id="5" score="V2" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="STREATHAM" hs="4" id="4" ind="-25" name="ARMSTRONG Neil" pl="7" vm="0/6">
+            <result id="1" score="1" />
+            <result id="2" score="1" />
+            <result id="3" score="0" />
+            <result id="4" score="" />
+            <result id="5" score="0" />
+            <result id="6" score="1" />
+            <result id="7" score="1" />
+          </fencer>
+          <fencer affiliation="126" hs="19" id="5" ind="2" name="HENDRIE George" pl="3" vm="3/6">
+            <result id="1" score="1" />
+            <result id="2" score="2" />
+            <result id="3" score="1" />
+            <result id="4" score="V" />
+            <result id="5" score="" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="ALDERSHOT" hs="22" id="6" ind="0" name="LEE Toby" pl="4" vm="3/6">
+            <result id="1" score="V" />
+            <result id="2" score="2" />
+            <result id="3" score="2" />
+            <result id="4" score="V" />
+            <result id="5" score="3" />
+            <result id="6" score="" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="17" id="7" ind="-8" name="VAROTSIS Dimitri" pl="6" vm="2/6">
+            <result id="1" score="3" />
+            <result id="2" score="V" />
+            <result id="3" score="0" />
+            <result id="4" score="V4" />
+            <result id="5" score="2" />
+            <result id="6" score="3" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="0:00" number="6" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="ACADEMY" hs="18" id="1" ind="-2" name="MACCIAROLA Alessandro" pl="5" vm="2/6">
+            <result id="1" score="" />
+            <result id="2" score="1" />
+            <result id="3" score="2" />
+            <result id="4" score="V" />
+            <result id="5" score="2" />
+            <result id="6" score="V" />
+            <result id="7" score="3" />
+          </fencer>
+          <fencer affiliation="SMT" hs="24" id="2" ind="11" name="DARROUX Steven" pl="2" vm="5/6">
+            <result id="1" score="V" />
+            <result id="2" score="" />
+            <result id="3" score="V" />
+            <result id="4" score="V4" />
+            <result id="5" score="0" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="ESCRIME" hs="25" id="3" ind="4" name="BIGGS Richard" pl="4" vm="3/6">
+            <result id="1" score="V" />
+            <result id="2" score="2" />
+            <result id="3" score="" />
+            <result id="4" score="V" />
+            <result id="5" score="4" />
+            <result id="6" score="V" />
+            <result id="7" score="4" />
+          </fencer>
+          <fencer affiliation="RADCLIFFE" hs="13" id="4" ind="-13" name="WOOD Chris" pl="6" vm="1/6">
+            <result id="1" score="0" />
+            <result id="2" score="3" />
+            <result id="3" score="3" />
+            <result id="4" score="" />
+            <result id="5" score="0" />
+            <result id="6" score="V4" />
+            <result id="7" score="3" />
+          </fencer>
+          <fencer affiliation="STAR SWORD" hs="30" id="5" ind="20" name="POWELL Chris" pl="1" vm="6/6">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="V" />
+            <result id="5" score="" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="CRAWLEY" hs="8" id="6" ind="-21" name="WATTS Iain" pl="7" vm="0/6">
+            <result id="1" score="1" />
+            <result id="2" score="2" />
+            <result id="3" score="1" />
+            <result id="4" score="2" />
+            <result id="5" score="0" />
+            <result id="6" score="" />
+            <result id="7" score="2" />
+          </fencer>
+          <fencer affiliation="SALLE BOSTON" hs="23" id="7" ind="1" name="MOON Sam" pl="3" vm="4/6">
+            <result id="1" score="V4" />
+            <result id="2" score="0" />
+            <result id="3" score="V" />
+            <result id="4" score="V" />
+            <result id="5" score="4" />
+            <result id="6" score="V" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="0:00" number="7" piste="" size="7">
+        <fencers count="7">
+          <fencer affiliation="LANDSDOWNE" hs="30" id="1" ind="25" name="BELL Nick" pl="1" vm="6/6">
+            <result id="1" score="" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="V" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="ACADEMY" hs="7" id="2" ind="-23" name="KWOK Kelvin" pl="7" vm="0/6">
+            <result id="1" score="1" />
+            <result id="2" score="" />
+            <result id="3" score="1" />
+            <result id="4" score="0" />
+            <result id="5" score="4" />
+            <result id="6" score="0" />
+            <result id="7" score="1" />
+          </fencer>
+          <fencer affiliation="SALLE PAUL" hs="25" id="3" ind="9" name="CONYARD Anthony" pl="2" vm="5/6">
+            <result id="1" score="0" />
+            <result id="2" score="V" />
+            <result id="3" score="" />
+            <result id="4" score="V" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="ESCRIME" hs="26" id="4" ind="11" name="DAVIS Adrian" pl="3" vm="4/6">
+            <result id="1" score="2" />
+            <result id="2" score="V" />
+            <result id="3" score="4" />
+            <result id="4" score="" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="CRAWLEY" hs="13" id="5" ind="-13" name="SMITH Oliver" pl="6" vm="2/6">
+            <result id="1" score="1" />
+            <result id="2" score="V" />
+            <result id="3" score="1" />
+            <result id="4" score="1" />
+            <result id="5" score="" />
+            <result id="6" score="0" />
+            <result id="7" score="V" />
+          </fencer>
+          <fencer affiliation="SOUTHSIDE" hs="17" id="6" ind="-3" name="WOODS Colin" pl="4" vm="2/6">
+            <result id="1" score="1" />
+            <result id="2" score="V" />
+            <result id="3" score="3" />
+            <result id="4" score="2" />
+            <result id="5" score="V" />
+            <result id="6" score="" />
+            <result id="7" score="1" />
+          </fencer>
+          <fencer affiliation="SOLENT SWORDS" hs="16" id="7" ind="-6" name="JURY Joe" pl="5" vm="2/6">
+            <result id="1" score="0" />
+            <result id="2" score="V" />
+            <result id="3" score="2" />
+            <result id="4" score="2" />
+            <result id="5" score="2" />
+            <result id="6" score="V" />
+            <result id="7" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+      <pool heure="0:00" number="8" piste="" size="6">
+        <fencers count="6">
+          <fencer affiliation="ARMY" hs="22" id="1" ind="13" name="WEEDON Max" pl="2" vm="4/5">
+            <result id="1" score="" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="2" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+          </fencer>
+          <fencer affiliation="ESCRIME" hs="8" id="2" ind="-17" name="MCQUEEN Ian" pl="6" vm="0/5">
+            <result id="1" score="2" />
+            <result id="2" score="" />
+            <result id="3" score="1" />
+            <result id="4" score="2" />
+            <result id="5" score="1" />
+            <result id="6" score="2" />
+          </fencer>
+          <fencer affiliation="CRAWLEY" hs="15" id="3" ind="-6" name="CHEN Aaron" pl="5" vm="1/5">
+            <result id="1" score="0" />
+            <result id="2" score="V" />
+            <result id="3" score="" />
+            <result id="4" score="3" />
+            <result id="5" score="3" />
+            <result id="6" score="4" />
+          </fencer>
+          <fencer affiliation="ALDERSHOT" hs="25" id="4" ind="14" name="SALE Joseph" pl="1" vm="5/5">
+            <result id="1" score="V" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="" />
+            <result id="5" score="V" />
+            <result id="6" score="V" />
+          </fencer>
+          <fencer affiliation="ST BENEDICT" hs="19" id="5" ind="0" name="STANDEN David" pl="4" vm="2/5">
+            <result id="1" score="2" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="3" />
+            <result id="5" score="" />
+            <result id="6" score="4" />
+          </fencer>
+          <fencer affiliation="PORTSLADE" hs="16" id="6" ind="-4" name="ZIENKIEWICZ Jan" pl="3" vm="3/5">
+            <result id="1" score="0" />
+            <result id="2" score="V" />
+            <result id="3" score="V" />
+            <result id="4" score="1" />
+            <result id="5" score="V" />
+            <result id="6" score="" />
+          </fencer>
+        </fencers>
+      </pool>
+    </pools>
+  </competition>
+  <competition id="4" titre_ligne="Example Competition Stage 4" />
+  <competition id="5" titre_ligne="Example Competition Stage 5" />
+</opt>

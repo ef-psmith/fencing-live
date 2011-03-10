@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+
+<config>
+	<targetlocation>./output</targetlocation>
+	<debug>0</debug>
+	
+	<competition id="1">
+		<enabled>true</enabled>
+		<background>red</background>
+		<source>../DATA/examples/Stage 1</source>
+		<nif>1</nif>
+	</competition>
+	
+	<competition id="2">
+		<enabled>true</enabled>
+		<background>yellow</background>
+		<source>../DATA/examples/Stage 2</source>
+		<nif>0</nif>
+	</competition>
+	
+	<competition id="3">
+		<enabled>true</enabled>
+		<background>blue</background>
+		<source>../DATA/examples/Stage 3</source>
+		<nif>1</nif>
+	</competition>
+	
+	<competition id="4">
+		<enabled>true</enabled>
+		<background>green</background>
+		<source>../DATA/examples/Stage 4</source>
+		<nif>1</nif>
+	</competition>
+	
+	<competition id="5">
+		<enabled>true</enabled>
+		<background>black</background>
+		<source>../DATA/examples/Stage 5</source>
+		<nif>1</nif>
+	</competition>
+	
+	<competition id="6">
+		<enabled>true</enabled>
+		<background>blue</background>
+		<source>../DATA/examples/Stage 6</source>
+		<nif>1</nif>
+	</competition>
+	
+	<series id="1">
+		<enabled>true</enabled>
+		<competition>1</competition>
+		<competition>2</competition>
+		<competition>3</competition>
+		<competition>4</competition>
+		<competition>5</competition>
+		<competition>6</competition>
+	</series>
+
+	<series id="2">
+		<enabled>false</enabled>
+		<competition>2</competition>
+		<competition>3</competition>
+	</series>
+</config>

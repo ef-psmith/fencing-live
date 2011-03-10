@@ -3,12 +3,8 @@
 
 <opt>
 
-<series id="series1">
-<comp>1</comp>
-<comp>2</comp>
-</series>
-  <competition id="1" titre_ligne="Example Competition Stage 1" />
-  <competition id="2" titre_ligne="Example Competition Stage 2">
+  <competition id="1" titre_ligne="Example Competition Stage 1" colour="pink"/>
+  <competition id="2" titre_ligne="Example Competition Stage 2" colour="orange">
     <lists>
       <fpp count="55">
         <fencer affiliation="SALLE D'ARTISTES" name="APCAR Sarkis" piste="" poule="4" sequence="1" />
@@ -592,7 +588,7 @@
       </pool>
     </pools>
   </competition>
-  <competition id="3" titre_ligne="Example Competition Stage 3">
+  <competition id="3" titre_ligne="Example Competition Stage 3" colour="green">
     <lists>
       <fpp count="0">
       </fpp>

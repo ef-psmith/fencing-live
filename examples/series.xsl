@@ -33,8 +33,10 @@ method="xml" />
 			
 	<!-- Now the list contents -->
 		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
-			<div class="vlist_body">
+			<div>
 				<xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
+				<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
+				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
 				<table class="vlist_table">
 					<xsl:apply-templates select="." mode="fppfencer" />
 					<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="fppfencer" >
@@ -93,7 +95,7 @@ method="xml" />
 
 
 <xsl:template match="pools">
-<topdiv class="pools" id="pools" name="topdiv">
+<topdiv class="poule" id="pools" name="topdiv">
 <pages>
 	<xsl:for-each select="pool[@number mod $poolsperpage = 1]">
 		<xsl:sort select="@number" />
@@ -108,8 +110,10 @@ method="xml" />
 
 
 <xsl:template match="pool" mode="pool">
-		<div class="pools">
+		<div class="poule">
 			<xsl:attribute name="id">P<xsl:value-of select="(@number - 1) div $poolsperpage" /></xsl:attribute>
+			<xsl:if test="@number != 1"><xsl:attribute name="class">poule hidden</xsl:attribute></xsl:if>
+			<xsl:if test="@number  = 1"><xsl:attribute name="class">poule visible</xsl:attribute></xsl:if>
 			<xsl:apply-templates select="." mode="render" />
 			<xsl:apply-templates select="../pool[./@number &lt; (current()/@number + $poolsperpage) and ./@number &gt; current()/@number ]" mode="render" >
 				<xsl:sort select="@number" data-type="number" />

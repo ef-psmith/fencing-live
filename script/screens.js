@@ -147,28 +147,48 @@ function pageload() {
          }
          var serieses = xmldoc.getElementsByTagName('series');
          var comp_id = null;
-         for (var s = 0; s < serieses.length; ++s) {
-            var series = serieses[s];
-            if (series_id = series.getAttribute('id')) {
-               // We have found the series we want.
 
-               var seriescomps = series.getElementsByTagName('comp');
-               // Default the competition we want to the first one
-               if (0 < seriescomps.length) {
-                  comp_id = seriescomps[0].textContent;
-               }
+         // If we got some series then use them, otherwise we just display all the competitions
+         if (0 < serieses.length) {
+            for (var s = 0; s < serieses.length; ++s) {
+               var series = serieses[s];
+               if (series_id = series.getAttribute('id')) {
+                  // We have found the series we want.
 
-               // Go looking for the competition we have. 
-               // (we don't care about the last one as we will use the default first one in that case)
-               for (var c = 0; c < seriescomps.length - 1; ++c) {
-                  if (seriescomps[c].textContent == this.currentpage) {
-                     // We want the next one, this is safe as we don't iterate over the last member of the list
-                     comp_id = seriescomps[c + 1].textContent;
-                     break;
+                  var seriescomps = series.getElementsByTagName('comp');
+                  // Default the competition we want to the first one
+                  if (0 < seriescomps.length) {
+                     comp_id = seriescomps[0].textContent;
+                  }
+
+                  // Go looking for the competition we have. 
+                  // (we don't care about the last one as we will use the default first one in that case)
+                  for (var c = 0; c < seriescomps.length - 1; ++c) {
+                     if (seriescomps[c].textContent == this.currentpage) {
+                        // We want the next one, this is safe as we don't iterate over the last member of the list
+                        comp_id = seriescomps[c + 1].textContent;
+                        break;
+                     }
                   }
                }
-
             }
+         } else {
+            var allcomps = xmldoc.getElementsByTagName('competition');
+
+            // default to the first one
+            if (0 < allcomps.length) {
+               comp_id = allcomps[0].getAttribute('id');
+            }
+
+            // Go looking for our competition
+            for (var c = 0; c < allcomps.length - 1; ++c) {
+               if (allcomps[c].getAttribute('id') == this.currentpage) {
+                  // We want the next one, this is safe as we don't iterate over the last member of the list
+                  comp_id = allcomps[c + 1].getAttribute('id');
+                  break;
+               }
+            }
+
          }
 
          // If we haven't a compid then return.  Or if we haven't changed since last time.
@@ -188,9 +208,12 @@ function pageload() {
             if (comp_id == comp.getAttribute('id')) {
                // We have changed page.
                this.currentpage = comp_id;
-               
-               // This is our page and the time has changed so reset the time.
-               //lastrefresh = xmldoc.getAttribute('time');
+
+               // Background colours
+               var borders = document.getElementsByName('border');
+               for (var b = 0; b < borders.length; ++b) {
+                  borders[b].style.backgroundColor = comp.getAttribute('colour');
+               }
 
                // Kill all the div timers
                for (var s in this.scrollers) {
@@ -201,9 +224,9 @@ function pageload() {
 
                // Since we are repainting the page we want to get rid of all the divs below the body.
                var topdivs = document.getElementsByName('topdiv');
-               for (var q = 0; q < topdivs.length; ++q) {
+               while (0 < topdivs.length) {
                   // Remove the top divs
-                  document.body.removeChild(topdivs[q]);
+                  document.body.removeChild(topdivs[0]);
                }
 
                // Now get the new div definitions
@@ -215,14 +238,15 @@ function pageload() {
 
                      var myElement = document.createElement('div');
 
-                     myElement.className = divelem.getAttribute("class");
-                     myElement.id = divelem.getAttribute("id");
-                     myElement.setAttribute('name', 'topdiv');
-
                      // Add the new scroller, this will fill in the div
                      var newscroller = new scroller(myElement, this);
                      newscroller.load(divelem, true);
                      this.scrollers.push(newscroller);
+
+                     // Set various attributes here so they don't get overwritten by the xml load.
+                     myElement.className = divelem.getAttribute("class");
+                     myElement.id = divelem.getAttribute("id");
+                     myElement.setAttribute('name', 'topdiv');
 
                      document.body.appendChild(myElement);
                   }
@@ -243,6 +267,7 @@ function pageload() {
                   myElement.innerHTML = "<h1>" + comp.getAttribute('titre_ligne') + "</h1>";
 
                   document.body.appendChild(myElement);
+                  break;
                }
             }
          }

@@ -24,32 +24,6 @@ function scroller(div, pageloader) {
    // Save the pageloader
    this.pageloader = pageloader;
 
-   // Find the Div
-   this.reload = function(xmldoc, force) {
-      var pages = xmldoc.getElementsByTagName('series');
-      // Look for our page and check the time as well.
-      for (var p = 0; p < pages.length; ++p) {
-
-         var page = pages[p];
-         if (page_id == page.getAttribute('id')) {
-
-            // Now get the new div definitions
-            var newdivs = pages[p].getElementsByTagName('topdiv');
-
-            for (var d = 0; d < newdivs.length; ++d) {
-               var xmlelem = newdivs[d];
-               if (this.myElement.id = xmlelem.getAttribute("id")) {
-                  this.load(xmlelem, force);
-               }
-            }
-         }
-      }
-      if (this.running) {
-         // Restart the timer
-         this.timer = setTimeout(this.onTimer(), scrolldelay);
-      }
-   };
-   this.fetch = makeRequest;
    this.stop =
       function() {
          // Does nothing if we aren't running
@@ -117,7 +91,6 @@ function scroller(div, pageloader) {
          translateElement(xmlelem.getElementsByTagName('content')[0], this.myElement);
       }
    };
-
 
    this.movetopage = function(index) {
       // Hide the old page
@@ -226,7 +199,7 @@ function pageload() {
                }
 
                // Kill all the div timers
-               for (var s in this.scrollers) {
+               for (var s = 0; s < this.scrollers.length;  ++s) {
                   this.scrollers[s].stop();
                }
                // clear the array

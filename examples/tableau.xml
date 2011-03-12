@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="tableau.xsl"?>
+
+<opt>
+  <competition id="3" titre_ligne="Example Competition Stage 3">
+    <tableau name="Tableau of 64" number="1">
+		<match heure="11:30" number="1" piste="2" score="12/15">
+			<fencerA name="FENCER A" affiliation="GBR" seed="1" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="128" />
+		</match>
+		<match heure="0:00" number="2" piste="3" score="12/14" winner="FENCER A">
+			<fencerA name="FENCER A" affiliation="GBR" seed="2" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="127" />
+		</match>
+		<match heure="0:00" number="3" piste="4" score="12/13" winner="FENCER A">
+			<fencerA name="FENCER A" affiliation="GBR" seed="3" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="126" />
+		</match>
+		<match heure="0:00" number="4" piste="5" score="12/12" winner="FENCER A">
+			<fencerA name="FENCER A" affiliation="GBR" seed="4" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="125" />
+		</match>
+		<match heure="0:00" number="5" piste="6" score="12/11" winner="FENCER A">
+			<fencerA name="FENCER A" affiliation="GBR" seed="5" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="124" />
+		</match>
+		<match heure="0:00" number="6" piste="7" score="12/10" winner="FENCER A">
+			<fencerA name="FENCER A" affiliation="GBR" seed="6" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="123" />
+		</match>
+		<match heure="0:00" number="7" piste="12" score="12/9" winner="FENCER A">
+			<fencerA name="FENCER A" affiliation="GBR" seed="7" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="122" />
+		</match>
+		<match heure="0:00" number="8" piste="15" score="12/8" winner="FENCER A">
+			<fencerA name="FENCER A" affiliation="GBR" seed="8" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="121" />
+		</match>
+		<match heure="0:00" number="9" piste="21" score="12/7" winner="FENCER A">
+			<fencerA name="FENCER A" affiliation="GBR" seed="9" />
+			<fencerB name="FENCER B" affiliation="UKR" seed="120" />
+		</match>
+    </tableau>
+  </competition>
+</opt>

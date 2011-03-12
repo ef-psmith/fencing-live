@@ -27,9 +27,9 @@ function scroller(div, pageloader) {
    this.stop =
       function() {
          // Does nothing if we aren't running
-         if (running) {
+         if (this.running) {
             clearInterval(this.timer);
-            running = false;
+            this.running = false;
             this.timer = null;
          }
       };
@@ -57,8 +57,8 @@ function scroller(div, pageloader) {
                }
             }, scrolldelay);
 
-            // WE are running
-            running = true;
+            // We are running
+            this.running = true;
          }
       };
    // Initially we aren't running

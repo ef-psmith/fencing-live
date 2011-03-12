@@ -103,28 +103,27 @@ method="xml" />
 	</xsl:for-each>
 </pages>
 <content>
-	<xsl:apply-templates select="pool[@number mod $poolsperpage = 1]" mode="pool" />
-</content>
-</topdiv>
-</xsl:template>
-
-
-<xsl:template match="pool" mode="pool">
-		<div class="poule">
+<h1><xsl:value-of select="../@titre_ligne" /> &#x2014; <xsl:value-of select="count(pool)" /> Poules</h1>
+	<xsl:for-each select="pool[@number mod $poolsperpage = 1]" >
+		<div class="poulediv">
 			<xsl:attribute name="id">P<xsl:value-of select="(@number - 1) div $poolsperpage" /></xsl:attribute>
-			<xsl:if test="@number != 1"><xsl:attribute name="class">poule hidden</xsl:attribute></xsl:if>
-			<xsl:if test="@number  = 1"><xsl:attribute name="class">poule visible</xsl:attribute></xsl:if>
+			<xsl:if test="@number != 1"><xsl:attribute name="class">poulediv hidden</xsl:attribute></xsl:if>
+			<xsl:if test="@number  = 1"><xsl:attribute name="class">poulediv visible</xsl:attribute></xsl:if>
+			<!--<h2>Poules <xsl:value-of select="@number" /> <xsl:if test="../pool[./@number = current()/@number + 1]">&#160;and <xsl:value-of select="@number + 1" /></xsl:if></h2>-->
 			<xsl:apply-templates select="." mode="render" />
 			<xsl:apply-templates select="../pool[./@number &lt; (current()/@number + $poolsperpage) and ./@number &gt; current()/@number ]" mode="render" >
 				<xsl:sort select="@number" data-type="number" />
 			</xsl:apply-templates>
 		</div>
+	</xsl:for-each>
+</content>
+</topdiv>
 </xsl:template>
 
 <xsl:template match="pool" mode="render">
 	<h2>Pool <xsl:value-of select="@number" /></h2>
 	
-	<table	class="poule">
+	<table	class="pouletable">
 		<tr>
 			<th class="poule-title-name">name</th>
 			<th class="poule-title-club">club</th>

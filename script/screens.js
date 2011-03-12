@@ -59,28 +59,34 @@ function scroller(div, pageloader) {
             this.timer = null;
          }
       };
-   this.start = function() {
-      // does nothing if we are already running
-      if (!this.running) {
-         this.finished = false;
-         var scroller = this;
-         this.timer = setInterval(function() {
-            scroller.pageindex += 1;
-            if (scroller.pageindex < scroller.pages.length) {
-               scroller.movetopage(scroller.pageindex);
-            }
-            else {
-               // clear the timer so that the fetch drives the timing
-               clearTimeout(scroller.timer);
-               scroller.finished = true;
-               scroller.pageloader.scrollerfinished();
-            }
-         }, scrolldelay);
+      this.start = function() {
+         // does nothing if we are already running
+         if (!this.running) {
+            this.finished = false;
+            var scroller = this;
+            this.timer = setInterval(function() {
+               scroller.pageindex += 1;
+               if (scroller.pageindex < scroller.pages.length) {
+                  scroller.movetopage(scroller.pageindex);
+               }
+               else {
+                  // Mark that we are finished
+                  scroller.finished = true;
+                  // Tell the page we are finished.  If there is still one going then go back to the first page
+                  if (!scroller.pageloader.scrollerfinished()) {
 
-         // WE are running
-         running = true;
-      }
-   };
+                     scroller.pageindex = 0;
+                     if (scroller.pageindex < scroller.pages.length) {
+                        scroller.movetopage(scroller.pageindex);
+                     }
+                  }
+               }
+            }, scrolldelay);
+
+            // WE are running
+            running = true;
+         }
+      };
    // Initially we aren't running
    this.running = false;
 
@@ -118,6 +124,10 @@ function scroller(div, pageloader) {
       var currdiv = null;
       if (index > 0) {
          currdiv = document.getElementById(this.pages[index - 1]);
+      }
+      else if (0 < this.pages.length) {
+         // Setting the first one, so make the last one hidden as we might be looping again while waiting for another scroller
+         currdiv = document.getElementById(this.pages[this.pages.length - 1]);
       }
       // Make the specified one visible
       var newdiv = document.getElementById(this.pages[index]);
@@ -284,7 +294,7 @@ function pageload() {
 
    this.scrollerfinished = function() {
       var allfinished = true;
-      for (var s in this.scrollers) {
+      for (var s = 0; s < this.scrollers.length; ++s) {
          if (!this.scrollers[s].finished) {
             allfinished = false;
          }
@@ -292,6 +302,8 @@ function pageload() {
       if (allfinished) {
          this.fetch();
       }
+
+      return allfinished;
    }
 }
 

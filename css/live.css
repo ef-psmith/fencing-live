@@ -8,13 +8,18 @@ div.hidden {
    display:none;
 }
 
+div.centreinfo 
+{
+   text-align:center;
+   margin-top: 30ex;
+}
+
 div.tableau { 
 	overflow: hidden; 
 	position: absolute; 
 	border-right: thin solid black; 
 	height:  90%; 
 	width: 	47%; 
-	top: 8%; 
 	left: 20px; 
 }
 
@@ -22,11 +27,15 @@ div.poule {
 	overflow: hidden; 
 	position: absolute; 
 	border-right: thin solid black; 
-	height:  90%; 
-	width: 	62%; 
-	top: 8%; 
-	left: 20px; 
+	height:  100%; 
+	width: 	70%;
+	margin: 20px 20px 20px 20px;
 }
+
+div.poulediv, div.tableaudiv { 
+	position: absolute; 
+	top: 8%; 
+} 
 
 div.vlist2
 {

@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:variable name="col1matches" select="number(8)"/>
+<xsl:variable name="col1size" select="number(8)"/>
 
 <xsl:template match="tableau">
 <html>
@@ -10,26 +10,28 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<link rel="stylesheet" href="../css/live.css" type="text/css" />
 </head>
 <body>
-<topdiv class="tableau hidden" id="tableau" name="topdiv">
+<topdiv class="tableau" id="tableau" name="topdiv">
 <pages>
-	<xsl:for-each select="match[@number mod $col1matches = 1]">
+	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
 		<xsl:sort select="@number" />
-		<page>T<xsl:value-of select="(@number - 1) div $col1matches" /></page>
+		<page>T<xsl:value-of select="(@number - 1) div $col1size" /></page>
 	</xsl:for-each>
 </pages>
 <content>
-	<xsl:for-each select="match[@number mod $col1matches = 1]">
+	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
 	<div class="tableau">
-		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1matches" /></xsl:attribute>
-		<xsl:if test="(@number -1) div $col1matches > 0"><xsl:attribute name="class">tableau hidden</xsl:attribute></xsl:if>
+		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
+		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableau hidden</xsl:attribute></xsl:if>
 		<div class="twocol1">
 			<!-- **************************** HALF **************************** -->
-			<div class="half">
-				<xsl:apply-templates select="." mode="half" />
-			</div>
-			<div class="half">
-				<xsl:apply-templates select="../match[current()/@number + 2]" mode="half" />
-			</div>
+			<xsl:apply-templates select="." mode="half" />
+			<xsl:apply-templates select="../match[./@number mod 2 = 1 and ./@number &gt; current()/@number and ./@number &lt; (current()/@number + $col1size)]" mode="half" />
+		</div>
+		<div class="twocol">
+			<xsl:apply-templates 
+				select="../../col2/match[./@number mod 2 = 1 and ./@number &lt; (current()/@number + ($col1size div 2)) and ./@number &gt; current()/@number]" 
+				mode="half" 
+			/>
 		</div>
 	</div>
 	</xsl:for-each>
@@ -41,16 +43,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:template match="match" mode="half">
+	<!-- outputs a pair of matches enclosed in a "half" div -->
+	<div class="half">
 		<xsl:apply-templates select="." mode="render" />
-		<xsl:apply-templates select="../match[current()/@number + 1]" mode="render" > 
-			<xsl:sort select="@number" data-type="number" />
-		</xsl:apply-templates>
-	
+		<xsl:apply-templates select="../match[current()/@number + 1]" mode="render" /> 
+	</div>
 </xsl:template>
 
 
 
 <xsl:template match="match" mode="render">
+	<!-- renders a match inside a "quarter" div -->
 	<!-- *************************** QUARTER **************************** -->
 	<div class="quarter">
 		<!-- ************ BOUT ************ -->

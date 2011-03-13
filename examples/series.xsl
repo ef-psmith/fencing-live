@@ -8,7 +8,7 @@ method="xml" />
 <!-- Global variables for controlling the display parameters -->
 <xsl:variable name="pagesize" select="number(20)" />
 <xsl:variable name="poolsperpage" select="number(2)"/>
-<xsl:variable name="col1matches" select="number(8)"/>
+<xsl:variable name="col1size" select="number(4)"/>
 
 
 <!-- **********************************************************************************
@@ -197,47 +197,63 @@ method="xml" />
 *************************************************************************************** -->
 
 <xsl:template match="tableau">
+<html>
+<head>
+	<link rel="stylesheet" href="../css/live.css" type="text/css" />
+</head>
+<body>
 <topdiv class="tableau" id="tableau" name="topdiv">
 <pages>
-	<xsl:for-each select="match[@number mod $col1matches = 1]">
+	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
 		<xsl:sort select="@number" />
-		<page>T<xsl:value-of select="(@number - 1) div $col1matches" /></page>
+		<page>T<xsl:value-of select="(@number - 1) div $col1size" /></page>
 	</xsl:for-each>
 </pages>
 <content>
-	<xsl:for-each select="match[@number mod $col1matches = 1]">
+	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
 	<div class="tableaudiv">
-		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1matches" /></xsl:attribute>
-		<xsl:if test="(@number -1) div $col1matches > 0"><xsl:attribute name="class">tableau hidden</xsl:attribute></xsl:if>
+		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
+		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
 		<div class="twocol1">
 			<!-- **************************** HALF **************************** -->
 			<div class="half">
-				<xsl:apply-templates select="." mode="half" />
+				<!-- *************************** QUARTER **************************** -->
+				<div class="quarter">
+					<xsl:apply-templates select="." mode="render" />
+				</div>
+	
+				<!-- *************************** QUARTER **************************** -->
+				<div class="quarter">
+					<xsl:apply-templates select="../match[current()/@number + 1]" mode="render" /> 
+				</div>
 			</div>
 			<div class="half">
-				<xsl:apply-templates select="../match[current()/@number + 2]" mode="half" />
+				<!-- *************************** QUARTER **************************** -->
+				<div class="quarter">
+					<xsl:apply-templates select="../match[./@number mod 2 = 1 and ./@number &gt; current()/@number and ./@number &lt; (current()/@number + $col1size)]" mode="render" />
+				</div>
+				<!-- *************************** QUARTER **************************** -->
+				<div class="quarter">
+					<xsl:apply-templates select="../match[./@number mod 2 = 0 and ./@number &gt; current()/@number and ./@number &lt; (current()/@number + $col1size)]"  mode="render" /> 
+				</div>
+			</div>
+		</div>
+		<div class="twocol">
+			<!-- the starting number for div 2 should be ((@number + 1) / 2) -->
+			<div class="half">
+				<xsl:apply-templates select="../../col2/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
+				<xsl:apply-templates select="../../col2/match[./@number mod 2 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
 			</div>
 		</div>
 	</div>
 	</xsl:for-each>
 </content>
 </topdiv>
+</body>
+</html>
 </xsl:template>
-
-
-<xsl:template match="match" mode="half">
-		<xsl:apply-templates select="." mode="render" />
-		<xsl:apply-templates select="../match[current()/@number + 1]" mode="render" > 
-			<xsl:sort select="@number" data-type="number" />
-		</xsl:apply-templates>
-	
-</xsl:template>
-
-
 
 <xsl:template match="match" mode="render">
-	<!-- *************************** QUARTER **************************** -->
-	<div class="quarter">
 		<!-- ************ BOUT ************ -->
 		<div id="container"><div id="position">
 			<div class="bout boutborder">
@@ -273,7 +289,6 @@ method="xml" />
 			</div> <!-- bout -->
 		</div></div>	 <!-- container -->
 		<!-- ************ END BOUT ************ -->
-	</div> <!-- quarter -->
 </xsl:template>
 
 </xsl:stylesheet>

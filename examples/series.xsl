@@ -205,7 +205,7 @@ method="xml" />
 <topdiv class="tableau" id="tableau" name="topdiv">
 <pages>
 	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
-		<xsl:sort select="@number" />
+		<xsl:sort select="col1/match/@number" />
 		<page>T<xsl:value-of select="(@number - 1) div $col1size" /></page>
 	</xsl:for-each>
 </pages>

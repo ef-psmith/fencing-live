@@ -28,8 +28,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<xsl:apply-templates select="../match[./@number mod 2 = 1 and ./@number &gt; current()/@number and ./@number &lt; (current()/@number + $col1size)]" mode="half" />
 		</div>
 		<div class="twocol">
+			<!-- the starting number for div 2 should be ((@number + 1) / 2) -->
 			<xsl:apply-templates 
-				select="../../col2/match[./@number mod 2 = 1 and ./@number &lt; (current()/@number + ($col1size div 2)) and ./@number &gt; current()/@number]" 
+				select="../../col2/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" 
 				mode="half" 
 			/>
 		</div>

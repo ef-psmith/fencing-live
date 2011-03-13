@@ -3,6 +3,7 @@
 <config>
 	<targetlocation>./output</targetlocation>
 	<debug>0</debug>
+	<log>out.txt</log>
 	
 	<competition id="1">
 		<enabled>true</enabled>
@@ -57,8 +58,8 @@
 	</series>
 
 	<series id="2">
-		<enabled>false</enabled>
+		<enabled>true</enabled>
 		<competition>2</competition>
-		<competition>3</competition>
+		<competition>4</competition>
 	</series>
 </config>

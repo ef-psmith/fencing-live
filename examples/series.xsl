@@ -234,7 +234,7 @@ method="xml" />
 				</div>
 				<!-- *************************** QUARTER **************************** -->
 				<div class="quarter">
-					<xsl:apply-templates select="../match[./@number mod 2 = 0 and ./@number &gt; current()/@number and ./@number &lt; (current()/@number + $col1size)]"  mode="render" /> 
+					<xsl:apply-templates select="../match[./@number mod 2 = 0 and ./@number &gt; current()/@number + 2 and ./@number &lt; (current()/@number + $col1size)]"  mode="render" /> 
 				</div>
 			</div>
 		</div>

@@ -13,7 +13,7 @@
 	</competition>
 	
 	<competition id="2">
-		<enabled>true</enabled>
+		<enabled>false	</enabled>
 		<background>yellow</background>
 		<source>../DATA/examples/Stage 2</source>
 		<nif>0</nif>

@@ -23,8 +23,6 @@ use XML::Simple;
 # use IO::Handle;
 
 
-
-
 # New XML / XSLT / Ajax scheme
 #
 # Create a hashref in memory containing all of the required data and write to an XML file
@@ -66,21 +64,16 @@ my $comp_output;
 my $ini = shift || "live.xml";
 my $runonce = shift || 0;
 
+
 while (1)
 {
 	my $config = read_config($ini);
 	
 	$Engarde::DEBUGGING=$config->{debug};
 
-	if ($config->{log}) 
-	{
-		my $log = $config->{log};
-		open LOG, ">>$log" || die $!;
-	}
-	
 	$comp_output = {};
 	
-	$comp_output->{competition} = [];
+	# $comp_output->{competition} = [];
 	
 	my $comps = $config->{competition};
 	
@@ -88,9 +81,6 @@ while (1)
 	
 	foreach my $cid ( sort keys %$comps)
 	{
-		# print Dumper (\$config->{competition}->{$cid});
-
-		# print Dumper(\$config->{competition}->{$cid});
 		
 		next unless $config->{competition}->{$cid}->{enabled} eq "true";	
 	
@@ -101,28 +91,32 @@ while (1)
 		do_comp($c, $cid, $config->{competition}->{$cid});
 	}
 		
-	#print Dumper(\$comp_output);
-	#print "************ XML *************************\n";
-	print XMLout($comp_output, KeyAttr => []);
-	#print "************ END *************************\n";
-	exit;
+	XMLout($comp_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => "toplevel.xml");
 	
 	# output the relevant bits for each series
 	my $series = $config->{series};
 	
 	foreach my $sid ( sort keys %$series)
 	{
-		next unless ($config->{series}->{$sid}->{enabled} eq "true");
+		next unless ($series->{$sid}->{enabled} eq "true");
+
+		my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 
 		
-		# print Dumper(\$config->{series}->{$sid});
+		my $series_output = {};
+		
+		my @array = @{$comp_output->{competition}};
+		
+		foreach my $cid (@{$series->{$sid}->{competition}})
+		{		
+			my ($index) = grep $array[$_]->{id} eq $cid, 0 .. $#array;
+			
+			next unless $index;
+			push @{$series_output->{competition}}, @{$comp_output->{competition}}[$index]; 
+		}
+	
+		XMLout($series_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $outfile);	
 	}
 
-	# print Dumper(\$comp_output);
-	
-	print "************ XML *************************\n";
-	print XMLout($comp_output, KeyAttr => []);
-	print "************ END *************************\n";
-	
 	unless ($runonce)
 	{
 		sleep 30;
@@ -164,10 +158,8 @@ sub do_comp
 	
 	if ($where =~ /tableau/ || $where eq "termine")
 	{
-		
-		# $out->{tableau} = do_tableau($c);
-		
-		push @{$out->{lists}}, do_list($c, $nif);
+		$out->{tableau} = do_tableau($c, $where);
+		# push @{$out->{lists}}, do_list($c, $nif, "result");
 	}
 	
 	if ($where eq "debut")
@@ -175,13 +167,11 @@ sub do_comp
 		push @{$out->{lists}}, do_list($c, $nif, "debut");
 	}
 	
-	
 	my $wh = do_where($c);
 	
 	# print Dumper(\$wh);
 	
 	push @{$out->{lists}}, $wh if $wh->{where}->{count};
-	
 	push @{$comp_output->{competition}}, $out;
 }
 
@@ -417,6 +407,9 @@ sub do_tableau
 	
 	my @tableaux;
 	
+	my $dom = $c->domaine_compe;
+	my $aff = $dom eq "national" ? "club" : "nation";
+	
 	if ($where eq "termine")
 	{	
 		@tableaux = ($c->tableaux)[-2,-1];
@@ -426,81 +419,75 @@ sub do_tableau
 		@tableaux = $c->tableaux(1);
 	}
 	
-	debug(2, "do_tableau: tableaux = " . Dumper(\@tableaux));
+	debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
 	
-	foreach (@tableaux)
+	my $col = 1;
+
+	my @winners;
+	
+	foreach my $tab (@tableaux)
 	{
-		my $t = $c->tableau($_,1);
+		debug(1, "do_tableau: tab = $tab");
+		my $t = $c->tableau($tab,1);
+		
 		# print $c->titre_ligne . ": " . Dumper(\$t);
 	
+		debug(3, Dumper(\$t));
+		
 		my $numbouts = $t->{taille} / 2;
 	 
-		#debug("do_tableau: Number of rounds: $numrounds Number of bouts: $numbouts");
+		debug(1, "do_tableau: Number of bouts: $numbouts");
 
-		#my $minbout = $preceeding_bout + 1;
-		#my $maxbout = $minbout + $numbouts;
-		  
-		#my $hasnexttableau = $c->next_tableau_in_suite($where);
-	 
-		#for (my $roundnum = 1; $roundnum <= $numrounds; $roundnum++) 
-		#{
-		#	print STDERR "DEBUG: writeTableau(): roundnum = $roundnum, maxbout = $maxbout\n" if $Engarde::DEBUGGING;
-
-		#	print "writeTableau: getting round $roundnum\n";
-
-		#	print "Using a tableau for next round\n" if $hasnexttableau;
-		#	print "Using pseudobouts for next round\n" unless $hasnexttableau;
-
-		#	my $colname = $roundnum == 1 ? "twocol1" : "twocol";
+		# my $hasnexttableau = $c->next_tableau_in_suite($tab);  
 		
-		#	# Pseudobout for when we don't have a next round
-		#	my %pseudobout;
-
-		#	for (my $boutnum = $minbout; $boutnum < $maxbout; $boutnum++) 
-		#	{
+		# debug(2, "do_tableau: hasnext = $hasnexttableau");
 		
-		#		my $bout;
-		#		if ($roundnum > 1 && @pseudobouts)
-		#		{
-		#			print "Getting bout from Pseudobouts**********************\n";
-		#			#$bout = $pseudobouts[$boutnum - $minbout];
-		#			#$bout->{'pseudobout'} = 1;
-#
-#				}
-#				else
-#				{
-#					print "Getting bout from tableau**********************\n";
-#					$bout = $comp->match($where, $boutnum);
-#					$bout->{'pseudobout'} = 0;
-#				}
-#				# If not we have to build it from the winners
-#
-#				if ($roundnum == $numrounds) 
-#				{
-#					# last col so collect any winners
-#					#
-#					# Not required in the 3 column layout but will leave it in in case we revert to tableau + 1 col for the final later 
-#					push @winners, $bout->{winner} || "&#160;";
-#				}	
-#			}
-#
-#		# next round has half as many bouts
-#		  
-#		$numbouts /= 2;
-#		my $newlastN = $lastN/2;
-#		$preceeding_bout /=2; 
-#		$minbout = $preceeding_bout + 1;
-#		$maxbout = $minbout + $numbouts;
-#
-#		# Change the where
-#		$where =~ s/\d+/$newlastN/;
-#		$lastN = $newlastN;
-#
-#		# print "writeTableau: where = $where, lastN = $lastN\n";
-#
-#	}
+		my @list;
 
+		foreach my $m (1..$numbouts)
+		{	
+			debug(3, "do_tableau: match = " . Dumper(\$t->{$m}));
+		
+			push @winners, $t->{$m}->{winner} || "" if $col eq 1;
+		
+			my $fa = { name => $t->{$m}->{fencerA} || "", seed => $t->{$m}->{seedA} || "", affiliation => $t->{$m}->{$aff . 'A'} || ""};
+			my $fb = { name => $t->{$m}->{fencerB} || "", seed => $t->{$m}->{seedB} || "", affiliation => $t->{$m}->{$aff . 'B'} || ""};
+			
+			$fa->{name} = $winners[($m * 2) - 1] unless $fa->{name};
+			$fb->{name} = $winners[$m * 2] unless $fb->{name};
+			
+			my $score = "$t->{$m}->{scoreA} / $t->{$m}->{scoreB}";
+			
+			$score = "by exclusion" if $score =~ /exclusion/;
+			$score = "by abandonment" if $score =~ /abandon/;
+			$score = "by penalty" if $score =~ /forfait/;
+			$score = "" if $score eq " / ";
+			
+			push @list, { 	number => $m, 
+							time => $t->{$m}->{heure} || "",  
+							piste => $t->{$m}->{piste} || "",
+							fencerA => $fa,
+							fencerB => $fb,
+							winner => $t->{$m}->{winner} || "",
+							score => $score
+						};
+		};
+		
+		debug(3, "do_tableau: list = " . Dumper(\@list));
+		$out->{"col$col"}->{match} = [@list];
+		
+		$col++;
 	}
+	
+	return $out;
+}
+
+sub debug
+{
+	my $level = shift;
+	my $text = shift;
+	
+	print STDERR "DEBUG($level): $text\n" if ($level le $Engarde::DEBUGGING);
 }
 
 ##################################################################################
@@ -521,19 +508,6 @@ sub read_config
 }
 
 
-##################################################################################
-# sorting subs for use by list output
-##################################################################################
-sub namesort
-{
-	#$fencers{$fid}->{$a}->{nom} cmp $fencers->{$fid}->{$b}->{nom};
-}
-
-sub ranksort
-{
-	#print STDERR "DEBUG: ranksort(): a = $a, b = $b\n" if $Engarde::DEBUGGING > 1;
-	#$pagedetails->{'entry_list'}->{$a}->{seed} <=> $pagedetails->{'entry_list'}->{$b}->{seed};
-}
 
 ##################################################################################
 # subs to determine page content
@@ -601,7 +575,7 @@ sub which_list
 
 		my @w = split / /, $where;
 
-		print STDERR "DEBUG: which_list(): w = [@w]\n" if $Engarde::DEBUGGING > 1;
+		debug(2, "which_list(): w = [@w]");
 
 		return "ranking" if $w[1] eq $w[2];
 		return "result" unless $w[1] eq $w[2];

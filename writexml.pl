@@ -91,7 +91,7 @@ while (1)
 		do_comp($c, $cid, $config->{competition}->{$cid});
 	}
 		
-	XMLout($comp_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => "toplevel.xml");
+	XMLout($comp_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
 	
 	# output the relevant bits for each series
 	my $series = $config->{series};

@@ -14,7 +14,7 @@ method="xml" />
 <!-- **********************************************************************************
 	LISTS
 *************************************************************************************** -->
-<xsl:template match="fpp">
+<xsl:template match="lists/fpp">
 <topdiv class="vlist" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -26,13 +26,13 @@ method="xml" />
 	<content>
 	<!-- Display HTML starts here. 
 			First the list header -->
-<div class="vlist_title" id="vtitle"><h2>Fencers/Poules/Pistes</h2></div>
+<div class="vlist_title" id="vtitle"><h2>Fencers/Pools/Pistes</h2></div>
 <div class="vlist_header" id="vheader">
 		<table class="vlist_table">
 			<tr>
 			<td class="vlist_name">Name</td>
 			<td class="vlist_club">Club</td>
-			<td class="vlist_poule">Poule</td>
+			<td class="vlist_poule">Pool</td>
 			<td class="vlist_piste">Piste</td>
 		</tr>
 	</table>
@@ -75,6 +75,48 @@ method="xml" />
 		</tr>
 </xsl:template>
 
+<!-- Ranking list after the poules-->
+<xsl:template match="lists/ranking">
+<topdiv class="vlist" name="topdiv" id="vlistid">
+	<!-- This is the list of pages to scroll through -->
+	<pages>
+		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+			<xsl:sort select="@sequence" />
+			<page>FPP<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
+		</xsl:for-each >
+	</pages>
+	<content>
+	<!-- Display HTML starts here. 
+			First the list header -->
+<div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
+<div class="vlist_header" id="vheader">
+		<table class="vlist_table">
+			<tr>
+			<td class="vlist_postition">Position</td>
+			<td class="vlist_name">Name</td>
+			<td class="vlist_club">Club</td>
+		</tr>
+	</table>
+</div>
+			
+	<!-- Now the list contents -->
+		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+			<div>
+				<xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
+				<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
+				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
+				<table class="vlist_table">
+					<xsl:apply-templates select="." mode="finalfencer" />
+					<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
+						<xsl:sort select="@sequence" data-type="number" />
+					</xsl:apply-templates>
+				</table>
+			</div>
+		</xsl:for-each >
+	</content>
+</topdiv>
+</xsl:template>
+
 <xsl:template match="fencer" mode="finalfencer">
 		<tr>
 			<xsl:attribute name="class">elim_<xsl:value-of select="@elimround" /></xsl:attribute>
@@ -82,22 +124,6 @@ method="xml" />
 			<td class="vlist_name"><xsl:value-of select="@name" /></td>
 			<td class="vlist_club"><xsl:value-of select="@affiliation" /></td>
 		</tr>
-</xsl:template>
-
-
-<xsl:template match="ranking">
-	<xsl:text disable-output-escaping="yes">
-		&lt;div class=&quot;vlist2&quot; id=&quot;V0&quot;&gt;
-		&lt;table class=&quot;vlist_table&quot;&gt;
-	</xsl:text>
-	
-	<xsl:apply-templates select="fencer">
-		<xsl:sort select="@sequence" />
-	</xsl:apply-templates>
-	<xsl:text disable-output-escaping="yes">
-		&lt;/table&gt;
-		&lt;/div&gt;
-	</xsl:text>
 </xsl:template>
 
 <!-- **********************************************************************************
@@ -113,7 +139,7 @@ method="xml" />
 	</xsl:for-each>
 </pages>
 <content>
-<h1><xsl:value-of select="../@titre_ligne" /> &#x2014; <xsl:value-of select="count(pool)" /> Poules</h1>
+<h1><xsl:value-of select="../@titre_ligne" /> &#x2014; <xsl:value-of select="count(pool)" /> Pools</h1>
 	<xsl:for-each select="pool[@number mod $poolsperpage = 1]" >
 		<div class="poulediv">
 			<xsl:attribute name="id">P<xsl:value-of select="(@number - 1) div $poolsperpage" /></xsl:attribute>
@@ -197,11 +223,6 @@ method="xml" />
 *************************************************************************************** -->
 
 <xsl:template match="tableau">
-<html>
-<head>
-	<link rel="stylesheet" href="../css/live.css" type="text/css" />
-</head>
-<body>
 <topdiv class="tableau" id="tableau" name="topdiv">
 <pages>
 	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
@@ -249,8 +270,6 @@ method="xml" />
 	</xsl:for-each>
 </content>
 </topdiv>
-</body>
-</html>
 </xsl:template>
 
 <xsl:template match="match" mode="render">

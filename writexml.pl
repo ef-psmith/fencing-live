@@ -23,6 +23,15 @@ use XML::Simple;
 # use IO::Handle;
 
 
+# NOTE:
+#
+# If you get the error "could not find PaserDetails.ini..."
+# run this from the command line
+#	
+# perl -MXML::SAX -e "XML::SAX->add_parser('XML::SAX::PurePerl')->save_parsers()"
+#
+
+
 # New XML / XSLT / Ajax scheme
 #
 # Create a hashref in memory containing all of the required data and write to an XML file
@@ -159,7 +168,7 @@ sub do_comp
 	if ($where =~ /tableau/ || $where eq "termine")
 	{
 		$out->{tableau} = do_tableau($c, $where);
-		# push @{$out->{lists}}, do_list($c, $nif, "result");
+		push @{$out->{lists}}, do_list($c, $nif, "result");
 	}
 	
 	if ($where eq "debut")

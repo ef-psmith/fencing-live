@@ -195,7 +195,7 @@ function pageload() {
                // Background colours
                var borders = document.getElementsByName('border');
                for (var b = 0; b < borders.length; ++b) {
-                  borders[b].style.backgroundColor = comp.getAttribute('colour');
+                  borders[b].style.backgroundColor = comp.getAttribute('background');
                }
 
                // Kill all the div timers

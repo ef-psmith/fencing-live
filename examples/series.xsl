@@ -15,10 +15,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 *************************************************************************************** -->
 <!-- Entry List -->
 <xsl:template match="lists/entry">
-<topdiv class="vlist" name="topdiv" id="vlistid">
+<topdiv name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+		<xsl:for-each select="fencer[@sequence mod (3 * $pagesize ) = 1]">
 			<xsl:sort select="@sequence" />
 			<page>EN<xsl:value-of select="(@sequence - 1) div (3 * $pagesize)" /></page>
 		</xsl:for-each >
@@ -35,20 +35,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi visible</xsl:attribute></xsl:if>
 					<xsl:attribute name="id">EN<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
 			<!-- Now the list contents -->
-			<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
-					<table class="vlist_table">
-						<tr>
-							<td class="vlist_name">Name</td>
-							<td class="vlist_club">Club</td>
-							<td class="vlist_poule">Pool</td>
-							<td class="vlist_piste">Piste</td>
-						</tr>
+					<table>
 						<xsl:apply-templates select="." mode="entryfencer" />
-						<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="entryfencer" >
+						<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + (3 * $pagesize)) and ./@sequence &gt; current()/@sequence ]" mode="entryfencer" >
 							<xsl:sort select="@sequence" data-type="number" />
 						</xsl:apply-templates>
 					</table>
-			</xsl:for-each >
 				</div>			
 		</xsl:for-each>
 	</content>
@@ -59,8 +51,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<tr >
 			<td class="vlist_name"><xsl:value-of select="@name" /></td>
 			<td class="vlist_club"><xsl:value-of select="@affiliation" /></td>
-			<td class="vlist_poule"><xsl:value-of select="@poule" /></td>
-			<td class="vlist_piste"><xsl:value-of select="@piste" /></td>
 		</tr>
 </xsl:template>
 

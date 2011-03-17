@@ -31,25 +31,25 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:for-each select="fencer[@sequence mod (3 * $pagesize) = 1]">
 
 				<div>
-					<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
-					<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
+					<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi  hidden</xsl:attribute></xsl:if>
+					<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi visible</xsl:attribute></xsl:if>
 					<xsl:attribute name="id">EN<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
-				</div>			
 			<!-- Now the list contents -->
 			<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
 					<table class="vlist_table">
-			<tr>
-			<td class="vlist_name">Name</td>
-			<td class="vlist_club">Club</td>
-			<td class="vlist_poule">Pool</td>
-			<td class="vlist_piste">Piste</td>
-		</tr>
+						<tr>
+							<td class="vlist_name">Name</td>
+							<td class="vlist_club">Club</td>
+							<td class="vlist_poule">Pool</td>
+							<td class="vlist_piste">Piste</td>
+						</tr>
 						<xsl:apply-templates select="." mode="entryfencer" />
 						<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="entryfencer" >
 							<xsl:sort select="@sequence" data-type="number" />
 						</xsl:apply-templates>
 					</table>
 			</xsl:for-each >
+				</div>			
 		</xsl:for-each>
 	</content>
 </topdiv>
@@ -340,6 +340,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<xsl:apply-templates select="../match[current()/@number + 1]" mode="render" /> 
 				</div>
 			</div>
+<xsl:if test="count(../match[./@number mod 2 = 1 and ./@number &gt; current()/@number and ./@number &lt; (current()/@number + $col1size)]) &gt; 0">
 			<div class="half">
 				<!-- *************************** QUARTER **************************** -->
 				<div class="quarter">
@@ -350,14 +351,19 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<xsl:apply-templates select="../match[./@number mod 2 = 0 and ./@number &gt; current()/@number + 2 and ./@number &lt; (current()/@number + $col1size)]"  mode="render" /> 
 				</div>
 			</div>
+</xsl:if>
 		</div>
+<xsl:if test="../../col2">
 		<div class="twocol">
 			<!-- the starting number for div 2 should be ((@number + 1) / 2) -->
+<xsl:if test="count(../../col2/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]) &gt; 0">
 			<div class="half">
 				<xsl:apply-templates select="../../col2/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
 				<xsl:apply-templates select="../../col2/match[./@number mod 2 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
 			</div>
+</xsl:if>
 		</div>
+</xsl:if>
 	</div>
 	</xsl:for-each>
 </content>
@@ -373,8 +379,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<div id="container">
 						<div id="position">
 							<span class="seed"><xsl:value-of select="fencerA/@seed" /></span>
-							<span class="fencer "><xsl:value-of select="fencerA/@name" /></span>
-							<span class="country"><xsl:value-of select="fencerA/@affiliation" /></span>
+							<xsl:if test="string-length(fencerA/@name) &gt; 0">
+								<span class="fencer "><xsl:value-of select="fencerA/@name" /> </span>
+							</xsl:if>
+							<xsl:if test="string-length(fencerA/@affiliation) &gt; 0">
+								<span class="country"> <xsl:value-of select="fencerA/@affiliation" /></span>
+							</xsl:if>
 						</div>
 					</div>
 				</div>
@@ -399,8 +409,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<div id="container">
 						<div id="position">
 							<span class="seed"><xsl:value-of select="fencerB/@seed" /></span>
+							<xsl:if test="string-length(fencerB/@name) &gt; 0">
 							<span class="fencer "><xsl:value-of select="fencerB/@name" /></span>
+							</xsl:if>
+							<xsl:if test="string-length(fencerB/@affiliation) &gt; 0">
 							<span class="country"><xsl:value-of select="fencerB/@affiliation" /></span>
+							</xsl:if>
 						</div>
 					</div> <!-- container -->
 				</div>

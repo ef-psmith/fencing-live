@@ -47,7 +47,7 @@ function scroller(div, pageloader) {
                   // Mark that we are finished
                   scroller.finished = true;
                   // Tell the page we are finished.  If there is still one going then go back to the first page
-                  if (!scroller.pageloader.scrollerfinished()) {
+                  if (this.running && !scroller.pageloader.scrollerfinished()) {
 
                      scroller.pageindex = 0;
                      if (scroller.pageindex < scroller.pages.length) {
@@ -273,6 +273,11 @@ function pageload() {
          }
       }
       if (allfinished) {
+
+         // Kill all the div timers
+         for (var s = 0; s < this.scrollers.length; ++s) {
+            this.scrollers[s].stop();
+         }
          this.fetch();
       }
 

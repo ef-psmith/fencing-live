@@ -89,8 +89,7 @@ while (1)
 	# generate the data
 	
 	foreach my $cid ( sort keys %$comps)
-	{
-		
+	{		
 		next unless $config->{competition}->{$cid}->{enabled} eq "true";	
 	
 		my $c = Engarde->new($config->{competition}->{$cid}->{source} . "/competition.egw");

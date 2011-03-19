@@ -35,7 +35,7 @@
                   requestor.reload(xmldoc, false);
 
                } else {
-                  setTimeout(requestor.fetch(), 5000);
+                  setTimeout('requestor.fetch()', 5000);
                }
             }
          };

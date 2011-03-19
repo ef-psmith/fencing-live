@@ -1,65 +1,79 @@
 <?xml version="1.0" ?>
 
 <config>
-	<targetlocation>./output</targetlocation>
+	<targetlocation>/share/Qweb</targetlocation>
 	<debug>0</debug>
-	<log>out.txt</log>
+	<log>./out.txt</log>
 	
 	<competition id="1">
 		<enabled>true</enabled>
 		<background>red</background>
-		<source>../DATA/examples/Stage 1</source>
+		<source>/share/Public/data/Invicta/2011/Womens Epee</source>
 		<nif>1</nif>
 	</competition>
 	
 	<competition id="2">
-		<enabled>false	</enabled>
+		<enabled>true</enabled>
 		<background>yellow</background>
-		<source>../DATA/examples/Stage 2</source>
+		<source>/share/Public/data/Invicta/2011/Mens Epee</source>
 		<nif>0</nif>
 	</competition>
 	
 	<competition id="3">
 		<enabled>true</enabled>
 		<background>blue</background>
-		<source>../DATA/examples/Stage 3</source>
+		<source>/share/Public/data/Invicta/2011/Womens Epee</source>
 		<nif>1</nif>
 	</competition>
 	
 	<competition id="4">
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<background>green</background>
-		<source>../DATA/examples/Stage 4</source>
+		<source>/share/Public/data/Invicta/Womens Sabre</source>
 		<nif>1</nif>
 	</competition>
 	
 	<competition id="5">
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<background>black</background>
 		<source>../DATA/examples/Stage 5</source>
 		<nif>1</nif>
 	</competition>
 	
-	<competition id="6">
+	<competition id="7">
 		<enabled>true</enabled>
-		<background>blue</background>
-		<source>../DATA/examples/Stage 6</source>
-		<nif>1</nif>
+		<background>yellow</background>
+		<source>/share/Public/data/Invicta/2011/Mens Epee - Copy</source>
+		<nif>0</nif>
 	</competition>
 	
 	<series id="1">
 		<enabled>true</enabled>
-		<competition>1</competition>
-		<competition>2</competition>
-		<competition>3</competition>
-		<competition>4</competition>
-		<competition>5</competition>
 		<competition>6</competition>
+		<competition>3</competition>
 	</series>
 
 	<series id="2">
 		<enabled>true</enabled>
 		<competition>2</competition>
-		<competition>4</competition>
+		<competition>6</competition>
+	</series>
+
+	<series id="3">
+		<enabled>true</enabled>
+		<competition>6</competition>
+		<competition>3</competition>
+	</series>
+
+	<series id="4">
+		<enabled>true</enabled>
+		<competition>2</competition>
+		<competition>6</competition>
+	</series>
+
+	<series id="5">
+		<enabled>true</enabled>
+		<competition>7</competition>
+		<competition>6</competition>
 	</series>
 </config>

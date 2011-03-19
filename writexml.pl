@@ -105,9 +105,12 @@ while (1)
 	# output the relevant bits for each series
 	my $series = $config->{series};
 	
+	# print Dumper(\$series);
+
 	foreach my $sid ( sort keys %$series)
 	{
-		next unless ($series->{$sid}->{enabled} eq "true");
+		# print Dumper(\$series->{$sid});
+		#next unless ($series->{$sid}->{enabled} eq "true");
 
 		my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 
 		
@@ -115,11 +118,14 @@ while (1)
 		
 		my @array = @{$comp_output->{competition}};
 		
+
 		foreach my $cid (@{$series->{$sid}->{competition}})
 		{		
+			# print Dumper($_);
 			my ($index) = grep $array[$_]->{id} eq $cid, 0 .. $#array;
 			
 			next unless $index;
+			# print "index = $index\n";
 			push @{$series_output->{competition}}, @{$comp_output->{competition}}[$index]; 
 		}
 	
@@ -150,6 +156,7 @@ sub do_comp
 	$out->{id} = $cid;
 	$out->{titre_ligne} = $c->titre_ligne;
 	$out->{background} = $config->{background};
+
 	# $out->{nif} = $nif;
 	
 	my $where = $c->whereami;
@@ -383,7 +390,7 @@ sub do_where
 	
 	my $fencers = $c->matchlist;
 	
-	# print $c->titre_ligne . ": " . Dumper(\$fencers);
+	#print "do_where: " . $c->titre_ligne . ": " . Dumper(\$fencers);
 	
 	my @list;
 	
@@ -404,13 +411,14 @@ sub do_where
 	$out->{where}->{count} = @list;
 	
 	return $out;
-	# print Dumper(\$fencers);
 }
 
 sub do_tableau
 {
 	my $c = shift;
 	my $where = shift;
+
+	print "do_tableau: where = " . Dumper(\$where);
 	
 	my $out = {};
 	
@@ -427,6 +435,8 @@ sub do_tableau
 	{
 		@tableaux = $c->tableaux(1);
 	}
+	
+	shift @tableaux;
 	
 	debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
 	
@@ -457,7 +467,7 @@ sub do_tableau
 		{	
 			debug(3, "do_tableau: match = " . Dumper(\$t->{$m}));
 		
-			push @winners, $t->{$m}->{winner} || "" if $col eq 1;
+			push @winners, ($t->{$m}->{winner} || "") if $col eq 1;
 		
 			my $fa = { name => $t->{$m}->{fencerA} || "", seed => $t->{$m}->{seedA} || "", affiliation => $t->{$m}->{$aff . 'A'} || ""};
 			my $fb = { name => $t->{$m}->{fencerB} || "", seed => $t->{$m}->{seedB} || "", affiliation => $t->{$m}->{$aff . 'B'} || ""};
@@ -486,6 +496,8 @@ sub do_tableau
 		$out->{"col$col"}->{match} = [@list];
 		
 		$col++;
+
+		print "do_tableau: winners = " . Dumper(\@winners);
 	}
 	
 	return $out;
@@ -509,7 +521,7 @@ sub read_config
 	# my $xml = new XML::Simple(ForceArray => 1);
 
 	# read XML file
-	# my $config = $xml->XMLin($cf);
+	# my $config = $xml->XMLin($cf, ForceArray=>1);
 	my $data = XMLin($cf);
 	
 	# print Dumper(\$data);

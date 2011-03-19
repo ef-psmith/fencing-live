@@ -6,10 +6,10 @@ var pageloader;
 var xsl;
 
 function onPageLoaded() {
+   xsl = loadXMLDoc(xsldoc);
    pageloader = new pageload();
    pageloader.fetch();
 
-   xsl = loadXMLDoc(xsldoc);
 }
 
 // Scroll delay of 30 seconds

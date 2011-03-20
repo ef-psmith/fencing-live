@@ -5,7 +5,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Global variables for controlling the display parameters -->
-<xsl:variable name="pagesize" select="number(20)" />
+<xsl:variable name="pagesize" select="number(28)" />
+<xsl:variable name="entrysize" select="number(84)" />
 <xsl:variable name="poolsperpage" select="number(2)"/>
 <xsl:variable name="col1size" select="number(4)"/>
 
@@ -15,12 +16,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 *************************************************************************************** -->
 <!-- Entry List -->
 <xsl:template match="lists/entry">
-<topdiv name="topdiv" id="vlistid">
+<topdiv name="topdiv" id="vlistid" class="vlist_entry">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-		<xsl:for-each select="fencer[@sequence mod (3 * $pagesize ) = 1]">
-			<xsl:sort select="@sequence" />
-			<page>EN<xsl:value-of select="(@sequence - 1) div (3 * $pagesize)" /></page>
+		<xsl:for-each select="fencer[@sequence mod ($entrysize ) = 1]">
+			<xsl:sort select="@sequence" data-type="number"/>
+			<page>EN<xsl:value-of select="(@sequence - 1) div ($entrysize)" /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
@@ -28,19 +29,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			First the list header -->
 <div class="vlist_title" id="vtitle"><h2>Entry List for <xsl:value-of select="../../@titre_ligne" /></h2></div>
 
-<xsl:for-each select="fencer[@sequence mod (3 * $pagesize) = 1]">
+<xsl:for-each select="fencer[@sequence mod ($entrysize) = 1]">
 
 				<div>
 					<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi  hidden</xsl:attribute></xsl:if>
 					<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi visible</xsl:attribute></xsl:if>
-					<xsl:attribute name="id">EN<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
+					<xsl:attribute name="id">EN<xsl:value-of select="(@sequence - 1) div $entrysize" /></xsl:attribute>
 			<!-- Now the list contents -->
-					<table>
-						<xsl:apply-templates select="." mode="entryfencer" />
-						<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + (3 * $pagesize)) and ./@sequence &gt; current()/@sequence ]" mode="entryfencer" >
-							<xsl:sort select="@sequence" data-type="number" />
-						</xsl:apply-templates>
-					</table>
+					<xsl:apply-templates select="." mode="entryfencer" />
+					<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($entrysize)) and ./@sequence &gt; current()/@sequence ]" mode="entryfencer" >
+						<xsl:sort select="@sequence" data-type="number" />
+					</xsl:apply-templates>
 				</div>			
 		</xsl:for-each>
 	</content>
@@ -48,10 +47,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="fencer" mode="entryfencer">
-		<tr >
-			<td class="vlist_name"><xsl:value-of select="@name" /></td>
-			<td class="vlist_club"><xsl:value-of select="@affiliation" /></td>
-		</tr>
+	<span class="col_name"><xsl:value-of select="@name" /></span>
+	<span class="col_club"><xsl:value-of select="@affiliation" /></span>
+	<br />
 </xsl:template>
 
 
@@ -107,7 +105,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="lists/where">
-<topdiv class="vlist" name="topdiv" id="vlistid">
+<topdiv class="vlist2" name="topdiv" id="vlistid2">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
 		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
@@ -174,7 +172,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <div class="vlist_header" id="vheader">
 		<table class="vlist_table">
 			<tr>
-			<td class="vlist_postition">Position</td>
+			<td class="vlist_position">Position</td>
 			<td class="vlist_name">Name</td>
 			<td class="vlist_club">Club</td>
 		</tr>
@@ -202,7 +200,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="fencer" mode="finalfencer">
 		<tr>
 			<xsl:attribute name="class"><xsl:value-of select="@elimround" /></xsl:attribute>
-			<td class="vlist_postition"><xsl:value-of select="@position" /></td>
+			<td class="vlist_position"><xsl:value-of select="@position" /></td>
 			<td class="vlist_name"><xsl:value-of select="@name" /></td>
 			<td class="vlist_club"><xsl:value-of select="@affiliation" /></td>
 		</tr>
@@ -216,7 +214,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <topdiv class="poule" id="pools" name="topdiv">
 <pages>
 	<xsl:for-each select="pool[@number mod $poolsperpage = 1]">
-		<xsl:sort select="@number" />
+		<xsl:sort select="@number" data-type="number"/>
 		<page>P<xsl:value-of select="(@number - 1) div $poolsperpage" /></page>
 	</xsl:for-each>
 </pages>
@@ -283,16 +281,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						<td class="poule-grid-blank"></td>
 					</xsl:when>
 					<xsl:otherwise>
-						<td class="poule-grid-result"><xsl:value-of select="@score"/></td>
+						<td class="poule-grid-result"><xsl:choose><xsl:when test="string-length(@score) > 0"><xsl:value-of select="@score"/></xsl:when><xsl:otherwise>&#160;</xsl:otherwise></xsl:choose></td>
 					</xsl:otherwise>	
 				</xsl:choose>
 			</xsl:for-each>
 			
 			<td class="poule-grid-emptycol"></td>
-			<td class="poule-grid-vm"><xsl:value-of select="@vm" /></td>
-			<td class="poule-grid-hs"><xsl:value-of select="@hs" /></td>
-			<td class="poule-grid-ind"><xsl:value-of select="@ind" /></td>
-			<td class="poule-grid-pl"><xsl:value-of select="@pl"/></td>
+			<td class="poule-grid-vm"><xsl:choose><xsl:when test="string-length(@vm) > 0"><xsl:value-of select="@vm" /></xsl:when><xsl:otherwise>&#160;</xsl:otherwise></xsl:choose></td>
+			<td class="poule-grid-hs"><xsl:choose><xsl:when test="string-length(@hs) > 0"><xsl:value-of select="@hs" /></xsl:when><xsl:otherwise>&#160;</xsl:otherwise></xsl:choose></td>
+			<td class="poule-grid-ind"><xsl:choose><xsl:when test="string-length(@ind) > 0"><xsl:value-of select="@ind" /></xsl:when><xsl:otherwise>&#160;</xsl:otherwise></xsl:choose></td>
+			<td class="poule-grid-pl"><xsl:choose><xsl:when test="string-length(@pl) > 0"><xsl:value-of select="@pl"/></xsl:when><xsl:otherwise>&#160;</xsl:otherwise></xsl:choose></td>
 		</tr>
 		</xsl:for-each>
 	</table>
@@ -313,6 +311,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	</xsl:for-each>
 </pages>
 <content>
+<h1><xsl:value-of select="../@titre_ligne" /></h1>
 	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
 	<div class="tableaudiv">
 		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
@@ -372,9 +371,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							<xsl:if test="string-length(fencerA/@name) &gt; 0">
 								<span class="fencer "><xsl:value-of select="fencerA/@name" /> </span>
 							</xsl:if>
-							<xsl:if test="string-length(fencerA/@affiliation) &gt; 0">
-								<span class="country"> <xsl:value-of select="fencerA/@affiliation" /></span>
-							</xsl:if>
 						</div>
 					</div>
 				</div>
@@ -401,9 +397,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							<span class="seed"><xsl:value-of select="fencerB/@seed" /></span>
 							<xsl:if test="string-length(fencerB/@name) &gt; 0">
 							<span class="fencer "><xsl:value-of select="fencerB/@name" /></span>
-							</xsl:if>
-							<xsl:if test="string-length(fencerB/@affiliation) &gt; 0">
-							<span class="country"><xsl:value-of select="fencerB/@affiliation" /></span>
 							</xsl:if>
 						</div>
 					</div> <!-- container -->

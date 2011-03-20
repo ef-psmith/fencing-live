@@ -55,10 +55,11 @@ div.vlist
 	overflow: hidden;
 	position: absolute;
 	border: none;
-	height:  95%;
-	right: 25px;
+	height:  90%;
+	right: 40px;
 	width: 24%;
 }
+
 div.vlist_entry
 {
 	overflow: hidden;
@@ -67,6 +68,7 @@ div.vlist_entry
 	height:  95%;
 	right: 25px;
 	left: 25px;
+	top: 30px;
 }
 
 div.pvlist
@@ -249,11 +251,11 @@ div.mid_title {
 	-moz-column-gap: 1em;
 	-webkit-column-count: 4;
 	-webkit-column-gap: 1em;
-	height: 95%; 
+	height: 90%; 
 	width: 95%;
-/*	position: absolute; */
+	position: absolute; 
 	/* border: thin solid black; */
-	top: 15%;
+	top: 10%;
 	left: 30px;
 }
 

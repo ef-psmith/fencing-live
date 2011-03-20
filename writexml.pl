@@ -179,6 +179,7 @@ sub do_comp
 	
 	if ($where eq "debut")
 	{
+		debug(1, $c->titre_ligne . ": debut");
 		push @{$out->{lists}}, do_list($c, $nif, "debut");
 	}
 	
@@ -521,7 +522,7 @@ sub read_config
 
 	# read XML file
 	# my $config = $xml->XMLin($cf, ForceArray=>1);
-	my $data = XMLin($cf);
+	my $data = XMLin($cf, ForceArray=> qr/competition/);
 	
 	# print Dumper(\$data);
 	return $data;

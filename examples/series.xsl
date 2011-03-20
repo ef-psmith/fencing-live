@@ -201,7 +201,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="fencer" mode="finalfencer">
 		<tr>
-			<xsl:attribute name="class">elim_<xsl:value-of select="@elimround" /></xsl:attribute>
+			<xsl:attribute name="class"><xsl:value-of select="@elimround" /></xsl:attribute>
 			<td class="vlist_postition"><xsl:value-of select="@position" /></td>
 			<td class="vlist_name"><xsl:value-of select="@name" /></td>
 			<td class="vlist_club"><xsl:value-of select="@affiliation" /></td>

@@ -109,7 +109,7 @@ while (1)
 	foreach my $sid ( sort keys %$series)
 	{
 		# print Dumper(\$series->{$sid});
-		#next unless ($series->{$sid}->{enabled} eq "true");
+		next unless ($series->{$sid}->{enabled} eq "true");
 
 		my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 
 		
@@ -119,12 +119,14 @@ while (1)
 		
 
 		foreach my $cid (@{$series->{$sid}->{competition}})
-		{		
+		{
+			#print "series_output: cid $cid starting\n";
 			# print Dumper($_);
 			my ($index) = grep $array[$_]->{id} eq $cid, 0 .. $#array;
+			#print "cid $cid: index = $index\n";
 			
-			next unless $index;
-			# print "index = $index\n";
+			next unless defined($index);
+			#print "cid $cid: index = $index\n";
 			push @{$series_output->{competition}}, @{$comp_output->{competition}}[$index]; 
 		}
 	
@@ -185,7 +187,7 @@ sub do_comp
 	
 	my $wh = do_where($c);
 	
-	# print Dumper(\$wh);
+	debug(1, "cid $cid: where = " . Dumper(\$wh));
 	
 	push @{$out->{lists}}, $wh if $wh->{where}->{count};
 	push @{$comp_output->{competition}}, $out;
@@ -226,8 +228,14 @@ sub do_poules
 
 		if (defined($poule)) 
 		{
-			$out = {'number' => $pnum+1, 'piste' => $poule->piste || '', 'heure' => $poule->heure || '', 'size' => $poule->size};
+			# debug(1, "fpp: poule = " . Dumper(\$poule));
+
+			$out = {'number' => $pnum+1, 'piste' => $poule->piste_no || '&#160;', 'heure' => $poule->heure || '', 'size' => $poule->size};
+			# debug(1, "fpp: out = " . Dumper(\$out));
+
 			$out->{fencers} = $poule->grid(1);
+
+			# debug(1, "fpp: out2 = " . Dumper(\$out));
 
 			push @pout, $out;
 		}
@@ -279,9 +287,9 @@ sub do_list
 			foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
 			{
 				push @lout, {	name => $fencers->{$fid}->{nom}, 
-								affiliation => $fencers->{$fid}->{$aff} || '',
-								piste => $fencers->{$fid}->{piste} || '', 	
-								poule => $fencers->{$fid}->{poule} || '', 
+								affiliation => $fencers->{$fid}->{$aff} || '&#160;',
+								piste => $fencers->{$fid}->{piste_no} || '&#160;', 	
+								poule => $fencers->{$fid}->{poule} || '&#160;', 
 								sequence => $sequence};
 				$sequence++;
 			}
@@ -418,33 +426,37 @@ sub do_tableau
 	my $c = shift;
 	my $where = shift;
 
-	print "do_tableau: where = " . Dumper(\$where);
+	my @w = split / /,$where;
+	shift @w;
+
+	print "do_tableau: w = " . Dumper(\@w);
 	
 	my $out = {};
 	
-	my @tableaux;
+	#my @tableaux;
 	
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
-	if ($where eq "termine")
-	{	
-		@tableaux = ($c->tableaux)[-2,-1];
-	}
-	else
-	{
-		@tableaux = $c->tableaux(1);
-	}
+	#if ($where eq "termine")
+	#{	
+	#	@tableaux = ($c->tableaux)[-2,-1];
+	#}
+	#else
+	#{
+	#	@tableaux = $c->tableaux(1);
+	#	debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
+	#}
 	
-	shift @tableaux;
+	# shift @tableaux;
 	
-	debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
+	# debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
 	
 	my $col = 1;
 
 	my @winners;
 	
-	foreach my $tab (@tableaux)
+	foreach my $tab (@w)
 	{
 		debug(1, "do_tableau: tab = $tab");
 		my $t = $c->tableau($tab,1);
@@ -467,7 +479,7 @@ sub do_tableau
 		{	
 			debug(3, "do_tableau: match = " . Dumper(\$t->{$m}));
 		
-			push @winners, ($t->{$m}->{winner} || "") if $col eq 1;
+			push @winners, ($t->{$m}->{winner} || '' ) if $col eq 1;
 		
 			my $fa = { name => $t->{$m}->{fencerA} || "", seed => $t->{$m}->{seedA} || "", affiliation => $t->{$m}->{$aff . 'A'} || ""};
 			my $fb = { name => $t->{$m}->{fencerB} || "", seed => $t->{$m}->{seedB} || "", affiliation => $t->{$m}->{$aff . 'B'} || ""};

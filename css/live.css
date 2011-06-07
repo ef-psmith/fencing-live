@@ -57,7 +57,7 @@ div.vlist
 	border: none;
 	height:  90%;
 	right: 40px;
-	width: 24%;
+	width: 25%;
 }
 
 div.vlist_entry
@@ -336,17 +336,18 @@ table.vlist_table {
 	width: 2em;
 	text-align: right;
 	font-size: 1em;
+	overflow: hidden;
 }
 
 .vlist_name {
-	width: 6em;
+	width: 5em;
 	text-align: left;
 	font-size: 1em;
 	overflow: hidden;
 }
 
 .vlist_club {
-	width: 8em;
+	width: 6em;
 	text-align: right;
 	font-size: 0.8em;
 	overflow: hidden;

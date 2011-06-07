@@ -50,6 +50,7 @@
 	<series id="1">
 		<enabled>true</enabled>
 		<competition>1</competition>
+		<competition>6</competition>
 	</series>
 
 	<series id="2">

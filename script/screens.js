@@ -13,7 +13,7 @@ function onPageLoaded() {
 }
 
 // Scroll delay of 30 seconds
-var scrolldelay = 30000;
+var scrolldelay = 15000;
 
 
 /**

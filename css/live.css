@@ -65,7 +65,7 @@ div.vlist_entry
 	overflow: hidden;
 	position: absolute;
 	border: none;
-	height:  95%;
+	height:  94%;
 	right: 25px;
 	left: 25px;
 	top: 30px;
@@ -293,7 +293,7 @@ div.vlist_title {
 	text-align: center; 
 	width: 99%; 
 	position: absolute;
-	top: 25px;
+	top: 15px;
 }
 
 
@@ -333,28 +333,28 @@ table.vlist_table {
 
 
 .fencer_country, .init_rank, .vlist_piste, .vlist_poule, .vlist_round, .vlist_time {
-	width: 2em;
+	width: 9%;
 	text-align: right;
-	font-size: 1em;
+	font-size: 0.8em;
 	overflow: hidden;
 }
 
 .vlist_name {
-	width: 5em;
+	width: 45%;
 	text-align: left;
 	font-size: 1em;
 	overflow: hidden;
 }
 
 .vlist_club {
-	width: 6em;
+	width: 25%;
 	text-align: right;
 	font-size: 0.8em;
 	overflow: hidden;
 }
 
 .vlist_position {
-	width: 3em;
+	width: 15%;
 	text-align: left;
 	font-size: 1.1em;
 }

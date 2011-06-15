@@ -287,9 +287,9 @@ sub do_list
 			foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
 			{
 				push @lout, {	name => $fencers->{$fid}->{nom}, 
-								affiliation => $fencers->{$fid}->{$aff} || '&#160;',
-								piste => $fencers->{$fid}->{piste_no} || '&#160;', 	
-								poule => $fencers->{$fid}->{poule} || '&#160;', 
+								affiliation => $fencers->{$fid}->{$aff} || '',
+								piste => $fencers->{$fid}->{piste_no} || ' ', 	
+								poule => $fencers->{$fid}->{poule} || '', 
 								sequence => $sequence};
 				$sequence++;
 			}

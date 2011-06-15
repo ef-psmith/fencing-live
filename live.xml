@@ -6,14 +6,14 @@
 	<log>./out.txt</log>
 	
 	<competition id="1">
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<background>red</background>
 		<source>/share/Public/data/Invicta/2011/Womens Foil</source>
 		<nif>1</nif>
 	</competition>
 	
 	<competition id="2">
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<background>yellow</background>
 		<source>/share/Public/data/Invicta/2011/Mens Foil</source>
 		<nif>0</nif>
@@ -43,33 +43,32 @@
 	<competition id="7">
 		<enabled>true</enabled>
 		<background>yellow</background>
-		<source>/share/Public/data/Invicta/2011/Mens Epee - Copy</source>
+		<source>/share/Public/data/Invicta/2011/Mens Epee</source>
 		<nif>0</nif>
 	</competition>
 	
 	<series id="1">
 		<enabled>true</enabled>
-		<competition>1</competition>
-		<competition>6</competition>
+		<competition>7</competition>
 	</series>
 
 	<series id="2">
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<competition>2</competition>
 	</series>
 
 	<series id="3">
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<competition>1</competition>
 	</series>
 
 	<series id="4">
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<competition>2</competition>
 	</series>
 
 	<series id="5">
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<competition>7</competition>
 	</series>
 </config>

@@ -398,7 +398,7 @@ sub do_where
 	
 	my $fencers = $c->matchlist;
 	
-	#print "do_where: " . $c->titre_ligne . ": " . Dumper(\$fencers);
+	print "do_where: " . $c->titre_ligne . ": " . Dumper(\$fencers);
 	
 	my @list;
 	
@@ -477,17 +477,19 @@ sub do_tableau
 
 		foreach my $m (1..$numbouts)
 		{	
-			debug(3, "do_tableau: match = " . Dumper(\$t->{$m}));
+			my $match = $c->match($tab, $m);
+	
+			debug(2, "do_tableau: match = " . Dumper(\$match));
+
+			push @winners, ($match->{winner} || undef ) if $col eq 1;
 		
-			push @winners, ($t->{$m}->{winner} || '' ) if $col eq 1;
-		
-			my $fa = { name => $t->{$m}->{fencerA} || "", seed => $t->{$m}->{seedA} || "", affiliation => $t->{$m}->{$aff . 'A'} || ""};
-			my $fb = { name => $t->{$m}->{fencerB} || "", seed => $t->{$m}->{seedB} || "", affiliation => $t->{$m}->{$aff . 'B'} || ""};
+			my $fa = { name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || ""};
+			my $fb = { name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || ""};
 			
-			$fa->{name} = $winners[($m * 2) - 1] unless $fa->{name};
-			$fb->{name} = $winners[$m * 2] unless $fb->{name};
+			#$fa->{name} = $winners[($m * 2) - 1] unless $fa->{name};
+			#$fb->{name} = $winners[$m * 2] unless $fb->{name};
 			
-			my $score = "$t->{$m}->{scoreA} / $t->{$m}->{scoreB}";
+			my $score = "$match->{scoreA} / $match->{scoreB}";
 			
 			$score = "by exclusion" if $score =~ /exclusion/;
 			$score = "by abandonment" if $score =~ /abandon/;
@@ -495,11 +497,11 @@ sub do_tableau
 			$score = "" if $score eq " / ";
 			
 			push @list, { 	number => $m, 
-							time => $t->{$m}->{heure} || "",  
-							piste => $t->{$m}->{piste} || "",
+							time => $match->{heure} || "",  
+							piste => $match->{piste} || "",
 							fencerA => $fa,
 							fencerB => $fb,
-							winner => $t->{$m}->{winner} || "",
+							winner => $match->{winner} || "",
 							score => $score
 						};
 		};

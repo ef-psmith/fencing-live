@@ -2,7 +2,7 @@
 
 <config>
 	<targetlocation>/share/Qweb</targetlocation>
-	<debug>1</debug>
+	<debug>2</debug>
 	<log>./out.txt</log>
 	
 	<competition id="1">

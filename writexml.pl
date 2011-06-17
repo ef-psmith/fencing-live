@@ -290,6 +290,7 @@ sub do_list
 								affiliation => $fencers->{$fid}->{$aff} || '',
 								piste => $fencers->{$fid}->{piste_no} || ' ', 	
 								poule => $fencers->{$fid}->{poule} || '', 
+								id => $fid || '',
 								sequence => $sequence};
 				$sequence++;
 			}
@@ -330,7 +331,8 @@ sub do_list
 				push @lout, {	name => $fencers->{$fid}->{nom_court}, 
 								affiliation => $fencers->{$fid}->{$aff} || '',
 								elimround => "p", 	
-								position => $fencers->{$fid}->{seed} || '', 
+								position => $fencers->{$fid}->{seed} || '',
+								id => $fid || '', 
 								sequence => $sequence};
 				$sequence++;
 			}
@@ -356,6 +358,7 @@ sub do_list
 								affiliation => $fencers->{$fid}->{$aff} || '',
 								position => $fencers->{$fid}->{seed} || '', 	
 								elimround => $fencers->{$fid}->{group} || '', 
+								id => $fid || '',
 								sequence => $sequence};
 				$sequence++;
 			}
@@ -375,7 +378,8 @@ sub do_list
 			{
 				push @lout, {	name => $fencers->{$fid}->{nom}, 
 								affiliation => $fencers->{$fid}->{$aff} || '',
-								seed => $fencers->{$fid}->{serie} || '', 
+								seed => $fencers->{$fid}->{serie} || '',
+								id => $fid || '',
 								sequence => $sequence};
 				$sequence++;
 			}
@@ -479,13 +483,13 @@ sub do_tableau
 		{	
 			# print "do_tableau: calling match\n";
 			my $match = $c->match($tab, $m);
-	
+		
 			debug(3, "do_tableau: match = " . Dumper(\$match));
 
 			push @winners, ($match->{winnerid} || undef ) if $col eq 1;
 		
-			my $fa = { name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || ""};
-			my $fb = { name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || ""};
+			my $fa = { id => $match->{idA} || "", name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || ""};
+			my $fb = { id => $match->{idB} || "", name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || ""};
 			
 			#$fa->{name} = $winners[($m * 2) - 1] unless $fa->{name};
 			#$fb->{name} = $winners[$m * 2] unless $fb->{name};

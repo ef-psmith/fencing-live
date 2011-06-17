@@ -316,7 +316,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<div class="tableaudiv">
 		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
 		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
-	<span class="tableautitle">Part <xsl:value-of select="((@number - 1) div $col1size) + 1" /> of  <xsl:value-of select="count(../match) div $col1size" /></span>
+	<h2 class="tableautitle">Part <xsl:value-of select="((@number - 1) div $col1size) + 1" /> of  <xsl:value-of select="count(../match) div $col1size" /></h2>
 		<div class="twocol1">
 			<!-- **************************** HALF **************************** -->
 			<div class="half">

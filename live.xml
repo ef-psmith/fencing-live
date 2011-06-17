@@ -43,6 +43,7 @@
 	<competition id="7">
 		<enabled>true</enabled>
 		<background>yellow</background>
+		<asource>/share/Public/data/Invicta/2011/Mens Epee - 2 - End of Pools</asource>
 		<source>/share/Public/data/Invicta/2011/Mens Epee</source>
 		<nif>0</nif>
 	</competition>

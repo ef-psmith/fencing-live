@@ -458,7 +458,7 @@ sub do_tableau
 	
 	my $col = 1;
 
-	my @winners;
+	# my @winners;
 	
 	foreach my $tab (@w)
 	{
@@ -486,7 +486,7 @@ sub do_tableau
 		
 			debug(3, "do_tableau: match = " . Dumper(\$match));
 
-			push @winners, ($match->{winnerid} || undef ) if $col eq 1;
+			# push @winners, ($match->{winnerid} || undef ) if $col eq 1;
 		
 			my $fa = { id => $match->{idA} || "", name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || ""};
 			my $fb = { id => $match->{idB} || "", name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || ""};
@@ -506,7 +506,8 @@ sub do_tableau
 							piste => $match->{piste} || "",
 							fencerA => $fa,
 							fencerB => $fb,
-							winner => $match->{winnername} || "",
+							winnername => $match->{winnername} || "",
+							winnerid => $match->{winnerid} || "",
 							score => $score
 						};
 		};

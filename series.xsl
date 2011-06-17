@@ -365,7 +365,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<div id="container"><div id="position">
 			<div class="bout boutborder">
 				<div class="A">
-<xsl:if test="./@winner = fencerA/@name"><xsl:attribute name="class">A winner</xsl:attribute></xsl:if>
+<xsl:if test="./@winnerid = fencerA/@id"><xsl:attribute name="class">A winner</xsl:attribute></xsl:if>
 					<div id="container">
 						<div id="position">
 							<xsl:choose>
@@ -387,10 +387,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<div id="container">
 						<div id="position">
 							<xsl:choose>
-								<xsl:when test="string-length(@winner) &gt; 0 and string-length(@score) != 0">
+								<xsl:when test="string-length(@winnername) &gt; 0 and string-length(@score) != 0">
 									<xsl:value-of select="@score" />
 								</xsl:when>
-								<xsl:when test="string-length(@winner) &gt; 0">
+								<xsl:when test="string-length(@winnername) &gt; 0">
 									Bye
 								</xsl:when>
 								<xsl:when test="string-length(@piste) != 0">
@@ -404,7 +404,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					</div>
 				</div>
 				<div class="B">
-<xsl:if test="./@winner = fencerB/@name"><xsl:attribute name="class">B winner</xsl:attribute></xsl:if>
+<xsl:if test="./@winnerid = fencerB/@id"><xsl:attribute name="class">B winner</xsl:attribute></xsl:if>
 					<div id="container">
 						<div id="position">
 							<xsl:choose>

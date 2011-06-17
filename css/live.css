@@ -170,13 +170,14 @@ div.bout {
 }
 
 span.seed { 
-	width: 2em; 
-	border-right: 1px solid black; 
-	position: absolute; left: 4px; 
+	/* width: 2em;   */
+	/* border-right: 1px solid black; */
+	/* position: absolute; */
+	left: 35px; 
 }
 
 span.fencer { 
-	padding-left: 2.5em; 
+	padding-left: .5em; 
 }
 
 span.country { 

@@ -116,7 +116,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<content>
 	<!-- Display HTML starts here. 
 			First the list header -->
-<div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
+<div class="vlist_title" id="vtitle"><h2>Where should I be?</h2></div>
 <div class="vlist_header" id="vheader">
 		<table class="vlist_table">
 			<tr>
@@ -384,8 +384,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 								<xsl:when test="string-length(@winner) &gt; 0">
 									Bye
 								</xsl:when>
+								<xsl:when test="string-length(@piste) != 0">
+									Piste: <xsl:value-of select="@piste" /><xsl:text> </xsl:text><xsl:value-of select="@time" />
+								</xsl:when>
 								<xsl:otherwise>
-									Piste: <xsl:value-of select="@piste" /><xsl:text> </xsl:text><xsl:value-of select="@heure" />
+									&#160;
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>

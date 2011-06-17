@@ -187,7 +187,7 @@ sub do_comp
 	
 	my $wh = do_where($c);
 	
-	debug(1, "cid $cid: where = " . Dumper(\$wh));
+	debug(3, "cid $cid: where = " . Dumper(\$wh));
 	
 	push @{$out->{lists}}, $wh if $wh->{where}->{count};
 	push @{$comp_output->{competition}}, $out;
@@ -398,7 +398,7 @@ sub do_where
 	
 	my $fencers = $c->matchlist;
 	
-	print "do_where: " . $c->titre_ligne . ": " . Dumper(\$fencers);
+	#print "do_where: " . $c->titre_ligne . ": " . Dumper(\$fencers);
 	
 	my @list;
 	
@@ -429,7 +429,7 @@ sub do_tableau
 	my @w = split / /,$where;
 	shift @w;
 
-	print "do_tableau: w = " . Dumper(\@w);
+	#print "do_tableau: w = " . Dumper(\@w);
 	
 	my $out = {};
 	
@@ -477,11 +477,12 @@ sub do_tableau
 
 		foreach my $m (1..$numbouts)
 		{	
+			# print "do_tableau: calling match\n";
 			my $match = $c->match($tab, $m);
 	
-			debug(2, "do_tableau: match = " . Dumper(\$match));
+			debug(3, "do_tableau: match = " . Dumper(\$match));
 
-			push @winners, ($match->{winner} || undef ) if $col eq 1;
+			push @winners, ($match->{winnerid} || undef ) if $col eq 1;
 		
 			my $fa = { name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || ""};
 			my $fb = { name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || ""};
@@ -497,11 +498,11 @@ sub do_tableau
 			$score = "" if $score eq " / ";
 			
 			push @list, { 	number => $m, 
-							time => $match->{heure} || "",  
+							time => $match->{time} || "",  
 							piste => $match->{piste} || "",
 							fencerA => $fa,
 							fencerB => $fb,
-							winner => $match->{winner} || "",
+							winner => $match->{winnername} || "",
 							score => $score
 						};
 		};
@@ -511,7 +512,7 @@ sub do_tableau
 		
 		$col++;
 
-		print "do_tableau: winners = " . Dumper(\@winners);
+		# print "do_tableau: winners = " . Dumper(\@winners);
 	}
 	
 	return $out;

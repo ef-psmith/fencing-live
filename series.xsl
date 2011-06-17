@@ -387,10 +387,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<div id="container">
 						<div id="position">
 							<xsl:choose>
-								<xsl:when test="string-length(@winner) &gt; 0 and string-length(@score) != 0">
+								<xsl:when test="string-length(@winnername) &gt; 0 and string-length(@score) != 0">
 									<xsl:value-of select="@score" />
 								</xsl:when>
-								<xsl:when test="string-length(@winner) &gt; 0">
+								<xsl:when test="string-length(@winnername) &gt; 0">
 									Bye
 								</xsl:when>
 								<xsl:when test="string-length(@piste) != 0">

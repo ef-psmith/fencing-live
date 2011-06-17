@@ -429,7 +429,7 @@ sub do_tableau
 	my @w = split / /,$where;
 	shift @w;
 
-	#print "do_tableau: w = " . Dumper(\@w);
+	print "do_tableau: w = " . Dumper(\@w);
 	
 	my $out = {};
 	

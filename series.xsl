@@ -364,7 +364,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<div id="container"><div id="position">
 			<div class="bout boutborder">
 				<div class="A">
-					<!-- attribute needed for "Winner" -->
+<xsl:if test="./@winner = fencerA/@name"><xsl:attribute name="class">A winner</xsl:attribute></xsl:if>
 					<div id="container">
 						<div id="position">
 							<xsl:choose>
@@ -402,6 +402,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					</div>
 				</div>
 				<div class="B">
+<xsl:if test="./@winner = fencerB/@name"><xsl:attribute name="class">B winner</xsl:attribute></xsl:if>
 					<div id="container">
 						<div id="position">
 							<xsl:choose>

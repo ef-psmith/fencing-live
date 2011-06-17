@@ -367,7 +367,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<!-- attribute needed for "Winner" -->
 					<div id="container">
 						<div id="position">
+							<xsl:choose>
+							<xsl:when test="name(..) = 'col2'">
+									<span style="display:none;">&#160;</span>
+								</xsl:when>
+								<xsl:otherwise>
 							<span class="seed"><xsl:value-of select="fencerA/@seed" /></span>
+								</xsl:otherwise>
+							</xsl:choose>
 							<xsl:if test="string-length(fencerA/@name) &gt; 0">
 								<span class="fencer "><xsl:value-of select="fencerA/@name" /> </span>
 							</xsl:if>
@@ -397,7 +404,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<div class="B">
 					<div id="container">
 						<div id="position">
+							<xsl:choose>
+							<xsl:when test="name(..) = 'col2'">
+									<span style="display:none;">&#160;</span>
+								</xsl:when>
+								<xsl:otherwise>
 							<span class="seed"><xsl:value-of select="fencerB/@seed" /></span>
+								</xsl:otherwise>
+							</xsl:choose>
 							<xsl:if test="string-length(fencerB/@name) &gt; 0">
 							<span class="fencer "><xsl:value-of select="fencerB/@name" /></span>
 							</xsl:if>

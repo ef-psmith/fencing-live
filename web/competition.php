@@ -26,6 +26,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </tr>
 		</xsl:for-each>
 </table>
+<br />
+<a><xsl:attribute name="href">portal.php</xsl:attribute>Up</a>
 </body>
 </html>
 </xsl:if>

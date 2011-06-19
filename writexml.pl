@@ -250,6 +250,62 @@ sub do_poules
 	return $p;
 }	
 
+sub do_fpp_list
+{
+	my $c = shift;
+	my $aff = shift;
+	
+	my @lout;
+	
+	#######################################################
+	# Fencers, Pools, Pistes
+	#######################################################
+
+	my $fencers = $c->fpp();
+
+	# print Dumper(\$fencers);
+
+	my $sequence=1;
+	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
+	{
+		push @lout, {	name => $fencers->{$fid}->{nom}, 
+						affiliation => $fencers->{$fid}->{$aff} || '',
+						piste => $fencers->{$fid}->{piste_no} || ' ', 	
+						poule => $fencers->{$fid}->{poule} || '', 
+						id => $fid || '',
+						sequence => $sequence};
+		$sequence++;
+	}
+
+	return @lout;
+}
+
+sub do_entry_list
+{
+	my $c = shift;
+	my $aff = shift;
+	
+	my @lout;
+	
+	
+	my $fencers = $c->tireurs;
+				
+	# print Dumper(\$fencers);
+
+	my $sequence = 1;
+
+	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
+	{
+		push @lout, {	name => $fencers->{$fid}->{nom}, 
+						affiliation => $fencers->{$fid}->{$aff} || '',
+						seed => $fencers->{$fid}->{serie} || '',
+						id => $fid || '',
+						sequence => $sequence};
+		$sequence++;
+	}
+
+	return @lout;
+}
 
 sub do_list
 {
@@ -268,36 +324,32 @@ sub do_list
 	
 	my $fencers;
 	
+	
 	if ($vertlist) 
 	{
 		my $dom = $c->domaine_compe;
 		my $aff = $dom eq "national" ? "club" : "nation";
+		
+		############################################
+		# Always need the entry list for the portal
+		############################################
+
+		@lout = do_entry_list($c, $aff);
+
+		$list->{portalentry}->{fencer} = [@lout];
+		$list->{portalentry}->{count} = @lout;
+		$list->{portalentry}->{nif} = $nif;
 
 		if ($vertlist =~ /fpp/) 
 		{
-			#######################################################
-			# Fencers, Pools, Pistes
-			#######################################################
-
-			$fencers = $c->fpp();
+			# We need the fpp for the series
+			@lout = do_fpp_list($c, $aff);		
 			
-			# print Dumper(\$fencers);
-			
-			my $sequence=1;
-			foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
-			{
-				push @lout, {	name => $fencers->{$fid}->{nom}, 
-								affiliation => $fencers->{$fid}->{$aff} || '',
-								piste => $fencers->{$fid}->{piste_no} || ' ', 	
-								poule => $fencers->{$fid}->{poule} || '', 
-								id => $fid || '',
-								sequence => $sequence};
-				$sequence++;
-			}
-
 			$list->{fpp}->{fencer} = [@lout];
 			$list->{fpp}->{count} = @lout;
 			$list->{fpp}->{round} = $stage[1];
+			
+			
 		} 
 		elsif ($vertlist =~ /ranking/) 
 		{
@@ -368,21 +420,7 @@ sub do_list
 		}
 		elsif ($vertlist eq 'entry')
 		{
-			$fencers = $c->tireurs;
-			
-			# print Dumper(\$fencers);
-			
-			my $sequence = 1;
-			
-			foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
-			{
-				push @lout, {	name => $fencers->{$fid}->{nom}, 
-								affiliation => $fencers->{$fid}->{$aff} || '',
-								seed => $fencers->{$fid}->{serie} || '',
-								id => $fid || '',
-								sequence => $sequence};
-				$sequence++;
-			}
+			@lout = do_entry_list($c, $aff);
 			
 			$list->{entry}->{fencer} = [@lout];
 			$list->{entry}->{count} = @lout;

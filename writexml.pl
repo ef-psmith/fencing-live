@@ -435,9 +435,12 @@ sub do_list
 sub do_where
 {
 	my $c = shift;
+
 	
 	my $out = {};
 	
+	return $out unless want($c, "where");
+
 	my $fencers = $c->matchlist;
 	
 	#print "do_where: " . $c->titre_ligne . ": " . Dumper(\$fencers);
@@ -618,6 +621,15 @@ sub want
 	elsif ($what eq "list")
 	{
 		return which_list($where);
+	}
+	elsif ($what eq "where")
+	{
+		my @w = split / /, $where;
+		debug(1, "want(): w = [@w]");
+		my $t = $c->tableau($w[1]);
+		my $size = $t->taille;
+		return undef if $size < 16;
+		return $size;
 	}
 	else
 	{

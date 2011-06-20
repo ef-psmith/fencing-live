@@ -340,6 +340,8 @@ sub do_list
 		$list->{portalentry}->{count} = @lout;
 		$list->{portalentry}->{nif} = $nif;
 
+		undef @lout;
+
 		if ($vertlist =~ /fpp/) 
 		{
 			# We need the fpp for the series
@@ -474,7 +476,7 @@ sub do_tableau
 	my @w = split / /,$where;
 	shift @w;
 
-	print "do_tableau: w = " . Dumper(\@w);
+	# debug(3, "do_tableau: w = " . Dumper(\@w));
 	
 	my $out = {};
 	
@@ -505,6 +507,8 @@ sub do_tableau
 	{
 		debug(1, "do_tableau: tab = $tab");
 		my $t = $c->tableau($tab,1);
+
+		$out->{title} = $t->nom_etendu unless $out->{title};
 		
 		# print $c->titre_ligne . ": " . Dumper(\$t);
 	

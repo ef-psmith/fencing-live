@@ -5,8 +5,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Global variables for controlling the display parameters -->
-<xsl:variable name="pagesize" select="number(40)" />
-<xsl:variable name="entrysize" select="number(138)" />
+<xsl:variable name="pagesize" select="number(34)" />
+<xsl:variable name="entrysize" select="number(102)" />
 <xsl:variable name="poolsperpage" select="number(2)"/>
 <xsl:variable name="col1size" select="number(4)"/>
 

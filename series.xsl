@@ -5,8 +5,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Global variables for controlling the display parameters -->
-<xsl:variable name="pagesize" select="number(34)" />
-<xsl:variable name="entrysize" select="number(102)" />
+<xsl:variable name="pagesize" select="number(40)" />
+<xsl:variable name="entrysize" select="number(138)" />
 <xsl:variable name="poolsperpage" select="number(2)"/>
 <xsl:variable name="col1size" select="number(4)"/>
 
@@ -316,9 +316,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<div class="tableaudiv">
 		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
 		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
-		<xsl:if test="@number > $col1size">
-			<h2 class="tableautitle">Part <xsl:value-of select="((@number - 1) div $col1size) + 1" /> of  <xsl:value-of select="count(../match) div $col1size" /></h2>
-		</xsl:if>
+		<div class="tableautitle">
+		   <p class="tableautitlepart"><xsl:value-of select="../../@title"/></p>
+			<xsl:if test="count(../match[@number > $col1size]) > 0">
+				<p class="tableautitlepart">Part <xsl:value-of select="((@number - 1) div $col1size) + 1" /> of  <xsl:value-of select="count(../match) div $col1size" /></p>
+			</xsl:if>
+		</div>
 		<div class="twocol1">
 			<!-- **************************** HALF **************************** -->
 			<div class="half">

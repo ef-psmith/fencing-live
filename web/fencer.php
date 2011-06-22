@@ -4,15 +4,10 @@
 	$compid = $_REQUEST['competition'];
 	$fencerid = $_REQUEST['fencer'];
   $xslt_string = '<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:output method="xml" />
 
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="xml" />
-
-<!-- Entry List -->
-<xsl:template match="lists/portalentry/fencer">
-
-<xsl:if test="../../../@id = ' . $compid . ' and @id = ' . $fencerid . '">
+<!-- Match every fencer -->
+<xsl:template match="competition[@id = ' . $compid . ']/lists/portalentry/fencer[@id = ' . $fencerid . ']">
 <xsl:variable name="fencername" select="@name" />
 <html>
 <body>
@@ -20,15 +15,24 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <h2><xsl:value-of select="@name"/></h2>
 
 <xsl:for-each select="../../../lists/ranking/fencer[@id = ' . $fencerid . ']">
-<xsl:choose>
+<p><xsl:choose>
 <xsl:when test="../@type = \'final\'">Final Position: </xsl:when>
 <xsl:otherwise>Seeding after the poules: </xsl:otherwise>
 </xsl:choose>
-<xsl:value-of select="@position" />
+<xsl:value-of select="@position" /></p>
 </xsl:for-each>
+
+<p>Direct Elimination</p>
+<table>
+<xsl:for-each select="../../../tableau/matches//match[fencerA/@id = ' . $fencerid . ' or fencerB/@id = ' . $fencerid . ']">
+<xsl:sort select="../@count" data-type="number"/>
+<tr><td><xsl:value-of select="name(..)" /></td><td><xsl:value-of select="fencerA/@name" /></td><td><xsl:value-of select="@score" /></td><td><xsl:value-of select="fencerB/@name" /></td></tr>
+</xsl:for-each>
+</table>
 
 
 <xsl:for-each select="../../../pools/pool/fencers/fencer[@fencerid = ' . $fencerid . ']">
+<p>Round <xsl:value-of select="../../../@round"/> Poule</p>
 <table>
 <xsl:variable name="poolid" select="@id"/>
 <xsl:for-each select="result[@id != current()/@id]">
@@ -44,7 +48,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <a><xsl:attribute name="href">competition.php?competition=' . $compid .'</xsl:attribute>Up</a>
 </body>
 </html>
-</xsl:if>
 </xsl:template>
 
 

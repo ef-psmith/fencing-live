@@ -419,6 +419,7 @@ sub do_list
 			
 			$list->{ranking}->{fencer} = [@lout];
 			$list->{ranking}->{count} = @lout;
+			$list->{ranking}->{type} = "final";
 		}
 		elsif ($vertlist eq 'entry')
 		{
@@ -437,7 +438,6 @@ sub do_list
 sub do_where
 {
 	my $c = shift;
-
 	
 	my $out = {};
 	
@@ -468,6 +468,60 @@ sub do_where
 	return $out;
 }
 
+
+sub do_tableau_matches
+{
+
+	my $t = shift;
+	my $aff = shift;
+	
+	my @list;
+	
+
+	# print $c->titre_ligne . ": " . Dumper(\$t);
+
+	debug(3, Dumper(\$t));
+
+	my $numbouts = $t->{taille} / 2;
+
+	debug(1, "do_tableau_matches: Number of bouts: $numbouts");
+
+	foreach my $m (1..$numbouts)
+	{	
+		# print "do_tableau: calling match\n";
+		my $match = $t->match($m);
+
+		debug(3, "do_tableau: match = " . Dumper(\$match));
+
+		# push @winners, ($match->{winnerid} || undef ) if $col eq 1;
+
+		my $fa = { id => $match->{idA} || "", name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || ""};
+		my $fb = { id => $match->{idB} || "", name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || ""};
+
+		#$fa->{name} = $winners[($m * 2) - 1] unless $fa->{name};
+		#$fb->{name} = $winners[$m * 2] unless $fb->{name};
+
+		my $score = "$match->{scoreA} / $match->{scoreB}";
+
+		$score = "by exclusion" if $score =~ /exclusion/;
+		$score = "by abandonment" if $score =~ /abandon/;
+		$score = "by penalty" if $score =~ /forfait/;
+		$score = "" if $score eq " / ";
+
+		push @list, { 	number => $m, 
+						time => $match->{time} || "",  
+						piste => $match->{piste} || "",
+						fencerA => $fa,
+						fencerB => $fb,
+						winnername => $match->{winnername} || "",
+						winnerid => $match->{winnerid} || "",
+						score => $score
+					};
+	};
+
+	return @list;
+}
+
 sub do_tableau
 {
 	my $c = shift;
@@ -475,8 +529,9 @@ sub do_tableau
 
 	my @w = split / /,$where;
 	shift @w;
+	
 
-	# debug(3, "do_tableau: w = " . Dumper(\@w));
+	print "do_tableau: w = " . Dumper(\@w);
 	
 	my $out = {};
 	
@@ -495,74 +550,37 @@ sub do_tableau
 	#	debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
 	#}
 	
-	# shift @tableaux;
-	
-	# debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
 	
 	my $col = 1;
-
-	# my @winners;
 	
 	foreach my $tab (@w)
 	{
-		debug(1, "do_tableau: tab = $tab");
+		
 		my $t = $c->tableau($tab,1);
-
 		$out->{title} = $t->nom_etendu unless $out->{title};
+		my @list = do_tableau_matches($t, $aff);
 		
-		# print $c->titre_ligne . ": " . Dumper(\$t);
-	
-		debug(3, Dumper(\$t));
-		
-		my $numbouts = $t->{taille} / 2;
-	 
-		debug(1, "do_tableau: Number of bouts: $numbouts");
-
-		# my $hasnexttableau = $c->next_tableau_in_suite($tab);  
-		
-		# debug(2, "do_tableau: hasnext = $hasnexttableau");
-		
-		my @list;
-
-		foreach my $m (1..$numbouts)
-		{	
-			# print "do_tableau: calling match\n";
-			my $match = $c->match($tab, $m);
-		
-			debug(3, "do_tableau: match = " . Dumper(\$match));
-
-			# push @winners, ($match->{winnerid} || undef ) if $col eq 1;
-		
-			my $fa = { id => $match->{idA} || "", name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || ""};
-			my $fb = { id => $match->{idB} || "", name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || ""};
-			
-			#$fa->{name} = $winners[($m * 2) - 1] unless $fa->{name};
-			#$fb->{name} = $winners[$m * 2] unless $fb->{name};
-			
-			my $score = "$match->{scoreA} / $match->{scoreB}";
-			
-			$score = "by exclusion" if $score =~ /exclusion/;
-			$score = "by abandonment" if $score =~ /abandon/;
-			$score = "by penalty" if $score =~ /forfait/;
-			$score = "" if $score eq " / ";
-			
-			push @list, { 	number => $m, 
-							time => $match->{time} || "",  
-							piste => $match->{piste} || "",
-							fencerA => $fa,
-							fencerB => $fb,
-							winnername => $match->{winnername} || "",
-							winnerid => $match->{winnerid} || "",
-							score => $score
-						};
-		};
-		
-		debug(3, "do_tableau: list = " . Dumper(\@list));
+		# debug(3, "do_tableau: list = " . Dumper(\@list));
 		$out->{"col$col"}->{match} = [@list];
 		
 		$col++;
 
 		# print "do_tableau: winners = " . Dumper(\@winners);
+	}
+	
+	my @alltab = $c->tableaux;
+	$out->{matches} = {};
+	
+	foreach my $atab (@alltab)
+	{
+	
+		my $t = $c->tableau($atab,1);
+		$out->{matches}->{"$atab"}->{title} = $t->nom_etendu;
+		print "do_tableau: atab = " . Dumper($atab);
+		my @list = do_tableau_matches($t, $aff);
+		$out->{matches}->{"$atab"}->{match} = [@list];
+		my $matchcount = @list;
+		$out->{matches}->{"$atab"}->{count} = $matchcount;
 	}
 	
 	return $out;
@@ -630,6 +648,7 @@ sub want
 	{
 		my @w = split / /, $where;
 		debug(1, "want(): w = [@w]");
+		return undef if $w[0] eq "debut" || $w[0] eq "poules" || $w[0] eq "termine";
 		my $t = $c->tableau($w[1]);
 		my $size = $t->taille;
 		return undef if $size < 16;

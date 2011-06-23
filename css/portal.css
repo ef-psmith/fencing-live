@@ -1,0 +1,29 @@
+.DE, .entry
+{
+border: 1px solid lightblue;
+}
+
+th.entry, th.DE
+{
+background-color: lightblue;
+padding-left: 1ex;
+padding-right: 1ex;
+}
+td.entry, td.DE
+{
+padding-left: 1ex;
+padding-right: 1ex;
+}
+td.score
+{
+text-align: center;
+}
+
+.heading
+{
+font-weight:bold;
+}
+.info{
+background-color: lightblue;
+padding: 1ex 1ex 1ex 1ex;
+}

@@ -164,25 +164,64 @@ sub do_comp
 	
 	# print Dumper(\$where);
 	
-	if ($where =~ /poules/)
-	{
-		my @hp = want($c, "poules");
-		
-		$out->{pools} = do_poules($c, @hp);
-		push @{$out->{lists}}, do_list($c, $nif, @hp);
-		
-	}
-	
-	if ($where =~ /tableau/ || $where eq "termine")
-	{
-		$out->{tableau} = do_tableau($c, $where);
-		push @{$out->{lists}}, do_list($c, $nif, "result");
-	}
 	
 	if ($where eq "debut")
 	{
 		debug(1, $c->titre_ligne . ": debut");
 		push @{$out->{lists}}, do_list($c, $nif, "debut");
+	}
+	else
+	{
+		my $dom = $c->domaine_compe;
+		my $aff = $dom eq "national" ? "club" : "nation";
+		
+		############################################
+		# Always need the entry list for the portal
+		############################################
+		{
+			my $list = {};
+		
+			my @lout = do_entry_list($c, $aff);
+
+			$list->{entry}->{fencer} = [@lout];
+			$list->{entry}->{count} = @lout;
+			$list->{entry}->{nif} = $nif;
+			push @{$out->{portallists}}, $list;
+		}
+		
+		if ($where =~ /poules/)
+		{
+			my @hp = want($c, "poules");
+
+			$out->{pools} = do_poules($c, @hp);
+			push @{$out->{lists}}, do_list($c, $nif, @hp);
+
+		}
+
+		if ($where =~ /tableau/ || $where eq "termine")
+		{
+			$out->{tableau} = do_tableau($c, $where);
+			push @{$out->{lists}}, do_list($c, $nif, "result");
+
+			# And also push the pools out for the portal
+			my @hp = want($c, "poules");
+
+			$out->{portalpools} = do_poules($c, @hp);
+
+			{
+				my $fencers = $c->ranking("p");
+
+				# print Dumper(\$fencers);
+
+				my @lout = do_ranking_list($fencers, $aff);
+				my $list = {};
+
+				$list->{ranking}->{fencer} = [@lout];
+				$list->{ranking}->{count} = @lout;
+				$list->{ranking}->{type} = "pools";
+				push @{$out->{portallists}}, $list;
+			}
+		}
 	}
 	
 	my $wh = do_where($c);
@@ -307,6 +346,26 @@ sub do_entry_list
 	return @lout;
 }
 
+sub do_ranking_list
+{
+	my $fencers = shift;
+	my $aff = shift;
+	my @lout;
+	my $sequence = 1;
+
+	foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
+	{
+		push @lout, {	name => $fencers->{$fid}->{nom_court}, 
+						affiliation => $fencers->{$fid}->{$aff} || '',
+						elimround => "p", 	
+						position => $fencers->{$fid}->{seed} || '',
+						id => $fid || '', 
+						sequence => $sequence};
+		$sequence++;
+	}
+	return @lout;
+}
+
 sub do_list
 {
 	my $c = shift;
@@ -329,18 +388,6 @@ sub do_list
 	{
 		my $dom = $c->domaine_compe;
 		my $aff = $dom eq "national" ? "club" : "nation";
-		
-		############################################
-		# Always need the entry list for the portal
-		############################################
-
-		@lout = do_entry_list($c, $aff);
-
-		$list->{portalentry}->{fencer} = [@lout];
-		$list->{portalentry}->{count} = @lout;
-		$list->{portalentry}->{nif} = $nif;
-
-		undef @lout;
 
 		if ($vertlist =~ /fpp/) 
 		{
@@ -378,21 +425,12 @@ sub do_list
 			
 			# print Dumper(\$fencers);
 			
-			my $sequence = 1;
+			@lout = do_ranking_list($fencers, $aff);
 			
-			foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
-			{
-				push @lout, {	name => $fencers->{$fid}->{nom_court}, 
-								affiliation => $fencers->{$fid}->{$aff} || '',
-								elimround => "p", 	
-								position => $fencers->{$fid}->{seed} || '',
-								id => $fid || '', 
-								sequence => $sequence};
-				$sequence++;
-			}
 			
 			$list->{ranking}->{fencer} = [@lout];
 			$list->{ranking}->{count} = @lout;
+			$list->{ranking}->{type} = "pools";
 		} 
 		elsif ($vertlist eq 'result') 
 		{ 

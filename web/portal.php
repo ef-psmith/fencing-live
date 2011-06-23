@@ -11,12 +11,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="opt">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>EYC 2011</title>
+<link href="../css/portal.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
 <body>
-<table>
+<h1>EYC 2011</h1>
+<table class="DE">
 		<xsl:for-each select="competition">
 			<xsl:sort select="@id" data-type="number"/>
-			<tr><td><a><xsl:attribute name="href">competition.php?competition=<xsl:value-of select="@id"/></xsl:attribute>
+			<tr><td class="DE"><a><xsl:attribute name="href">competition.php?competition=<xsl:value-of select="@id"/></xsl:attribute>
 <xsl:value-of select="@ titre_ligne" /></a></td></tr>
 		</xsl:for-each >
 </table>

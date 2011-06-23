@@ -9,28 +9,30 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Entry List -->
-<xsl:template match="lists/portalentry">
+<xsl:template match="competition[@id = ' . $compid . ']//entry">
 
-<xsl:if test="../../@id = ' . $compid . '">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>EYC 2011</title>
+<link href="../css/portal.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
 <body>
 <h1><xsl:value-of select="../../@titre_ligne"/></h1>
-<table>
-<tr><th>Name</th><th>Club</th></tr>
+<p><a><xsl:attribute name="href">portal.php</xsl:attribute>Up to all Competitions</a></p>
+<table class="entry">
+<tr><th class="entry">Name</th><th class="entry">Club</th></tr>
 <xsl:for-each select="fencer">
 <xsl:sort select="@sequence" data-type="number" />
 	<tr>
-	<td ><a><xsl:attribute name="href">fencer.php?competition=' . $compid . '&amp;fencer=<xsl:value-of select="@id"/></xsl:attribute>
+	<td class="entry"><a><xsl:attribute name="href">fencer.php?competition=' . $compid . '&amp;fencer=<xsl:value-of select="@id"/></xsl:attribute>
 <xsl:value-of select="@name" /></a></td>
-	<td ><xsl:value-of select="@affiliation" /></td>
+	<td class="entry"><xsl:value-of select="@affiliation" /></td>
 </tr>
 		</xsl:for-each>
 </table>
-<br />
-<a><xsl:attribute name="href">portal.php</xsl:attribute>Up</a>
+<p><a><xsl:attribute name="href">portal.php</xsl:attribute>Up to all Competitions</a></p>
 </body>
 </html>
-</xsl:if>
 </xsl:template>
 
 

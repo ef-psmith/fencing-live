@@ -169,7 +169,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<!-- Display HTML starts here. 
 			First the list header -->
 <div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
-<div class="vlist_header" id="vheader">
+<!-- <div class="vlist_header" id="vheader">
 		<table class="vlist_table">
 			<tr>
 			<td class="vlist_position">Pos</td>
@@ -177,7 +177,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<td class="vlist_club">Club</td>
 		</tr>
 	</table>
-</div>
+</div> -->
 			
 	<!-- Now the list contents -->
 		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
@@ -198,9 +198,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="fencer" mode="finalfencer">
 		<div>
 			<xsl:attribute name="class"><xsl:value-of select="@elimround" /></xsl:attribute>
-			<span class="col_rank"><xsl:value-of select="@position" /></td>
-			<span class="col_name"><xsl:value-of select="substring(@name,1,17)" /></td>
-			<span class="col_club"><xsl:value-of select="substring(@affiliation,1,20)" /></td>
+			<span class="col_rank"><xsl:value-of select="@position" /></span>
+			<span class="col_name"><xsl:value-of select="substring(@name,1,17)" /></span>
+			<span class="col_club"><xsl:value-of select="substring(@affiliation,1,20)" /></span>
 		</div>
 </xsl:template>
 

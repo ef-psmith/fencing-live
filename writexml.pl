@@ -565,11 +565,12 @@ sub do_tableau
 	my $c = shift;
 	my $where = shift;
 
+	debug(1,"do_tableau: where = $where");
+
 	my @w = split / /,$where;
 	shift @w;
 	
 
-	print "do_tableau: w = " . Dumper(\@w);
 	
 	my $out = {};
 	
@@ -578,16 +579,17 @@ sub do_tableau
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
-	#if ($where eq "termine")
-	#{	
-	#	@tableaux = ($c->tableaux)[-2,-1];
-	#}
+	if ($where eq "termine")
+	{	
+		@w = ($c->tableaux)[-2,-1];
+	}
 	#else
 	#{
 	#	@tableaux = $c->tableaux(1);
 	#	debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
 	#}
 	
+	print "do_tableau: w = " . Dumper(\@w);
 	
 	my $col = 1;
 	

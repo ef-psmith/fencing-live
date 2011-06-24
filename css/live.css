@@ -85,6 +85,17 @@ div.vlist_entry
 	top: 30px;
 }
 
+div.vlist_ranking
+{
+	overflow: hidden;
+	position: absolute;
+	border: none;
+	height:  95%;
+	right:	10px;
+	margin: 20px 20px 20px 20px;
+	width: 49%;
+}
+
 div.pvlist
 {
 	overflow: hidden;
@@ -261,6 +272,19 @@ div.mid_title {
 	bottom: 0px; 
 }
 
+.col_multi2 {
+	-moz-column-count: 2;
+	-moz-column-gap: 1em;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 1em;
+	height: 90%; 
+	width: 95%;
+	position: absolute; 
+	/* border: thin solid black; */
+	top: 10%;
+	right: 30px;
+}
+
 .col_multi {
 	-moz-column-count: 3;
 	-moz-column-gap: 1em;
@@ -285,12 +309,15 @@ div.mid_title {
 
 
 span.col_rank {
-	float: left;
 	width: 10%;
+	height: 100%;
+	float: left;
 }
 
 span.col_name { 
 	float: left;
+	vertical-align: bottom;
+	height: 100%;
 }
 
 
@@ -299,6 +326,9 @@ span.col_club {
 	float: right;
 	border-right: thin solid black;
 	padding-right: 1em;
+	font-size: 0.7em;
+	vertical-align: bottom;
+	height: 100%;
 }
 
 
@@ -368,7 +398,7 @@ table.vlist_table {
 }
 
 .vlist_position {
-	width: 12%;
+	width: 15%;
 	text-align: left;
 	font-size: 1em;
 }
@@ -406,39 +436,57 @@ td.messagespace {
 /* need to have a set of styles for eliminated in R1, L128, L64, L32 etc */
 
 .elim_p {
+	display: block;
 	background-color: #ffcccc;
+	height: 20;
 }
 
 .elim_128 {
+	display: block;
 	background-color: #ffffff;
+	height: 20;
 }
 
 .elim_64 {
+	display: block;
 	background-color: #ffffcc;
+	height: 20;
 }
 
 .elim_32 {
+	display: block;
 	background-color: #fffccc;
+	height: 20;
 }
 
 .elim_16 {
+	display: block;
 	background-color: #cffcfc;
+	height: 20;
 }
 
 .elim_8 {
+	display: block;
 	background-color: #ccffcc;
+	height: 20;
 }
 
 .elim_4 {
+	display: block;
 	background-color: #b8860b;
+	height: 20;
 }
 
 .elim_2 {
+	display: block;
 	background-color: #c0c0c0;
+	height: 20;
 }
 
 .elim_0 {
+	display: block;
 	background-color: #ffd700;
+	height: 20;
 }
 
 

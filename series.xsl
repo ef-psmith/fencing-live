@@ -157,10 +157,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- Ranking list after the poules-->
 <xsl:template match="lists/ranking">
-<topdiv class="vlist" name="topdiv" id="vlistid">
+<topdiv class="vlist_ranking" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
 			<xsl:sort select="@sequence" />
 			<page>RK<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
 		</xsl:for-each >
@@ -182,15 +182,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<!-- Now the list contents -->
 		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
 			<div>
-				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
-				<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
-				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
-				<table class="vlist_table">
-					<xsl:apply-templates select="." mode="finalfencer" />
-					<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
-						<xsl:sort select="@sequence" data-type="number" />
-					</xsl:apply-templates>
-				</table>
+				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
+				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
+				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
+				<xsl:apply-templates select="." mode="finalfencer" />
+				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
+					<xsl:sort select="@sequence" data-type="number" />
+				</xsl:apply-templates>
 			</div>
 		</xsl:for-each >
 	</content>
@@ -198,12 +196,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="fencer" mode="finalfencer">
-		<tr>
+		<div>
 			<xsl:attribute name="class"><xsl:value-of select="@elimround" /></xsl:attribute>
-			<td class="vlist_position"><xsl:value-of select="@position" /></td>
-			<td class="vlist_name"><xsl:value-of select="@name" /></td>
-			<td class="vlist_club"><xsl:value-of select="@affiliation" /></td>
-		</tr>
+			<span class="col_rank"><xsl:value-of select="@position" /></td>
+			<span class="col_name"><xsl:value-of select="substring(@name,1,17)" /></td>
+			<span class="col_club"><xsl:value-of select="substring(@affiliation,1,20)" /></td>
+		</div>
 </xsl:template>
 
 <!-- **********************************************************************************
@@ -383,7 +381,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							</xsl:choose>
 							<xsl:if test="string-length(fencerA/@name) &gt; 0">
 								<span class="fencer ">
-<xsl:value-of select="fencerA/@name" />  </span>
+<xsl:value-of select="substring(fencerA/@name,1,17)" />  </span>
 							</xsl:if>
 						</div>
 					</div>
@@ -421,7 +419,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 								</xsl:otherwise>
 							</xsl:choose>
 							<xsl:if test="string-length(fencerB/@name) &gt; 0">
-							<span class="fencer "><xsl:value-of select="fencerB/@name" /></span>
+							<span class="fencer "><xsl:value-of select="substring(fencerB/@name,1,17)" /></span>
 							</xsl:if>
 						</div>
 					</div> <!-- container -->

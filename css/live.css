@@ -93,6 +93,17 @@ div.vlist_ranking
 	height:  95%;
 	right:	10px;
 	margin: 20px 20px 20px 20px;
+	width: 24%;
+}
+
+div.vlist_ranking2
+{
+	overflow: hidden;
+	position: absolute;
+	border: none;
+	height:  95%;
+	right:	10px;
+	margin: 20px 20px 20px 20px;
 	width: 49%;
 }
 
@@ -311,13 +322,12 @@ div.mid_title {
 span.col_rank {
 	width: 10%;
 	height: 100%;
-	float: left;
 }
 
 span.col_name { 
-	float: left;
 	vertical-align: bottom;
 	height: 100%;
+	padding-left: 1ex;
 }
 
 

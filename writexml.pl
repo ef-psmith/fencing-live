@@ -130,6 +130,8 @@ while (1)
 			push @{$series_output->{competition}}, @{$comp_output->{competition}}[$index]; 
 		}
 	
+		print Dumper(\$series_output);
+	
 		XMLout($series_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $outfile);	
 	}
 

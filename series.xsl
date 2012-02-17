@@ -5,7 +5,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Global variables for controlling the display parameters -->
-<xsl:variable name="pagesize" select="number(40)" />
+<xsl:variable name="pagesize" select="number(33)" />
 <xsl:variable name="entrysize" select="number(138)" />
 <xsl:variable name="poolsperpage" select="number(2)"/>
 <xsl:variable name="col1size" select="number(4)"/>
@@ -47,9 +47,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="fencer" mode="entryfencer">
-	<span class="col_name"><xsl:value-of select="@name" /></span>
-	<span class="col_club"><xsl:value-of select="@affiliation" /></span>
-	<br />
+<span class="elim_p">	<span class="col_name"><xsl:value-of select="@name" /></span>
+	<span class="col_club"><xsl:value-of select="@affiliation" /><xsl:if test="string-length(@affiliation) = 0"><span style="display:none">NONE</span></xsl:if></span></span>
 </xsl:template>
 
 
@@ -157,7 +156,51 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- Ranking list after the poules-->
 <xsl:template match="lists/ranking">
+<xsl:choose>
+<xsl:when test="../../lists/where">
 <topdiv class="vlist_ranking" name="topdiv" id="vlistid">
+	<!-- This is the list of pages to scroll through -->
+	<pages>
+		<xsl:for-each select="fencer[@sequence mod ($pagesize) = 1]">
+			<xsl:sort select="@sequence" />
+			<page>RK<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
+		</xsl:for-each >
+	</pages>
+	<content>
+	<!-- Display HTML starts here. 
+			First the list header -->
+<div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
+<div class="vlist_header" id="vheader">
+		<table class="vlist_table">
+			<tr>
+			<td class="vlist_position">Pos</td>
+			<td class="vlist_name">Name</td>
+			<td class="vlist_club">Club</td>
+		</tr>
+	</table>
+</div>
+<!-- Now the list contents -->
+		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+			<div>
+				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
+				<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
+				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
+				<table class="vlist_table">
+				<xsl:apply-templates select="." mode="finalfencer" />
+				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
+					<xsl:sort select="@sequence" data-type="number" />
+				</xsl:apply-templates>
+				</table>
+			</div>
+		</xsl:for-each >
+	</content>
+</topdiv>
+
+
+
+</xsl:when>
+<xsl:otherwise>
+<topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
 		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
@@ -169,39 +212,43 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<!-- Display HTML starts here. 
 			First the list header -->
 <div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
-<!-- <div class="vlist_header" id="vheader">
-		<table class="vlist_table">
-			<tr>
-			<td class="vlist_position">Pos</td>
-			<td class="vlist_name">Name</td>
-			<td class="vlist_club">Club</td>
-		</tr>
-	</table>
-</div> -->
-			
-	<!-- Now the list contents -->
+<!-- Now the list contents -->
 		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
 			<div>
 				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
-				<xsl:apply-templates select="." mode="finalfencer" />
-				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
+				<xsl:apply-templates select="." mode="finalfencer2" />
+				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer2" >
 					<xsl:sort select="@sequence" data-type="number" />
 				</xsl:apply-templates>
 			</div>
 		</xsl:for-each >
 	</content>
 </topdiv>
+
+</xsl:otherwise>
+</xsl:choose>
+		
 </xsl:template>
 
 <xsl:template match="fencer" mode="finalfencer">
-		<div>
+		<tr>
+			<xsl:attribute name="class"><xsl:value-of select="@elimround" /></xsl:attribute>
+			<td class="vlist_position"><xsl:value-of select="@position" /></td>
+			<td class="vlist_name"><xsl:value-of select="substring(@name,1,17)" /></td>
+			<td class="vlist_club"><xsl:value-of select="substring(@affiliation,1,20)" /></td>
+		</tr>
+</xsl:template>
+
+
+<xsl:template match="fencer" mode="finalfencer2">
+		<span>
 			<xsl:attribute name="class"><xsl:value-of select="@elimround" /></xsl:attribute>
 			<span class="col_rank"><xsl:value-of select="@position" /></span>
 			<span class="col_name"><xsl:value-of select="substring(@name,1,17)" /></span>
 			<span class="col_club"><xsl:value-of select="substring(@affiliation,1,20)" /></span>
-		</div>
+		</span>
 </xsl:template>
 
 <!-- **********************************************************************************

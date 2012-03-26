@@ -169,7 +169,7 @@ sub do_comp
 	
 	if ($where eq "debut")
 	{
-		debug(1, $c->titre_ligne . ": debut");
+		debug(2, $c->titre_ligne . ": debut");
 		push @{$out->{lists}}, do_list($c, $nif, "debut");
 	}
 	else

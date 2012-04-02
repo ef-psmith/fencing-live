@@ -41,7 +41,7 @@ div.poule {
 	position: absolute; 
 	border-right: thin solid black; 
 	height:  95%; 
-	width: 	70%;
+	width: 	45%;
 	margin: 20px 20px 20px 20px;
 }
 
@@ -446,6 +446,11 @@ td.messagespace {
 /* need to have a set of styles for eliminated in R1, L128, L64, L32 etc */
 
 .elim_p {
+	display: block;
+	background-color: #ffcccc;
+	height: 20;
+}
+.p {
 	display: block;
 	background-color: #ffcccc;
 	height: 20;

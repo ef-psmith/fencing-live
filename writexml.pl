@@ -104,11 +104,11 @@ while (1)
 	# output the relevant bits for each series
 	my $series = $config->{series};
 	
-	# print Dumper(\$series);
+	print Dumper(\$series);
 
 	foreach my $sid ( sort keys %$series)
 	{
-		# print Dumper(\$series->{$sid});
+		print Dumper(\$series->{$sid});
 		next unless ($series->{$sid}->{enabled} eq "true");
 
 		my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 

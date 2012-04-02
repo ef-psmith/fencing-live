@@ -359,7 +359,7 @@ sub do_ranking_list
 	{
 		push @lout, {	name => $fencers->{$fid}->{nom_court}, 
 						affiliation => $fencers->{$fid}->{$aff} || '',
-						elimround => "p", 	
+						elimround => "elim_p", 	
 						position => $fencers->{$fid}->{seed} || '',
 						id => $fid || '', 
 						sequence => $sequence};

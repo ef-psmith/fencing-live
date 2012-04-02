@@ -130,7 +130,7 @@ while (1)
 			push @{$series_output->{competition}}, @{$comp_output->{competition}}[$index]; 
 		}
 	
-		print Dumper(\$series_output);
+		debug(2, Dumper(\$series_output));
 	
 		XMLout($series_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $outfile);	
 	}
@@ -591,7 +591,7 @@ sub do_tableau
 	#	debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
 	#}
 	
-	print "do_tableau: w = " . Dumper(\@w);
+	debug(1, "do_tableau: w = " . Dumper(\@w));
 	
 	my $col = 1;
 	
@@ -618,7 +618,8 @@ sub do_tableau
 	
 		my $t = $c->tableau($atab,1);
 		$out->{matches}->{"$atab"}->{title} = $t->nom_etendu;
-		print "do_tableau: atab = " . Dumper($atab);
+
+		debug(1, "do_tableau: atab = " . Dumper($atab));
 		my @list = do_tableau_matches($t, $aff);
 		$out->{matches}->{"$atab"}->{match} = [@list];
 		my $matchcount = @list;
@@ -733,6 +734,7 @@ sub which_list
 
 		debug(2, "which_list(): w = [@w]");
 
+		return "ranking" unless defined $w[2];
 		return "ranking" if $w[1] eq $w[2];
 		return "result" unless $w[1] eq $w[2];
 	}

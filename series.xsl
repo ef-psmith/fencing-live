@@ -205,7 +205,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<pages>
 		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
 			<xsl:sort select="@sequence" />
-			<page>RK<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
+			<page>RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2) " /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
@@ -213,7 +213,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			First the list header -->
 <div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
 <!-- Now the list contents -->
-		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2)  = 1]">
 			<div>
 				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>

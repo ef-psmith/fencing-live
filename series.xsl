@@ -182,7 +182,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <!-- Now the list contents -->
 		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
 			<div>
-				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
+				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
 				<table class="vlist_table">

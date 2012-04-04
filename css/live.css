@@ -445,56 +445,75 @@ td.messagespace {
 
 /* need to have a set of styles for eliminated in R1, L128, L64, L32 etc */
 
-.elim_p {
+span.elim_p {
 	display: block;
+}
+
+.elim_p {
 	background-color: #ffcccc;
 	height: 20;
 }
 
-.elim_128 {
+span.elim_128 {
 	display: block;
+}
+.elim_128 {
 	background-color: #ffffff;
 	height: 20;
 }
 
-.elim_64 {
+span.elim_64 {
 	display: block;
+}
+.elim_64 {
 	background-color: #ffffcc;
 	height: 20;
 }
 
-.elim_32 {
+span.elim_32 {
 	display: block;
+}
+.elim_32 {
 	background-color: #fffccc;
 	height: 20;
 }
 
-.elim_16 {
+span.elim_16 {
 	display: block;
+}
+.elim_16 {
 	background-color: #cffcfc;
 	height: 20;
 }
 
-.elim_8 {
+span.elim_8 {
 	display: block;
+}
+.elim_8 {
 	background-color: #ccffcc;
 	height: 20;
 }
 
-.elim_4 {
+span.elim_4 {
 	display: block;
+}
+.elim_4 {
 	background-color: #b8860b;
 	height: 20;
 }
 
-.elim_2 {
+span.elim_2 {
 	display: block;
+}
+.elim_2 {
 	background-color: #c0c0c0;
 	height: 20;
 }
 
-.elim_0 {
+span.elim_0 {
 	display: block;
+}
+.elim_0 {
 	background-color: #ffd700;
 	height: 20;
 }

@@ -692,6 +692,7 @@ sub want
 		my @w = split / /, $where;
 		debug(1, "want(): w = [@w]");
 		return undef if $w[0] eq "debut" || $w[0] eq "poules" || $w[0] eq "termine";
+		return undef unless $w[1];
 		my $t = $c->tableau($w[1]);
 		my $size = $t->taille;
 		return undef if $size < 16;

@@ -1,6 +1,6 @@
 
 <?php
-
+  $tournid = $_REQUEST['tournament'];
   $xslt_string = '<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <xsl:stylesheet version="1.0"
@@ -21,7 +21,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <table class="DE">
 		<xsl:for-each select="competition">
 			<xsl:sort select="@id" data-type="number"/>
-			<tr><td class="DE"><a><xsl:attribute name="href">competition.php?competition=<xsl:value-of select="@id"/></xsl:attribute>
+			<tr><td class="DE"><a><xsl:attribute name="href">competition.php?competition=<xsl:value-of select="@id"/>&amp;tournament=' . $tournid . '</xsl:attribute>
 <xsl:value-of select="@ titre_ligne" /></a></td></tr>
 		</xsl:for-each >
 </table>
@@ -37,7 +37,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
    $xmlDoc = new DOMDocument();
-   $xmlDoc->load("toplevel.xml");
+   $xmlDoc->load("$tournid/toplevel.xml");
 
 
   echo $xslt->transformToXml($xmlDoc);

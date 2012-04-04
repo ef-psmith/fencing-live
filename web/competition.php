@@ -1,6 +1,7 @@
 
 <?php
 	$compid = $_REQUEST['competition'];
+	$tournid = $_REQUEST['tournament'];
 
   $xslt_string = '<?xml version="1.0" encoding="ISO-8859-1"?>
 
@@ -18,19 +19,19 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </head>
 <body>
 <h1><xsl:value-of select="../../@titre_ligne"/></h1>
-<p><a><xsl:attribute name="href">portal.php</xsl:attribute>Up to all Competitions</a></p>
+<p><a><xsl:attribute name="href">portal.php?tournament=' . $tournid .'</xsl:attribute>Up to all Competitions</a></p>
 <table class="entry">
 <tr><th class="entry">Name</th><th class="entry">Club</th></tr>
 <xsl:for-each select="fencer">
 <xsl:sort select="@sequence" data-type="number" />
 	<tr>
-	<td class="entry"><a><xsl:attribute name="href">fencer.php?competition=' . $compid . '&amp;fencer=<xsl:value-of select="@id"/></xsl:attribute>
+	<td class="entry"><a><xsl:attribute name="href">fencer.php?competition=' . $compid . '&amp;fencer=<xsl:value-of select="@id"/>&amp;tournament=' . $tournid .'</xsl:attribute>
 <xsl:value-of select="@name" /></a></td>
 	<td class="entry"><xsl:value-of select="@affiliation" /></td>
 </tr>
 		</xsl:for-each>
 </table>
-<p><a><xsl:attribute name="href">portal.php</xsl:attribute>Up to all Competitions</a></p>
+<p><a><xsl:attribute name="href">portal.php?tournament=' . $tournid .'</xsl:attribute>Up to all Competitions</a></p>
 </body>
 </html>
 </xsl:template>
@@ -43,7 +44,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
    $xmlDoc = new DOMDocument();
-   $xmlDoc->load("toplevel.xml");
+   $xmlDoc->load("$tournid/toplevel.xml");
 
 
   echo $xslt->transformToXml($xmlDoc);

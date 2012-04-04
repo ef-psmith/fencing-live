@@ -20,6 +20,7 @@ use Engarde;
 use Data::Dumper;
 use Carp qw(cluck);
 use XML::Simple;
+use Net::FTP;
 # use IO::Handle;
 
 
@@ -74,11 +75,34 @@ my $ini = shift || "live.xml";
 my $runonce = shift || 0;
 
 
+    
+
+
 while (1)
 {
 	my $config = read_config($ini);
 	
 	$Engarde::DEBUGGING=$config->{debug};
+	
+	my $ftp;
+	# If we have all the ftp details and haven't already created it then create it.
+	if (defined($config->{ftphost}) && 
+			defined($config->{ftpuser}) && 
+			defined($config->{ftppwd}) && 
+			defined($config->{ftpcwd}) &&
+			!defined($ftp))
+	{
+	
+		$ftp = Net::FTP->new($config->{ftphost}, Debug => 0) or die "Cannot connect to some.host.name: $@" ;
+	}
+	# Check that we are defined and log in.
+	if (defined($ftp))
+	{
+	print "FTP login\n";
+		$ftp->login($config->{ftpuser},$config->{ftppwd}) or die "Cannot login ", $ftp->message;
+
+		$ftp->cwd($config->{ftpcwd}) or die "Cannot change working directory ", $ftp->message;
+	}
 
 	$comp_output = {};
 	
@@ -100,6 +124,8 @@ while (1)
 	}
 		
 	XMLout($comp_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
+	
+	$ftp->put($config->{targetlocation} . "/toplevel.xml") unless !defined($ftp);
 	
 	# output the relevant bits for each series
 	my $series = $config->{series};
@@ -135,6 +161,9 @@ while (1)
 		XMLout($series_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $outfile);	
 	}
 
+    	$ftp->quit unless !defined($ftp);
+    	undef($ftp);
+    	
 	unless ($runonce)
 	{
 		sleep 30;
@@ -310,7 +339,7 @@ sub do_fpp_list
 	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
 	{
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
-						affiliation => $fencers->{$fid}->{$aff} || '',
+						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
 						piste => $fencers->{$fid}->{piste_no} || ' ', 	
 						poule => $fencers->{$fid}->{poule} || '', 
 						id => $fid || '',
@@ -338,7 +367,7 @@ sub do_entry_list
 	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
 	{
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
-						affiliation => $fencers->{$fid}->{$aff} || '',
+						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
 						seed => $fencers->{$fid}->{serie} || '',
 						id => $fid || '',
 						sequence => $sequence};
@@ -358,7 +387,7 @@ sub do_ranking_list
 	foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
 	{
 		push @lout, {	name => $fencers->{$fid}->{nom_court}, 
-						affiliation => $fencers->{$fid}->{$aff} || '',
+						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
 						elimround => "elim_p", 	
 						position => $fencers->{$fid}->{seed} || '',
 						id => $fid || '', 
@@ -449,7 +478,7 @@ sub do_list
 			foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
 			{
 				push @lout, {	name => $fencers->{$fid}->{nom}, 
-								affiliation => $fencers->{$fid}->{$aff} || '',
+								affiliation => $fencers->{$fid}->{$aff} || 'U/A',
 								position => $fencers->{$fid}->{seed} || '', 	
 								elimround => $fencers->{$fid}->{group} || '', 
 								id => $fid || '',

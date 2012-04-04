@@ -3,6 +3,7 @@
 
 	$compid = $_REQUEST['competition'];
 	$fencerid = $_REQUEST['fencer'];
+	$tournid = $_REQUEST['tournament'];
   	$xslt_string = '<?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:output method="xml" />
 
@@ -37,7 +38,7 @@
 <tr><td class="DE"><xsl:value-of select="../@title" /></td><td class="DE">
 <xsl:choose>
 <xsl:when test="string-length(fencerA/@name) > 0 and fencerA/@id = $fencerid"><xsl:value-of select="fencerA/@name" /></xsl:when>
-<xsl:when test="string-length(fencerA/@name) > 0 and fencerA/@id != $fencerid"><a><xsl:attribute name="href">fencer.php?competition=' . $compid .'&amp;fencer=<xsl:value-of select="fencerA/@id" /></xsl:attribute><xsl:value-of select="fencerA/@name" /></a></xsl:when>
+<xsl:when test="string-length(fencerA/@name) > 0 and fencerA/@id != $fencerid"><a><xsl:attribute name="href">fencer.php?competition=' . $compid .'&amp;fencer=<xsl:value-of select="fencerA/@id" />&amp;tournament=' . $tournid .'</xsl:attribute><xsl:value-of select="fencerA/@name" /></a></xsl:when>
 <xsl:otherwise>BYE</xsl:otherwise></xsl:choose></td>
 <td class="DE score">
 <xsl:choose>
@@ -47,7 +48,7 @@
 </xsl:choose></td>
 <td class="DE"><xsl:choose>
 <xsl:when test="string-length(fencerB/@name) > 0 and fencerB/@id = $fencerid"><xsl:value-of select="fencerB/@name" /></xsl:when>
-<xsl:when test="string-length(fencerB/@name) > 0 and fencerB/@id != $fencerid"><a><xsl:attribute name="href">fencer.php?competition=' . $compid .'&amp;fencer=<xsl:value-of select="fencerB/@id" /></xsl:attribute><xsl:value-of select="fencerB/@name" /></a></xsl:when>
+<xsl:when test="string-length(fencerB/@name) > 0 and fencerB/@id != $fencerid"><a><xsl:attribute name="href">fencer.php?competition=' . $compid .'&amp;fencer=<xsl:value-of select="fencerB/@id" />&amp;tournament=' . $tournid .'</xsl:attribute><xsl:value-of select="fencerB/@name" /></a></xsl:when>
 <xsl:otherwise>BYE</xsl:otherwise></xsl:choose></td></tr>
 </xsl:for-each>
 </table></p>
@@ -77,14 +78,14 @@
 <xsl:when test="string-length($score) > 0 and string-length(@score) > 0">
 <td class="DE"><xsl:value-of select="$score" /></td><td class="DE"><xsl:value-of select="@score" /></td>
 </xsl:when><xsl:otherwise><td class="DE score" colspan="2">-</td></xsl:otherwise></xsl:choose>
-<td class="DE"><a><xsl:attribute name="href">fencer.php?competition=' . $compid .'&amp;fencer=<xsl:value-of select="../@fencerid" /></xsl:attribute><xsl:value-of select="../@name" /></a></td></tr>
+<td class="DE"><a><xsl:attribute name="href">fencer.php?competition=' . $compid .'&amp;fencer=<xsl:value-of select="../@fencerid" />&amp;tournament=' . $tournid .'</xsl:attribute><xsl:value-of select="../@name" /></a></td></tr>
 </xsl:for-each>
 </xsl:for-each>
 </table></p>
 </xsl:for-each>
 
 <br />
-<a><xsl:attribute name="href">competition.php?competition=' . $compid .'</xsl:attribute>Up to Fencers</a>
+<a><xsl:attribute name="href">competition.php?competition=' . $compid .'&amp;tournament=' . $tournid .'</xsl:attribute>Up to Fencers</a>
 </body>
 </html>
 </xsl:template>
@@ -97,7 +98,7 @@
 
 
    $xmlDoc = new DOMDocument();
-   $xmlDoc->load("toplevel.xml");
+   $xmlDoc->load("$tournid/toplevel.xml");
 
 
   echo $xslt->transformToXml($xmlDoc);

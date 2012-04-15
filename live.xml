@@ -12,7 +12,7 @@
 <competition id="2">
 	<enabled>true</enabled>
 	<background>00ff00</background>
-	<source>/share/Public/data/current/Invicta-2012/Mens Foil-AUX/Mens Foil16</source>
+	<source>/share/Public/data/current/Mens Foil10</source>
 	<nif>0</nif>
 </competition>
 <competition id="3">

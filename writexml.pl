@@ -125,7 +125,8 @@ while (1)
 		
 	XMLout($comp_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
 	
-	$ftp->put($config->{targetlocation} . "/toplevel.xml") unless !defined($ftp);
+	$ftp->put($config->{targetlocation} . "/toplevel.xml" , "newtoplevel.xml") unless !defined($ftp);
+	$ftp->rename("newtoplevel.xml" ,"toplevel.xml") unless !defined($ftp);
 	
 	# output the relevant bits for each series
 	my $series = $config->{series};

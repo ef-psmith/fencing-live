@@ -14,7 +14,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>EYC 2011</title>
-<link href="../css/portal.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="./css/portal.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <h1>EYC 2011</h1>

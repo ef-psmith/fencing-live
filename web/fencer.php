@@ -14,7 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>EYC 2011</title>
-<link href="../css/portal.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="./css/portal.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <h1><xsl:value-of select="../../../@titre_ligne"/></h1>
@@ -58,7 +58,7 @@
 <p><span class="info heading">Ranking after the Pools: <xsl:value-of select="@position" /></span></p>
 </xsl:for-each>
 
-<xsl:for-each select="../../../pools/pool/fencers/fencer[@fencerid = $fencerid]">
+<xsl:for-each select="../../../*/pool/fencers/fencer[@fencerid = $fencerid]">
 <p class="heading">Round <xsl:value-of select="../../../@round"/> Poule
 <xsl:if test="string-length(@pl)>0">
 <table class="DE">

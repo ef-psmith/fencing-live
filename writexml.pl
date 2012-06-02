@@ -235,9 +235,20 @@ sub do_comp
 			push @{$out->{lists}}, do_list($c, $nif, "result");
 
 			# And also push the pools out for the portal
-			my @hp = want($c, "poules");
+						
+			# Assume that all poules are finished by the time we are in the tableau or termine
+			my $round = 1;
+			
+			do
+			{
+				my @hp = ("poules", $round, "termine");#want($c, "poules");
 
-			$out->{portalpools} = do_poules($c, @hp);
+				push @{$out->{portalpools}} , do_poules($c, @hp);
+				$round++;
+			} while ($round < scalar @{$c->{nombre_poules}} + 1);
+			
+			
+			# Now sort out the rankings
 
 			{
 				my $fencers = $c->ranking("p");
@@ -269,7 +280,7 @@ sub do_poules
 	my $c = shift;
 	my @hp = @_;
 	my $round;
-	
+		
 	if ($hp[1])
 	{
 		if ($hp[2] eq "constitution")
@@ -281,7 +292,7 @@ sub do_poules
 			$round = $hp[1];
 		}
 	}
-
+	
 	return undef unless $round;
 	
 	my $pnum = 0;

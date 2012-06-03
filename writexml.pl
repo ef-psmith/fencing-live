@@ -242,28 +242,32 @@ sub do_comp
 			
 			do
 			{
-				my @hp = ("poules", $round, "termine");#want($c, "poules");
+				my @hp = ("poules", $round, "finished");#want($c, "poules");
 
 				push @{$out->{portalpools}} , do_poules($c, @hp);
+				
+
+				# Now sort out the rankings
+
+				{
+					my $fencers = $c->ranking("p", $round);
+
+					# print Dumper(\$fencers);
+
+					my @lout = do_ranking_list($fencers, $aff);
+					my $list = {};
+
+					$list->{ranking}->{fencer} = [@lout];
+					$list->{ranking}->{count} = @lout;
+					$list->{ranking}->{type} = "pools";
+					push @{$out->{portallists}}, $list;
+				}
+				
 				$round++;
 			} while ($round < scalar @{$c->{nombre_poules}} + 1);
 			
 			
-			# Now sort out the rankings
-
-			{
-				my $fencers = $c->ranking("p");
-
-				# print Dumper(\$fencers);
-
-				my @lout = do_ranking_list($fencers, $aff);
-				my $list = {};
-
-				$list->{ranking}->{fencer} = [@lout];
-				$list->{ranking}->{count} = @lout;
-				$list->{ranking}->{type} = "pools";
-				push @{$out->{portallists}}, $list;
-			}
+			
 		}
 	}
 	

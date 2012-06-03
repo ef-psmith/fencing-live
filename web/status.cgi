@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/opt/bin/perl -w
 #
 
 use CGI::Pretty qw(:standard *table -no_xhtml);

@@ -1,0 +1,103 @@
+.menu {
+background      : #000099;
+color           : #FFFFFF;
+text-decoration : none;
+font-size       : 13px;
+font-weight     : bold;
+font-family     : verdana,arial,helvetica,sans-serif;
+}
+A.menu {
+background      : transparent;
+font-size       : 13px;
+font-weight     : bold;
+font-family     : verdana,arial,helvetica,sans-serif;
+}
+A.menu:link {
+color           : #9999FF;
+text-decoration : none;
+}
+A.menu:visited {
+color           : #9999FF;
+text-decoration : none;
+}
+A.menu:active {
+color           : #9999FF;
+text-decoration : none;
+}
+A.menu:hover {
+color           : #FFFFFF;
+text-decoration : none;
+}
+A:link {
+color           : #000099;
+text-decoration : underline;
+}
+A:visited {
+color           : #000099;
+text-decoration : underline;
+}
+A:active {
+color           : #009900;
+text-decoration : underline;
+}
+A:hover {
+color           : #9999FF;
+text-decoration : underline;
+}
+.results {
+background      : #9999FF;
+font-size       : 15px;
+font-family     : verdana,arial,helvetica,sans-serif;
+}
+.search {
+color           : #FFFFFF;
+background      : #000099;
+font-size       : 15px;
+font-family     : verdana,arial,helvetica,sans-serif;
+}
+.welcome {
+color		: #9999FF;
+background	: #FFFFFF;
+font-size	: 48px;
+font-family	: times new roman,times,serif;
+}
+.home-blue {
+color		: #9999FF;
+background	: #FFFFFF;
+font-size	: 48px;
+font-family	: times new roman,times,serif;
+}
+.home-black {
+color		: #000000;
+background	: #FFFFFF;
+font-size	: 48px;
+font-family	: times new roman,times,serif;
+}
+.home-date {
+color		: #000000;
+background	: #FFFFFF;
+font-size	: 16px;
+font-weight     : bold;
+font-family	: times new roman,times,serif;
+}
+.copyright {
+background      : transparent;
+color           : #FFFFFF;
+text-decoration : none;
+font-size       : 8px;
+font-family     : verdana,arial,helvetica,sans-serif;
+}
+.copyblue {
+background      : transparent;
+color           : #9999FF;
+text-decoration : none;
+font-size       : 8px;
+font-family     : verdana,arial,helvetica,sans-serif;
+}
+.main-body {
+background      : transparent;
+color           : #000000;
+text-decoration : none;
+font-size       : 13px;
+font-family     : verdana,arial,helvetica,sans-serif;
+}

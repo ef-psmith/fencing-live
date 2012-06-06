@@ -1,56 +1,8 @@
 
 	
 
-
-
-	function makeRequest() {
-
-	   var http_request = false;
-	   if (window.XMLHttpRequest) { // Mozilla, Safari,...
-	      http_request = new XMLHttpRequest();
-	      if (http_request.overrideMimeType) {
-	         http_request.overrideMimeType('text/xml');
-	      }
-	   } else if (window.ActiveXObject) { // IE
-	      try {
-	         http_request = new ActiveXObject("Msxml2.XMLHTTP");
-	      } catch (e) {
-	         try {
-	            http_request = new ActiveXObject("Microsoft.XMLHTTP");
-	         } catch (e) { }
-	      }
-	   }
-	   if (!http_request) {
-	      alert('Cannot create XMLHTTP instance');
-	      return false;
-	   }
-
-	   var requestor = this;
-	   http_request.onreadystatechange =
-         function() {
-            if (http_request.readyState == 4) {
-               if (http_request.status == 200 || http_request.status == 0) {
-
-                  var xmldoc = http_request.responseXML;
-                  requestor.reload(xmldoc, false);
-
-               } else {
-                  setTimeout('requestor.fetch()', 5000);
-               }
-            }
-         };
-	   http_request.open('GET', filelocation, true);
-	   http_request.send(null);
-	}
-
-
-var pauseTime = 10 * 1000;
-var mtime = "";
-var this_location = "";
-
-
 // Translates an xmlelement into an html one
-function translateElement(xmlelem, myElement)
+function translateElement(xmlelem, myElement, doattr)
 {
    if (null == xmlelem)
       return;
@@ -59,16 +11,17 @@ function translateElement(xmlelem, myElement)
    
    var newhtml = "";
    var j; 
-	for (j in xmlelem.childNodes)
-	{
+	for (j in xmlelem.childNodes)	{
 	   if (undefined != xmlelem.childNodes[j] && xmlelem.childNodes[j].nodeType == 1) {
 	      var childxml = new XMLSerializer().serializeToString(xmlelem.childNodes[j]);
 	      newhtml += childxml;
 	   }
 	}
    
-   myElement.className = xmlelem.getAttribute("class");
-   myElement.id = xmlelem.getAttribute("id");
+   if (doattr) {
+      myElement.className = xmlelem.getAttribute("class");
+      myElement.id = xmlelem.getAttribute("id");
+   }
 
    // Set the inner html
    myElement.innerHTML = newhtml;

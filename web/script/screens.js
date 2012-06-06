@@ -88,7 +88,7 @@ function scroller(div, pageloader) {
             this.pages.push(pages[p].textContent);
          }
          // Overwrite the inner HTML of the node.
-         translateElement(xmlelem.getElementsByTagName('content')[0], this.myElement);
+         translateElement(xmlelem.getElementsByTagName('content')[0], this.myElement, true);
       }
    };
 
@@ -104,6 +104,15 @@ function scroller(div, pageloader) {
       }
       // Make the specified one visible
       var newdiv = document.getElementById(this.pages[index]);
+      
+      // Try to reload the div from the latest XML source.
+      var newcontents = this.pageloader.xmlsource.getElementById(this.pages[index]);
+      // Update the inner XML but not the attributes
+      if (null != newcontents) {
+         translateElement(newcontents, newdiv, false);
+      }
+      
+      
       if (null != newdiv) {
          if (null != currdiv) {
             currdiv.style.visibility = "hidden";
@@ -120,6 +129,8 @@ var lastrefresh = 0;
 function pageload() {
 
    this.currentpage = null;
+   
+   this.xmlsource = null;
 
    this.reload =
       function(xmldoc, force) {
@@ -128,6 +139,30 @@ function pageload() {
             this.fetch();
             return;
          }
+         
+         // Store the xmldocument
+         this.xmlsource = xmldoc;
+         
+         
+         // If we haven't a compid then return.  Or if we haven't changed since last time.
+         if (null == this.currentpage) {
+            this.updatepage(force);
+         }
+         
+         
+         // 10 second reload
+         {
+            var ploader = this;
+            // Reload in 10 seconds.
+            setTimeout(function() { ploader.fetch(); }, 10000);
+            return;
+         }
+         
+      }
+         
+    this.updatepage = 
+      function(force) {
+         var xmldoc = this.xmlsource;
          var serieses = xmldoc.getElementsByTagName('series');
          var comp_id = null;
 
@@ -149,6 +184,7 @@ function pageload() {
                   for (var c = 0; c < seriescomps.length - 1; ++c) {
                      if (seriescomps[c].textContent == this.currentpage) {
                         // We want the next one, this is safe as we don't iterate over the last member of the list
+                  	// And if the last one matches then we want the first, which we have stored anyway so don't want to overwrite
                         comp_id = seriescomps[c + 1].textContent;
                         break;
                      }
@@ -162,26 +198,17 @@ function pageload() {
             if (0 < allcomps.length) {
                comp_id = allcomps[0].getAttribute('id');
             }
-
             // Go looking for our competition
             for (var c = 0; c < allcomps.length - 1; ++c) {
                if (allcomps[c].getAttribute('id') == this.currentpage) {
                   // We want the next one, this is safe as we don't iterate over the last member of the list
+                  // And if the last one matches then we want the first, which we have stored anyway so don't want to overwrite
                   comp_id = allcomps[c + 1].getAttribute('id');
                   break;
                }
             }
 
          }
-
-         // If we haven't a compid then return.  Or if we haven't changed since last time.
-         if (null == comp_id /*|| lastrefresh == xmldoc.getAttribute('time')*/) {
-            var ploader = this;
-            // Reload in 10 seconds.
-            setTimeout(function() { ploader.fetch(); }, 10000);
-            return;
-         }
-
 
          var comps = xmldoc.getElementsByTagName('competition');
          // Look for our page and check the time as well.
@@ -254,15 +281,49 @@ function pageload() {
                }
             }
          }
-         {
-            // Failed so reload
-            var ploader = this;
-            // Reload in 10 seconds.
-            setTimeout(function() { ploader.fetch(); }, 10000);
-            return;
-         }
       };
-   this.fetch = makeRequest;
+      
+   // AJAX request
+   this.fetch = function() {
+
+      var http_request = false;
+      if (window.XMLHttpRequest) { // Mozilla, Safari,...
+         http_request = new XMLHttpRequest();
+         if (http_request.overrideMimeType) {
+            http_request.overrideMimeType('text/xml');
+         }
+      } else if (window.ActiveXObject) { // IE
+         try {
+            http_request = new ActiveXObject("Msxml2.XMLHTTP");
+         } catch (e) {
+            try {
+               http_request = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) { }
+         }
+      }
+      if (!http_request) {
+         alert('Cannot create XMLHTTP instance');
+         return false;
+      }
+
+      var requestor = this;
+      http_request.onreadystatechange =
+         function() {
+            if (http_request.readyState == 4) {
+               if (http_request.status == 200 || http_request.status == 0) {
+
+                  var xmldoc = http_request.responseXML;
+                  requestor.reload(xmldoc, false);
+
+               } else {
+                  setTimeout('requestor.fetch()', 5000);
+               }
+            }
+         };
+      http_request.open('GET', filelocation, true);
+      http_request.send(null);
+   }
+   
    this.scrollers = new Array();
 
    this.scrollerfinished = function() {
@@ -278,7 +339,7 @@ function pageload() {
          for (var s = 0; s < this.scrollers.length; ++s) {
             this.scrollers[s].stop();
          }
-         this.fetch();
+         this.updatepage();
       }
 
       return allfinished;

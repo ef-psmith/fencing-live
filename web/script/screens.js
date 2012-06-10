@@ -68,6 +68,7 @@ function scroller(div, pageloader) {
    this.pageindex = 0;
 
    this.myElement = div;
+   
    /*
    Function to reload the div
    */
@@ -106,10 +107,56 @@ function scroller(div, pageloader) {
       var newdiv = document.getElementById(this.pages[index]);
       
       // Try to reload the div from the latest XML source.
-      var newcontents = this.pageloader.xmlsource.getElementById(this.pages[index]);
-      // Update the inner XML but not the attributes
+      var newcontents = this.pageloader.currentcompxml.ownerDocument.getElementById(this.pages[index]);
+      
+      if (null == newcontents) {
+      
+         //for (cntnt in this.pageloader.currentcompxml.childNodes) {
+         //         alert("Child " + cntnt.nodeType + " of name " + cntnt.nodeName);
+         //}
+         var cntnts = this.pageloader.currentcompxml.getElementsByTagName("content");
+         
+         //alert("Found " + cntnts.length + " content nodes.  Node one is called" + cntnts[0].nodeName);
+         
+         for (var citer = 0; citer < cntnts.length; ++citer) {
+            var cntnt = cntnts[citer]; 
+                        
+                //  alert("Found " + cntnt.nodeType + " of name " + cntnt.nodeName);
+            for (var divi = 0; divi < cntnt.childNodes.length; ++divi) {
+            
+               var div = cntnt.childNodes[divi];
+               
+               // Check we are an element
+               if (1 == div.nodeType) {
+                  var idattr = div.getAttribute("id");
+
+                   //alert("Found " + div.nodeName);
+                  if (idattr == this.pages[index]) {
+                     //alert("Got it!");
+                     newcontents = div;
+                  }
+               }
+            }
+            
+         }
+         
+      }
+      
+      
+      // Update the inner XML and the attributes
       if (null != newcontents) {
-         translateElement(newcontents, newdiv, false);
+      
+         // Replacing the contents.
+         
+         var repdiv = document.createElement('div');
+         
+         translateElement(newcontents, repdiv, true);
+         
+         var parent = newdiv.parentNode;
+         
+         parent.replaceChild(repdiv, newdiv);
+         
+         newdiv = repdiv;
       }
       
       
@@ -131,6 +178,7 @@ function pageload() {
    this.currentpage = null;
    
    this.xmlsource = null;
+   this.currentcompxml = null;
 
    this.reload =
       function(xmldoc, force) {
@@ -138,15 +186,28 @@ function pageload() {
          if (null == xmldoc) {
             this.fetch();
             return;
-         }
-         
+         }      
          // Store the xmldocument
          this.xmlsource = xmldoc;
          
          
-         // If we haven't a compid then return.  Or if we haven't changed since last time.
+         // If we haven't got a current page then update the page now
          if (null == this.currentpage) {
             this.updatepage(force);
+         }
+         
+         
+         var comps = xmldoc.getElementsByTagName('competition');
+         
+         // Look for our page 
+         for (var p = 0; p < comps.length; ++p) {
+
+            // Run the stylesheet
+            var comp = transformDoc(comps[p], xsl);
+            if (this.currentpage == comp.getAttribute('id')) {
+               // this is our current page so store the xml
+               this.currentcompxml = comp;
+            }
          }
          
          
@@ -218,6 +279,8 @@ function pageload() {
             if (comp_id == comp.getAttribute('id')) {
                // We have changed page.
                this.currentpage = comp_id;
+               
+               this.currentcompxml = comp;
 
                // Background colours
                var borders = document.getElementsByName('border');

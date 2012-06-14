@@ -53,20 +53,26 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:template match="lists/fpp">
-<topdiv class="vlist" name="topdiv" id="vlistid">
+<topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
 			<xsl:sort select="@sequence" />
-			<page>FPP<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
+			<page>FPP<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
 	<!-- Display HTML starts here. 
 			First the list header -->
 <div class="vlist_title" id="vtitle"><h2>Fencers/Pools/Pistes</h2></div>
-<div class="vlist_header" id="vheader">
+<div class="vlist_header col_multi2" id="vheader">
 		<table class="vlist_table">
+			<tr>
+			<td class="vlist_name">Name</td>
+			<td class="vlist_club">Club</td>
+			<td class="vlist_poule">Pool</td>
+			<td class="vlist_piste">Piste</td>
+		</tr></table><table class="vlist_table">
 			<tr>
 			<td class="vlist_name">Name</td>
 			<td class="vlist_club">Club</td>
@@ -77,17 +83,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </div>
 			
 	<!-- Now the list contents -->
-		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
-			<div>
-				<xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
-				<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
-				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
-				<table class="vlist_table">
+		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
+			<div class="vlist_title">
+				<xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
+				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
+				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
+				
 					<xsl:apply-templates select="." mode="fppfencer" />
-					<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="fppfencer" >
+					<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="fppfencer" >
 						<xsl:sort select="@sequence" data-type="number" />
 					</xsl:apply-templates>
-				</table>
+				
 			</div>
 		</xsl:for-each >
 	</content>
@@ -95,12 +101,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="fencer" mode="fppfencer">
-		<tr >
-			<td class="vlist_name"><xsl:value-of select="@name" /></td>
-			<td class="vlist_club"><xsl:value-of select="@affiliation" /></td>
-			<td class="vlist_poule"><xsl:value-of select="@poule" /></td>
-			<td class="vlist_piste"><xsl:value-of select="@piste" /></td>
-		</tr>
+		<span class="fppspan">
+			<span class="col_fppname"><xsl:value-of select="@name" /></span>
+<span class="fpp_clubpp">
+			<span class="col_fppclub"><xsl:value-of select="@affiliation" /></span>
+			<span class="col_poule"><xsl:value-of select="@poule" /></span>
+			<span class="col_piste"><xsl:value-of select="@piste" /></span>
+</span>
+		</span>
 </xsl:template>
 
 <xsl:template match="lists/where">

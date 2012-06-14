@@ -401,7 +401,8 @@ function pageload() {
          // Kill all the div timers
          for (var s = 0; s < this.scrollers.length; ++s) {
             this.scrollers[s].stop();
-         }
+         }
+
          this.updatepage();
       }
 

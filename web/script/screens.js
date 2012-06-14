@@ -166,6 +166,8 @@ function scroller(div, pageloader) {
          }
          newdiv.style.visibility = "visible";
       }
+      
+      this.pageloader.showmessages();
    };
 }
 
@@ -175,10 +177,52 @@ var lastrefresh = 0;
 
 function pageload() {
 
+   // The competition id
    this.currentpage = null;
    
    this.xmlsource = null;
    this.currentcompxml = null;
+   this.messages = null;
+   
+   this.showmessages = function() {
+      // Is there a message for the current competition
+      
+      var msgs = this.messages.getElementsByTagName('message');
+      for (var i = 0;i < msgs.length; ++i) {
+         var msg = msgs[i];
+         if (this.currentpage == msg.getAttribute("competition")) {
+            // Got the message for our competition
+            for (var j = 0; j < msg.childNodes.length; ++j) {
+               if (3 == msg.childNodes[j].nodeType) {
+                  // text node
+                  var txt = msg.childNodes[j].data;
+                  
+                  if (null != txt && 0 < txt.length) {
+                     // Got something to display.
+                     var msgdiv = document.getElementById("messages");
+                     if (null != msgdiv) {
+                        // Set the message text
+                        msgdiv.innerHTML = txt;
+                        
+                        msgdiv.style.visibility = "visible";
+                        // now put a timer on to switch it off.
+                        
+                        // Reload in one third of the scroll delay
+                        setTimeout(function() {
+                              msgdiv.style.visibility = "hidden";; 
+                           }, scrolldelay / 3);
+                     }
+                  }
+                  // Found the text node so break out of the loop
+                  break;
+               }
+            }
+            // We have found our competition so return early.
+            break;
+     
+         }
+      }
+   }
 
    this.reload =
       function(xmldoc, force) {
@@ -223,6 +267,14 @@ function pageload() {
          
     this.updatepage = 
       function(force) {
+      
+         // First clear the messages
+         
+         var msgdiv = document.getElementById("messages");
+         if (null != msgdiv) {                                 
+            msgdiv.style.visibility = "hidden";
+         }
+         
          var xmldoc = this.xmlsource;
          var serieses = xmldoc.getElementsByTagName('series');
          var comp_id = null;
@@ -328,6 +380,7 @@ function pageload() {
                   for (var s in this.scrollers) {
                      this.scrollers[s].start();
                   }
+                  this.showmessages();
                   // Early return to avoid a reload
                   return;
                }
@@ -344,10 +397,54 @@ function pageload() {
                }
             }
          }
+         this.showmessages();
       };
       
-   // AJAX request
+   // AJAX requests
    this.fetch = function() {
+      var http_request = false;
+      if (window.XMLHttpRequest) { // Mozilla, Safari,...
+         http_request = new XMLHttpRequest();
+         if (http_request.overrideMimeType) {
+            http_request.overrideMimeType('text/xml');
+         }
+      } else if (window.ActiveXObject) { // IE
+         try {
+            http_request = new ActiveXObject("Msxml2.XMLHTTP");
+         } catch (e) {
+            try {
+               http_request = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) { }
+         }
+      }
+      if (!http_request) {
+         alert('Cannot create XMLHTTP instance');
+         return false;
+      }
+
+      var requestor = this;
+      http_request.onreadystatechange =
+         function() {
+            if (http_request.readyState == 4) {
+               if (http_request.status == 200 || http_request.status == 0) {
+
+                  var xmldoc = http_request.responseXML;
+                  // Store the messages
+                  requestor.messages = xmldoc;
+                  // Now get the actual data
+                  requestor.fetchpages();
+
+               } else {
+                  setTimeout('requestor.fetch()', 5000);
+               }
+            }
+         };
+      http_request.open('GET', messageslocation, true);
+      http_request.send(null);
+   }
+   
+   
+   this.fetchpages = function() {
 
       var http_request = false;
       if (window.XMLHttpRequest) { // Mozilla, Safari,...
@@ -379,7 +476,7 @@ function pageload() {
                   requestor.reload(xmldoc, false);
 
                } else {
-                  setTimeout('requestor.fetch()', 5000);
+                  setTimeout('requestor.fetchpages()', 5000);
                }
             }
          };

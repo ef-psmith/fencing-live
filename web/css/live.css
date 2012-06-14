@@ -647,3 +647,17 @@ th.poule-title-result {
 .top50 {
 	color: green;
 }
+
+#messages {
+   opacity:0.7;
+   font-size:xx-large;
+   position: fixed;
+   top: 30%;
+   z-index:1;
+   text-align:center;
+   margin-left: 15%;
+   margin-right: 15%;
+   width: 70%;
+   background-color: red;
+   
+}

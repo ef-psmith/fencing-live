@@ -345,6 +345,9 @@ span.col_club {
 span.col_fppname { 
    vertical-align: bottom;
    height: 100%;
+   width: 50%;
+   overflow: hidden;
+   position: relative;
 }
 span.col_fppclub { 
    text-align: right; 
@@ -353,6 +356,7 @@ span.col_fppclub {
    height: 100%;
    right: 4em;
    position: absolute;
+   width: 100%;
 }
 
 span.col_poule {
@@ -372,9 +376,11 @@ span.col_piste {
    position: absolute;
 }
 
+/* positioned relative so the contained divs can be absolute relative to this one */
 span.fpp_clubpp {
    float: right;
    position: relative;
+   width: 50%;
 }
 
 	
@@ -482,6 +488,7 @@ td.messagespace {
 /* need to have a set of styles for eliminated in R1, L128, L64, L32 etc */
 span.fppspan {
    display: block;
+   position: relative;
 }
 
 span.elim_p {

@@ -4,26 +4,26 @@
 	<debug>1</debug>
 	<log>./out.txt</log>
 <competition id="1">
-	<enabled>false</enabled>
+	<enabled>true</enabled>
 	<background>ff0000</background>
-	<source>/share/Public/data/current/Invicta-2012/Mens Foil-AUX/Mens Foil16</source>
+	<source>/share/Public/data/current/Stage1</source>
 	<nif>0</nif>
 </competition>
 <competition id="2">
 	<enabled>true</enabled>
 	<background>00ff00</background>
-	<source>/share/Public/data/current/Mens Foil10</source>
+	<source>/share/Public/data/current/Stage2</source>
 	<nif>0</nif>
 </competition>
 <competition id="3">
-	<enabled>false</enabled>
+	<enabled>true</enabled>
 	<background>FFFFFF</background>
-	<source>/share/Public/data/current/Invicta-2012/Mens Foil</source>
+	<source>/share/Public/data/current/Stage3</source>
 </competition>
 <competition id="4">
-	<enabled>false</enabled>
+	<enabled>true</enabled>
 	<background>FFFFFF</background>
-	<source>/share/Public/data/EYC_2011/Epee/EYC Boys U11 Epee</source><nif>0</nif></competition><competition id="5"><enabled>false</enabled>
+	<source>/share/Public/data/current/Stage4</source>
 	<background>FFFFFF</background>
 	<source>/share/Public/data/EYC_2011/Epee/EYC Boys U13 Epee</source>
 	<nif>0</nif></competition>
@@ -39,10 +39,10 @@
 	<source>/share/Public/data/current/Invicta-2012/Mens Epee-AUX/Mens Epee01</source>
 	<nif>0</nif></competition><competition id="9"><enabled>false</enabled><background>FFFFFF</background>
 </competition>
-<series id="1"><enabled>true</enabled><competition>2</competition></series>
-<series id="2"><enabled>false</enabled><competition>3</competition></series>
-<series id="3"><enabled>false</enabled><competition>3</competition></series>
-<series id="4"><enabled>false</enabled><competition>2</competition></series>
+<series id="1"><enabled>true</enabled><competition>1</competition></series>
+<series id="2"><enabled>true</enabled><competition>2</competition></series>
+<series id="3"><enabled>true</enabled><competition>3</competition></series>
+<series id="4"><enabled>true</enabled><competition>4</competition></series>
 <series id="5"><enabled>false</enabled><competition>3</competition></series>
 <series id="6"><enabled>false</enabled><competition>2</competition></series>
 </config>

@@ -9,6 +9,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:variable name="entrysize" select="number(138)" />
 <xsl:variable name="poolsperpage" select="number(2)"/>
 <xsl:variable name="col1size" select="number(4)"/>
+<xsl:variable name="tablistsize" select="number(8)"/>
 
 
 <!-- **********************************************************************************
@@ -357,6 +358,75 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="tableau">
 <topdiv class="tableau" id="tableau" name="topdiv">
+
+<!--
+If we are in the last 16 or later then we show the traditional tableau.
+Otherwise we just show a list of the matches
+-->
+<xsl:choose>
+
+<xsl:when test="count(col1/match) > 8">
+
+<pages>
+	<xsl:for-each select="col1/match[@number mod $tablistsize = 1]">
+		<xsl:sort select="col1/match/@number" />
+		<page>T<xsl:value-of select="(@number - 1) div $tablistsize" /></page>
+	</xsl:for-each>
+</pages><content>
+<h1><xsl:value-of select="../@titre_ligne" /></h1>
+
+	<xsl:for-each select="col1/match[@number mod $tablistsize = 1]">
+	<div class="tableaudiv">
+		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $tablistsize" /></xsl:attribute>
+		<xsl:if test="(@number -1) div $tablistsize > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
+		<h3>
+		   <xsl:value-of select="../../@title"/>
+			<xsl:if test="count(../match[@number > $tablistsize]) > 0">
+				 - Part <xsl:value-of select="((@number - 1) div $tablistsize) + 1" /> of  <xsl:value-of select="count(../match) div $tablistsize" />
+			</xsl:if>
+		</h3>
+
+<table class="tableaulist">
+	<xsl:for-each select="../match[(./@number &lt; (current()/@number + $tablistsize) and ./@number &gt; current()/@number) or ./@number = current()/@number]">
+		<tr class="tablistmatch">
+			<td>
+<xsl:if test="./@winnerid = fencerA/@id"><xsl:attribute name="class">winner</xsl:attribute></xsl:if>
+				<span class="tablistfencername"><xsl:value-of select="fencerA/@name"/></span>
+				<span class="tablistfencerclub"><xsl:value-of select="fencerA/@affiliation"/></span>
+			</td>
+			<td class="tablistscore">
+
+							<xsl:choose>
+								<xsl:when test="string-length(@winnername) &gt; 0 and string-length(@score) != 0">
+									<xsl:value-of select="@score" />
+								</xsl:when>
+								<xsl:when test="string-length(@winnername) &gt; 0">
+									Bye
+								</xsl:when>
+								<xsl:when test="string-length(@piste) != 0">
+									Piste: <xsl:value-of select="@piste" /><xsl:text> </xsl:text><xsl:value-of select="@time" />
+								</xsl:when>
+								<xsl:otherwise>
+									&#160;
+								</xsl:otherwise>
+							</xsl:choose>
+			</td>
+			<td>
+<xsl:if test="./@winnerid = fencerB/@id"><xsl:attribute name="class">winner</xsl:attribute></xsl:if>
+				<span class="tablistfencername"><xsl:value-of select="fencerB/@name"/></span>
+				<span class="tablistfencerclub"><xsl:value-of select="fencerB/@affiliation"/></span>
+			</td>
+		</tr>
+	</xsl:for-each> <!-- Match -->
+</table>
+	</div>
+</xsl:for-each> <!-- Page -->
+</content>
+
+</xsl:when>
+<xsl:otherwise>
+<!-- Traditional rendering of tableau -->
+
 <pages>
 	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
 		<xsl:sort select="col1/match/@number" />
@@ -415,8 +485,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	</div>
 	</xsl:for-each>
 </content>
+</xsl:otherwise>
+
+
+</xsl:choose>
 </topdiv>
 </xsl:template>
+
+
+
 
 <xsl:template match="match" mode="render">
 		<!-- ************ BOUT ************ -->

@@ -187,7 +187,7 @@ div.final {
 	overflow: hidden;
 }
 
-div.winner { 
+.winner { 
 	font-weight: bold; 
 }
 
@@ -646,6 +646,19 @@ th.poule-title-result {
 
 .top50 {
 	color: green;
+}
+
+td.tablistscore {
+   text-align: center;
+   min-width: 5em;
+}
+
+span.tablistfencerclub {
+   float: right;
+}
+
+tr.tablistmatch {
+   height:2em;
 }
 
 #messages {

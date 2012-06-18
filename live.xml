@@ -3,33 +3,61 @@
 	<targetlocation>/share/Qweb</targetlocation>
 	<debug>1</debug>
 	<log>./out.txt</log>
+	<restrictIP>false</restrictIP>
+	<controlIP>172.20.30.10</controlIP>
+	<controlIP>172.20.30.11</controlIP>
+	<controlIP>172.20.30.12</controlIP>
+	<controlIP>172.20.30.13</controlIP>
+	<controlIP>172.20.30.14</controlIP>
+	<controlIP>172.20.30.15</controlIP>
+	<controlIP>172.20.30.16</controlIP>
+	<controlIP>172.20.30.17</controlIP>
+	<controlIP>172.20.30.18</controlIP>
+	<controlIP>172.20.30.19</controlIP>
+	<statusTimeout>20000</statusTimeout>
+	<checkinTimeout>20000</checkinTimeout>
 <competition id="1">
 	<enabled>true</enabled>
+	<state>hidden</state>
 	<background>ff0000</background>
 	<source>/share/Public/data/current/Stage1</source>
 	<nif>0</nif>
 </competition>
 <competition id="2">
 	<enabled>true</enabled>
+	<state>ready</state>
 	<background>00ff00</background>
 	<source>/share/Public/data/current/Stage2</source>
 	<nif>0</nif>
 </competition>
 <competition id="3">
 	<enabled>true</enabled>
+	<state>hidden</state>
 	<background>FFFFFF</background>
 	<source>/share/Public/data/current/Stage3</source>
 </competition>
 <competition id="4">
 	<enabled>true</enabled>
+	<state>hidden</state>
 	<background>FFFFFF</background>
 	<source>/share/Public/data/current/Stage4</source>
 	<background>FFFFFF</background>
-	<source>/share/Public/data/EYC_2011/Epee/EYC Boys U13 Epee</source>
-	<nif>0</nif></competition>
-<competition id="6"><enabled>false</enabled>
+	<nif>0</nif>
+</competition>
+<competition id="5">
+	<enabled>true</enabled>
+	<state>hidden</state>
 	<background>FFFFFF</background>
-	<source>/share/Public/data/EYC_2011/Epee/EYC Boys U15 Epee</source><nif>0</nif>
+	<source>/share/Public/data/current/Stage5</source>
+	<background>FFFFFF</background>
+	<nif>0</nif>
+</competition>
+<competition id="6">
+	<enabled>true</enabled>
+	<state>hidden</state>
+	<background>FFFFFF</background>
+	<source>/share/Public/data/current/Large</source>
+	<nif>0</nif>
 </competition>
 <competition id="7"><enabled>false</enabled><background>FFFFFF</background>
 <source>/share/Public/data/EYC_2011/Sabre/EYC Girls U11 Sabre</source>
@@ -43,6 +71,6 @@
 <series id="2"><enabled>true</enabled><competition>2</competition></series>
 <series id="3"><enabled>true</enabled><competition>3</competition></series>
 <series id="4"><enabled>true</enabled><competition>4</competition></series>
-<series id="5"><enabled>false</enabled><competition>3</competition></series>
-<series id="6"><enabled>false</enabled><competition>2</competition></series>
+<series id="5"><enabled>true</enabled><competition>5</competition></series>
+<series id="6"><enabled>true</enabled><competition>6</competition></series>
 </config>

@@ -5,71 +5,71 @@
 
 use lib '/share/Public/engarde/lib';
 use Engarde;
-use Engarde::Checkin;
 use Engarde::Control;
 use CGI::Pretty qw(:standard *table -no_xhtml);
 use Fcntl qw(:DEFAULT :flock);
 use strict;
 #use diagnostics;
 
-$::allowCheckInWithoutPaid = 0;
-$::defaultNation = "GBR";
-@::weapons = () ;
-$::checkinTimeout = 30000;
+#$::allowCheckInWithoutPaid = 0;
+#$::defaultNation = "GBR";
+#@::weapons = () ;
+#$::checkinTimeout = 30000;
 
-$::weaponPath = param('wp') || "";
-$::action = param('Action') || "List";
+my $weaponPath = param('wp') || "";
+my $action = param('Action') || "List";
 
-%::fencers = ();
-%::clubs = ();
-%::nations = ();
-%::additions = ();
-%::addclubs = ();
-@::keys = ();
+#%::fencers = ();
+#%::clubs = ();
+#%::nations = ();
+#%::additions = ();
+#%::addclubs = ();
+#@::keys = ();
 
-$::maxfkey = -1;
-$::maxckey = -1;
-$::maxnkey = -1;
+#$::maxfkey = -1;
+#$::maxckey = -1;
+#$::maxnkey = -1;
 
-$::numfencers = 0;
-$::numpresent = 0;
+#$::numfencers = 0;
+#$::numpresent = 0;
 
 
 ####################################################################################################
 # display check-in home screen
 ####################################################################################################
-readConfiguration();
 
-if ($::weaponPath  eq "") {
+my $config = read_config("live.xml");
+
+if ($weaponPath  eq "") {
   
-  desk();
+  desk(\$config);
   
 } else {
 
-  my $comp = Engarde->new($::weaponPath);
+  my $comp = Engarde->new($config->{competition}->{$weaponPath}->{source} . "/competition.egw");
 
-  &loadFencerData($comp);
+  loadFencerData($comp);
 
   SWITCH: {
     ################################################################################################
     # check fencer in and reload Check-in screen
     ################################################################################################
-    if ($::action eq "Check") {&checkIn; last SWITCH;}
+    if ($action eq "Check") {&checkIn; last SWITCH;}
     
     ################################################################################################
     # Update files and reload Check-in screen
     ################################################################################################
-    if ($::action eq "Write") {&writeFiles; last SWITCH;}
+    if ($action eq "Write") {&writeFiles; last SWITCH;}
     
     ################################################################################################
     # Generate Check-in List screen
     ################################################################################################
-    if ($::action eq "List") {&displayList; last SWITCH;}
+    if ($action eq "List") {displayList($weaponPath, \$config); last SWITCH;}
     
     ################################################################################################
     # Update files and reload Check-in screen
     ################################################################################################
-    if ($::action eq "Edit") { &editItem; last SWITCH;}
+    if ($action eq "Edit") { editItem($weaponPath, \$config); last SWITCH;}
     
     &HTMLdie("Undefined action requested.");
   }

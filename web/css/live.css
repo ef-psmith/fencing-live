@@ -648,6 +648,10 @@ th.poule-title-result {
 	color: green;
 }
 
+table.tableaulist {
+width: 100%;
+}
+
 td.tablistscore {
    text-align: center;
    min-width: 5em;

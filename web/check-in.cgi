@@ -69,7 +69,7 @@ if ($weaponPath  eq "") {
     ################################################################################################
     # Update files and reload Check-in screen
     ################################################################################################
-    if ($action eq "Edit") { editItem($weaponPath, \$config); last SWITCH;}
+    if ($action eq "Edit") { editItem($weaponPath, \$config, $comp); last SWITCH;}
     
     &HTMLdie("Undefined action requested.");
   }

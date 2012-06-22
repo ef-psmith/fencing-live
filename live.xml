@@ -16,6 +16,7 @@
 	<controlIP>172.20.30.19</controlIP>
 	<statusTimeout>20000</statusTimeout>
 	<checkinTimeout>20000</checkinTimeout>
+	<title>EYC 2012</title>
 <competition id="1">
 	<enabled>true</enabled>
 	<state>hidden</state>

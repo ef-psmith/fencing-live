@@ -21,27 +21,27 @@
 	<enabled>true</enabled>
 	<state>hidden</state>
 	<background>ff0000</background>
-	<source>/share/Public/data/current/Stage1</source>
+	<source>/share/Public/data/current/EYC_2012/Foil/EYC Boys U11 Foil</source>
 	<nif>0</nif>
 </competition>
 <competition id="2">
 	<enabled>true</enabled>
 	<state>ready</state>
 	<background>00ff00</background>
-	<source>/share/Public/data/current/Stage2</source>
+	<source>/share/Public/data/current/EYC_2012/Foil/EYC Boys U13 Foil</source>
 	<nif>0</nif>
 </competition>
 <competition id="3">
 	<enabled>true</enabled>
 	<state>hidden</state>
 	<background>FFFFFF</background>
-	<source>/share/Public/data/current/Stage3</source>
+	<source>/share/Public/data/current/EYC_2012/Foil/EYC Boys U15 Foil</source>
 </competition>
 <competition id="4">
 	<enabled>true</enabled>
 	<state>hidden</state>
 	<background>FFFFFF</background>
-	<source>/share/Public/data/current/Stage4</source>
+	<source>/share/Public/data/current/EYC_2012/Foil/EYC Girls U11 Foil</source>
 	<background>FFFFFF</background>
 	<nif>0</nif>
 </competition>
@@ -49,7 +49,7 @@
 	<enabled>true</enabled>
 	<state>hidden</state>
 	<background>FFFFFF</background>
-	<source>/share/Public/data/current/Stage5</source>
+	<source>/share/Public/data/current/EYC_2012/Foil/EYC Girls U13 Foil</source>
 	<background>FFFFFF</background>
 	<nif>0</nif>
 </competition>
@@ -57,21 +57,118 @@
 	<enabled>true</enabled>
 	<state>hidden</state>
 	<background>FFFFFF</background>
-	<source>/share/Public/data/current/Large</source>
+	<source>/share/Public/data/current/EYC_2012/Foil/EYC Girls U15 Foil</source>
 	<nif>0</nif>
 </competition>
-<competition id="7"><enabled>false</enabled><background>FFFFFF</background>
-<source>/share/Public/data/EYC_2011/Sabre/EYC Girls U11 Sabre</source>
-	<nif>0</nif></competition><competition id="8">
-	<enabled>false</enabled>
-	<background>FFFFFF</background>
-	<source>/share/Public/data/current/Invicta-2012/Mens Epee-AUX/Mens Epee01</source>
-	<nif>0</nif></competition><competition id="9"><enabled>false</enabled><background>FFFFFF</background>
+
+<competition id="7">
+	<enabled>true</enabled><background>00FF00</background>
+	<source>/share/Public/data/current/EYC_2012/Epee/EYC Boys U11 Epee</source>
+	<nif>0</nif>
 </competition>
-<series id="1"><enabled>true</enabled><competition>1</competition></series>
-<series id="2"><enabled>true</enabled><competition>2</competition></series>
-<series id="3"><enabled>true</enabled><competition>3</competition></series>
-<series id="4"><enabled>true</enabled><competition>4</competition></series>
-<series id="5"><enabled>true</enabled><competition>5</competition></series>
-<series id="6"><enabled>true</enabled><competition>6</competition></series>
+
+<competition id="8">
+	<enabled>true</enabled><background>FF0000</background>
+	<source>/share/Public/data/current/EYC_2012/Epee/EYC Boys U13 Epee</source>
+	<nif>0</nif>
+</competition>
+
+<competition id="9">
+	<enabled>true</enabled><background>00ff00</background>
+	<source>/share/Public/data/current/EYC_2012/Epee/EYC Boys U15 Epee</source>
+	<nif>0</nif>
+</competition>
+
+<competition id="10">
+	<enabled>true</enabled><background>FF0000</background>
+	<source>/share/Public/data/current/EYC_2012/Epee/EYC Girls U11 Epee</source>
+	<nif>0</nif>
+</competition>
+
+<competition id="11">
+	<enabled>true</enabled><background>0000FF</background>
+	<source>/share/Public/data/current/EYC_2012/Epee/EYC Girls U13 Epee</source>
+	<nif>0</nif>
+</competition>
+
+<competition id="12">
+	<enabled>true</enabled><background>0000ff</background>
+	<source>/share/Public/data/current/EYC_2012/Epee/EYC Girls U15 Epee</source>
+	<nif>0</nif>
+</competition>
+
+<competition id="13">
+	<enabled>true</enabled><background>FF0000</background>
+	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Boys U11 Sabre</source>
+	<nif>0</nif>
+</competition>
+<competition id="14">
+	<enabled>true</enabled><background>FF0000</background>
+	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Boys U13 Sabre</source>
+	<nif>0</nif>
+</competition>
+
+<competition id="15">
+	<enabled>true</enabled><background>0000FF</background>
+	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Boys U15 Sabre</source>
+	<nif>0</nif>
+</competition>
+<competition id="16">
+	<enabled>true</enabled><background>0000FF</background>
+	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Girls U11 Sabre</source>
+	<nif>0</nif>
+</competition>
+<competition id="17">
+	<enabled>true</enabled><background>00ff00</background>
+	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Girls U13 Sabre</source>
+	<nif>0</nif>
+</competition>
+<competition id="18">
+	<enabled>true</enabled><background>00ff00</background>
+	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Girls U15 Sabre</source>
+	<nif>0</nif>
+</competition>
+
+
+
+
+<series id="1">
+	<enabled>true</enabled>
+	<competition>8</competition>
+	<competition>17</competition>
+</series>
+<series id="2">
+<enabled>true</enabled>
+	<competition>9</competition>
+	<competition>16</competition>
+</series>
+<series id="3">
+	<enabled>true</enabled>
+	<competition>12</competition>
+	<competition>13</competition>
+</series>
+<series id="4">
+	<enabled>true</enabled>
+	<competition>14</competition>
+	<competition>7</competition>
+</series>
+<series id="5">
+<enabled>true</enabled>
+<competition>18</competition>
+<competition>15</competition>
+</series>
+<series id="6">
+<enabled>true</enabled>
+<competition>11</competition>
+<competition>10</competition>
+</series>
+<series id="7">
+	<enabled>true</enabled>
+	<competition>1</competition>
+	<competition>2</competition>
+	<competition>3</competition>
+	<competition>4</competition>
+	<competition>5</competition>
+	<competition>6</competition>
+</series>
 </config>

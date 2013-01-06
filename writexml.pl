@@ -1,5 +1,3 @@
-#!/opt/bin/perl -w
-# vim: set ts=4 sw=4:
 # (c) Copyright Oliver Smith & Peter Smith 2007-2010 
 # oliver_rps@yahoo.co.uk
 

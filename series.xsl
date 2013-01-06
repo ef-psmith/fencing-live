@@ -365,7 +365,7 @@ Otherwise we just show a list of the matches
 -->
 <xsl:choose>
 
-<xsl:when test="count(col1/match) > 8">
+<xsl:when test="count(col1/match) > 100">
 
 <pages>
 	<xsl:for-each select="col1/match[@number mod $tablistsize = 1]">

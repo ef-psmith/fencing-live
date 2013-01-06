@@ -348,14 +348,16 @@ span.col_fppname {
    width: 50%;
    overflow: hidden;
    position: relative;
+   font-size: 0.9em;
 }
 span.col_fppclub { 
    text-align: right; 
- //  font-size: 0.7em;
+   font-size: 0.6em;
    vertical-align: bottom;
    height: 100%;
-   right: 4em;
+   right: 6em;
    position: absolute;
+   overflow: hidden;
    width: 100%;
 }
 

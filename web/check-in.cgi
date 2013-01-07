@@ -46,7 +46,7 @@ if ($weaponPath  eq "") {
   
 } else {
 
-  my $comp = Engarde->new($config->{competition}->{$weaponPath}->{source} . "/competition.egw");
+  my $comp = Engarde->new($config->{competition}->{$weaponPath}->{source} . "/competition.egw", 1);
 
   loadFencerData($comp);
 

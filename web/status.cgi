@@ -23,7 +23,7 @@ my $weaponPath = param('wp') || "";
 
 my $config = read_config("live.xml");
 
-# HTMLdie(Dumper(\$config));
+#HTMLdie(Dumper(\$config));
 
 ####################################################################################################
 # display control/status home screen
@@ -52,7 +52,7 @@ else
 	my $name   = param('Name');
 
 	SWITCH: {
-		if ($action =~ /update/i)  {update_status($weaponPath, $status) ; last SWITCH;}
+		if ($action =~ /update/i)  {update_status($config, $weaponPath, $status) ; last SWITCH;}
 		if ($action =~ /details/i) {display_weapon($weaponPath, $name) ;  last SWITCH;}
 		if ($action =~ /hide/i)    {hide_weapon($weaponPath) ;            last SWITCH;}
 		if ($action =~ /show/i)    {show_weapon($weaponPath) ;            last SWITCH;}

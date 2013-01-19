@@ -1,6 +1,8 @@
-#!/opt/bin/perl -w
+#!perl -w
 #
 use lib '/share/Public/engarde/lib';
+use lib 'C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-perl';
+
 use Engarde;
 use Engarde::Control;
 use CGI::Pretty qw(:standard *table -no_xhtml);
@@ -10,6 +12,8 @@ use strict;
 #use diagnostics;
 
 use Data::Dumper;
+
+# HTMLdie($ENV{SCRIPT_FILENAME} . " " . cwd());
 
 my @weapons;
 my $weaponPath = param('wp') || "";
@@ -21,9 +25,9 @@ my $weaponPath = param('wp') || "";
 #$::numfencers = 0;
 #$::numpresent = 0;
 
-my $config = read_config("live.xml");
+my $config = read_config();
 
-#HTMLdie(Dumper(\$config));
+# HTMLdie(Dumper(\$config));
 
 ####################################################################################################
 # display control/status home screen

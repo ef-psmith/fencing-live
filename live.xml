@@ -140,6 +140,12 @@
 	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Girls U15 Sabre</source>
 	<nif>0</nif>
 </competition>
+<competition id="19">
+	<enabled>true</enabled><background>00ff00</background>
+	<state>active</state>
+	<source>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/examples/Online entry test</source>
+	<nif>0</nif>
+</competition>
 
 
 

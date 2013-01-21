@@ -1,5 +1,6 @@
 # (c) Copyright Oliver Smith & Peter Smith 2007-2010 
 # oliver_rps@yahoo.co.uk
+# peter.smith@englandfencing.org.uk
 
 # standard layout for each stage of the competition based on the "whereami" output
 # as follows
@@ -73,9 +74,6 @@ my $ini = shift || "live.xml";
 my $runonce = shift || 0;
 
 
-    
-
-
 while (1)
 {
 	my $config = read_config($ini);
@@ -91,20 +89,18 @@ while (1)
 			!defined($ftp))
 	{
 	
-		$ftp = Net::FTP->new($config->{ftphost}, Debug => 0) or die "Cannot connect to some.host.name: $@" ;
+		# $ftp = Net::FTP->new($config->{ftphost}, Debug => 0) or die "Cannot connect to some.host.name: $@" ;
 	}
 	# Check that we are defined and log in.
 	if (defined($ftp))
 	{
-	print "FTP login\n";
+		print "FTP login\n";
 		$ftp->login($config->{ftpuser},$config->{ftppwd}) or die "Cannot login ", $ftp->message;
 
 		$ftp->cwd($config->{ftpcwd}) or die "Cannot change working directory ", $ftp->message;
 	}
 
 	$comp_output = {};
-	
-	# $comp_output->{competition} = [];
 	
 	my $comps = $config->{competition};
 	
@@ -121,10 +117,15 @@ while (1)
 		do_comp($c, $cid, $config->{competition}->{$cid});
 	}
 		
+	debug(1, "writing toplevel.xml");
 	XMLout($comp_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
+	debug(1, "done writing toplevel.xml");
 	
-	$ftp->put($config->{targetlocation} . "/toplevel.xml" , "newtoplevel.xml") unless !defined($ftp);
-	$ftp->rename("newtoplevel.xml" ,"toplevel.xml") unless !defined($ftp);
+	if (defined $ftp)
+	{
+		$ftp->put($config->{targetlocation} . "/toplevel.xml" , "newtoplevel.xml");
+		$ftp->rename("newtoplevel.xml" ,"toplevel.xml");
+	}
 	
 	# output the relevant bits for each series
 	my $series = $config->{series};
@@ -174,6 +175,10 @@ while (1)
 }
 
 
+############################################################################
+# Process an individual competition into comp_output hashref
+############################################################################
+
 sub do_comp 
 {
 	my $c = shift;
@@ -216,7 +221,7 @@ sub do_comp
 			$list->{entry}->{fencer} = [@lout];
 			$list->{entry}->{count} = @lout;
 			$list->{entry}->{nif} = $nif;
-			push @{$out->{portallists}}, $list;
+			push @{$out->{lists}}, $list;
 		}
 		
 		if ($where =~ /poules/)
@@ -238,34 +243,34 @@ sub do_comp
 			# Assume that all poules are finished by the time we are in the tableau or termine
 			my $round = 1;
 			
-			do
+			debug(2, "do_comp(): number of rounds = " . $c->{nutour});
+			debug(2, "do_comp(): round = " . $round);
+
+			if ($c->nutour)
 			{
-				my @hp = ("poules", $round, "finished");#want($c, "poules");
+				do
+				{
+					my @hp = ("poules", $round, "finished");
+					push @{$out->{pools}} , do_poules($c, @hp);
+					$round++;
 
-				push @{$out->{portalpools}} , do_poules($c, @hp);
-				
-
-				# Now sort out the rankings
-
+				} while ($round < $c->nutour);
+			
+				# ranking after the last round of pools
 				{
 					my $fencers = $c->ranking("p", $round);
 
 					# print Dumper(\$fencers);
-
+	
 					my @lout = do_ranking_list($fencers, $aff);
 					my $list = {};
 
 					$list->{ranking}->{fencer} = [@lout];
 					$list->{ranking}->{count} = @lout;
 					$list->{ranking}->{type} = "pools";
-					push @{$out->{portallists}}, $list;
+					push @{$out->{lists}}, $list;
 				}
-				
-				$round++;
-			} while ($round < scalar @{$c->{nombre_poules}} + 1);
-			
-			
-			
+			}
 		}
 	}
 	
@@ -278,6 +283,10 @@ sub do_comp
 }
 
  
+############################################################################
+# Process an individual competition's pools into comp_output hashref
+############################################################################
+
 sub do_poules
 {
 	my $c = shift;
@@ -334,6 +343,10 @@ sub do_poules
 	return $p;
 }	
 
+############################################################################
+# Process an individual competition's fencer pools pistes list 
+############################################################################
+
 sub do_fpp_list
 {
 	my $c = shift;
@@ -364,6 +377,10 @@ sub do_fpp_list
 	return @lout;
 }
 
+############################################################################
+# Process an individual competition's entry list 
+############################################################################
+
 sub do_entry_list
 {
 	my $c = shift;
@@ -391,6 +408,10 @@ sub do_entry_list
 	return @lout;
 }
 
+############################################################################
+# Process an individual competition's ranking list 
+############################################################################
+
 sub do_ranking_list
 {
 	my $fencers = shift;
@@ -410,6 +431,10 @@ sub do_ranking_list
 	}
 	return @lout;
 }
+
+############################################################################
+# Process an individual competition's list output  
+############################################################################
 
 sub do_list
 {
@@ -518,6 +543,10 @@ sub do_list
 }
 
 
+############################################################################
+# Determine the current stage of a competition
+############################################################################
+
 sub do_where
 {
 	my $c = shift;
@@ -551,6 +580,10 @@ sub do_where
 	return $out;
 }
 
+
+############################################################################
+# Process a tableau into a match structure
+############################################################################
 
 sub do_tableau_matches
 {
@@ -604,6 +637,10 @@ sub do_tableau_matches
 
 	return @list;
 }
+
+############################################################################
+# Process an individual competition's tableaux
+############################################################################
 
 sub do_tableau
 {
@@ -671,6 +708,10 @@ sub do_tableau
 	
 	return $out;
 }
+
+############################################################################
+# Debug output
+############################################################################
 
 sub debug
 {

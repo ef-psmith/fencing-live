@@ -5,6 +5,7 @@ use lib 'C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-perl';
 
 use Engarde;
 use Engarde::Control;
+use CGI::Carp qw(fatalsToBrowser warningsToBrowser cluck);
 use CGI::Pretty qw(:standard *table -no_xhtml);
 use Fcntl qw(:DEFAULT :flock);
 

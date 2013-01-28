@@ -1,4 +1,4 @@
-# (c) Copyright Oliver Smith & Peter Smith 2007-2010 
+# (c) Copyright Oliver Smith & Peter Smith 2007-2013
 # oliver_rps@yahoo.co.uk
 # peter.smith@englandfencing.org.uk
 
@@ -91,12 +91,12 @@ while (1)
 	
 		# $ftp = Net::FTP->new($config->{ftphost}, Debug => 0) or die "Cannot connect to some.host.name: $@" ;
 	}
+
 	# Check that we are defined and log in.
 	if (defined($ftp))
 	{
 		print "FTP login\n";
 		$ftp->login($config->{ftpuser},$config->{ftppwd}) or die "Cannot login ", $ftp->message;
-
 		$ftp->cwd($config->{ftpcwd}) or die "Cannot change working directory ", $ftp->message;
 	}
 
@@ -110,8 +110,7 @@ while (1)
 	{		
 		next unless $config->{competition}->{$cid}->{enabled} eq "true";	
 	
-		my $c = Engarde->new($config->{competition}->{$cid}->{source} . "/competition.egw");
-		
+		my $c = Engarde->new($config->{competition}->{$cid}->{source} . "/competition.egw");		
 		next unless $c;
 		
 		do_comp($c, $cid, $config->{competition}->{$cid});
@@ -138,12 +137,9 @@ while (1)
 		next unless ($series->{$sid}->{enabled} eq "true");
 
 		my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 
-		
 		my $series_output = {};
-		
 		my @array = @{$comp_output->{competition}};
 		
-
 		foreach my $cid (@{$series->{$sid}->{competition}})
 		{
 			#print "series_output: cid $cid starting\n";
@@ -161,8 +157,8 @@ while (1)
 		XMLout($series_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $outfile);	
 	}
 
-    	$ftp->quit unless !defined($ftp);
-    	undef($ftp);
+    $ftp->quit unless !defined($ftp);
+    undef($ftp);
     	
 	unless ($runonce)
 	{
@@ -197,8 +193,10 @@ sub do_comp
 	
 	my $where = $c->whereami;
 	
-	# print Dumper(\$where);
+	# insert current status
+	$out->{stage} = $where;
 	
+	# print Dumper(\$where);
 	
 	if ($where eq "debut")
 	{
@@ -209,7 +207,7 @@ sub do_comp
 	{
 		my $dom = $c->domaine_compe;
 		my $aff = $dom eq "national" ? "club" : "nation";
-		
+
 		############################################
 		# Always need the entry list for the portal
 		############################################
@@ -649,61 +647,54 @@ sub do_tableau
 
 	debug(1,"do_tableau: where = $where");
 
-	my @w = split / /,$where;
-	shift @w;
+	
+	#my @w = split / /,$where;
+	#shift @w;
 	
 
 	
 	my $out = {};
 	
-	#my @tableaux;
-	
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
-	if ($where eq "termine")
-	{	
-		@w = ($c->tableaux)[-2,-1];
-	}
-	#else
-	#{
-	#	@tableaux = $c->tableaux(1);
-	#	debug(1, "do_tableau: tableaux = " . Dumper(\@tableaux));
+	#if ($where eq "termine")
+	#{	
+	#	@w = ($c->tableaux)[-2,-1];
 	#}
 	
-	debug(1, "do_tableau: w = " . Dumper(\@w));
+	#debug(1, "do_tableau: w = " . Dumper(\@w));
 	
-	my $col = 1;
+	#my $col = 1;
 	
-	foreach my $tab (@w)
-	{
+	#foreach my $tab (@w)
+	#{
+	#	my $t = $c->tableau($tab,1);
+	#	$out->{title} = $t->nom_etendu unless $out->{title};
+	#	my @list = do_tableau_matches($t, $aff);
 		
-		my $t = $c->tableau($tab,1);
-		$out->{title} = $t->nom_etendu unless $out->{title};
-		my @list = do_tableau_matches($t, $aff);
-		
-		# debug(3, "do_tableau: list = " . Dumper(\@list));
-		$out->{"col$col"}->{match} = [@list];
-		
-		$col++;
+	#	# debug(3, "do_tableau: list = " . Dumper(\@list));
+	#	$out->{"col$col"}->{match} = [@list];
+	#	
+	#	$col++;
 
-		# print "do_tableau: winners = " . Dumper(\@winners);
-	}
+	#	# print "do_tableau: winners = " . Dumper(\@winners);
+	#}
 	
 	my @alltab = $c->tableaux;
-	$out->{matches} = {};
+	#$out->{matches} = {};
 	
 	foreach my $atab (@alltab)
 	{
 	
 		my $t = $c->tableau($atab,1);
-		$out->{matches}->{"$atab"}->{title} = $t->nom_etendu;
+		$out->{"$atab"}->{title} = $t->nom_etendu;
 
-		debug(1, "do_tableau: atab = " . Dumper($atab));
+		debug(1, "do_tableau: atab = $atab");
 		my @list = do_tableau_matches($t, $aff);
-		$out->{matches}->{"$atab"}->{match} = [@list];
+		$out->{"$atab"}->{match} = [@list];
 		my $matchcount = @list;
-		$out->{matches}->{"$atab"}->{count} = $matchcount;
+		$out->{"$atab"}->{count} = $matchcount;
 	}
 	
 	return $out;

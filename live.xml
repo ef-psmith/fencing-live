@@ -1,239 +1,220 @@
 <?xml version="1.0"?>
-<config>
-	<targetlocation>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/web</targetlocation>
-	<!-- <targetlocation>/share/Qweb</targetlocation> -->
-	<debug>1</debug>
-	<log>./out.txt</log>
-	<restrictIP>false</restrictIP>
-	<controlIP>172.20.30.10</controlIP>
-	<controlIP>172.20.30.11</controlIP>
-	<controlIP>172.20.30.12</controlIP>
-	<controlIP>172.20.30.13</controlIP>
-	<controlIP>172.20.30.14</controlIP>
-	<controlIP>172.20.30.15</controlIP>
-	<controlIP>172.20.30.16</controlIP>
-	<controlIP>172.20.30.17</controlIP>
-	<controlIP>172.20.30.18</controlIP>
-	<controlIP>172.20.30.19</controlIP>
-	<statusTimeout>20000</statusTimeout>
-	<checkinTimeout>20000</checkinTimeout>
-	<title>Competition Admin Portal</title>
-	
-	<competition id="1">
-		<enabled>true</enabled>
-		<state>hidden</state>
-		<background>ff0000</background>
-		<source>/share/Public/data/current/EYC_2012/Foil/EYC Boys U11 Foil</source>
-		<nif>0</nif>
-	</competition>
-
-	<competition id="2">
-		<enabled>true</enabled>
-		<state>ready</state>
-		<background>00ff00</background>
-		<source>/share/Public/data/current/EYC_2012/Foil/EYC Boys U13 Foil</source>
-		<nif>0</nif>
-	</competition>
-	
-	<competition id="3">
-		<enabled>true</enabled>
-		<state>check in</state>
-		<background>FFFFFF</background>
-		<source>/share/Public/data/current/EYC_2012/Foil/EYC Boys U15 Foil</source>
-	</competition>
-	
-	<competition id="4">
-		<enabled>true</enabled>
-		<state>active</state>
-		<background>FFFFFF</background>
-		<source>/share/Public/data/current/EYC_2012/Foil/EYC Girls U11 Foil</source>
-		<background>FFFFFF</background>
-		<nif>0</nif>
-	</competition>
-
-	<competition id="5">
-		<enabled>true</enabled>
-		<state>active</state>
-		<background>FFFFFF</background>
-		<source>/share/Public/data/current/EYC_2012/Foil/EYC Girls U13 Foil</source>
-		<background>FFFFFF</background>
-		<nif>0</nif>
-	</competition>
-
-	<competition id="6">
-		<enabled>true</enabled>
-		<state>active</state>
-		<background>FFFFFF</background>
-		<source>/share/Public/data/current/EYC_2012/Foil/EYC Girls U15 Foil</source>
-		<nif>0</nif>
-	</competition>
-
-	<competition id="7">
-		<enabled>true</enabled><background>00FF00</background>
-		<state>active</state>
-		<source>/share/Public/data/current/EYC_2012/Epee/EYC Boys U11 Epee</source>
-		<nif>0</nif>
-	</competition>
-
-<competition id="8">
-	<enabled>true</enabled><background>FF0000</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Epee/EYC Boys U13 Epee</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="9">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Epee/EYC Boys U15 Epee</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="10">
-	<enabled>true</enabled><background>FF0000</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Epee/EYC Girls U11 Epee</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="11">
-	<enabled>true</enabled><background>0000FF</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Epee/EYC Girls U13 Epee</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="12">
-	<enabled>true</enabled><background>0000ff</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Epee/EYC Girls U15 Epee</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="13">
-	<enabled>true</enabled><background>FF0000</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Boys U11 Sabre</source>
-	<nif>0</nif>
-</competition>
-<competition id="14">
-	<enabled>true</enabled><background>FF0000</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Boys U13 Sabre</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="15">
-	<enabled>true</enabled><background>0000FF</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Boys U15 Sabre</source>
-	<nif>0</nif>
-</competition>
-<competition id="16">
-	<enabled>true</enabled><background>0000FF</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Girls U11 Sabre</source>
-	<nif>0</nif>
-</competition>
-<competition id="17">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Girls U13 Sabre</source>
-	<nif>0</nif>
-</competition>
-<competition id="18">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>/share/Public/data/current/EYC_2012/Sabre/EYC Girls U15 Sabre</source>
-	<nif>0</nif>
-</competition>
-<competition id="19">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/examples/Online entry test</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="20">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 1</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="21">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 2</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="22">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 3</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="23">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 4</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="24">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 5</source>
-	<nif>0</nif>
-</competition>
-
-<competition id="25">
-	<enabled>true</enabled><background>00ff00</background>
-	<state>active</state>
-	<source>C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 6</source>
-	<nif>0</nif>
-</competition>
-
-
-<series id="1">
-	<enabled>true</enabled>
-	<competition>8</competition>
-	<competition>17</competition>
-</series>
-<series id="2">
-<enabled>true</enabled>
-	<competition>9</competition>
-	<competition>16</competition>
-</series>
-<series id="3">
-	<enabled>true</enabled>
-	<competition>12</competition>
-	<competition>13</competition>
-</series>
-<series id="4">
-	<enabled>true</enabled>
-	<competition>14</competition>
-	<competition>7</competition>
-</series>
-<series id="5">
-<enabled>true</enabled>
-<competition>18</competition>
-<competition>15</competition>
-</series>
-<series id="6">
-<enabled>true</enabled>
-<competition>11</competition>
-<competition>10</competition>
-</series>
-<series id="7">
-	<enabled>true</enabled>
-	<competition>1</competition>
-	<competition>2</competition>
-	<competition>3</competition>
-	<competition>4</competition>
-	<competition>5</competition>
-	<competition>6</competition>
-</series>
+<config checkinTimeout="20000"
+        debug="1"
+        log="./out.txt"
+        restrictIP="false"
+        statusTimeout="20000"
+        targetlocation="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/web"
+        title="Competition Admin Portal">
+  <competition id="1"
+               background="ff0000"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Foil/EYC Boys U11 Foil"
+               state="hidden" />
+  <competition id="10"
+               background="FF0000"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Epee/EYC Girls U11 Epee"
+               state="active" />
+  <competition id="11"
+               background="0000FF"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Epee/EYC Girls U13 Epee"
+               state="active" />
+  <competition id="12"
+               background="0000ff"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Epee/EYC Girls U15 Epee"
+               state="active" />
+  <competition id="122"
+               background="00ff00"
+               enabled="true"
+               nif="0"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 3a"
+               state="active" />
+  <competition id="123"
+               background="00ff00"
+               enabled="true"
+               nif="0"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 4a"
+               state="active" />
+  <competition id="13"
+               background="FF0000"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Sabre/EYC Boys U11 Sabre"
+               state="active" />
+  <competition id="14"
+               background="FF0000"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Sabre/EYC Boys U13 Sabre"
+               state="active" />
+  <competition id="15"
+               background="0000FF"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Sabre/EYC Boys U15 Sabre"
+               state="active" />
+  <competition id="16"
+               background="0000FF"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Sabre/EYC Girls U11 Sabre"
+               state="active" />
+  <competition id="17"
+               background="00ff00"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Sabre/EYC Girls U13 Sabre"
+               state="active" />
+  <competition id="18"
+               background="00ff00"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Sabre/EYC Girls U15 Sabre"
+               state="active" />
+  <competition id="19"
+               background="00ff00"
+               enabled="true"
+               hold="0"
+               nif="0"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/examples/Online entry test"
+               state="active" />
+  <competition id="2"
+               background="00ff00"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Foil/EYC Boys U13 Foil"
+               state="ready" />
+  <competition id="20"
+               background="00ff00"
+               enabled="true"
+               nif="0"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 1"
+               state="active" />
+  <competition id="21"
+               background="00ff00"
+               enabled="true"
+               hold="0"
+               nif="0"
+               pause="1"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 2"
+               state="active" />
+  <competition id="22"
+               background="00ff00"
+               enabled="true"
+               hold="0"
+               nif="0"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 3"
+               state="active" />
+  <competition id="23"
+               background="00ff00"
+               enabled="true"
+               hold="0"
+               nif="0"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 4"
+               state="active" />
+  <competition id="24"
+               background="00ff00"
+               enabled="true"
+               hold="0"
+               nif="0"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 5"
+               state="active" />
+  <competition id="25"
+               background="00ff00"
+               enabled="true"
+               nif="0"
+               source="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/DATA/examples/Stage 6"
+               state="active" />
+  <competition id="3"
+               background="FFFFFF"
+               enabled="true"
+               source="/share/Public/data/current/EYC_2012/Foil/EYC Boys U15 Foil"
+               state="check in" />
+  <competition id="4"
+               background="FFFFFF"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Foil/EYC Girls U11 Foil"
+               state="active" />
+  <competition id="5"
+               background="FFFFFF"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Foil/EYC Girls U13 Foil"
+               state="active" />
+  <competition id="6"
+               background="FFFFFF"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Foil/EYC Girls U15 Foil"
+               state="active" />
+  <competition id="7"
+               background="00FF00"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Epee/EYC Boys U11 Epee"
+               state="active" />
+  <competition id="8"
+               background="FF0000"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Epee/EYC Boys U13 Epee"
+               state="active" />
+  <competition id="9"
+               background="00ff00"
+               enabled="true"
+               nif="0"
+               source="/share/Public/data/current/EYC_2012/Epee/EYC Boys U15 Epee"
+               state="active" />
+  <controlIP>172.20.30.10</controlIP>
+  <controlIP>172.20.30.11</controlIP>
+  <controlIP>172.20.30.12</controlIP>
+  <controlIP>172.20.30.13</controlIP>
+  <controlIP>172.20.30.14</controlIP>
+  <controlIP>172.20.30.15</controlIP>
+  <controlIP>172.20.30.16</controlIP>
+  <controlIP>172.20.30.17</controlIP>
+  <controlIP>172.20.30.18</controlIP>
+  <controlIP>172.20.30.19</controlIP>
+  <series id="1"
+          enabled="true">
+    <competition>19</competition>
+  </series>
+  <series id="2"
+          enabled="true">
+    <competition>20</competition>
+  </series>
+  <series id="3"
+          enabled="true">
+    <competition>21</competition>
+  </series>
+  <series id="4"
+          enabled="true">
+    <competition>22</competition>
+  </series>
+  <series id="5"
+          enabled="true">
+    <competition>23</competition>
+  </series>
+  <series id="6"
+          enabled="true">
+    <competition>24</competition>
+    <competition>10</competition>
+  </series>
+  <series id="7"
+          enabled="true">
+    <competition>25</competition>
+    <competition>2</competition>
+    <competition>3</competition>
+    <competition>4</competition>
+    <competition>5</competition>
+    <competition>6</competition>
+  </series>
 </config>

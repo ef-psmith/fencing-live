@@ -100,7 +100,14 @@ while (1)
 		$ftp->cwd($config->{ftpcwd}) or die "Cannot change working directory ", $ftp->message;
 	}
 
-	$comp_output = {};
+	# reload previous comp_output to allow hold mechanism to work
+	print "104\n";
+	#$comp_output = eval (XMLin($config->{targetlocation} . "/toplevel.xml", KeepRoot => 1));
+	$comp_output = XMLin($config->{targetlocation} . "/toplevel.xml");
+	# $comp_output = {} if ($@);
+	
+	# print "106\n";
+	# print "XXXXX\n\n\n" . Dumper($comp_output);
 	
 	my $comps = $config->{competition};
 	
@@ -109,7 +116,10 @@ while (1)
 	foreach my $cid ( sort keys %$comps)
 	{		
 		next unless $config->{competition}->{$cid}->{enabled} eq "true";	
-	
+		
+		# don't regenerate this one if we are paused - data in comp_output *should* remain the same
+		next if $config->{competition}->{$cid}->{hold};
+		
 		my $c = Engarde->new($config->{competition}->{$cid}->{source} . "/competition.egw");		
 		next unless $c;
 		
@@ -117,7 +127,7 @@ while (1)
 	}
 		
 	debug(1, "writing toplevel.xml");
-	XMLout($comp_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
+	XMLout($comp_output, OutputFile => $config->{targetlocation} . "/toplevel.xml");
 	debug(1, "done writing toplevel.xml");
 	
 	if (defined $ftp)
@@ -133,33 +143,38 @@ while (1)
 
 	foreach my $sid ( sort keys %$series)
 	{
+		debug(1, "writing series $sid");
+		
 		# print Dumper(\$series->{$sid});
 		next unless ($series->{$sid}->{enabled} eq "true");
 
 		my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 
 		my $series_output = {};
-		my @array = @{$comp_output->{competition}};
+		# my %array = $comp_output->{competition};
+		
+		###########################################################
+		## if the competition exists in the series config,
+		## copy it to series_output
+		###########################################################
 		
 		foreach my $cid (@{$series->{$sid}->{competition}})
 		{
-			#print "series_output: cid $cid starting\n";
-			# print Dumper($_);
-			my ($index) = grep $array[$_]->{id} eq $cid, 0 .. $#array;
-			#print "cid $cid: index = $index\n";
-			
-			next unless defined($index);
-			#print "cid $cid: index = $index\n";
-			push @{$series_output->{competition}}, @{$comp_output->{competition}}[$index]; 
+			debug(1, "  adding competition $cid");
+			push @{$series_output->{competition}}, $comp_output->{competition}->{$cid} if exists $comp_output->{competition}->{$cid}; 
+
 		}
 	
-		debug(2, Dumper(\$series_output));
+		debug(1, Dumper(\$series_output));
 	
 		XMLout($series_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $outfile);	
 	}
 
+	
     $ftp->quit unless !defined($ftp);
     undef($ftp);
-    	
+    
+	debug(1, "loop finished");
+		
 	unless ($runonce)
 	{
 		sleep 30;
@@ -277,7 +292,7 @@ sub do_comp
 	debug(3, "cid $cid: where = " . Dumper(\$wh));
 	
 	push @{$out->{lists}}, $wh if $wh->{where}->{count};
-	push @{$comp_output->{competition}}, $out;
+	$comp_output->{competition}->{$cid} = $out;
 }
 
  

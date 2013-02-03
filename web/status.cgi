@@ -1,5 +1,7 @@
 #!perl -w
 #
+
+use strict;
 use lib '/share/Public/engarde/lib';
 use lib 'C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-perl';
 
@@ -7,7 +9,7 @@ use Engarde;
 use Engarde::Control;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser cluck);
 use CGI::Pretty qw(:standard *table -no_xhtml);
-use Fcntl qw(:DEFAULT :flock);
+# use Fcntl qw(:DEFAULT :flock O_WRONLY);
 
 use strict;
 #use diagnostics;
@@ -48,7 +50,7 @@ if ($config->{restrictIP} eq "true")
   
 if ($weaponPath eq "") 
 {
-	control(\$config);
+	control($config);
 } 
 else 
 {
@@ -61,6 +63,9 @@ else
 		if ($action =~ /details/i) {display_weapon($weaponPath, $name) ;  last SWITCH;}
 		if ($action =~ /hide/i)    {hide_weapon($weaponPath) ;            last SWITCH;}
 		if ($action =~ /show/i)    {show_weapon($weaponPath) ;            last SWITCH;}
-		print "Location: ".url()."\n\n" ;    
+		if ($action =~ /pause/i)    {update_config($weaponPath, "hold", 1) ;            last SWITCH;}
+		if ($action =~ /play/i)    {update_config($weaponPath, "hold", 0) ;            last SWITCH;}
+		
+		# print "Location: ".url()."\n\n" ;    
 	}
 }

@@ -16,7 +16,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	LISTS
 *************************************************************************************** -->
 <!-- Entry List -->
-<xsl:template match="lists/entry">
+<xsl:template match="lists[@name='entry']">
 <topdiv name="topdiv" id="vlistid" class="vlist_entry">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -53,7 +53,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 
-<xsl:template match="lists/fpp">
+<xsl:template match="lists[@name='fpp']">
 <topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -112,7 +112,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</span>
 </xsl:template>
 
-<xsl:template match="lists/where">
+<xsl:template match="lists[@name='where']">
 <topdiv class="vlist2" name="topdiv" id="vlistid2">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -164,9 +164,41 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <!-- Ranking list after the poules-->
-<xsl:template match="lists/ranking">
+<xsl:template match="lists[@name='ranking']">
 <xsl:choose>
-<xsl:when test="../../lists/where">
+<!-- When we have all finished used a two column list -->
+<xsl:when test="../@stage='termine'">
+
+<topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
+	<!-- This is the list of pages to scroll through -->
+	<pages>
+		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
+			<xsl:sort select="@sequence" />
+			<page>RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2) " /></page>
+		</xsl:for-each >
+	</pages>
+	<content>
+	<!-- Display HTML starts here. 
+			First the list header -->
+<div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
+<!-- Now the list contents -->
+		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2)  = 1]">
+			<div>
+				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
+				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
+				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
+				<xsl:apply-templates select="." mode="finalfencer2" />
+				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer2" >
+					<xsl:sort select="@sequence" data-type="number" />
+				</xsl:apply-templates>
+			</div>
+		</xsl:for-each >
+	</content>
+</topdiv>
+
+
+</xsl:when>
+<xsl:otherwise>
 <topdiv class="vlist_ranking" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -200,37 +232,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<xsl:sort select="@sequence" data-type="number" />
 				</xsl:apply-templates>
 				</table>
-			</div>
-		</xsl:for-each >
-	</content>
-</topdiv>
-
-
-
-</xsl:when>
-<xsl:otherwise>
-<topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
-	<!-- This is the list of pages to scroll through -->
-	<pages>
-		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
-			<xsl:sort select="@sequence" />
-			<page>RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2) " /></page>
-		</xsl:for-each >
-	</pages>
-	<content>
-	<!-- Display HTML starts here. 
-			First the list header -->
-<div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
-<!-- Now the list contents -->
-		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2)  = 1]">
-			<div>
-				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
-				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
-				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
-				<xsl:apply-templates select="." mode="finalfencer2" />
-				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer2" >
-					<xsl:sort select="@sequence" data-type="number" />
-				</xsl:apply-templates>
 			</div>
 		</xsl:for-each >
 	</content>
@@ -356,12 +357,38 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	TABLEAU
 *************************************************************************************** -->
 
-<xsl:template match="tableau">
+<xsl:template match="competition[starts-with(@stage, 'tableau') or @stage = 'termine']">
+<!--
+We now work out which two columns to show.  The stage will contain the two columns
+in the form "tableau A32 A16"
+-->
+<xsl:choose>
+<xsl:when test="@stage=termine or contains(@stage, 'A2')">
+
+	<xsl:apply-templates select="." mode="render" >
+		<xsl:with-param name="col1" >A4</xsl:with-param>
+		<xsl:with-param name="col2">A2</xsl:with-param>
+	</xsl:apply-templates>
+</xsl:when>
+<xsl:otherwise>
+
+	<xsl:apply-templates select="." mode="render" >
+		<xsl:with-param name="col1" select="substring-before(substring-after(@stage, 'tableau '), ' ')"/>
+		<xsl:with-param name="col2" select="substring-after(substring-after(@stage, 'tableau '), ' ')"/>
+	</xsl:apply-templates>
+</xsl:otherwise>
+</xsl:choose>
+</xsl:template>
+
+
+<xsl:template match="competition" mode="render">
+<xsl:param name="col1" />
+<xsl:param name="col2" />
 <topdiv class="tableau" id="tableau" name="topdiv">
 
 <!--
 If we are in the last 16 or later then we show the traditional tableau.
-Otherwise we just show a list of the matches
+Otherwise we just show a list of the matches - NOT USED
 -->
 <xsl:choose>
 
@@ -428,14 +455,14 @@ Otherwise we just show a list of the matches
 <!-- Traditional rendering of tableau -->
 
 <pages>
-	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
-		<xsl:sort select="col1/match/@number" />
+	<xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
+		<xsl:sort select="tableau[@name = $col1]/match/@number" />
 		<page>T<xsl:value-of select="(@number - 1) div $col1size" /></page>
 	</xsl:for-each>
 </pages>
 <content>
 <h1><xsl:value-of select="../@titre_ligne" /></h1>
-	<xsl:for-each select="col1/match[@number mod $col1size = 1]">
+	<xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
 	<div class="tableaudiv">
 		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
 		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
@@ -471,13 +498,13 @@ Otherwise we just show a list of the matches
 			</div>
 </xsl:if>
 		</div>
-<xsl:if test="../../col2">
+<xsl:if test="../../tableau[@name = $col2]">
 		<div class="twocol">
 			<!-- the starting number for div 2 should be ((@number + 1) / 2) -->
-<xsl:if test="count(../../col2/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]) &gt; 0">
+<xsl:if test="count(../../tableau[@name = $col2]/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]) &gt; 0">
 			<div class="half">
-				<xsl:apply-templates select="../../col2/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
-				<xsl:apply-templates select="../../col2/match[./@number mod 2 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
+				<xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
+				<xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 2 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
 			</div>
 </xsl:if>
 		</div>

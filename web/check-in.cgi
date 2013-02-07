@@ -6,10 +6,10 @@
 use lib '/share/Public/engarde/lib';
 use lib 'C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-perl';
 
-use Engarde;
+# use Engarde;
 use Engarde::Control;
 use CGI::Pretty qw(:standard *table -no_xhtml);
-use Fcntl qw(:DEFAULT :flock);
+#use Fcntl qw(:DEFAULT :flock);
 use strict;
 #use diagnostics;
 
@@ -40,11 +40,11 @@ my $action = param('Action') || "List";
 # display check-in home screen
 ####################################################################################################
 
-my $config = read_config('C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/live.xml');
+my $config = read_config();
 
 if ($weaponPath  eq "") {
   
-  desk(\$config);
+  desk($config);
   
 } else {
 

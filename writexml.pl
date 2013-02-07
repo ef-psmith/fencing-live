@@ -101,29 +101,25 @@ while (1)
 	}
 
 	# reload previous comp_output to allow hold mechanism to work
-	print "104\n";
-	#$comp_output = eval (XMLin($config->{targetlocation} . "/toplevel.xml", KeepRoot => 1));
-	$comp_output = XMLin($config->{targetlocation} . "/toplevel.xml");
-	# $comp_output = {} if ($@);
 	
-	# print "106\n";
-	# print "XXXXX\n\n\n" . Dumper($comp_output);
+	$comp_output = XMLin($config->{targetlocation} . "/toplevel.xml", ForceArray=> qr/competition/);
 	
+
 	my $comps = $config->{competition};
 	
 	# generate the data
 	
 	foreach my $cid ( sort keys %$comps)
 	{		
-		next unless $config->{competition}->{$cid}->{enabled} eq "true";	
+		next unless $comps->{$cid}->{enabled} eq "true";	
 		
 		# don't regenerate this one if we are paused - data in comp_output *should* remain the same
-		next if $config->{competition}->{$cid}->{hold};
+		next if $comps->{$cid}->{hold};
 		
-		my $c = Engarde->new($config->{competition}->{$cid}->{source} . "/competition.egw");		
+		my $c = Engarde->new($comps->{$cid}->{source} . "/competition.egw");		
 		next unless $c;
 		
-		do_comp($c, $cid, $config->{competition}->{$cid});
+		do_comp($c, $cid, $comps->{$cid});
 	}
 		
 	debug(1, "writing toplevel.xml");
@@ -159,14 +155,15 @@ while (1)
 		
 		foreach my $cid (@{$series->{$sid}->{competition}})
 		{
+			next unless $comps->{$cid}->{enabled} eq "true";
 			debug(1, "  adding competition $cid");
-			push @{$series_output->{competition}}, $comp_output->{competition}->{$cid} if exists $comp_output->{competition}->{$cid}; 
-
+			
+			push @{$series_output->{competition}}, $comp_output->{competition}->{$cid} if exists $comp_output->{competition}->{$cid};
 		}
 	
-		debug(1, Dumper(\$series_output));
+		debug(3, Dumper(\$series_output));
 	
-		XMLout($series_output, KeyAttr => [], SuppressEmpty => undef, OutputFile => $outfile);	
+		XMLout($series_output, SuppressEmpty => undef, OutputFile => $outfile);	
 	}
 
 	
@@ -213,78 +210,64 @@ sub do_comp
 	
 	# print Dumper(\$where);
 	
-	if ($where eq "debut")
-	{
-		debug(2, $c->titre_ligne . ": debut");
-		push @{$out->{lists}}, do_list($c, $nif, "debut");
-	}
-	else
-	{
-		my $dom = $c->domaine_compe;
-		my $aff = $dom eq "national" ? "club" : "nation";
-
-		############################################
-		# Always need the entry list for the portal
-		############################################
-		{
-			my $list = {};
-		
-			my @lout = do_entry_list($c, $aff);
-
-			$list->{entry}->{fencer} = [@lout];
-			$list->{entry}->{count} = @lout;
-			$list->{entry}->{nif} = $nif;
-			push @{$out->{lists}}, $list;
-		}
-		
-		if ($where =~ /poules/)
-		{
-			my @hp = want($c, "poules");
-
-			$out->{pools} = do_poules($c, @hp);
-			push @{$out->{lists}}, do_list($c, $nif, @hp);
-
-		}
-
-		if ($where =~ /tableau/ || $where eq "termine")
-		{
-			$out->{tableau} = do_tableau($c, $where);
-			push @{$out->{lists}}, do_list($c, $nif, "result");
-
-			# And also push the pools out for the portal
-						
-			# Assume that all poules are finished by the time we are in the tableau or termine
-			my $round = 1;
-			
-			debug(2, "do_comp(): number of rounds = " . $c->{nutour});
-			debug(2, "do_comp(): round = " . $round);
-
-			if ($c->nutour)
-			{
-				do
-				{
-					my @hp = ("poules", $round, "finished");
-					push @{$out->{pools}} , do_poules($c, @hp);
-					$round++;
-
-				} while ($round < $c->nutour);
-			
-				# ranking after the last round of pools
-				{
-					my $fencers = $c->ranking("p", $round);
-
-					# print Dumper(\$fencers);
+	# always do this now
+	#if ($where eq "debut")
+	#{
 	
-					my @lout = do_ranking_list($fencers, $aff);
-					my $list = {};
+	#debug(2, $c->titre_ligne . ": debut");
+	#push @{$out->{lists}}, do_list($c, $nif, "debut");
+	
+	#}
+	#else
+	#{
+	
+	my $dom = $c->domaine_compe;
+	my $aff = $dom eq "national" ? "club" : "nation";
 
-					$list->{ranking}->{fencer} = [@lout];
-					$list->{ranking}->{count} = @lout;
-					$list->{ranking}->{type} = "pools";
-					push @{$out->{lists}}, $list;
-				}
-			}
-		}
+	############################################
+	# Always need the entry list
+	############################################
+	
+	my $list = {};	
+	my @lout = do_entry_list($c, $aff);
+
+	$list->{entry}->{fencer} = [@lout];
+	$list->{entry}->{count} = @lout;
+	$list->{entry}->{nif} = $nif;
+	push @{$out->{lists}}, $list;
+	
+	# poules are needed for anything other than debut now
+	if ($where ne "debut" && ${$c->nombre_poules}[0])
+	{
+		#my @hp = want($c, "poules");
+
+		my $round = 1;
+		
+		debug(1, "do_comp(): number of rounds = " . scalar @{$c->nombre_poules});
+		
+		while ($round <= scalar @{$c->nombre_poules})
+		{
+			debug(1, "do_comp(): round = " . $round);
+			my @hp = ("poules", $round, "finished");
+			push @{$out->{pools}} , do_poules($c, @hp);
+			$round++;
+		} 
+
+		my $fencers = $c->ranking("p");
+
+		my @lout = do_ranking_list($fencers, $aff);
+		my $list = {};
+
+		$list->{ranking}->{fencer} = [@lout];
+		$list->{ranking}->{count} = @lout;
+		$list->{ranking}->{type} = "pools";
+		push @{$out->{lists}}, $list;
+	}
+
+	if ($where =~ /tableau/ || $where eq "termine")
+	{
+		$out->{tableau} = do_tableau($c, $where);
+		push @{$out->{lists}}, do_list($c, $nif, "result");
 	}
 	
 	my $wh = do_where($c);

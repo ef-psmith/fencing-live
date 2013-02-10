@@ -28,7 +28,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<content>
 	<!-- Display HTML starts here. 
 			First the list header -->
-<div class="vlist_title" id="vtitle"><h2>Entry List for <xsl:value-of select="../../@titre_ligne" /></h2></div>
+<div class="vlist_title" id="vtitle"><h2>Entry List for <xsl:value-of select="../@titre_ligne" /></h2></div>
 
 <xsl:for-each select="fencer[@sequence mod ($entrysize) = 1]">
 

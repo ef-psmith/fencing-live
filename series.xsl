@@ -16,7 +16,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	LISTS
 *************************************************************************************** -->
 <!-- Entry List -->
-<xsl:template match="lists[@name='entry']">
+<xsl:template match="lists[@name='entry' and ../@stage = 'debut']">
 <topdiv name="topdiv" id="vlistid" class="vlist_entry">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -53,7 +53,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 
-<xsl:template match="lists[@name='fpp']">
+<!-- Fencers Poules Pistes list -->
+<xsl:template match="lists[@name='fpp' and contains(../@stage, 'poules') and not(contains(../@stage, 'finished'))]">
 <topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -112,7 +113,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</span>
 </xsl:template>
 
-<xsl:template match="lists[@name='where']">
+
+
+<!-- Where am I list
+
+   Appears when tableau are drawn and through to the finals -->
+   
+<xsl:template match="lists[@name='where' and starts-with(../@stage, 'tableau') and not(../@stage = 'tableau A8 A4' or ../@stage = 'tableau A4 A2')]">
 <topdiv class="vlist2" name="topdiv" id="vlistid2">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -163,11 +170,49 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</tr>
 </xsl:template>
 
-<!-- Ranking list after the poules-->
-<xsl:template match="lists[@name='ranking']">
+<!-- Ranking list after the poules
+
+   Used when the pools have finished or the first round of the tableau.
+-->
+<xsl:template match="lists[@name='ranking' and 
+   ( 
+      (
+         (
+            starts-with(../@stage, 'poules')
+            and 
+            contains(../@stage, 'finished')
+         )
+         or 
+         (
+            starts-with(../@stage, 'tableau')
+            and 
+            (
+               substring-before(substring-after(../@stage, 'tableau '), ' ') =  substring-after(substring-after(../@stage, 'tableau '), ' ')
+            )
+         ) 
+         and @type='pools'
+      ) 
+      or 
+      (
+         (
+            ../@stage = 'termine' 
+            or 
+            (
+               starts-with(../@stage, 'tableau') 
+               and 
+               not
+               (
+                  substring-before(substring-after(../@stage, 'tableau '), ' ') =  substring-after(substring-after(../@stage, 'tableau '), ' ')
+               )
+            ) 
+         )
+         and 
+         @type='final'
+      )
+   ) ]">
 <xsl:choose>
-<!-- When we have all finished used a two column list -->
-<xsl:when test="../@stage='termine'">
+<!-- When we have all finished or we are showing the pools finished or we are in the finals used a two column list -->
+<xsl:when test="../@stage='termine' or contains(../@stage, 'finished') or contains(../@stage, 'A8 A4') or contains(../@stage, 'A4 A2')">
 
 <topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
@@ -363,7 +408,7 @@ We now work out which two columns to show.  The stage will contain the two colum
 in the form "tableau A32 A16"
 -->
 <xsl:choose>
-<xsl:when test="@stage=termine or contains(@stage, 'A2')">
+<xsl:when test="@stage='termine' or contains(@stage, 'A2')">
 
 	<xsl:apply-templates select="." mode="render" >
 		<xsl:with-param name="col1" >A4</xsl:with-param>

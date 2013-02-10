@@ -162,10 +162,8 @@ while (1)
 		}
 	
 		debug(3, Dumper(\$series_output));
-	
 		XMLout($series_output, SuppressEmpty => undef, OutputFile => $outfile);	
 	}
-
 	
     $ftp->quit unless !defined($ftp);
     undef($ftp);
@@ -178,7 +176,7 @@ while (1)
 	}
 	else
 	{
-		exit ;
+		exit;
 	}
 }
 
@@ -422,6 +420,10 @@ sub do_ranking_list
 						elimround => "elim_p", 	
 						position => $fencers->{$fid}->{seed} || '',
 						id => $fid || '', 
+						vm => $fencers->{$fid}->{vm},
+						hs => $fencers->{$fid}->{hs},
+						hr => $fencers->{$fid}->{hr},
+						ind => $fencers->{$fid}->{ind},
 						sequence => $sequence};
 		$sequence++;
 	}

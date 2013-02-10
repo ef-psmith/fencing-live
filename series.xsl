@@ -403,6 +403,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 *************************************************************************************** -->
 
 <xsl:template match="competition[starts-with(@stage, 'tableau') or @stage = 'termine']">
+
+<!--
+   Still have to apply templates to lists - but not pools
+-->
+
+   <xsl:apply-templates select="lists"/>
+
 <!--
 We now work out which two columns to show.  The stage will contain the two columns
 in the form "tableau A32 A16"

@@ -170,9 +170,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</tr>
 </xsl:template>
 
-<!-- Ranking list after the poules
+<!-- Ranking list
 
    Used when the pools have finished or the first round of the tableau.
+   
+   Both after the pools and final ranking
 -->
 <xsl:template match="lists[@name='ranking' and 
    ( 
@@ -230,12 +232,52 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2)  = 1]">
 			<div>
 				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
-				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
-				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
-				<xsl:apply-templates select="." mode="finalfencer2" />
-				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer2" >
+				<xsl:if test="@sequence != 1"><xsl:attribute name="class">hidden</xsl:attribute></xsl:if>
+				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">visible</xsl:attribute></xsl:if>
+            
+            <table class="vlist_table">
+            <tr>
+            <td>
+            <table class="vlist_table">
+            <tr>
+                     <td class="vlist_position">Pos</td>
+                     <td class="vlist_name">Name</td>
+                     <td class="vlist_club">Club</td>
+                     <xsl:if test="../@type='pools'">
+                     <td class="vlist_vm">vm</td>
+                     <td class="vlist_hs">hs</td>
+                     <td class="vlist_ind">ind</td>
+                     </xsl:if>
+                     
+      </tr>
+            
+				<xsl:apply-templates select="." mode="finalfencer" />
+				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
 					<xsl:sort select="@sequence" data-type="number" />
 				</xsl:apply-templates>
+            </table>
+            </td>
+            <td>
+            <table class="vlist_table">
+            <tr>
+                     <td class="vlist_position">Pos</td>
+                     <td class="vlist_name">Name</td>
+                     <td class="vlist_club">Club</td>
+                     <xsl:if test="../@type='pools'">
+                     <td class="vlist_vm">vm</td>
+                     <td class="vlist_hs">hs</td>
+                     <td class="vlist_ind">ind</td>
+                     </xsl:if>
+                     
+      </tr>
+            
+                        <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt;= current()/@sequence + $pagesize]" mode="finalfencer" >
+                           <xsl:sort select="@sequence" data-type="number" />
+            </xsl:apply-templates>
+            </table>
+            </td>
+            </tr>
+            </table>
 			</div>
 		</xsl:for-each >
 	</content>
@@ -244,6 +286,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 </xsl:when>
 <xsl:otherwise>
+<!-- One column list -->
 <topdiv class="vlist_ranking" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -262,6 +305,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<td class="vlist_position">Pos</td>
 			<td class="vlist_name">Name</td>
 			<td class="vlist_club">Club</td>
+         <xsl:if test="@type='pools'">
+         <td class="vlist_vm">vm</td>
+         <td class="vlist_hs">hs</td>
+         <td class="vlist_ind">ind</td>
+         </xsl:if>
+         
 		</tr>
 	</table>
 </div>
@@ -292,7 +341,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<xsl:attribute name="class"><xsl:value-of select="@elimround" /></xsl:attribute>
 			<td class="vlist_position"><xsl:value-of select="@position" /></td>
 			<td class="vlist_name"><xsl:value-of select="substring(@name,1,17)" /></td>
-			<td class="vlist_club"><xsl:value-of select="substring(@affiliation,1,20)" /></td>
+         <td class="vlist_club"><xsl:value-of select="substring(@affiliation,1,20)" /></td>
+         <xsl:if test="../@type='pools'">
+         <td class="vlist_vm"><xsl:value-of select="@vm" /></td>
+         <td class="vlist_hs"><xsl:value-of select="@hs" /></td>
+         <td class="vlist_ind"><xsl:value-of select="@ind" /></td>
+         </xsl:if>
 		</tr>
 </xsl:template>
 

@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<portaldata xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="series1/series.xml"/>
-  <xi:include href="series2/series.xml"/>
-  <xi:include href="series3/series.xml"/>
-</portaldata>

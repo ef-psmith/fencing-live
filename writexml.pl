@@ -107,6 +107,8 @@ while (1)
 
 	my $comps = $config->{competition};
 	
+	$comps = {} unless ref $comps eq "HASH";
+	
 	# generate the data
 	
 	foreach my $cid ( sort keys %$comps)
@@ -123,7 +125,7 @@ while (1)
 	}
 		
 	debug(1, "writing toplevel.xml");
-	XMLout($comp_output, OutputFile => $config->{targetlocation} . "/toplevel.xml");
+	XMLout($comp_output, SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
 	debug(1, "done writing toplevel.xml");
 	
 	if (defined $ftp)
@@ -139,7 +141,7 @@ while (1)
 
 	foreach my $sid ( sort keys %$series)
 	{
-		debug(1, "writing series $sid");
+		debug(2, "writing series $sid");
 		
 		# print Dumper(\$series->{$sid});
 		next unless ($series->{$sid}->{enabled} eq "true");
@@ -155,8 +157,9 @@ while (1)
 		
 		foreach my $cid (@{$series->{$sid}->{competition}})
 		{
+			debug(2, "  checking competition $cid - enabled = " . $comps->{$cid}->{enabled});
 			next unless $comps->{$cid}->{enabled} eq "true";
-			debug(1, "  adding competition $cid");
+			debug(2, "  adding competition $cid");
 			
 			push @{$series_output->{competition}}, $comp_output->{competition}->{$cid} if exists $comp_output->{competition}->{$cid};
 		}

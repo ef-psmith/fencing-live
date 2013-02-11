@@ -9,7 +9,7 @@ use Engarde;
 use Engarde::Control;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser cluck);
 use CGI::Pretty qw(:standard *table -no_xhtml);
-# use Fcntl qw(:DEFAULT :flock O_WRONLY);
+
 
 use strict;
 #use diagnostics;
@@ -21,14 +21,7 @@ use Data::Dumper;
 my @weapons;
 my $weaponPath = param('wp') || "";
 
-#%::competition = ();
-#@::controlIP = ();
-#$::statusTimeout = 60000;
-
-#$::numfencers = 0;
-#$::numpresent = 0;
-
-my $config = read_config();
+my $config = config_read();
 
 # HTMLdie(Dumper(\$config));
 
@@ -46,8 +39,7 @@ if ($config->{restrictIP} eq "true")
 
 	HTMLdie("This is a restricted page $ENV{'REMOTE_ADDR'}") unless @dummy;
 }
-
-  
+ 
 if ($weaponPath eq "") 
 {
 	control($config);

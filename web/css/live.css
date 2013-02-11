@@ -429,6 +429,16 @@ table.vlist_table {
 	width: 100%;
 }
 
+.twocol_outer_table
+{
+top:80px;
+position:relative;
+}
+.twocol_inner_table {
+position:absolute;
+   top:0px;
+}
+
 
 .fencer_country, .init_rank, .vlist_piste, .vlist_poule, .vlist_round, .vlist_time {
 	width: 9%;

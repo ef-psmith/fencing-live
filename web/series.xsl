@@ -235,18 +235,18 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">visible</xsl:attribute></xsl:if>
             
-            <table class="vlist_table">
+            <table class="vlist_table twocol_outer_table">
             <tr>
-            <td>
-            <table class="vlist_table">
+            <td  style="position:relative;">
+            <table class="vlist_table twocol_inner_table">
             <tr>
                      <td class="vlist_position">Pos</td>
                      <td class="vlist_name">Name</td>
                      <td class="vlist_club">Club</td>
                      <xsl:if test="../@type='pools'">
-                     <td class="vlist_vm">vm</td>
-                     <td class="vlist_hs">hs</td>
-                     <td class="vlist_ind">ind</td>
+                     <td class="vm">vm</td>
+                     <td class="hs">hs</td>
+                     <td class="ind">ind</td>
                      </xsl:if>
                      
       </tr>
@@ -257,16 +257,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:apply-templates>
             </table>
             </td>
-            <td>
-            <table class="vlist_table">
+            <td  style="position:relative;">
+            <table class="vlist_table twocol_inner_table">
             <tr>
                      <td class="vlist_position">Pos</td>
                      <td class="vlist_name">Name</td>
                      <td class="vlist_club">Club</td>
                      <xsl:if test="../@type='pools'">
-                     <td class="vlist_vm">vm</td>
-                     <td class="vlist_hs">hs</td>
-                     <td class="vlist_ind">ind</td>
+                     <td class="vm">vm</td>
+                     <td class="hs">hs</td>
+                     <td class="ind">ind</td>
                      </xsl:if>
                      
       </tr>
@@ -274,6 +274,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                         <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt;= current()/@sequence + $pagesize]" mode="finalfencer" >
                            <xsl:sort select="@sequence" data-type="number" />
             </xsl:apply-templates>
+                        
             </table>
             </td>
             </tr>
@@ -306,9 +307,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<td class="vlist_name">Name</td>
 			<td class="vlist_club">Club</td>
          <xsl:if test="@type='pools'">
-         <td class="vlist_vm">vm</td>
-         <td class="vlist_hs">hs</td>
-         <td class="vlist_ind">ind</td>
+         <td class="vm">vm</td>
+         <td class="hs">hs</td>
+         <td class="ind">ind</td>
          </xsl:if>
          
 		</tr>

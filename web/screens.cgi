@@ -1,4 +1,4 @@
-#!/opt/bin/perl -w
+#!perl -w
 #
 # print header('-Cache-Control'=>'no-store') removed no caching means reload page from top
 # but refresh method means there will be no prior pages in history so no problem

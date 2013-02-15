@@ -1,4 +1,4 @@
-#!/opt/bin/perl -w
+#!perl -w
 #
 
 use lib '/share/Public/engarde/lib';

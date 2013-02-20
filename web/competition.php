@@ -10,11 +10,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Entry List -->
-<xsl:template match="competition[@id = ' . $compid . ']//entry">
+<xsl:template match="competition[@id = ' . $compid . ']/lists[@name=\'entry\']">
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>EYC 2011</title>
+<title>' . file_get_contents($tournid . '/tourn_name.txt') .'</title>
 <link href="./css/portal.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>

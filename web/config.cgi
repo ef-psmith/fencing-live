@@ -1,4 +1,4 @@
-#!perl -w
+#!/opt/bin/perl -w
 #
 
 use lib '/share/Public/engarde/lib';
@@ -21,17 +21,17 @@ if (param())
 		################################################################################################
 		# Update core config
 		################################################################################################
-		if (param("basic")) {HTMLdie(Dump()); last SWITCH;}
+		if (param("basic")) {config_update_basic(); last SWITCH;}
     
 		################################################################################################
 		# Update output locations
 		################################################################################################
-		if (param("output")) {HTMLdie(Dump()); last SWITCH;}
+		if (param("output")) {config_update_output(); last SWITCH;}
 		
 		################################################################################################
 		# Update IP restrictions
 		################################################################################################
-		if (param("controlip")) {HTMLdie(Dump()); last SWITCH;}
+		if (param("controlip")) {config_update_ip(); last SWITCH;}
 		
 		################################################################################################
 		# Add a new competition to the screens (not included in a series - go to scrrens.cgi for that)

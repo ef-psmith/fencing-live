@@ -1,4 +1,4 @@
-#!perl -w
+#!/opt/bin/perl -w
 #
 # print header('-Cache-Control'=>'no-store') removed no caching means reload page from top
 # but refresh method means there will be no prior pages in history so no problem
@@ -40,23 +40,23 @@ my $action = param('Action') || "List";
 # display check-in home screen
 ####################################################################################################
 
-my $config = read_config();
+#my $config = read_config();
 
 if ($weaponPath  eq "") {
   
-  desk($config);
+  desk();
   
 } else {
 
-  my $comp = Engarde->new($config->{competition}->{$weaponPath}->{source} . "/competition.egw", 1);
+  #my $comp = Engarde->new($config->{competition}->{$weaponPath}->{source} . "/competition.egw", 1);
 
-  loadFencerData($comp);
+  # loadFencerData($weaponPath);
 
   SWITCH: {
     ################################################################################################
     # check fencer in and reload Check-in screen
     ################################################################################################
-    if ($action eq "Check") {&checkIn; last SWITCH;}
+    if ($action eq "Check") {fencer_checkin(); last SWITCH;}
     
     ################################################################################################
     # Update files and reload Check-in screen
@@ -66,13 +66,13 @@ if ($weaponPath  eq "") {
     ################################################################################################
     # Generate Check-in List screen
     ################################################################################################
-    if ($action eq "List") {displayList($weaponPath, \$config); last SWITCH;}
+    if ($action eq "list") {displayList($weaponPath); last SWITCH;}
     
     ################################################################################################
     # Update files and reload Check-in screen
     ################################################################################################
-    if ($action eq "Edit") { editItem($weaponPath, \$config, $comp); last SWITCH;}
+    if ($action eq "Edit") { editItem($weaponPath); last SWITCH;}
     
-    &HTMLdie("Undefined action requested.");
+    &HTMLdie("Undefined action $action requested.");
   }
 }

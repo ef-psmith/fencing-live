@@ -1,4 +1,4 @@
-#!perl -w
+#!/opt/bin/perl -w
 #
 # print header('-Cache-Control'=>'no-store') removed no caching means reload page from top
 # but refresh method means there will be no prior pages in history so no problem
@@ -14,7 +14,7 @@ use Data::Dumper;
 my $weaponPath = param('wp') || "";
 my $action = param('Action') || "List";
 
-my $config = config_read();
+#my $config = config_read();
 
 # HTMLdie(Dumper(\$config->{series}));
 
@@ -38,22 +38,33 @@ if ($weaponPath)
 		################################################################################################
 		# Generate Check-in List screen
 		################################################################################################
-		if ($action eq "List") {displayList($weaponPath, \$config); last SWITCH;}
+		#if ($action eq "List") {displayList($weaponPath, \$config); last SWITCH;}
     
 		################################################################################################
-		# Update files and reload Check-in screen
+		# Update series config
 		################################################################################################
-		if ($action eq "update") { HTMLdie(Dump()); last SWITCH;}
+		if ($action eq "update") { weapon_series_update($weaponPath); last SWITCH;}
 		
 		################################################################################################
-		# Update files and reload Check-in screen
+		# Delete a comp
 		################################################################################################
 		if ($action eq "delete") { weapon_delete($weaponPath); last SWITCH;}
     
-		&HTMLdie("Undefined action requested.");
+		################################################################################################
+		# Disable a comp
+		################################################################################################
+		if ($action eq "disable") { weapon_disable($weaponPath); last SWITCH;}
+
+		################################################################################################
+		# Disable a comp
+		################################################################################################
+		if ($action eq "enable") { weapon_enable($weaponPath); last SWITCH;}
+
+		&HTMLdie("Undefined action requested." . Dump());
 	}
 } 
 else 
 {
+	# HTMLdie(Dump());
   	screen_config_grid();
 }

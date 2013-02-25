@@ -21,26 +21,10 @@ use strict;
 my $weaponPath = param('wp') || "";
 my $action = param('Action') || "List";
 
-#%::fencers = ();
-#%::clubs = ();
-#%::nations = ();
-#%::additions = ();
-#%::addclubs = ();
-#@::keys = ();
-
-#$::maxfkey = -1;
-#$::maxckey = -1;
-#$::maxnkey = -1;
-
-#$::numfencers = 0;
-#$::numpresent = 0;
-
 
 ####################################################################################################
 # display check-in home screen
 ####################################################################################################
-
-#my $config = read_config();
 
 if ($weaponPath  eq "") {
   
@@ -48,20 +32,11 @@ if ($weaponPath  eq "") {
   
 } else {
 
-  #my $comp = Engarde->new($config->{competition}->{$weaponPath}->{source} . "/competition.egw", 1);
-
-  # loadFencerData($weaponPath);
-
   SWITCH: {
     ################################################################################################
     # check fencer in and reload Check-in screen
     ################################################################################################
     if ($action eq "Check") {fencer_checkin(); last SWITCH;}
-    
-    ################################################################################################
-    # Update files and reload Check-in screen
-    ################################################################################################
-    if ($action eq "Write") {&writeFiles; last SWITCH;}
     
     ################################################################################################
     # Generate Check-in List screen

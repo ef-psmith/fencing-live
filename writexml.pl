@@ -16,9 +16,13 @@ use lib "../eng-perl";
 
 use strict;
 use Engarde;
+use Engarde::Control;
+
 use Data::Dumper;
 use Carp qw(cluck);
 use XML::Simple;
+$XML::Simple::PREFERRED_PARSER = "XML::Parser";
+
 use Net::FTP;
 # use IO::Handle;
 
@@ -31,29 +35,23 @@ use Net::FTP;
 # perl -MXML::SAX -e "XML::SAX->add_parser('XML::SAX::PurePerl')->save_parsers()"
 #
 
-
 # New XML / XSLT / Ajax scheme
 #
 # Create a hashref in memory containing all of the required data and write to an XML file
 
-# New logic....
+###  UPDATE MARCH 13 ###
+# New (improved) logic....
 
 # read_config()
 #
 # foreach (competition)
 # {
 #	suck_data_into_hashref();
-# }
-#
-# foreach (series)
-# {
 #	write_xml();
+#	upload();   ??  not sure if this should be here or in a new loop now...  
 # }
-#
-# write_top_level_xml();
 #
 # sleep;
-
 
 ##################################################################################
 # Main starts here
@@ -68,7 +66,7 @@ select($fh);
 #my $competitionlist;
 #my $targetlocation;
 
-my $comp_output;
+# my $comp_output;
 
 my $ini = shift || "live.xml";
 my $runonce = shift || 0;
@@ -76,7 +74,7 @@ my $runonce = shift || 0;
 
 while (1)
 {
-	my $config = read_config($ini);
+	my $config = config_read();
 	
 	$Engarde::DEBUGGING=$config->{debug};
 	
@@ -102,7 +100,7 @@ while (1)
 
 	# reload previous comp_output to allow hold mechanism to work
 	
-	$comp_output = XMLin($config->{targetlocation} . "/toplevel.xml", ForceArray=> qr/competition/);
+	# $comp_output = XMLin($config->{targetlocation} . "/toplevel.xml", ForceArray=> qr/competition/);
 	
 
 	my $comps = $config->{competition};
@@ -121,33 +119,35 @@ while (1)
 		my $c = Engarde->new($comps->{$cid}->{source} . "/competition.egw");		
 		next unless $c;
 		
-		do_comp($c, $cid, $comps->{$cid});
+		do_comp($c, $cid, $comps->{$cid}, $config->{targetlocation});
 	}
 		
-	debug(1, "writing toplevel.xml");
-	XMLout($comp_output, SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
-	debug(1, "done writing toplevel.xml");
+	# debug(1, "writing toplevel.xml");
+	# XMLout($comp_output, SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
+	# debug(1, "done writing toplevel.xml");
 	
 	if (defined $ftp)
 	{
+		# this needs to change to ftp all the competition/X.xml files now
+		# perhaps a call to rsync might be better?
 		$ftp->put($config->{targetlocation} . "/toplevel.xml" , "newtoplevel.xml");
 		$ftp->rename("newtoplevel.xml" ,"toplevel.xml");
 	}
 	
 	# output the relevant bits for each series
-	my $series = $config->{series};
+	# my $series = $config->{series};
 	
 	# print Dumper(\$series);
 
-	foreach my $sid ( sort keys %$series)
-	{
-		debug(2, "writing series $sid");
+	#foreach my $sid ( sort keys %$series)
+	#{
+	#	debug(2, "writing series $sid");
 		
 		# print Dumper(\$series->{$sid});
-		next unless ($series->{$sid}->{enabled} eq "true");
+	#	next unless ($series->{$sid}->{enabled} eq "true");
 
-		my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 
-		my $series_output = {};
+	#	my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 
+	#	my $series_output = {};
 		# my %array = $comp_output->{competition};
 		
 		###########################################################
@@ -155,18 +155,18 @@ while (1)
 		## copy it to series_output
 		###########################################################
 		
-		foreach my $cid (@{$series->{$sid}->{competition}})
-		{
-			debug(2, "  checking competition $cid - enabled = " . $comps->{$cid}->{enabled});
-			next unless $comps->{$cid}->{enabled} eq "true";
-			debug(2, "  adding competition $cid");
+	#	foreach my $cid (@{$series->{$sid}->{competition}})
+	#	{
+	#		debug(2, "  checking competition $cid - enabled = " . $comps->{$cid}->{enabled});
+	#		next unless $comps->{$cid}->{enabled} eq "true";
+	#		debug(2, "  adding competition $cid");
 			
-			push @{$series_output->{competition}}, $comp_output->{competition}->{$cid} if exists $comp_output->{competition}->{$cid};
-		}
+	#		push @{$series_output->{competition}}, $comp_output->{competition}->{$cid} if exists $comp_output->{competition}->{$cid};
+	#	}
 	
-		debug(3, Dumper(\$series_output));
-		XMLout($series_output, SuppressEmpty => undef, OutputFile => $outfile);	
-	}
+	#	debug(3, Dumper(\$series_output));
+	#	XMLout($series_output, SuppressEmpty => undef, OutputFile => $outfile);	
+	#}
 	
     $ftp->quit unless !defined($ftp);
     undef($ftp);
@@ -193,6 +193,7 @@ sub do_comp
 	my $c = shift;
 	my $cid = shift;
 	my $config = shift;
+	my $location = shift;
 	
 	my $nif = $config->{nif};
 	
@@ -276,10 +277,16 @@ sub do_comp
 	debug(3, "cid $cid: where = " . Dumper(\$wh));
 	
 	push @{$out->{lists}}, $wh if $wh->{where}->{count};
-	$comp_output->{competition}->{$cid} = $out;
+	
+	$out->{lastupdate} = localtime;
+	
+	my $outfile = $location . "/competitions/" . $cid . ".xml";
+	XMLout($out, SuppressEmpty => undef, RootName=>"competition", OutputFile => $outfile . ".tmp");
+	rename($outfile . ".tmp", $outfile);
+	# $comp_output->{competition}->{$cid} = $out;
 }
 
- 
+
 ############################################################################
 # Process an individual competition's pools into comp_output hashref
 ############################################################################
@@ -719,18 +726,18 @@ sub debug
 # read_config
 # simply reads in the XML file now
 ##################################################################################
-sub read_config
-{
-	my $cf = shift; 
-	# my $xml = new XML::Simple(ForceArray => 1);
+#sub read_config
+#{
+#	my $cf = shift; 
+#	# my $xml = new XML::Simple(ForceArray => 1);
 
-	# read XML file
+#	# read XML file
 	# my $config = $xml->XMLin($cf, ForceArray=>1);
-	my $data = XMLin($cf, ForceArray=> qr/competition/);
+#	my $data = XMLin($cf, ForceArray=> qr/competition/);
 	
-	# print Dumper(\$data);
-	return $data;
-}
+#	# print Dumper(\$data);
+#	return $data;
+#}
 
 
 

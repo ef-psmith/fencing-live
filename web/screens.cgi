@@ -14,31 +14,10 @@ use Data::Dumper;
 my $weaponPath = param('wp') || "";
 my $action = param('Action') || "List";
 
-#my $config = config_read();
-
-# HTMLdie(Dumper(\$config->{series}));
 
 if ($weaponPath) 
 {  
-	# my $comp = Engarde->new($config->{competition}->{$weaponPath}->{source} . "/competition.egw", 1);
-
-	# loadFencerData($comp);
-
 	SWITCH: {
-		################################################################################################
-		# check fencer in and reload Check-in screen
-		################################################################################################
-		if ($action eq "Check") {&checkIn; last SWITCH;}
-    
-		################################################################################################
-		# Update files and reload Check-in screen
-		################################################################################################
-		if ($action eq "Write") {&writeFiles; last SWITCH;}
-    
-		################################################################################################
-		# Generate Check-in List screen
-		################################################################################################
-		#if ($action eq "List") {displayList($weaponPath, \$config); last SWITCH;}
     
 		################################################################################################
 		# Update series config
@@ -56,7 +35,7 @@ if ($weaponPath)
 		if ($action eq "disable") { weapon_disable($weaponPath); last SWITCH;}
 
 		################################################################################################
-		# Disable a comp
+		# Enable a comp
 		################################################################################################
 		if ($action eq "enable") { weapon_enable($weaponPath); last SWITCH;}
 

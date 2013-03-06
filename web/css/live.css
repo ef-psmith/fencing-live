@@ -255,6 +255,12 @@ div.mid_title {
 	border-right: thin solid black;
 }
 
+span.timestamp {  
+   position: fixed; 
+   bottom: 0px;
+   right: 20px; 
+}
+
 #top, #bottom, #left, #right {	
 	position: fixed; 
 }

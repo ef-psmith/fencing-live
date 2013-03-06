@@ -5,25 +5,40 @@
 var pageloader;
 var xsl;
 
-function onPageLoaded() {
-   xsl = loadXMLDoc(xsldoc);
-   pageloader = new pageload();
-   pageloader.fetch();
-
-}
-
 // Scroll delay of 30 seconds
 var scrolldelay = 15000;
 
+function onPageLoaded() {
+   xsl = loadXMLDoc(xsldoc);
+   pageloader = new pageload();
+   
+   
+   pageloader.fetch();
+   
+   // Start the regular reloading of the xml files
+   var xmlreload = setInterval(function()
+         {
+            pageloader.fetch();
+            pageloader.fetchpages(pageloader.currentcompid);
+            pageloader.fetchpages(pageloader.nextcompid);
+         }
+      ,10000);
+      
+   // Start the layout
+   pageloader.scrollerfinished();
 
-/**
-Object for scrolling between pages
-*/
+}
+
+
+/** **********************************
+      Class for scrolling between pages
+    ********************************** */
 function scroller(div, pageloader) {
 
    // Save the pageloader
    this.pageloader = pageloader;
 
+   // Stop scrolling
    this.stop =
       function() {
          // Does nothing if we aren't running
@@ -33,34 +48,38 @@ function scroller(div, pageloader) {
             this.timer = null;
          }
       };
-      this.start = function() {
-         // does nothing if we are already running
-         if (!this.running) {
-            this.finished = false;
-            var scroller = this;
-            this.timer = setInterval(function() {
-               scroller.pageindex += 1;
-               if (scroller.pageindex < scroller.pages.length) {
-                  scroller.movetopage(scroller.pageindex);
-               }
-               else {
-                  // Mark that we are finished
-                  scroller.finished = true;
-                  // Tell the page we are finished.  If there is still one going then go back to the first page
-                  if (scroller.running && !scroller.pageloader.scrollerfinished()) {
+      
+   /**
+      Start scrolling around the div
+   */
+   this.start = function() {
+      // does nothing if we are already running
+      if (!this.running) {
+         this.finished = false;
+         var scroller = this;
+         this.timer = setInterval(function() {
+            scroller.pageindex += 1;
+            if (scroller.pageindex < scroller.pages.length) {
+               scroller.movetopage(scroller.pageindex);
+            }
+            else {
+               // Mark that we are finished
+               scroller.finished = true;
+               // Tell the page we are finished.  If there is still one going then go back to the first page
+               if (scroller.running && !scroller.pageloader.scrollerfinished()) {
 
-                     scroller.pageindex = 0;
-                     if (scroller.pageindex < scroller.pages.length) {
-                        scroller.movetopage(scroller.pageindex);
-                     }
+                  scroller.pageindex = 0;
+                  if (scroller.pageindex < scroller.pages.length) {
+                     scroller.movetopage(scroller.pageindex);
                   }
                }
-            }, scrolldelay);
+            }
+         }, scrolldelay);
 
-            // We are running
-            this.running = true;
-         }
-      };
+         // We are running
+         this.running = true;
+      }
+   };
    // Initially we aren't running
    this.running = false;
 
@@ -69,30 +88,32 @@ function scroller(div, pageloader) {
 
    this.myElement = div;
    
-   /*
+   /**
    Function to reload the div
    */
    this.load = function(xmlelem, force) {
       // Check we are running
       if (this.running || force) {
-         // Get the remaining pages.
-         var pages = xmlelem.getElementsByTagName('page');
+         // Get the list of page IDs.
+         var xmlpages = xmlelem.getElementsByTagName('page');
 
          this.pageindex = 0;
 
          // reset the array of extra pages
          this.pages = new Array();
 
-         for (var p = 0; p < pages.length; ++p) {
+         for (var p = 0; p < xmlpages.length; ++p) {
 
-
-            this.pages.push(pages[p].textContent);
+            this.pages.push(xmlpages[p].textContent);
          }
          // Overwrite the inner HTML of the node.
          translateElement(xmlelem.getElementsByTagName('content')[0], this.myElement, true);
       }
    };
 
+   /**
+      Move to a specific page of the scrolling
+   */
    this.movetopage = function(index) {
       // Hide the old page
       var currdiv = null;
@@ -107,7 +128,7 @@ function scroller(div, pageloader) {
       var newdiv = document.getElementById(this.pages[index]);
       
       // Try to reload the div from the latest XML source.
-      var newcontents = this.pageloader.currentcompxml.ownerDocument.getElementById(this.pages[index]);
+      var newcontents = this.pageloader.thiscompxml.ownerDocument.getElementById(this.pages[index]);
       
       if (null == newcontents) {
       
@@ -175,22 +196,33 @@ function scroller(div, pageloader) {
 // Last refresh time (from server)
 var lastrefresh = 0;
 
+
+/** **********************************
+      pageload class
+    ********************************** */
 function pageload() {
 
    // The competition id
-   this.currentpage = null;
+   this.currentcompid = null;
+   this.nextcompid = null;
    
+   // The config file
    this.xmlsource = null;
+   // The raw XML for the current comp
    this.currentcompxml = null;
-   this.messages = null;
+   // The raw XML for the next comp, this is null if there is only one competition
+   this.nextcompxml = null;
+   
+   // The processed XML for the current competition
+   var thiscompxml = null;
    
    this.showmessages = function() {
       // Is there a message for the current competition
       
-      var msgs = this.messages.getElementsByTagName('message');
+      var msgs = this.xmlsource.getElementsByTagName('message');
       for (var i = 0;i < msgs.length; ++i) {
          var msg = msgs[i];
-         if (this.currentpage == msg.getAttribute("competition")) {
+         if (this.currentcompid == msg.parentElement.getAttribute("id")) {
             // Got the message for our competition
             for (var j = 0; j < msg.childNodes.length; ++j) {
                if (3 == msg.childNodes[j].nodeType) {
@@ -223,50 +255,13 @@ function pageload() {
          }
       }
    }
-
-   this.reload =
-      function(xmldoc, force) {
-
-         if (null == xmldoc) {
-            this.fetch();
-            return;
-         }      
-         // Store the xmldocument
-         this.xmlsource = xmldoc;
+        
          
-         
-         // If we haven't got a current page then update the page now
-         if (null == this.currentpage) {
-            this.updatepage(force);
-         }
-         
-         
-         var comps = xmldoc.getElementsByTagName('competition');
-         
-         // Look for our page 
-         for (var p = 0; p < comps.length; ++p) {
-
-            // Run the stylesheet
-            var comp = transformDoc(comps[p], xsl);
-            if (this.currentpage == comp.getAttribute('id')) {
-               // this is our current page so store the xml
-               this.currentcompxml = comp;
-            }
-         }
-         
-         
-         // 10 second reload
-         {
-            var ploader = this;
-            // Reload in 10 seconds.
-            setTimeout(function() { ploader.fetch(); }, 10000);
-            return;
-         }
-         
-      }
-         
+    /**
+      Update the whole page
+    */
     this.updatepage = 
-      function(force) {
+      function() {
       
          // First clear the messages
          
@@ -276,17 +271,22 @@ function pageload() {
          }
          
          var xmldoc = this.xmlsource;
+         
+         if (null == xmldoc) {
+            return;
+         }
          var serieses = xmldoc.getElementsByTagName('series');
          var comp_id = null;
+         var nextcomp_id = null;
 
          // If we got some series then use them, otherwise we just display all the competitions
          if (0 < serieses.length) {
             for (var s = 0; s < serieses.length; ++s) {
                var series = serieses[s];
-               if (series_id = series.getAttribute('id')) {
+               if (series_id == series.getAttribute('id')) {
                   // We have found the series we want.
 
-                  var seriescomps = series.getElementsByTagName('comp');
+                  var seriescomps = series.getElementsByTagName('competition');
                   // Default the competition we want to the first one
                   if (0 < seriescomps.length) {
                      comp_id = seriescomps[0].textContent;
@@ -295,10 +295,22 @@ function pageload() {
                   // Go looking for the competition we have. 
                   // (we don't care about the last one as we will use the default first one in that case)
                   for (var c = 0; c < seriescomps.length - 1; ++c) {
-                     if (seriescomps[c].textContent == this.currentpage) {
+                     if (seriescomps[c].textContent == this.currentcompid) {
                         // We want the next one, this is safe as we don't iterate over the last member of the list
-                  	// And if the last one matches then we want the first, which we have stored anyway so don't want to overwrite
+                  	   // And if the last one matches then we want the first, which we have stored anyway so don't want to overwrite
                         comp_id = seriescomps[c + 1].textContent;
+                        
+                        // Now sort out the next competition id.  
+                        // This remains null if we only have one competition (but we would not be in this loop if that were the case)
+                        // It is the first element if the current competition is the penultimate
+                        if (c == seriescomps.length - 2) {
+                           nextcomp_id = seriescomps[0].textContent;
+                        } else {
+                           // Otherwise take the next but one competition from the series
+                           nextcomp_id = seriescomps[c + 2].textContent;
+                        }
+                         
+                    
                         break;
                      }
                   }
@@ -313,7 +325,7 @@ function pageload() {
             }
             // Go looking for our competition
             for (var c = 0; c < allcomps.length - 1; ++c) {
-               if (allcomps[c].getAttribute('id') == this.currentpage) {
+               if (allcomps[c].getAttribute('id') == this.currentcompid) {
                   // We want the next one, this is safe as we don't iterate over the last member of the list
                   // And if the last one matches then we want the first, which we have stored anyway so don't want to overwrite
                   comp_id = allcomps[c + 1].getAttribute('id');
@@ -322,85 +334,151 @@ function pageload() {
             }
 
          }
+         
+         var thiscomp = null;
+         // We have changed page so change the xml
+         if (null == this.nextcompid) {
+            thiscomp = this.currentcompxml;
+         } else {
+            thiscomp = this.nextcompxml;
+         }
+         
+         this.currentcompid = comp_id;
+         this.nextcompid = nextcomp_id;
 
-         var comps = xmldoc.getElementsByTagName('competition');
-         // Look for our page and check the time as well.
-         for (var p = 0; p < comps.length; ++p) {
+         // Store the current competition xml
+         this.currentcompxml = thiscomp;
+         // And clear the next competition xml (also copes with moving from two competitions to one
+         this.nextcompxml = null;
+         
+         //Check that we actually have some xml
+         if (null == thiscomp)
+            return false;
+            
+         // Now get the competition node   
+         var thiscompnode = thiscomp.getElementsByTagName('competition')[0];
+         this.thiscompxml = transformDoc(thiscompnode, xsl);
+         var comp = this.thiscompxml;
 
-            var comp = transformDoc(comps[p], xsl);
-            if (comp_id == comp.getAttribute('id')) {
-               // We have changed page.
-               this.currentpage = comp_id;
-               
-               this.currentcompxml = comp;
+         // Background colours
+         var borders = document.getElementsByName('border');
+         var bgcol = thiscompnode.getAttribute('background');
+         for (var b = 0; b < borders.length; ++b) {
+            borders[b].style.backgroundColor = bgcol;
+         }
 
-               // Background colours
-               var borders = document.getElementsByName('border');
-               for (var b = 0; b < borders.length; ++b) {
-                  borders[b].style.backgroundColor = comp.getAttribute('background');
-               }
+         // Timestamp
+         var tstamps = document.getElementsByName('timestamp');
+         var tstamp = thiscompnode.getAttribute('lastupdate');
+         for (var t = 0; t < tstamps.length; ++t) {
+            tstamps[t].innerHTML = tstamp;
+         }
 
-               // Kill all the div timers
-               for (var s = 0; s < this.scrollers.length;  ++s) {
-                  this.scrollers[s].stop();
-               }
-               // clear the array
-               this.scrollers = new Array();
 
-               // Since we are repainting the page we want to get rid of all the divs below the body.
-               var topdivs = document.getElementsByName('topdiv');
-               while (0 < topdivs.length) {
-                  // Remove the top divs
-                  document.body.removeChild(topdivs[0]);
-               }
 
-               // Now get the new div definitions
-               var newdivs = comp.getElementsByTagName('topdiv');
-               if (0 < newdivs.length) {
-                  for (var d = 0; d < newdivs.length; ++d) {
-                     // Create the div.
-                     var divelem = newdivs[d];
+         // Kill all the div timers
+         for (var s = 0; s < this.scrollers.length;  ++s) {
+            this.scrollers[s].stop();
+         }
+         // clear the array
+         this.scrollers = new Array();
 
-                     var myElement = document.createElement('div');
+         // Since we are repainting the page we want to get rid of all the divs below the body.
+         var topdivs = document.getElementsByName('topdiv');
+         while (0 < topdivs.length) {
+            // Remove the top divs
+            document.body.removeChild(topdivs[0]);
+         }
 
-                     // Add the new scroller, this will fill in the div
-                     var newscroller = new scroller(myElement, this);
-                     newscroller.load(divelem, true);
-                     this.scrollers.push(newscroller);
+         // Now get the new div definitions
+         var newdivs = comp.getElementsByTagName('topdiv');
+         if (0 < newdivs.length) {
+            for (var d = 0; d < newdivs.length; ++d) {
+               // Create the div.
+               var divelem = newdivs[d];
 
-                     // Set various attributes here so they don't get overwritten by the xml load.
-                     myElement.className = divelem.getAttribute("class");
-                     myElement.id = divelem.getAttribute("id");
-                     myElement.setAttribute('name', 'topdiv');
+               var myElement = document.createElement('div');
 
-                     document.body.appendChild(myElement);
-                  }
+               // Add the new scroller, this will fill in the div
+               var newscroller = new scroller(myElement, this);
+               newscroller.load(divelem, true);
+               this.scrollers.push(newscroller);
 
-                  // Start all the div timers
-                  for (var s in this.scrollers) {
-                     this.scrollers[s].start();
-                  }
-                  this.showmessages();
-                  // Early return to avoid a reload
-                  return;
-               }
-               else {
-                  var myElement = document.createElement('div');
+               // Set various attributes here so they don't get overwritten by the xml load.
+               myElement.className = divelem.getAttribute("class");
+               myElement.id = divelem.getAttribute("id");
+               myElement.setAttribute('name', 'topdiv');
 
-                  myElement.className = "centreinfo";
-                  myElement.id = "compinfo";
-                  myElement.setAttribute('name', 'topdiv');
-                  myElement.innerHTML = "<h1>" + comp.getAttribute('titre_ligne') + "</h1>";
+               document.body.appendChild(myElement);
+            }
 
-                  document.body.appendChild(myElement);
-                  break;
-               }
+            // Start all the div timers
+            for (var s in this.scrollers) {
+               this.scrollers[s].start();
             }
          }
+         else {
+            var myElement = document.createElement('div');
+
+            myElement.className = "centreinfo";
+            myElement.id = "compinfo";
+            myElement.setAttribute('name', 'topdiv');
+            myElement.innerHTML = "<h1>" + comp.getAttribute('titre_ligne') + "</h1>";
+
+            document.body.appendChild(myElement);
+         }
+               
          this.showmessages();
+         
+         return true;
+      };
+      
+      
+         
+      // All the divs that can scroll
+      this.scrollers = new Array();
+
+      /**
+         Message to tell the whole page that the scroller, i.e. the various segments of the display, have finished
+
+         The calling scroller will have set its own state before this is called.
+      */
+      this.scrollerfinished = function() {
+         var allfinished = true;
+         for (var s = 0; s < this.scrollers.length; ++s) {
+            if (!this.scrollers[s].finished) {
+               allfinished = false;
+            }
+         }
+         if (allfinished) {
+
+            // Kill all the div timers
+            for (var s = 0; s < this.scrollers.length; ++s) {
+               this.scrollers[s].stop();
+            }
+
+            var updated = this.updatepage();
+            
+            // If we have no scrollers then call ourselves again in a few seconds
+            
+            if (0 == this.scrollers.length)
+            {
+               var caller = this;
+               setTimeout(function() {
+                  loaded = caller.scrollerfinished();
+                  }, 3000);
+            }
+         }
+
+         return allfinished;
       };
       
    // AJAX requests
+   
+   
+   /**
+      Get the config file
+   */
    this.fetch = function() {
       var http_request = false;
       if (window.XMLHttpRequest) { // Mozilla, Safari,...
@@ -430,21 +508,27 @@ function pageload() {
 
                   var xmldoc = http_request.responseXML;
                   // Store the messages
-                  requestor.messages = xmldoc;
-                  // Now get the actual data
-                  requestor.fetchpages();
+                  requestor.xmlsource = xmldoc;
 
                } else {
                   setTimeout('requestor.fetch()', 5000);
                }
             }
          };
-      http_request.open('GET', messageslocation, true);
+      http_request.open('GET', filelocation, true);
       http_request.send(null);
    }
    
+   /**
+      Get the competition file
+   */
+   this.fetchpages = function(compid) {
    
-   this.fetchpages = function() {
+      if (null == compid) {
+         return;
+      }
+      
+      var compfilename = '../competitions/' + compid + '.xml';
 
       var http_request = false;
       if (window.XMLHttpRequest) { // Mozilla, Safari,...
@@ -473,38 +557,22 @@ function pageload() {
                if (http_request.status == 200 || http_request.status == 0) {
 
                   var xmldoc = http_request.responseXML;
-                  requestor.reload(xmldoc, false);
+                  
+                  // If the id of the competition we have loaded is the same as the current id then save it.
+                  if (compid == requestor.currentcompid)
+                     requestor.currentcompxml = xmldoc;
 
                } else {
-                  setTimeout('requestor.fetchpages()', 5000);
+                  // Failed so try again
+                  setTimeout('requestor.fetchpages(compfilename)', 5000);
                }
             }
          };
-      http_request.open('GET', filelocation, true);
+         
+      http_request.open('GET', compfilename, true);
       http_request.send(null);
    }
    
-   this.scrollers = new Array();
-
-   this.scrollerfinished = function() {
-      var allfinished = true;
-      for (var s = 0; s < this.scrollers.length; ++s) {
-         if (!this.scrollers[s].finished) {
-            allfinished = false;
-         }
-      }
-      if (allfinished) {
-
-         // Kill all the div timers
-         for (var s = 0; s < this.scrollers.length; ++s) {
-            this.scrollers[s].stop();
-         }
-
-         this.updatepage();
-      }
-
-      return allfinished;
-   }
 }
 
 

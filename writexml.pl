@@ -193,7 +193,7 @@ sub do_comp
 	my $c = shift;
 	my $cid = shift;
 	my $config = shift;
-	my $location = $onfig->{targetlocation};
+	my $location = $config->{targetlocation};
 	my $comp = $config->{competition}->{$cid};
 	
 	my $nif = $config->{nif};
@@ -393,8 +393,7 @@ sub do_entry_list
 	
 	my @lout;
 	
-	
-	my $fencers = $c->tireurs;
+	my $fencers = $c->tireurs(1);
 				
 	# print Dumper(\$fencers);
 

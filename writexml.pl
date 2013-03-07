@@ -98,10 +98,6 @@ while (1)
 		$ftp->cwd($config->{ftpcwd}) or die "Cannot change working directory ", $ftp->message;
 	}
 
-	# reload previous comp_output to allow hold mechanism to work
-	
-	# $comp_output = XMLin($config->{targetlocation} . "/toplevel.xml", ForceArray=> qr/competition/);
-	
 
 	my $comps = $config->{competition};
 	
@@ -122,9 +118,6 @@ while (1)
 		do_comp($c, $cid, $config);
 	}
 		
-	# debug(1, "writing toplevel.xml");
-	# XMLout($comp_output, SuppressEmpty => undef, OutputFile => $config->{targetlocation} . "/toplevel.xml");
-	# debug(1, "done writing toplevel.xml");
 	
 	if (defined $ftp)
 	{
@@ -134,40 +127,7 @@ while (1)
 		$ftp->rename("newtoplevel.xml" ,"toplevel.xml");
 	}
 	
-	# output the relevant bits for each series
-	# my $series = $config->{series};
-	
-	# print Dumper(\$series);
-
-	#foreach my $sid ( sort keys %$series)
-	#{
-	#	debug(2, "writing series $sid");
 		
-		# print Dumper(\$series->{$sid});
-	#	next unless ($series->{$sid}->{enabled} eq "true");
-
-	#	my $outfile = $config->{targetlocation} . "/series" . $sid . "/series.xml"; 
-	#	my $series_output = {};
-		# my %array = $comp_output->{competition};
-		
-		###########################################################
-		## if the competition exists in the series config,
-		## copy it to series_output
-		###########################################################
-		
-	#	foreach my $cid (@{$series->{$sid}->{competition}})
-	#	{
-	#		debug(2, "  checking competition $cid - enabled = " . $comps->{$cid}->{enabled});
-	#		next unless $comps->{$cid}->{enabled} eq "true";
-	#		debug(2, "  adding competition $cid");
-			
-	#		push @{$series_output->{competition}}, $comp_output->{competition}->{$cid} if exists $comp_output->{competition}->{$cid};
-	#	}
-	
-	#	debug(3, Dumper(\$series_output));
-	#	XMLout($series_output, SuppressEmpty => undef, OutputFile => $outfile);	
-	#}
-	
     $ftp->quit unless !defined($ftp);
     undef($ftp);
     
@@ -204,25 +164,11 @@ sub do_comp
 	$out->{titre_ligne} = $c->titre_ligne;
 	$out->{background} = $comp->{background};
 
-	# $out->{nif} = $nif;
-	
 	my $where = $c->whereami;
 	
 	# insert current status
 	$out->{stage} = $where;
 	
-	# print Dumper(\$where);
-	
-	# always do this now
-	#if ($where eq "debut")
-	#{
-	
-	#debug(2, $c->titre_ligne . ": debut");
-	#push @{$out->{lists}}, do_list($c, $nif, "debut");
-	
-	#}
-	#else
-	#{
 	
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
@@ -265,6 +211,19 @@ sub do_comp
 		$list->{ranking}->{count} = @lout;
 		$list->{ranking}->{type} = "pools";
 		push @{$out->{lists}}, $list;
+	}
+
+
+	# only need fpp if we are still in the poules
+	if ($where =~ /poules/)
+	{
+		# We need the fpp for the series
+		my @lout = do_fpp_list($c, $aff);		
+		
+		$list->{fpp}->{fencer} = [@lout];
+		$list->{fpp}->{count} = @lout;
+		# $list->{fpp}->{round} = $where[1];
+
 	}
 
 	if ($where =~ /tableau/ || $where eq "termine")

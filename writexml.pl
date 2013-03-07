@@ -119,7 +119,7 @@ while (1)
 		my $c = Engarde->new($comps->{$cid}->{source} . "/competition.egw");		
 		next unless $c;
 		
-		do_comp($c, $cid, $comps->{$cid}, $config->{targetlocation});
+		do_comp($c, $cid, $config);
 	}
 		
 	# debug(1, "writing toplevel.xml");
@@ -193,7 +193,8 @@ sub do_comp
 	my $c = shift;
 	my $cid = shift;
 	my $config = shift;
-	my $location = shift;
+	my $location = $onfig->{targetlocation};
+	my $comp = $config->{competition}->{$cid};
 	
 	my $nif = $config->{nif};
 	
@@ -201,7 +202,7 @@ sub do_comp
 	
 	$out->{id} = $cid;
 	$out->{titre_ligne} = $c->titre_ligne;
-	$out->{background} = $config->{background};
+	$out->{background} = $comp->{background};
 
 	# $out->{nif} = $nif;
 	

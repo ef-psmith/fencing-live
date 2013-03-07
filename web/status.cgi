@@ -42,7 +42,7 @@ if ($config->{restrictIP} eq "true")
  
 if ($weaponPath eq "") 
 {
-	control();
+	frm_control();
 } 
 else 
 {
@@ -52,8 +52,6 @@ else
 
 	SWITCH: {
 		if ($action =~ /update/i)  {weapon_config_update($weaponPath, "state", $status) ; last SWITCH;}
-		if ($action =~ /details/i) {display_weapon($weaponPath, $name) ;  last SWITCH;}
-		if ($action =~ /hide/i)    {hide_weapon($weaponPath) ;            last SWITCH;}
 		if ($action =~ /show/i)    {show_weapon($weaponPath) ;            last SWITCH;}
 		if ($action =~ /pause/i)    {weapon_config_update($weaponPath, "hold", 1) ;            last SWITCH;}
 		if ($action =~ /play/i)    {weapon_config_update($weaponPath, "hold", 0) ;            last SWITCH;}

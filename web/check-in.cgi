@@ -9,18 +9,10 @@ use lib 'C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-perl';
 # use Engarde;
 use Engarde::Control;
 use CGI::Pretty qw(:standard *table -no_xhtml);
-#use Fcntl qw(:DEFAULT :flock);
 use strict;
-#use diagnostics;
-
-#$::allowCheckInWithoutPaid = 0;
-#$::defaultNation = "GBR";
-#@::weapons = () ;
-#$::checkinTimeout = 30000;
 
 my $weaponPath = param('wp') || "";
-my $action = param('Action') || "List";
-
+my $action = lc(param('Action')) || "list";
 
 ####################################################################################################
 # display check-in home screen
@@ -28,7 +20,7 @@ my $action = param('Action') || "List";
 
 if ($weaponPath  eq "") {
   
-  desk();
+  frm_checkin_desk();
   
 } else {
 
@@ -36,17 +28,17 @@ if ($weaponPath  eq "") {
     ################################################################################################
     # check fencer in and reload Check-in screen
     ################################################################################################
-    if ($action eq "Check") {fencer_checkin(); last SWITCH;}
+    if ($action eq "check") {fencer_checkin(); last SWITCH;}
     
     ################################################################################################
     # Generate Check-in List screen
     ################################################################################################
-    if ($action eq "list") {displayList($weaponPath); last SWITCH;}
+    if ($action eq "list") {frm_checkin_list($weaponPath); last SWITCH;}
     
     ################################################################################################
     # Update files and reload Check-in screen
     ################################################################################################
-    if ($action eq "Edit") { editItem($weaponPath); last SWITCH;}
+    if ($action eq "edit") { frm_fencer_edit($weaponPath); last SWITCH;}
     
     &HTMLdie("Undefined action $action requested.");
   }

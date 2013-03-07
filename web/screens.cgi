@@ -11,12 +11,14 @@ use Engarde::Control;
 use CGI::Pretty qw(:standard *table -no_xhtml);
 use Data::Dumper;
 
-my $weaponPath = param('wp') || "";
-my $action = param('Action') || "List";
 
+#HTMLdie(Dump());
 
-if ($weaponPath) 
-{  
+if (param()) 
+{
+	my $weaponPath = param('wp');
+	my $action = param('Action');
+
 	SWITCH: {
     
 		################################################################################################
@@ -39,11 +41,16 @@ if ($weaponPath)
 		################################################################################################
 		if ($action eq "enable") { weapon_enable($weaponPath); last SWITCH;}
 
+		################################################################################################
+		# Add a new competition to the screens (not included in a series - go to scrrens.cgi for that)
+		################################################################################################
+		if ($action eq "newcomp") {weapon_add(param("newcomp")); last SWITCH;}
+
 		&HTMLdie("Undefined action requested." . Dump());
 	}
 } 
 else 
 {
 	# HTMLdie(Dump());
-  	screen_config_grid();
+  	frm_screen();
 }

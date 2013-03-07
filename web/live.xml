@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
-<config allowunpaid="true"
+<config allowunpaid="false"
         checkinTimeout="20000"
         debug="1"
         log="./out.txt"
+        nif="false"
         restrictIP="false"
         statusTimeout="30000"
         targetlocation="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/web"
@@ -13,8 +14,8 @@
                enabled="true"
                nif="0"
                source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 1"
-               state="active">
-    <message></message>
+               state="check-in">
+    <message>There is a blood stain on piste 32.  Cleaners have been called.</message>
   </competition>
   <competition id="2"
                background="FF000000"
@@ -32,15 +33,19 @@
                background="FF000000"
                enabled="true"
                nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 3"
-               state="active">
-    <message></message>
-  </competition>
+               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\A Grade - Stage 4"
+               state="active" />
   <competition id="5"
                background="FF000000"
                enabled="true"
                nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 4 - 32"
+               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 4 - 16"
+               state="check-in" />
+  <competition id="6"
+               background="FF000000"
+               enabled="true"
+               nif="0"
+               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 3a"
                state="active" />
   <controlIP>172.20.30.10</controlIP>
   <controlIP>172.20.30.11</controlIP>
@@ -52,27 +57,29 @@
   <controlIP>172.20.30.17</controlIP>
   <controlIP>172.20.30.18</controlIP>
   <series id="1">
+    <competition>1</competition>
   </series>
-  <series id="10">
-  </series>
-  <series id="11">
-  </series>
-  <series id="12">
-  </series>
+  <series id="10" />
+  <series id="11" />
+  <series id="12" />
   <series id="2">
+    <competition>1</competition>
   </series>
   <series id="3">
+    <competition>1</competition>
   </series>
   <series id="4">
+    <competition>1</competition>
   </series>
   <series id="5">
+    <competition>1</competition>
   </series>
   <series id="6">
+    <competition>1</competition>
   </series>
   <series id="7">
+    <competition>1</competition>
   </series>
-  <series id="8">
-  </series>
-  <series id="9">
-  </series>
+  <series id="8" />
+  <series id="9" />
 </config>

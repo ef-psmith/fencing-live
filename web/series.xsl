@@ -235,9 +235,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">visible</xsl:attribute></xsl:if>
             
-            <table class="vlist_table twocol_outer_table">
-            <tr>
-            <td  style="position:relative;">
+            <div class="outertab">
             <table class="vlist_table twocol_inner_table">
             <tr>
                      <td class="vlist_position">Pos</td>
@@ -256,8 +254,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<xsl:sort select="@sequence" data-type="number" />
 				</xsl:apply-templates>
             </table>
-            </td>
-            <td  style="position:relative;">
+            </div>
+            <div class="outertab" style="left:53%">
             <table class="vlist_table twocol_inner_table">
             <tr>
                      <td class="vlist_position">Pos</td>
@@ -276,9 +274,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             </xsl:apply-templates>
                         
             </table>
-            </td>
-            </tr>
-            </table>
+            </div>
 			</div>
 		</xsl:for-each >
 	</content>

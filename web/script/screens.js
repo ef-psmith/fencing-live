@@ -564,7 +564,7 @@ function pageload() {
 
                } else {
                   // Failed so try again
-                  setTimeout('requestor.fetchpages(compfilename)', 5000);
+                  setTimeout(function() {requestor.fetchpages(compid);}, 5000);
                }
             }
          };

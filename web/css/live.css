@@ -259,6 +259,10 @@ span.timestamp {
    position: fixed; 
    bottom: 0px;
    right: 20px; 
+   color: #ffffff;
+   margin-top:2px;
+   margin-bottom:2px;
+   height: 15px; 
 }
 
 #top, #bottom, #left, #right {	
@@ -439,10 +443,18 @@ table.vlist_table {
 {
 top:80px;
 position:relative;
+table-layout:fixed;
 }
 .twocol_inner_table {
 position:absolute;
    top:0px;
+   width: 100%;
+}
+.outertab
+{
+position:absolute;
+   width: 45%;
+top:80px;
 }
 
 

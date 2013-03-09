@@ -15,8 +15,7 @@ case "$1" in
 	echo -n "Starting writexml: "
 
 	cd /share/Public/engarde/live
-	perl writexml.pl &
-	echo $! > $pidfile
+	perl writexml.pl
 
 	echo -n "writexml"
 	echo "."

@@ -23,6 +23,7 @@ use Carp qw(cluck);
 use XML::Simple;
 $XML::Simple::PREFERRED_PARSER = "XML::Parser";
 
+
 use Net::FTP;
 # use IO::Handle;
 
@@ -60,9 +61,17 @@ use Net::FTP;
 
 
 
-my $ini = shift || "live.xml";
 my $runonce = shift || 0;
+my $ini = "live.xml";
 
+
+unless ($^O =~ /MSWin32/ || $runonce)
+{
+	use Proc::Daemon;
+	my $pid = Proc::Daemon::Init({ pid_file=>'/share/Public/writexml.pid'});
+
+	exit 0 if ($pid);
+}
 
 # save original file handles
 open(OLDOUT, ">&STDOUT");
@@ -77,7 +86,7 @@ while (1)
 	
 	if ($config->{log})
 	{
-		open STDERR, ">>$config->{log}" or die $!;
+		open STDERR, ">>" . $config->{targetlocation} . "/" . $config->{log} or die $!;
 		open STDOUT, ">&STDERR";
 
 		# set AUTOFLUSH to ensure messages are written in the correct order

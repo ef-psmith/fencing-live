@@ -462,22 +462,28 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
    <xsl:apply-templates select="lists"/>
 
 <!--
-We now work out which two columns to show.  The stage will contain the two columns
-in the form "tableau A32 A16"
+We now work out which two columns to show.  The stage will contain the cuurently active 
+tableau rounds.  This could be only one i.e. "tableau A64", or any number e.g. "tableau A32 A16 A8"
+The first mentioned is the left hand column, the right hand column is the tableau id of the tableau
+with half the number of matches.
 -->
 <xsl:choose>
 <xsl:when test="@stage='termine' or contains(@stage, 'A2')">
 
 	<xsl:apply-templates select="." mode="render" >
 		<xsl:with-param name="col1" >A4</xsl:with-param>
-		<xsl:with-param name="col2">A2</xsl:with-param>
 	</xsl:apply-templates>
 </xsl:when>
+<xsl:when test="contains(substring-after(@stage, 'tableau '), ' ')">
+   <xsl:apply-templates select="." mode="render" >
+      <xsl:with-param name="col1" select="substring-before(substring-after(@stage, 'tableau '), ' ')"/>
+   </xsl:apply-templates>
+</xsl:when>
+
 <xsl:otherwise>
 
 	<xsl:apply-templates select="." mode="render" >
-		<xsl:with-param name="col1" select="substring-before(substring-after(@stage, 'tableau '), ' ')"/>
-		<xsl:with-param name="col2" select="substring-after(substring-after(@stage, 'tableau '), ' ')"/>
+      <xsl:with-param name="col1" select="substring-after(@stage, 'tableau ')"/>
 	</xsl:apply-templates>
 </xsl:otherwise>
 </xsl:choose>
@@ -486,7 +492,9 @@ in the form "tableau A32 A16"
 
 <xsl:template match="competition" mode="render">
 <xsl:param name="col1" />
-<xsl:param name="col2" />
+<xsl:variable name="col1matchcount" select="tableau[@name = $col1]/@count" />
+<xsl:variable name="col2" select="tableau[@count = $col1matchcount div 2]/@name" />
+
 <topdiv class="tableau" id="tableau" name="topdiv">
 
 <!--
@@ -503,7 +511,7 @@ Otherwise we just show a list of the matches - NOT USED
 		<page>T<xsl:value-of select="(@number - 1) div $tablistsize" /></page>
 	</xsl:for-each>
 </pages><content>
-<h1><xsl:value-of select="../@titre_ligne" /></h1>
+<h1><xsl:value-of select="./@titre_ligne" /></h1>
 
 	<xsl:for-each select="col1/match[@number mod $tablistsize = 1]">
 	<div class="tableaudiv">
@@ -564,7 +572,7 @@ Otherwise we just show a list of the matches - NOT USED
 	</xsl:for-each>
 </pages>
 <content>
-<h1><xsl:value-of select="../@titre_ligne" /></h1>
+<h1><xsl:value-of select="./@titre_ligne" /></h1>
 	<xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
 	<div class="tableaudiv">
 		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>

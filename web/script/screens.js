@@ -291,6 +291,9 @@ function pageload() {
                   if (0 < seriescomps.length) {
                      comp_id = seriescomps[0].textContent;
                   }
+                  if (1 < seriescomps.length) {
+                     nextcomp_id = seriescomps[1].textContent;
+                  }
 
                   // Go looking for the competition we have. 
                   // (we don't care about the last one as we will use the default first one in that case)
@@ -316,23 +319,16 @@ function pageload() {
                   }
                }
             }
-         } else {
-            var allcomps = xmldoc.getElementsByTagName('competition');
-
-            // default to the first one
-            if (0 < allcomps.length) {
-               comp_id = allcomps[0].getAttribute('id');
-            }
-            // Go looking for our competition
-            for (var c = 0; c < allcomps.length - 1; ++c) {
-               if (allcomps[c].getAttribute('id') == this.currentcompid) {
-                  // We want the next one, this is safe as we don't iterate over the last member of the list
-                  // And if the last one matches then we want the first, which we have stored anyway so don't want to overwrite
-                  comp_id = allcomps[c + 1].getAttribute('id');
-                  break;
-               }
-            }
-
+         } 
+         
+         
+         // Store the competition ids
+         this.currentcompid = comp_id;
+         this.nextcompid = nextcomp_id;
+         
+         var changedcomps = false;
+         if (this.currentcompid  != comp_id) {
+            changedcomps = true;
          }
          
          var thiscomp = null;
@@ -342,9 +338,6 @@ function pageload() {
          } else {
             thiscomp = this.nextcompxml;
          }
-         
-         this.currentcompid = comp_id;
-         this.nextcompid = nextcomp_id;
 
          // Store the current competition xml
          this.currentcompxml = thiscomp;
@@ -357,7 +350,13 @@ function pageload() {
             
          // Now get the competition node   
          var thiscompnode = thiscomp.getElementsByTagName('competition')[0];
-         this.thiscompxml = transformDoc(thiscompnode, xsl);
+         
+         
+         // if we moved competitions then we need to regenerate the processed xml
+         if (changedcomps) {
+            this.thiscompxml = transformDoc(thiscompnode, xsl);
+         } 
+         
          var comp = this.thiscompxml;
 
          // Background colours
@@ -560,7 +559,16 @@ function pageload() {
                   
                   // If the id of the competition we have loaded is the same as the current id then save it.
                   if (compid == requestor.currentcompid)
+                  {
                      requestor.currentcompxml = xmldoc;
+                     
+                     // And process it
+                     var thiscompnode = xmldoc.getElementsByTagName('competition')[0];
+                     requestor.thiscompxml = transformDoc(thiscompnode, xsl);
+                  } else if (compid == requestor.nextcompid) {
+                     requestor.nextcompxml = xmldoc;
+                  }
+                  
 
                } else {
                   // Failed so try again

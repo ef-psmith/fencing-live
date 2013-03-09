@@ -34,12 +34,13 @@ use Net::FTP;
 #	
 # perl -MXML::SAX -e "XML::SAX->add_parser('XML::SAX::PurePerl')->save_parsers()"
 #
+# THIS WILL BE VERY VERY SLOW!  PurePerl is not built for speed
 
 # New XML / XSLT / Ajax scheme
 #
 # Create a hashref in memory containing all of the required data and write to an XML file
 
-###  UPDATE MARCH 13 ###
+###  UPDATE MARCH 2013 ###
 # New (improved) logic....
 
 # read_config()
@@ -57,19 +58,15 @@ use Net::FTP;
 # Main starts here
 ##################################################################################
 
-# set AUTOFLUSH on STDOUT to ensure messages are written in the correct order
-my $fh = select(STDOUT);
-$| = 1;
-select($fh);
 
-#my %compmap;
-#my $competitionlist;
-#my $targetlocation;
-
-# my $comp_output;
 
 my $ini = shift || "live.xml";
 my $runonce = shift || 0;
+
+
+# save original file handles
+open(OLDOUT, ">&STDOUT");
+open(OLDERR, ">&STDERR");
 
 
 while (1)
@@ -77,6 +74,17 @@ while (1)
 	my $config = config_read();
 	
 	$Engarde::DEBUGGING=$config->{debug};
+	
+	if ($config->{log})
+	{
+		open STDERR, ">>$config->{log}" or die $!;
+		open STDOUT, ">&STDERR";
+
+		# set AUTOFLUSH to ensure messages are written in the correct order
+		my $fh = select(STDERR);
+		$| = 1;
+		select($fh);
+	}
 	
 	my $ftp;
 	# If we have all the ftp details and haven't already created it then create it.
@@ -135,6 +143,14 @@ while (1)
 		
 	unless ($runonce)
 	{
+		# close the redirected filehandles
+		close(STDOUT) ;
+		close(STDERR) ;
+
+		# restore stdout and stderr
+		open(STDERR, ">&OLDERR");
+		open(STDOUT, ">&OLDOUT");
+
 		sleep 30;
 	}
 	else
@@ -202,15 +218,6 @@ sub do_comp
 			$round++;
 		} 
 
-		my $fencers = $c->ranking("p");
-
-		my @lout = do_ranking_list($fencers, $aff);
-		my $list = {};
-
-		$list->{ranking}->{fencer} = [@lout];
-		$list->{ranking}->{count} = @lout;
-		$list->{ranking}->{type} = "pools";
-		push @{$out->{lists}}, $list;
 	}
 
 
@@ -230,6 +237,18 @@ sub do_comp
 	{
 		$out->{tableau} = do_tableau($c, $where);
 		push @{$out->{lists}}, do_list($c, $nif, "result");
+
+
+		# push the ranking after the pools 
+		my $fencers = $c->ranking("p");
+
+		my @lout = do_ranking_list($fencers, $aff);
+		my $list = {};
+
+		$list->{ranking}->{fencer} = [@lout];
+		$list->{ranking}->{count} = @lout;
+		$list->{ranking}->{type} = "pools";
+		push @{$out->{lists}}, $list;
 	}
 	
 	my $wh = do_where($c);
@@ -416,7 +435,7 @@ sub do_list
 	# Now sort out the vertical list
 	my $vertlist = want($c, "list");
 	
-	# print $c->titre_ligne . ": " . Dumper(\@hp) . Dumper(\$vertlist);
+	print $c->titre_ligne . ": " . Dumper(\$vertlist);
 	
 	my $fencers;
 	
@@ -617,41 +636,14 @@ sub do_tableau
 	debug(1,"do_tableau: where = $where");
 
 	
-	#my @w = split / /,$where;
-	#shift @w;
-	
-
-	
 	my $out = {};
 	
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
-	#if ($where eq "termine")
-	#{	
-	#	@w = ($c->tableaux)[-2,-1];
-	#}
-	
-	#debug(1, "do_tableau: w = " . Dumper(\@w));
-	
-	#my $col = 1;
-	
-	#foreach my $tab (@w)
-	#{
-	#	my $t = $c->tableau($tab,1);
-	#	$out->{title} = $t->nom_etendu unless $out->{title};
-	#	my @list = do_tableau_matches($t, $aff);
-		
-	#	# debug(3, "do_tableau: list = " . Dumper(\@list));
-	#	$out->{"col$col"}->{match} = [@list];
-	#	
-	#	$col++;
-
-	#	# print "do_tableau: winners = " . Dumper(\@winners);
-	#}
-	
 	my @alltab = $c->tableaux;
-	#$out->{matches} = {};
+
+	debug(1, "do_tableau: alltab = " . @alltab);
 	
 	foreach my $atab (@alltab)
 	{

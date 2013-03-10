@@ -1,45 +1,71 @@
 
-<?php
-  $tournid = $_REQUEST['tournament'];
-  $title = file_get_contents($tournid . '/tourn_name.txt');
-  $xslt_string = '<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="xml" />
-
-
-
-<xsl:template match="opt">
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>' . $title .'</title>
+
+
+<?php
+  $tournid = $_REQUEST['tournament'];
+  $tournname = 'Unknown';
+
+  if (file_exists($tournid . "/live.xml")) {
+
+
+        $tournxml = simplexml_load_file($tournid . "/live.xml");
+
+
+        foreach($tournxml->attributes() as $a => $b) {
+            if ('tournamentname' == $a) {
+                $tournname = $b;
+            }
+        }
+        // Find the competitions
+        foreach ($tournxml->children() as $c) {
+            // Do we have a competition element
+            if ("competition" == $c->getName()) {
+
+                foreach($c->attributes() as $a => $b) {
+                    if ('id' == $a) {
+                        $compids[] = $b;
+                    }
+                }
+            }
+        }
+  }
+
+  echo '<title>' . $tournname .'</title>';
+?>
+
 <link href="./css/portal.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
-<h1>'.$title.'</h1>
-<table class="DE">
-		<xsl:for-each select="competition">
-			<xsl:sort select="@id" data-type="number"/>
-			<tr><td class="DE"><a><xsl:attribute name="href">competition.php?competition=<xsl:value-of select="@id"/>&amp;tournament=' . $tournid . '</xsl:attribute>
-<xsl:value-of select="@ titre_ligne" /></a></td></tr>
-		</xsl:for-each >
+<?php
+
+    echo '<h1>'.$tournname.'</h1>';
+    echo '<table class="DE">';
+
+
+    foreach ($compids as $cid) {
+        // Open the competition xml file
+
+        if (file_exists($tournid . "/competitions/". $cid . ".xml")) {
+
+            $compxml = simplexml_load_file($tournid . "/competitions/". $cid . ".xml");
+
+            // Now go and find the competition name
+
+            $compname = "Unknown";
+            foreach($compxml->attributes() as $a => $b) {
+                if ('titre_ligne' == $a) {
+                    $compname = $b;
+                }
+            }
+
+            echo '<tr><td class="DE"><a href="competition.php?competition=' . $cid . '&tournament=' . $tournid . '">' . $compname . '</a></td></tr>';
+
+        }
+    }
+
+?>
 </table>
 </body>
 </html>
-
-</xsl:template>
-
-</xsl:stylesheet>';
-
-  $xslt = new XSLTProcessor();
-  $xslt->importStylesheet(new SimpleXMLElement($xslt_string));
-
-
-   $xmlDoc = new DOMDocument();
-   $xmlDoc->load("$tournid/toplevel.xml");
-
-
-  echo $xslt->transformToXml($xmlDoc);
-?>

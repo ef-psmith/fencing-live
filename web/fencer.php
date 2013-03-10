@@ -14,7 +14,7 @@
 <xsl:variable name="fencerid" select="' . $fencerid . '" />
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>' . file_get_contents($tournid . '/tourn_name.txt') .'</title>
+<title><xsl:value-of select="../../@titre_ligne"/></title>
 <link href="./css/portal.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
@@ -106,7 +106,7 @@
 
 
    $xmlDoc = new DOMDocument();
-   $xmlDoc->load("$tournid/toplevel.xml");
+   $xmlDoc->load($tournid. "/competitions/". $compid . ".xml");
 
 
   echo $xslt->transformToXml($xmlDoc);

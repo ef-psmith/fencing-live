@@ -468,7 +468,7 @@ The first mentioned is the left hand column, the right hand column is the tablea
 with half the number of matches.
 -->
 <xsl:choose>
-<xsl:when test="@stage='termine' or contains(@stage, 'A2')">
+<xsl:when test="@stage='termine' or substring-after(@stage, 'tableau ') = 'A2'">
 
 	<xsl:apply-templates select="." mode="render" >
 		<xsl:with-param name="col1" >A4</xsl:with-param>
@@ -497,69 +497,112 @@ with half the number of matches.
 
 <topdiv class="tableau" id="tableau" name="topdiv">
 
-<!--
-If we are in the last 16 or later then we show the traditional tableau.
-Otherwise we just show a list of the matches - NOT USED
--->
 <xsl:choose>
 
-<xsl:when test="count(col1/match) > 100">
+<xsl:when test="count(tableau[@name = $col1]/match) > 50">
+<!--
+   For large tableaus we show twice as many matches
+-->
+
 
 <pages>
-	<xsl:for-each select="col1/match[@number mod $tablistsize = 1]">
-		<xsl:sort select="col1/match/@number" />
-		<page>T<xsl:value-of select="(@number - 1) div $tablistsize" /></page>
-	</xsl:for-each>
-</pages><content>
+   <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
+      <xsl:sort select="tableau[@name = $col1]/match/@number" />
+      <page>T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></page>
+   </xsl:for-each>
+</pages>
+<content>
 <h1><xsl:value-of select="./@titre_ligne" /></h1>
+   <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
+   <div class="tableaudiv">
+      <xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></xsl:attribute>
+      <xsl:if test="(@number -1) div ($col1size * 2) > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
+      <div class="tableautitle">
+         <p class="tableautitlepart"><xsl:value-of select="../../@title"/></p>
+         <xsl:if test="count(../match[@number > ($col1size * 2)]) > 0">
+            <p class="tableautitlepart">Part <xsl:value-of select="((@number - 1) div ($col1size * 2)) + 1" /> of <xsl:value-of select="count(../match) div ($col1size * 2)" /></p>
+         </xsl:if>
+      </div>
+      <div class="twocol1">
+         <div class="half">
+            <!-- **************************** HALF **************************** -->
+            <div class="half">
+               <!-- *************************** QUARTER **************************** -->
+               <div class="quarter">
+                  <xsl:apply-templates select="." mode="render" />
+               </div>
 
-	<xsl:for-each select="col1/match[@number mod $tablistsize = 1]">
-	<div class="tableaudiv">
-		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $tablistsize" /></xsl:attribute>
-		<xsl:if test="(@number -1) div $tablistsize > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
-		<h3>
-		   <xsl:value-of select="../../@title"/>
-			<xsl:if test="count(../match[@number > $tablistsize]) > 0">
-				 - Part <xsl:value-of select="((@number - 1) div $tablistsize) + 1" /> of  <xsl:value-of select="count(../match) div $tablistsize" />
-			</xsl:if>
-		</h3>
+               <!-- *************************** QUARTER **************************** -->
+               <div class="quarter">
+                  <xsl:apply-templates select="../match[current()/@number + 1]" mode="render" /> 
+               </div>
+            </div>
+            <div class="half">
+               <!-- *************************** QUARTER **************************** -->
+               <div class="quarter">
+                  <xsl:apply-templates select="../match[current()/@number + 2]" mode="render" /> 
+               </div>
+               <!-- *************************** QUARTER **************************** -->
+               <div class="quarter">
+                  <xsl:apply-templates select="../match[current()/@number + 3]" mode="render" /> 
+               </div>
+            </div>
+         </div>
 
-<table class="tableaulist">
-	<xsl:for-each select="../match[(./@number &lt; (current()/@number + $tablistsize) and ./@number &gt; current()/@number) or ./@number = current()/@number]">
-		<tr class="tablistmatch">
-			<td>
-<xsl:if test="./@winnerid = fencerA/@id"><xsl:attribute name="class">winner</xsl:attribute></xsl:if>
-				<span class="tablistfencername"><xsl:value-of select="fencerA/@name"/></span>
-				<span class="tablistfencerclub"><xsl:value-of select="fencerA/@affiliation"/></span>
-			</td>
-			<td class="tablistscore">
+         <div class="half">
+            <div class="half">
+               <!-- *************************** QUARTER **************************** -->
+               <div class="quarter">
+                  <xsl:apply-templates select="../match[current()/@number + 4]" mode="render" /> 
+               </div>
+               <!-- *************************** QUARTER **************************** -->
+               <div class="quarter">
+                  <xsl:apply-templates select="../match[current()/@number + 5]" mode="render" /> 
+               </div>
+            </div>
 
-							<xsl:choose>
-								<xsl:when test="string-length(@winnername) &gt; 0 and string-length(@score) != 0">
-									<xsl:value-of select="@score" />
-								</xsl:when>
-								<xsl:when test="string-length(@winnername) &gt; 0">
-									Bye
-								</xsl:when>
-								<xsl:when test="string-length(@piste) != 0">
-									Piste: <xsl:value-of select="@piste" /><xsl:text> </xsl:text><xsl:value-of select="@time" />
-								</xsl:when>
-								<xsl:otherwise>
-									&#160;
-								</xsl:otherwise>
-							</xsl:choose>
-			</td>
-			<td>
-<xsl:if test="./@winnerid = fencerB/@id"><xsl:attribute name="class">winner</xsl:attribute></xsl:if>
-				<span class="tablistfencername"><xsl:value-of select="fencerB/@name"/></span>
-				<span class="tablistfencerclub"><xsl:value-of select="fencerB/@affiliation"/></span>
-			</td>
-		</tr>
-	</xsl:for-each> <!-- Match -->
-</table>
-	</div>
-</xsl:for-each> <!-- Page -->
+            <div class="half">
+               <!-- *************************** QUARTER **************************** -->
+               <div class="quarter">
+                  <xsl:apply-templates select="../match[current()/@number + 6]" mode="render" /> 
+               </div>
+               <!-- *************************** QUARTER **************************** -->
+               <div class="quarter">
+                  <xsl:apply-templates select="../match[current()/@number + 7]" mode="render" /> 
+               </div>
+            </div>
+         </div>
+      </div>
+<xsl:if test="../../tableau[@name = $col2]">
+      <div class="twocol">
+         <!-- the starting number for div 2 should be ((@number + 1) / 2) -->
+<xsl:if test="count(../../tableau[@name = $col2]/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]) &gt; 0">
+         
+         <div class="half">
+            <div class="quarter">
+               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
+               </div>
+            <div class="quarter">
+               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 2 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
+            </div>
+         </div>
+         <div class="half">
+            <div class="quarter">
+               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 3 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
+               </div>
+            <div class="quarter">
+               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
+            </div>
+         </div>
+          
+</xsl:if>
+      </div>
+</xsl:if>
+   </div>
+   </xsl:for-each>
 </content>
+
+
 
 </xsl:when>
 <xsl:otherwise>

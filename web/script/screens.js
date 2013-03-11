@@ -127,6 +127,15 @@ function scroller(div, pageloader) {
       // Make the specified one visible
       var newdiv = document.getElementById(this.pages[index]);
       
+      
+      
+      // If we haven't got processed xml then process it now
+      if (null == this.pageloader.thiscompxml) {
+      
+         var thiscompnode = this.pageloader.currentcompxml.getElementsByTagName('competition')[0];
+         this.pageloader.thiscompxml = transformDoc(thiscompnode, xsl);
+      }
+      
       // Try to reload the div from the latest XML source.
       var newcontents = this.pageloader.thiscompxml.ownerDocument.getElementById(this.pages[index]);
       
@@ -272,9 +281,18 @@ function pageload() {
          
          var xmldoc = this.xmlsource;
          
+         // If we don't have the config XML then we can't do anything
          if (null == xmldoc) {
             return;
          }
+         
+         
+         // If we have a current competition id but no xml then we just return
+         if (null != this.currentcompid && null == this.currentcompxml) {
+            return;
+         }
+         
+         
          var serieses = xmldoc.getElementsByTagName('series');
          var comp_id = null;
          var nextcomp_id = null;
@@ -352,12 +370,13 @@ function pageload() {
          var thiscompnode = thiscomp.getElementsByTagName('competition')[0];
          
          
-         // if we moved competitions then we need to regenerate the processed xml
-         if (changedcomps) {
-            this.thiscompxml = transformDoc(thiscompnode, xsl);
-         } 
          
-         var comp = this.thiscompxml;
+         // if we moved competitions then we need to regenerate the processed xml
+         var comp = transformDoc(thiscompnode, xsl);
+         this.thiscompxml = comp;
+         
+         //alert("Current Competition ID: " + this.currentcompid + "\nThis Competition Node ID: " + thiscompnode.getAttribute("id")+ "\nThis Processed Xml ID: " + comp.getAttribute("id"));
+         
 
          // Background colours
          var borders = document.getElementsByName('border');
@@ -561,10 +580,9 @@ function pageload() {
                   if (compid == requestor.currentcompid)
                   {
                      requestor.currentcompxml = xmldoc;
+                     // Note that we have reloaded the current XML
+                     requestor.thiscompxml = null;
                      
-                     // And process it
-                     var thiscompnode = xmldoc.getElementsByTagName('competition')[0];
-                     requestor.thiscompxml = transformDoc(thiscompnode, xsl);
                   } else if (compid == requestor.nextcompid) {
                      requestor.nextcompxml = xmldoc;
                   }

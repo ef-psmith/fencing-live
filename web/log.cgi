@@ -16,7 +16,7 @@ my $out = "";
 
 while (<LOG>)
 {
-	$out = $_ . "<br>" . $out;
+	$out = $_ . $out;
 }
 
 close LOG;
@@ -24,7 +24,9 @@ close LOG;
 
 Engarde::Control::_std_header("Log Output");
 
-print "<br>$out<br>";
+print "<br>\n";
+
+print "<textarea cols=80 rows=30 readonly>$out</textarea>";
 
 
 Engarde::Control::_std_footer();

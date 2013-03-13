@@ -36,10 +36,16 @@ if ($weaponPath  eq "") {
     if ($action eq "list") {frm_checkin_list($weaponPath); last SWITCH;}
     
     ################################################################################################
-    # Update files and reload Check-in screen
+    # Open add/edit screen
     ################################################################################################
     if ($action eq "edit") { frm_fencer_edit($weaponPath); last SWITCH;}
     
+	################################################################################################
+    # Write a new record
+    ################################################################################################
+    if ($action eq "write") { fencer_edit($weaponPath); last SWITCH;}
+    
+	
     &HTMLdie("Undefined action $action requested.");
   }
 }

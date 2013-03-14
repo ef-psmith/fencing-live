@@ -23,11 +23,6 @@ use Carp qw(cluck);
 use XML::Simple;
 $XML::Simple::PREFERRED_PARSER = "XML::Parser";
 
-
-use Net::FTP;
-# use IO::Handle;
-
-
 # NOTE:
 #
 # If you get the error "could not find PaserDetails.ini..."
@@ -60,16 +55,13 @@ use Net::FTP;
 ##################################################################################
 
 
-
 my $runonce = shift || 0;
-my $ini = "live.xml";
 
 
 unless ($^O =~ /MSWin32/ || $runonce)
 {
-	use Proc::Daemon;
+	require Proc::Daemon;
 	my $pid = Proc::Daemon::Init({ pid_file=>'/share/Public/writexml.pid'});
-
 	exit 0 if ($pid);
 }
 
@@ -95,27 +87,6 @@ while (1)
 		select($fh);
 	}
 	
-	my $ftp;
-	# If we have all the ftp details and haven't already created it then create it.
-	if (defined($config->{ftphost}) && 
-			defined($config->{ftpuser}) && 
-			defined($config->{ftppwd}) && 
-			defined($config->{ftpcwd}) &&
-			!defined($ftp))
-	{
-	
-		# $ftp = Net::FTP->new($config->{ftphost}, Debug => 0) or die "Cannot connect to some.host.name: $@" ;
-	}
-
-	# Check that we are defined and log in.
-	if (defined($ftp))
-	{
-		print "FTP login\n";
-		$ftp->login($config->{ftpuser},$config->{ftppwd}) or die "Cannot login ", $ftp->message;
-		$ftp->cwd($config->{ftpcwd}) or die "Cannot change working directory ", $ftp->message;
-	}
-
-
 	my $comps = $config->{competition};
 	
 	$comps = {} unless ref $comps eq "HASH";
@@ -126,7 +97,7 @@ while (1)
 	{		
 		next unless $comps->{$cid}->{enabled} eq "true";	
 		
-		# don't regenerate this one if we are paused - data in comp_output *should* remain the same
+		# don't regenerate this one if we are paused
 		next if $comps->{$cid}->{hold};
 		
 		my $c = Engarde->new($comps->{$cid}->{source} . "/competition.egw");		
@@ -135,20 +106,7 @@ while (1)
 		do_comp($c, $cid, $config);
 	}
 		
-	
-	if (defined $ftp)
-	{
-		# this needs to change to ftp all the competition/X.xml files now
-		# perhaps a call to rsync might be better?
-		$ftp->put($config->{targetlocation} . "/toplevel.xml" , "newtoplevel.xml");
-		$ftp->rename("newtoplevel.xml" ,"toplevel.xml");
-	}
-	
-		
-    $ftp->quit unless !defined($ftp);
-    undef($ftp);
-    
-	debug(1, "loop finished");
+	Engarde::debug(1, "loop finished");
 		
 	unless ($runonce)
 	{
@@ -194,7 +152,6 @@ sub do_comp
 	# insert current status
 	$out->{stage} = $where;
 	
-	
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 
@@ -217,11 +174,11 @@ sub do_comp
 
 		my $round = 1;
 		
-		debug(1, "do_comp(): number of rounds = " . scalar @{$c->nombre_poules});
+		Engarde::debug(1, "do_comp(): number of rounds = " . scalar @{$c->nombre_poules});
 		
 		while ($round <= scalar @{$c->nombre_poules})
 		{
-			debug(1, "do_comp(): round = " . $round);
+			Engarde::debug(1, "do_comp(): round = " . $round);
 			my @hp = ("poules", $round, "finished");
 			push @{$out->{pools}} , do_poules($c, @hp);
 			$round++;
@@ -262,7 +219,7 @@ sub do_comp
 	
 	my $wh = do_where($c);
 	
-	debug(3, "cid $cid: where = " . Dumper(\$wh));
+	Engarde::debug(3, "cid $cid: where = " . Dumper(\$wh));
 	
 	push @{$out->{lists}}, $wh if $wh->{where}->{count};
 	
@@ -414,7 +371,7 @@ sub do_ranking_list
 	{
 		push @lout, {	name => $fencers->{$fid}->{nom_court}, 
 						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
-						elimround => "elim_p", 	
+						elimround => $fencers->{$fid}->{group} || '', 	
 						position => $fencers->{$fid}->{seed} || '',
 						id => $fid || '', 
 						vm => $fencers->{$fid}->{vm},
@@ -591,18 +548,18 @@ sub do_tableau_matches
 
 	# print $c->titre_ligne . ": " . Dumper(\$t);
 
-	debug(3, Dumper(\$t));
+	Engarde::debug(3, Dumper(\$t));
 
 	my $numbouts = $t->{taille} / 2;
 
-	debug(1, "do_tableau_matches: Number of bouts: $numbouts");
+	Engarde::debug(1, "do_tableau_matches: Number of bouts: $numbouts");
 
 	foreach my $m (1..$numbouts)
 	{	
 		# print "do_tableau: calling match\n";
 		my $match = $t->match($m);
 
-		debug(3, "do_tableau: match = " . Dumper(\$match));
+		Engarde::debug(3, "do_tableau: match = " . Dumper(\$match));
 
 		# push @winners, ($match->{winnerid} || undef ) if $col eq 1;
 
@@ -642,7 +599,7 @@ sub do_tableau
 	my $c = shift;
 	my $where = shift;
 
-	debug(1,"do_tableau: where = $where");
+	Engarde::debug(1,"do_tableau: where = $where");
 
 	
 	my $out = {};
@@ -652,7 +609,7 @@ sub do_tableau
 	
 	my @alltab = $c->tableaux;
 
-	debug(1, "do_tableau: alltab = " . @alltab);
+	Engarde::debug(1, "do_tableau: alltab = " . @alltab);
 	
 	foreach my $atab (@alltab)
 	{
@@ -660,7 +617,7 @@ sub do_tableau
 		my $t = $c->tableau($atab,1);
 		$out->{"$atab"}->{title} = $t->nom_etendu;
 
-		debug(1, "do_tableau: atab = $atab");
+		Engarde::debug(1, "do_tableau: atab = $atab");
 		my @list = do_tableau_matches($t, $aff);
 		$out->{"$atab"}->{match} = [@list];
 		my $matchcount = @list;
@@ -670,37 +627,8 @@ sub do_tableau
 	return $out;
 }
 
-############################################################################
-# Debug output
-############################################################################
 
-sub debug
-{
-	my $level = shift;
-	my $text = shift;
 	
-	print STDERR "DEBUG($level): $text\n" if ($level le $Engarde::DEBUGGING);
-}
-
-##################################################################################
-# read_config
-# simply reads in the XML file now
-##################################################################################
-#sub read_config
-#{
-#	my $cf = shift; 
-#	# my $xml = new XML::Simple(ForceArray => 1);
-
-#	# read XML file
-	# my $config = $xml->XMLin($cf, ForceArray=>1);
-#	my $data = XMLin($cf, ForceArray=> qr/competition/);
-	
-#	# print Dumper(\$data);
-#	return $data;
-#}
-
-
-
 ##################################################################################
 # subs to determine page content
 ##################################################################################

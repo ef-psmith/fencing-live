@@ -1,51 +1,27 @@
 <?xml version="1.0"?>
 <config allowunpaid="false"
-        checkinTimeout="20000"
+        checkintimeout="120000"
         debug="1"
-        log="./out.txt"
+        log="out.txt"
         nif="false"
         restrictIP="false"
         statusTimeout="30000"
-        targetlocation="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/web"
+        targetlocation="/share/Public/engarde/live/web"
         title="Competition Admin Portal"
         tournamentname="Invicta Open 2013">
-  <competition id="1"
-               background="FF000000"
-               enabled="true"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 1"
-               state="check-in">
-    <message>There is a blood stain on piste 32.  Cleaners have been called.</message>
-  </competition>
-  <competition id="2"
-               background="FF000000"
-               enabled="true"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Eden Cup 2008"
-               state="active" />
   <competition id="3"
-               background="FF000000"
+               background="FF0000"
                enabled="true"
+               hold="0"
                nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 4 - 32"
+               source="/share/MD0_DATA/Public/data/current/Mens Foil"
                state="active" />
   <competition id="4"
-               background="FF000000"
+               background="FF0000"
                enabled="true"
+               hold="0"
                nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\A Grade - Stage 4"
-               state="active" />
-  <competition id="5"
-               background="FF000000"
-               enabled="true"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 4 - 16"
-               state="check-in" />
-  <competition id="6"
-               background="FF000000"
-               enabled="true"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 3a"
+               source="/share/MD0_DATA/Public/data/current/Womens Foil"
                state="active" />
   <controlIP>172.20.30.10</controlIP>
   <controlIP>172.20.30.11</controlIP>
@@ -57,29 +33,27 @@
   <controlIP>172.20.30.17</controlIP>
   <controlIP>172.20.30.18</controlIP>
   <series id="1">
-    <competition>1</competition>
+    <competition>3</competition>
   </series>
   <series id="10" />
   <series id="11" />
   <series id="12" />
   <series id="2">
-    <competition>1</competition>
+    <competition>4</competition>
   </series>
   <series id="3">
-    <competition>1</competition>
+    <competition>3</competition>
   </series>
   <series id="4">
-    <competition>1</competition>
+    <competition>4</competition>
   </series>
   <series id="5">
-    <competition>1</competition>
+    <competition>3</competition>
   </series>
   <series id="6">
-    <competition>1</competition>
+    <competition>4</competition>
   </series>
-  <series id="7">
-    <competition>1</competition>
-  </series>
+  <series id="7" />
   <series id="8" />
   <series id="9" />
 </config>

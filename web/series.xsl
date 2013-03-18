@@ -189,7 +189,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             starts-with(../@stage, 'tableau')
             and 
             (
-               substring-before(substring-after(../@stage, 'tableau '), ' ') =  substring-after(substring-after(../@stage, 'tableau '), ' ')
+                ../tableau[@name = substring-after(../@stage, 'tableau ') or @name = substring-before(substring-after(../@stage, 'tableau '), ' ') ]/@count * 2 &gt; count(../lists[@name='ranking' and @type='pools' ]/fencer[@elimround != 'elim_p'])
             )
          ) 
          and @type='pools'
@@ -204,7 +204,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                and 
                not
                (
-                  substring-before(substring-after(../@stage, 'tableau '), ' ') =  substring-after(substring-after(../@stage, 'tableau '), ' ')
+                ../tableau[@name = substring-after(../@stage, 'tableau ') or @name = substring-before(substring-after(../@stage, 'tableau '), ' ') ]/@count * 2 &gt; count(../lists[@name='ranking' and @type='pools' ]/fencer[@elimround != 'elim_p'])
                )
             ) 
          )
@@ -214,7 +214,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
    ) ]">
 <xsl:choose>
 <!-- When we have all finished or we are showing the pools finished or we are in the finals used a two column list -->
-<xsl:when test="../@stage='termine' or contains(../@stage, 'finished') or contains(../@stage, 'A8 A4') or contains(../@stage, 'A4 A2')">
+<xsl:when test="../@stage='termine' or contains(../@stage, 'finished') or contains(../@stage, 'tableau A8') or contains(../@stage, 'tableau A4') or ../@stage = 'tableau A2'">
 
 <topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
@@ -227,8 +227,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<content>
 	<!-- Display HTML starts here. 
 			First the list header -->
-<div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
 <!-- Now the list contents -->
+<div class="vlist_title" id="vtitle">
+<h2><xsl:choose><xsl:when test="@type='pools'">Ranking after the Pools</xsl:when><xsl:otherwise>Final Ranking</xsl:otherwise></xsl:choose></h2></div>
 		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2)  = 1]">
 			<div>
 				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
@@ -295,7 +296,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<content>
 	<!-- Display HTML starts here. 
 			First the list header -->
-<div class="vlist_title" id="vtitle"><h2>Ranking</h2></div>
+<div class="vlist_title" id="vtitle">
+<h2><xsl:choose><xsl:when test="@type='pools'">Ranking after the Pools</xsl:when><xsl:otherwise>Final Ranking</xsl:otherwise></xsl:choose></h2></div>
 <div class="vlist_header" id="vheader">
 		<table class="vlist_table">
 			<tr>
@@ -319,7 +321,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
 				<table class="vlist_table">
 				<xsl:apply-templates select="." mode="finalfencer" />
-				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
+				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
 					<xsl:sort select="@sequence" data-type="number" />
 				</xsl:apply-templates>
 				</table>
@@ -499,7 +501,7 @@ with half the number of matches.
 
 <xsl:choose>
 
-<xsl:when test="count(tableau[@name = $col1]/match) > 50">
+<xsl:when test="count(tableau[@name = $col1]/match) > 30">
 <!--
    For large tableaus we show twice as many matches
 -->
@@ -523,7 +525,7 @@ with half the number of matches.
             <p class="tableautitlepart">Part <xsl:value-of select="((@number - 1) div ($col1size * 2)) + 1" /> of <xsl:value-of select="count(../match) div ($col1size * 2)" /></p>
          </xsl:if>
       </div>
-      <div class="twocol1">
+      <div class="twocol1" style="font-size:0.7em">
          <div class="half">
             <!-- **************************** HALF **************************** -->
             <div class="half">

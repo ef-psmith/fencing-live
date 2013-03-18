@@ -197,12 +197,23 @@ sub do_comp
 		$list->{fpp}->{count} = @lout;
 		# $list->{fpp}->{round} = $where[1];
 
+		# push the ranking after the pools 
+		my $fencers = $c->ranking("p");
+
+		my @lout = do_ranking_list($fencers, $aff);
+		my $list = {};
+
+		$list->{ranking}->{fencer} = [@lout];
+		$list->{ranking}->{count} = @lout;
+		$list->{ranking}->{type} = "pools";
+		push @{$out->{lists}}, $list;
+
 	}
 
 	if ($where =~ /tableau/ || $where eq "termine")
 	{
 		$out->{tableau} = do_tableau($c, $where);
-		push @{$out->{lists}}, do_list($c, $nif, "result");
+		push @{$out->{lists}}, do_final_list($c, $nif);
 
 
 		# push the ranking after the pools 
@@ -388,110 +399,47 @@ sub do_ranking_list
 # Process an individual competition's list output  
 ############################################################################
 
-sub do_list
+sub do_final_list
 {
 	my $c = shift;
 	my $nif = shift;
-	my @stage = @_ ;
 	
 	my @lout;
 	
 	my $list = {};
 	
-	# Now sort out the vertical list
-	my $vertlist = want($c, "list");
-	
-	print $c->titre_ligne . ": " . Dumper(\$vertlist);
-	
 	my $fencers;
 	
+	my $dom = $c->domaine_compe;
+	my $aff = $dom eq "national" ? "club" : "nation";
+
+	#######################################################
+	# Final Ranking
+	#######################################################
+				
+	$fencers = $c->ranking();
+				
+	Engarde::debug(2,"do_final_list(): seeds = " . Dumper(\$fencers));
+			
+	my $sequence = 1;
 	
-	if ($vertlist) 
+	foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
 	{
-		my $dom = $c->domaine_compe;
-		my $aff = $dom eq "national" ? "club" : "nation";
-
-		if ($vertlist =~ /fpp/) 
-		{
-			# We need the fpp for the series
-			@lout = do_fpp_list($c, $aff);		
-			
-			$list->{fpp}->{fencer} = [@lout];
-			$list->{fpp}->{count} = @lout;
-			$list->{fpp}->{round} = $stage[1];
-			
-			
-		} 
-		elsif ($vertlist =~ /ranking/) 
-		{
-			#######################################################
-			# Ranking after the pools	
-			#######################################################
-
-			
-			# Need to check the round no
-			if (defined($stage[2]) && $stage[2] eq "finished")
-			{
-				#print "getting ranking for round $haspoules\n";
-				$fencers = $c->ranking("p", $stage[1]);
-			}
-			elsif (defined($stage[2]) && $stage[2] eq "constitution")
-			{
-				#print "getting ranking for round $haspoules - 1\n";
-				$fencers = $c->ranking("p", $stage[1] - 1);
-			}
-			else
-			{
-				$fencers = $c->ranking("p");
-			}
-			
-			# print Dumper(\$fencers);
-			
-			@lout = do_ranking_list($fencers, $aff);
-			
-			
-			$list->{ranking}->{fencer} = [@lout];
-			$list->{ranking}->{count} = @lout;
-			$list->{ranking}->{type} = "pools";
-		} 
-		elsif ($vertlist eq 'result') 
-		{ 
-			#######################################################
-			# Final Ranking
-			#######################################################
-				
-			$fencers = $c->ranking();
-				
-			# print Dumper(\$fencers);
-			
-			my $sequence = 1;
-			
-			foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
-			{
-				push @lout, {	name => $fencers->{$fid}->{nom}, 
-								affiliation => $fencers->{$fid}->{$aff} || 'U/A',
-								position => $fencers->{$fid}->{seed} || '', 	
-								elimround => $fencers->{$fid}->{group} || '', 
-								id => $fid || '',
-								sequence => $sequence};
-				$sequence++;
-			}
-			
-			$list->{ranking}->{fencer} = [@lout];
-			$list->{ranking}->{count} = @lout;
-			$list->{ranking}->{type} = "final";
-		}
-		elsif ($vertlist eq 'entry')
-		{
-			@lout = do_entry_list($c, $aff);
-			
-			$list->{entry}->{fencer} = [@lout];
-			$list->{entry}->{count} = @lout;
-			$list->{entry}->{nif} = $nif;
-		}
-	 }
+		push @lout, {	name => $fencers->{$fid}->{nom}, 
+				affiliation => $fencers->{$fid}->{$aff} || 'U/A',
+				position => $fencers->{$fid}->{seed} || '', 	
+				elimround => $fencers->{$fid}->{group} || '', 
+				id => $fid || '',
+				sequence => $sequence 
+				};
+		$sequence++;
+	}
+		
+	$list->{ranking}->{fencer} = [@lout];
+	$list->{ranking}->{count} = @lout;
+	$list->{ranking}->{type} = "final";
 	 
-	 return $list;
+	return $list;
 }
 
 

@@ -26,6 +26,7 @@ case "$1" in
 	# Stop daemons.
 	echo -n "Shutting down writexml: "
 	[ -f $pidfile ] && /bin/kill -HUP `cat $pidfile`
+	rm -f $pidfile
 	echo -n "writexml"
 	echo "."
 	;;

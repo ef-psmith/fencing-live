@@ -1,7 +1,7 @@
 #!/opt/bin/perl -w
 #
 
-use lib '/share/Public/engarde/lib';
+use lib '/home/engarde/lib';
 use lib 'C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-perl';
 
 use Engarde::Control;

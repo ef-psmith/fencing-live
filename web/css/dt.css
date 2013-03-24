@@ -1,15 +1,10 @@
-.free
-{
-background-color: lime;
-}
-.late
-{
-background-color: red;
-}
-.competition,.piste
-{
-float: left;
-margin:5px 5px;
-padding:5px 5px;
-border: solid thin black;
+@media screen and (max-device-height: 752px) or (max-device-width: 752px) {
+
+  tr {
+		height: 70px;
+  }
+
+  td {
+		padding: 10px;
+  }
 }

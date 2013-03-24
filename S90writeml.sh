@@ -2,7 +2,7 @@
 # writexml      This shell script takes care of starting and stopping
 #               writexml.pl
 
-pidfile="/share/Public/writexml.pid"
+pidfile="/home/engarde/public/writexml.pid"
 
 # See how we were called.
 case "$1" in
@@ -14,7 +14,7 @@ case "$1" in
 	
 	echo -n "Starting writexml: "
 
-	cd /share/Public/engarde/live
+	cd /home/engarde/live
 	perl writexml.pl
 
 	echo -n "writexml"

@@ -1,3 +1,4 @@
+#!/usr/bin/perl -w
 # (c) Copyright Oliver Smith & Peter Smith 2007-2013
 # oliver_rps@yahoo.co.uk
 # peter.smith@englandfencing.org.uk
@@ -60,9 +61,12 @@ my $runonce = shift || 0;
 
 unless ($^O =~ /MSWin32/ || $runonce)
 {
-	require Proc::Daemon;
-	my $pid = Proc::Daemon::Init({ pid_file=>'/share/Public/writexml.pid'});
-	exit 0 if ($pid);
+	#require Proc::Daemon;
+	#my $pid = Proc::Daemon::Init({ pid_file=>'/home/engarde/public/writexml.pid'});
+	#exit 0 if ($pid);
+
+	use App::Daemon qw(detach);
+	detach();
 }
 
 # save original file handles
@@ -200,7 +204,7 @@ sub do_comp
 		# push the ranking after the pools 
 		my $fencers = $c->ranking("p");
 
-		my @lout = do_ranking_list($fencers, $aff);
+		@lout = do_ranking_list($fencers, $aff);
 		my $list = {};
 
 		$list->{ranking}->{fencer} = [@lout];

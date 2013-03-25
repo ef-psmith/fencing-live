@@ -14,6 +14,7 @@
 # for dev purposes (mostly)
 use lib "../lib";
 use lib "../eng-perl";
+use lib "/home/engarde/lib";
 
 use strict;
 use Engarde;
@@ -22,7 +23,9 @@ use Engarde::Control;
 use Data::Dumper;
 use Carp qw(cluck);
 use XML::Simple;
-$XML::Simple::PREFERRED_PARSER = "XML::Parser";
+# $XML::Simple::PREFERRED_PARSER = "XML::Parser";
+
+no warnings 'once';
 
 # NOTE:
 #

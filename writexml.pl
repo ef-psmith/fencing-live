@@ -125,7 +125,7 @@ while (1)
 		open(STDERR, ">&OLDERR");
 		open(STDOUT, ">&OLDOUT");
 
-		sleep 30;
+		sleep 60;
 	}
 	else
 	{

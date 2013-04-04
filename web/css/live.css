@@ -338,6 +338,7 @@ span.col_name {
 	vertical-align: bottom;
 	height: 100%;
 	padding-left: 1ex;
+	font-size: 0.8em;
 }
 
 
@@ -346,7 +347,7 @@ span.col_club {
 	float: right;
 	border-right: thin solid black;
 	padding-right: 1em;
-	font-size: 0.7em;
+	font-size: 0.6em;
 	vertical-align: bottom;
 	height: 100%;
 }
@@ -507,6 +508,7 @@ td.messagespace {
 .vm, .hs, .ind {
 	width: 3em;
 	text-align: right;
+	font-size: 0.4em;
 }
 
 /* 

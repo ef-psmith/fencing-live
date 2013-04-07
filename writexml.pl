@@ -167,10 +167,8 @@ sub do_comp
 	############################################
 	
 	my $list = {};	
-	my @lout = do_entry_list($c, $aff);
+	do_entry_list($c, $aff, $list);
 
-	$list->{entry}->{fencer} = [@lout];
-	$list->{entry}->{count} = @lout;
 	$list->{entry}->{nif} = $nif;
 	push @{$out->{lists}}, $list;
 	
@@ -352,6 +350,7 @@ sub do_entry_list
 {
 	my $c = shift;
 	my $aff = shift;
+	my $list = shift;
 	
 	my @lout;
 	
@@ -361,7 +360,7 @@ sub do_entry_list
 
 	my $sequence = 1;
 
-	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
+	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} grep /\d+/, keys %$fencers)
 	{
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
 						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
@@ -371,7 +370,13 @@ sub do_entry_list
 		$sequence++;
 	}
 
-	return @lout;
+	$list->{entry}->{fencer} = [@lout];
+	$list->{entry}->{count} = @lout;
+	$list->{entry}->{present} = $fencers->{present};
+	$list->{entry}->{absent} = $fencers->{absent};
+	$list->{entry}->{scratch} = $fencers->{scratch};
+	$list->{entry}->{entries} = $fencers->{entries};
+
 }
 
 ############################################################################

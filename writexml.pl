@@ -26,6 +26,7 @@ use XML::Simple;
 # $XML::Simple::PREFERRED_PARSER = "XML::Parser";
 
 no warnings 'once';
+no warnings 'io';
 
 # NOTE:
 #
@@ -49,7 +50,6 @@ no warnings 'once';
 # {
 #	suck_data_into_hashref();
 #	write_xml();
-#	upload();   ??  not sure if this should be here or in a new loop now...  
 # }
 #
 # sleep;
@@ -62,15 +62,16 @@ no warnings 'once';
 my $runonce = shift || 0;
 
 
-unless ($^O =~ /MSWin32/ || $runonce)
-{
+#unless ($^O =~ /MSWin32/ || $runonce)
+#{
 	#require Proc::Daemon;
 	#my $pid = Proc::Daemon::Init({ pid_file=>'/home/engarde/public/writexml.pid'});
 	#exit 0 if ($pid);
 
-	use App::Daemon qw(detach);
-	detach();
-}
+#	eval { require App::Daemon; 
+#			detach();
+#		};
+#}
 
 # save original file handles
 open(OLDOUT, ">&STDOUT");

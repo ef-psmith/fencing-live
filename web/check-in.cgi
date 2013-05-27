@@ -46,6 +46,6 @@ if ($weaponPath  eq "") {
     if ($action eq "write") { fencer_edit($weaponPath); last SWITCH;}
     
 	
-    &HTMLdie("Undefined action $action requested.");
+    HTMLdie("Undefined action $action requested.");
   }
 }

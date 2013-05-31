@@ -1,0 +1,58 @@
+<VirtualHost *:80>
+	ServerAdmin peter.smith@englandfencing.org.uk
+
+	DocumentRoot /home/engarde/eng-live/web
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /home/engarde/eng-live/web/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+	PerlModule ModPerl::Registry
+
+	<Files ~ "\.(pl|cgi)$">
+		SetHandler perl-script
+    		PerlHandler ModPerl::Registry
+		PerlResponseHandler ModPerl::Registry
+		Options +ExecCGI
+		PerlSendHeader On
+	</Files>
+
+	<Location /perl-status>
+ 		SetHandler perl-script
+ 		PerlHandler +Apache2::Status
+ 	</Location>
+
+ 	#
+ 	# But only from the local host, and our trusted
+ 	# remote IP.
+ 	#
+ 	#<Location /perl-status>
+    	#	order deny,allow
+    	#	deny from all
+    	#	allow from 127.0.0.1
+    	#	allow from your.ip.address
+ 	#</Location>
+
+</VirtualHost>

@@ -86,27 +86,22 @@ table.table1 {
 	width: 80px;
 }
 
-th.late  {
+.table1 tbody th[class~=late]  {
+
+	background: rgb(209,90,75); /* Old browsers */
+	background: -moz-linear-gradient(left,  rgb(209,90,75) 0%, rgb(191,56,43) 51%, rgb(188,50,18) 87%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(209,90,75)), color-stop(51%,rgb(191,56,43)), color-stop(87%,rgb(188,50,18))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  rgb(209,90,75) 0%,rgb(191,56,43) 51%,rgb(188,50,18) 87%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  rgb(209,90,75) 0%,rgb(191,56,43) 51%,rgb(188,50,18) 87%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgb(209,90,75) 0%,rgb(191,56,43) 51%,rgb(188,50,18) 87%); /* IE10+ */
+	background: linear-gradient(to right,  rgb(209,90,75) 0%,rgb(191,56,43) 51%,rgb(188,50,18) 87%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d15a4b', endColorstr='#bc3212',GradientType=1 ); /* IE6-9 */
+
     color: #fff;
     text-shadow: 1px 1px 1px #568F23;
-    background-color: #9DD929;
     border: 1px solid #93CE37;
     /* border-right:3px solid #9ED929; */
     padding: 0px 5px;
-    background: -webkit-gradient(
-        linear,
-        left bottom,
-        right top,
-		color-stop (0.02, rgb(158, 217, 41)), 
-		color-stop (0.51, rgb(139, 198, 66)), 
-		color-stop (0.87, rgb(123,192,67))
-        );
-    background: -moz-linear-gradient(
-        left bottom,
-        rgb(158,217,41) 2%,
-        rgb(139,198,66) 51%,
-        rgb(123,192,67) 87%
-        );
     -moz-border-radius: 5px 0px 0px 5px;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;

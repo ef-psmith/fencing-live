@@ -65,16 +65,25 @@ my $runonce = shift || 0;
 unless ($^O =~ /MSWin32/ || $runonce)
 {
 
-	require Proc::Daemon;
-	require Proc::PID::File;
+	# require Proc::Daemon;
+	# require Proc::PID::File;
 
     # Daemonize
-    Proc::Daemon::Init();
+    # my $pid = Proc::Daemon::Init( { 
+	# 	pid_file => '/home/engarde/public/writexml.pid',
+	# 	work_dir => '/home/engarde/live/web',
+	# 	child_STDOUT => '+>>/home/engarde/live/web/out.txt',
+	# 	child_STDERR => '+>>/home/engarde/live/web/out.txt',
+	# });
+
+	# Engarde::debug(1,"writexml:main(): child forked as $pid");
+
+	# exit 0 if ($pid);
 
     # If already running, then exit
-    if (Proc::PID::File->running()) {
-        exit(0);
-    }
+    #if (Proc::PID::File->running()) {
+    #    exit(0);
+    #}
 
 	#eval { 	
 	#		require Proc::Daemon;
@@ -83,14 +92,13 @@ unless ($^O =~ /MSWin32/ || $runonce)
 	#	}
 
 	# App::Daemon doesn't work for some reason
-	#eval { require App::Daemon; 
-	#		detach();
-	#	};
+	eval { use App::Daemon qw(detach) }; 
+	detach();
 }
 
 # save original file handles
-open(OLDOUT, ">&STDOUT");
-open(OLDERR, ">&STDERR");
+# open(OLDOUT, ">&STDOUT");
+# open(OLDERR, ">&STDERR");
 
 
 while (1)
@@ -138,8 +146,8 @@ while (1)
 		close(STDERR) ;
 
 		# restore stdout and stderr
-		open(STDERR, ">&OLDERR");
-		open(STDOUT, ">&OLDOUT");
+		# open(STDERR, ">&OLDERR");
+		# open(STDOUT, ">&OLDOUT");
 
 		sleep 60;
 	}

@@ -1,12 +1,12 @@
 <VirtualHost *:80>
 	ServerAdmin peter.smith@englandfencing.org.uk
 
-	DocumentRoot /home/engarde/eng-live/web
+	DocumentRoot /home/engarde/live/web
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
 	</Directory>
-	<Directory /home/engarde/eng-live/web/>
+	<Directory /home/engarde/live/web/>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride None
 		Order allow,deny

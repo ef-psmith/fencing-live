@@ -570,7 +570,7 @@ sub do_tableau
 	# my @alltab = $c->tableaux;
 	my @alltab = split / /,$c->tableaux_en_cours;
 
-	Engarde::debug(1, "do_tableau: alltab = " . \@alltab);
+	Engarde::debug(1, "do_tableau: alltab = @alltab");
 	
 	foreach my $atab (@alltab)
 	{

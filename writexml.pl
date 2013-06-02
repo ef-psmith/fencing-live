@@ -64,11 +64,23 @@ my $runonce = shift || 0;
 
 unless ($^O =~ /MSWin32/ || $runonce)
 {
-	eval { 	
-			require Proc::Daemon;
-			my $pid = Proc::Daemon::Init({ pid_file=>'/home/engarde/public/writexml.pid'});
-			exit 0 if ($pid);
-		}
+
+	require Proc::Daemon;
+	require Proc::PID::File;
+
+    # Daemonize
+    Proc::Daemon::Init();
+
+    # If already running, then exit
+    if (Proc::PID::File->running()) {
+        exit(0);
+    }
+
+	#eval { 	
+	#		require Proc::Daemon;
+	#		my $pid = Proc::Daemon::Init({ pid_file=>'/home/engarde/public/writexml.pid'});
+	#		exit 0 if ($pid);
+	#	}
 
 	# App::Daemon doesn't work for some reason
 	#eval { require App::Daemon; 

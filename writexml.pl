@@ -562,19 +562,18 @@ sub do_tableau
 
 	Engarde::debug(1,"do_tableau: where = $where");
 
-	
 	my $out = {};
 	
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
-	my @alltab = $c->tableaux;
+	# my @alltab = $c->tableaux;
+	my @alltab = split / /,$c->tableaux_en_cours;
 
-	Engarde::debug(1, "do_tableau: alltab = " . @alltab);
+	Engarde::debug(1, "do_tableau: alltab = " . \@alltab);
 	
 	foreach my $atab (@alltab)
 	{
-	
 		my $t = $c->tableau($atab,1);
 		$out->{"$atab"}->{title} = $t->nom_etendu;
 

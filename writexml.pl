@@ -184,7 +184,7 @@ sub do_comp
 		
 		while ($round <= scalar @{$c->nombre_poules})
 		{
-			Engarde::debug(1, "do_comp(): round = " . $round);
+			Engarde::debug(2, "do_comp(): round = " . $round);
 			my @hp = ("poules", $round, "finished");
 			push @{$out->{pools}} , do_poules($c, @hp);
 			$round++;
@@ -506,14 +506,13 @@ sub do_tableau_matches
 	
 	my @list;
 	
-
 	# print $c->titre_ligne . ": " . Dumper(\$t);
 
-	Engarde::debug(3, Dumper(\$t));
+	Engarde::debug(3, "do_tableau_matches(): t = " . Dumper(\$t));
 
 	my $numbouts = $t->{taille} / 2;
 
-	Engarde::debug(1, "do_tableau_matches: Number of bouts: $numbouts");
+	Engarde::debug(2, "do_tableau_matches(): Number of bouts: $numbouts");
 
 	foreach my $m (1..$numbouts)
 	{	
@@ -560,7 +559,7 @@ sub do_tableau
 	my $c = shift;
 	my $where = shift;
 
-	Engarde::debug(1,"do_tableau: where = $where");
+	Engarde::debug(2,"do_tableau: where = $where");
 
 	my $out = {};
 	
@@ -570,14 +569,14 @@ sub do_tableau
 	# my @alltab = $c->tableaux;
 	my @alltab = split / /,$c->tableaux_en_cours;
 
-	Engarde::debug(1, "do_tableau: alltab = @alltab");
+	Engarde::debug(2, "do_tableau: alltab = @alltab");
 	
 	foreach my $atab (@alltab)
 	{
 		my $t = $c->tableau($atab,1);
 		$out->{"$atab"}->{title} = $t->nom_etendu;
 
-		Engarde::debug(1, "do_tableau: atab = $atab");
+		Engarde::debug(2, "do_tableau: atab = $atab");
 		my @list = do_tableau_matches($t, $aff);
 		$out->{"$atab"}->{match} = [@list];
 		my $matchcount = @list;
@@ -623,7 +622,7 @@ sub want
 	elsif ($what eq "where")
 	{
 		my @w = split / /, $where;
-		debug(1, "want(): w = [@w]");
+		Engarde::debug(3, "want(): w = [@w]");
 		return undef if $w[0] eq "debut" || $w[0] eq "poules" || $w[0] eq "termine";
 		return undef unless $w[1];
 		my $t = $c->tableau($w[1]);

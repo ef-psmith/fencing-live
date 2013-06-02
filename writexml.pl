@@ -62,16 +62,16 @@ no warnings 'io';
 my $runonce = shift || 0;
 
 
-#unless ($^O =~ /MSWin32/ || $runonce)
-#{
+unless ($^O =~ /MSWin32/ || $runonce)
+{
 	#require Proc::Daemon;
 	#my $pid = Proc::Daemon::Init({ pid_file=>'/home/engarde/public/writexml.pid'});
 	#exit 0 if ($pid);
 
-#	eval { require App::Daemon; 
-#			detach();
-#		};
-#}
+	eval { require App::Daemon; 
+			detach();
+		};
+}
 
 # save original file handles
 open(OLDOUT, ">&STDOUT");

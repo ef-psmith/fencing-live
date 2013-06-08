@@ -28,7 +28,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<content>
 	<!-- Display HTML starts here. 
 			First the list header -->
-<div class="vlist_title" id="vtitle"><h2>Entry List for <xsl:value-of select="../@titre_ligne" /></h2></div>
+<div class="vlist_title" id="vtitle"><h2>Entry List for <xsl:value-of select="../@titre_ligne" /> - <xsl:value-of select="@present" /> present / <xsl:value-of select="@entries" /> entered</h3></div>
 
 <xsl:for-each select="fencer[@sequence mod ($entrysize) = 1]">
 
@@ -390,7 +390,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="pool" mode="render">
-	<h2>Pool <xsl:value-of select="@number" /></h2>
+   <h2>Pool <xsl:value-of select="@number" /> - Piste <xsl:value-of select="@piste" /></h2>
 	
 	<table	class="pouletable">
 		<tr>

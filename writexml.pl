@@ -69,7 +69,7 @@ unless ($^O =~ /MSWin32/ || $runonce)
 	# require Proc::PID::File;
 
     # Daemonize
-    # my $pid = Proc::Daemon::Init( { 
+    # my $pid = Proc::Daemon::Init( { 
 	# 	pid_file => '/home/engarde/public/writexml.pid',
 	# 	work_dir => '/home/engarde/live/web',
 	# 	child_STDOUT => '+>>/home/engarde/live/web/out.txt',
@@ -389,7 +389,8 @@ sub do_entry_list
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
 						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
 						seed => $fencers->{$fid}->{serie} || '',
-						id => $fid || '',
+						id => $fid || ''
+						category => $fencers->{$fid}->{category} || '',
 						sequence => $sequence};
 		$sequence++;
 	}
@@ -424,7 +425,8 @@ sub do_ranking_list
 						vm => $fencers->{$fid}->{vm},
 						hs => $fencers->{$fid}->{hs},
 						hr => $fencers->{$fid}->{hr},
-						ind => $fencers->{$fid}->{ind},
+						ind => $fencers->{$fid}->{ind}
+						category => $fencers->{$fid}->{category} || '',
 						sequence => $sequence};
 		$sequence++;
 	}
@@ -466,6 +468,7 @@ sub do_final_list
 				position => $fencers->{$fid}->{seed} || '', 	
 				elimround => $fencers->{$fid}->{group} || '', 
 				id => $fid || '',
+				category => $fencers->{$fid}->{category} || '',
 				sequence => $sequence 
 				};
 		$sequence++;
@@ -566,6 +569,8 @@ sub do_tableau_matches
 						fencerB => $fb,
 						winnername => $match->{winnername} || "",
 						winnerid => $match->{winnerid} || "",
+						categoryA => $match->{categoryA} || "",
+						categoryB => $match->{categoryB} || "",
 						score => $score
 					};
 	};

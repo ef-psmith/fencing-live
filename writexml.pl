@@ -389,7 +389,7 @@ sub do_entry_list
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
 						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
 						seed => $fencers->{$fid}->{serie} || '',
-						id => $fid || ''
+						id => $fid || '',
 						category => $fencers->{$fid}->{category} || '',
 						sequence => $sequence};
 		$sequence++;
@@ -425,7 +425,7 @@ sub do_ranking_list
 						vm => $fencers->{$fid}->{vm},
 						hs => $fencers->{$fid}->{hs},
 						hr => $fencers->{$fid}->{hr},
-						ind => $fencers->{$fid}->{ind}
+						ind => $fencers->{$fid}->{ind},
 						category => $fencers->{$fid}->{category} || '',
 						sequence => $sequence};
 		$sequence++;

@@ -549,8 +549,8 @@ sub do_tableau_matches
 
 		# push @winners, ($match->{winnerid} || undef ) if $col eq 1;
 
-		my $fa = { id => $match->{idA} || "", name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || ""};
-		my $fb = { id => $match->{idB} || "", name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || ""};
+		my $fa = { id => $match->{idA} || "", name => $match->{fencerA} || "", seed => $match->{seedA} || "", affiliation => $match->{$aff . 'A'} || "", category => $match->{categoryA} || ""};
+		my $fb = { id => $match->{idB} || "", name => $match->{fencerB} || "", seed => $match->{seedB} || "", affiliation => $match->{$aff . 'B'} || "", category => $match->{categoryB} || ""};
 
 		#$fa->{name} = $winners[($m * 2) - 1] unless $fa->{name};
 		#$fb->{name} = $winners[$m * 2] unless $fb->{name};
@@ -569,8 +569,6 @@ sub do_tableau_matches
 						fencerB => $fb,
 						winnername => $match->{winnername} || "",
 						winnerid => $match->{winnerid} || "",
-						categoryA => $match->{categoryA} || "",
-						categoryB => $match->{categoryB} || "",
 						score => $score
 					};
 	};

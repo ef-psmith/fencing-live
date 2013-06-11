@@ -8,25 +8,17 @@ var xsl;
 // Scroll delay of 30 seconds
 var scrolldelay = 15000;
 
-function onPageLoaded() {
+function onPageLoaded(aEvent) {
+
    xsl = loadXMLDoc(xsldoc);
-   pageloader = new pageload();
+   if (null == pageloader) {
+      pageloader = new pageload();
+   }
    
    
    pageloader.fetch();
    
-   // Start the regular reloading of the xml files
-   var xmlreload = setInterval(function()
-         {
-            pageloader.fetch();
-            pageloader.fetchpages(pageloader.currentcompid);
-            pageloader.fetchpages(pageloader.nextcompid);
-         }
-      ,10000);
       
-   // Start the layout
-   pageloader.scrollerfinished();
-
 }
 
 
@@ -130,21 +122,21 @@ function scroller(div, pageloader) {
       
       
       // If we haven't got processed xml then process it now
-      if (null == this.pageloader.thiscompxml) {
+      if (null == this.pageloader.proccompxml) {
       
-         var thiscompnode = this.pageloader.currentcompxml.getElementsByTagName('competition')[0];
-         this.pageloader.thiscompxml = transformDoc(thiscompnode, xsl);
+         var thiscompnode = this.pageloader.rawcompxml.getElementsByTagName('competition')[0];
+         this.pageloader.proccompxml = transformDoc(thiscompnode, xsl);
       }
       
       // Try to reload the div from the latest XML source.
-      var newcontents = this.pageloader.thiscompxml.ownerDocument.getElementById(this.pages[index]);
+      var newcontents = this.pageloader.proccompxml.ownerDocument.getElementById(this.pages[index]);
       
       if (null == newcontents) {
       
-         //for (cntnt in this.pageloader.currentcompxml.childNodes) {
+         //for (cntnt in this.pageloader.rawcompxml.childNodes) {
          //         alert("Child " + cntnt.nodeType + " of name " + cntnt.nodeName);
          //}
-         var cntnts = this.pageloader.currentcompxml.getElementsByTagName("content");
+         var cntnts = this.pageloader.rawcompxml.getElementsByTagName("content");
          
          //alert("Found " + cntnts.length + " content nodes.  Node one is called" + cntnts[0].nodeName);
          
@@ -213,17 +205,14 @@ function pageload() {
 
    // The competition id
    this.currentcompid = null;
-   this.nextcompid = null;
    
    // The config file
    this.xmlsource = null;
    // The raw XML for the current comp
-   this.currentcompxml = null;
-   // The raw XML for the next comp, this is null if there is only one competition
-   this.nextcompxml = null;
+   this.rawcompxml = null;
    
    // The processed XML for the current competition
-   var thiscompxml = null;
+   var proccompxml = null;
    
    this.showmessages = function() {
       // Is there a message for the current competition
@@ -251,7 +240,7 @@ function pageload() {
                         // Reload in one third of the scroll delay
                         setTimeout(function() {
                               msgdiv.style.visibility = "hidden";; 
-                           }, scrolldelay / 3);
+                           }, 2 * scrolldelay / 3);
                      }
                   }
                   // Found the text node so break out of the loop
@@ -269,8 +258,9 @@ function pageload() {
     /**
       Update the whole page
     */
-    this.updatepage = 
+    this.findcomp = 
       function() {
+      
       
          // First clear the messages
          
@@ -288,7 +278,7 @@ function pageload() {
          
          
          // If we have a current competition id but no xml then we just return
-         if (null != this.currentcompid && null == this.currentcompxml) {
+         if (null != this.currentcompid && null == this.rawcompxml) {
             return;
          }
          
@@ -309,9 +299,6 @@ function pageload() {
                   if (0 < seriescomps.length) {
                      comp_id = seriescomps[0].textContent;
                   }
-                  if (1 < seriescomps.length) {
-                     nextcomp_id = seriescomps[1].textContent;
-                  }
 
                   // Go looking for the competition we have. 
                   // (we don't care about the last one as we will use the default first one in that case)
@@ -320,21 +307,14 @@ function pageload() {
                         // We want the next one, this is safe as we don't iterate over the last member of the list
                   	   // And if the last one matches then we want the first, which we have stored anyway so don't want to overwrite
                         comp_id = seriescomps[c + 1].textContent;
-                        
-                        // Now sort out the next competition id.  
-                        // This remains null if we only have one competition (but we would not be in this loop if that were the case)
-                        // It is the first element if the current competition is the penultimate
-                        if (c == seriescomps.length - 2) {
-                           nextcomp_id = seriescomps[0].textContent;
-                        } else {
-                           // Otherwise take the next but one competition from the series
-                           nextcomp_id = seriescomps[c + 2].textContent;
-                        }
-                         
-                    
+                                            
+                        // Got the competition so can stop looking now
                         break;
                      }
                   }
+                  
+                  // Found our series so no need to continue
+                  break;
                }
             }
          } 
@@ -342,38 +322,24 @@ function pageload() {
          
          // Store the competition ids
          this.currentcompid = comp_id;
-         this.nextcompid = nextcomp_id;
          
-         var changedcomps = false;
-         if (this.currentcompid  != comp_id) {
-            changedcomps = true;
-         }
+         this.fetchpages(comp_id);
          
-         var thiscomp = null;
-         // We have changed page so change the xml
-         if (null == this.nextcompid) {
-            thiscomp = this.currentcompxml;
-         } else {
-            thiscomp = this.nextcompxml;
-         }
+      }
+         
 
-         // Store the current competition xml
-         this.currentcompxml = thiscomp;
-         // And clear the next competition xml (also copes with moving from two competitions to one
-         this.nextcompxml = null;
-         
-         //Check that we actually have some xml
-         if (null == thiscomp)
-            return false;
-            
+    this.startscrollers = 
+      function() {
+      
+                              
          // Now get the competition node   
-         var thiscompnode = thiscomp.getElementsByTagName('competition')[0];
+         var thiscompnode = this.rawcompxml.getElementsByTagName('competition')[0];
          
          
          
          // if we moved competitions then we need to regenerate the processed xml
          var comp = transformDoc(thiscompnode, xsl);
-         this.thiscompxml = comp;
+         this.proccompxml = comp;
          
          //alert("Current Competition ID: " + this.currentcompid + "\nThis Competition Node ID: " + thiscompnode.getAttribute("id")+ "\nThis Processed Xml ID: " + comp.getAttribute("id"));
          
@@ -475,7 +441,7 @@ function pageload() {
                this.scrollers[s].stop();
             }
 
-            var updated = this.updatepage();
+            var updated = this.fetch();
             
             // If we have no scrollers then call ourselves again in a few seconds
             
@@ -527,6 +493,9 @@ function pageload() {
                   var xmldoc = http_request.responseXML;
                   // Store the messages
                   requestor.xmlsource = xmldoc;
+                  
+                  // We have the config so go and paint the page
+                  requestor.findcomp();
 
                } else {
                   setTimeout('requestor.fetch()', 5000);
@@ -579,13 +548,13 @@ function pageload() {
                   // If the id of the competition we have loaded is the same as the current id then save it.
                   if (compid == requestor.currentcompid)
                   {
-                     requestor.currentcompxml = xmldoc;
+                     requestor.rawcompxml = xmldoc;
                      // Note that we have reloaded the current XML
-                     requestor.thiscompxml = null;
+                     requestor.proccompxml = null;
                      
-                  } else if (compid == requestor.nextcompid) {
-                     requestor.nextcompxml = xmldoc;
-                  }
+                  } 
+                  
+                  requestor.startscrollers();
                   
 
                } else {

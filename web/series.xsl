@@ -5,7 +5,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Global variables for controlling the display parameters -->
-<xsl:variable name="pagesize" select="number(30)" />
+<xsl:variable name="fpppagesize" select="number(30)" />
+<xsl:variable name="whereamipagesize" select="number(30)" />
+<xsl:variable name="rankingpagesize" select="number(30)" />
 <xsl:variable name="entrysize" select="number(138)" />
 <xsl:variable name="poolsperpage" select="number(2)"/>
 <xsl:variable name="col1size" select="number(4)"/>
@@ -58,9 +60,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
+      <xsl:for-each select="fencer[@sequence mod ($fpppagesize * 2) = 1]">
 			<xsl:sort select="@sequence" />
-			<page>FPP<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></page>
+         <page>FPP<xsl:value-of select="(@sequence - 1) div ($fpppagesize * 2)" /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
@@ -85,14 +87,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </div>
 			
 	<!-- Now the list contents -->
-		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
+      <xsl:for-each select="fencer[@sequence mod ($fpppagesize * 2) = 1]">
 			<div class="vlist_title">
-				<xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
+            <xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div ($fpppagesize * 2)" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
 				
 					<xsl:apply-templates select="." mode="fppfencer" />
-					<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="fppfencer" >
+               <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($fpppagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="fppfencer" >
 						<xsl:sort select="@sequence" data-type="number" />
 					</xsl:apply-templates>
 				
@@ -123,9 +125,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <topdiv class="vlist2" name="topdiv" id="vlistid2">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+      <xsl:for-each select="fencer[@sequence mod $whereamipagesize = 1]">
 			<xsl:sort select="@sequence" />
-			<page>WH<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
+         <page>WH<xsl:value-of select="(@sequence - 1) div $whereamipagesize" /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
@@ -144,14 +146,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </div>
 			
 	<!-- Now the list contents -->
-		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+      <xsl:for-each select="fencer[@sequence mod $whereamipagesize = 1]">
 			<div>
-				<xsl:attribute name="id">WH<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
+            <xsl:attribute name="id">WH<xsl:value-of select="(@sequence - 1) div $whereamipagesize" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
 				<table class="vlist_table">
 					<xsl:apply-templates select="." mode="wherefencer" />
-					<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="wherefencer" >
+               <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $whereamipagesize) and ./@sequence &gt; current()/@sequence ]" mode="wherefencer" >
 						<xsl:sort select="@sequence" data-type="number" />
 					</xsl:apply-templates>
 				</table>
@@ -219,9 +221,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2) = 1]">
+      <xsl:for-each select="fencer[@sequence mod ($rankingpagesize * 2) = 1]">
 			<xsl:sort select="@sequence" />
-			<page>RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2) " /></page>
+         <page>RK<xsl:value-of select="(@sequence - 1) div ($rankingpagesize * 2) " /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
@@ -230,9 +232,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <!-- Now the list contents -->
 <div class="vlist_title" id="vtitle">
 <h2><xsl:choose><xsl:when test="@type='pools'">Ranking after the Pools</xsl:when><xsl:otherwise>Final Ranking</xsl:otherwise></xsl:choose></h2></div>
-		<xsl:for-each select="fencer[@sequence mod ($pagesize * 2)  = 1]">
+      <xsl:for-each select="fencer[@sequence mod ($rankingpagesize * 2)  = 1]">
 			<div>
-				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($pagesize * 2)" /></xsl:attribute>
+            <xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div ($rankingpagesize * 2)" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">visible</xsl:attribute></xsl:if>
             
@@ -251,7 +253,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
       </tr>
             
 				<xsl:apply-templates select="." mode="finalfencer" />
-				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
+            <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($rankingpagesize)) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
 					<xsl:sort select="@sequence" data-type="number" />
 				</xsl:apply-templates>
             </table>
@@ -270,7 +272,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                      
       </tr>
             
-                        <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($pagesize * 2)) and ./@sequence &gt;= current()/@sequence + $pagesize]" mode="finalfencer" >
+                        <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($rankingpagesize * 2)) and ./@sequence &gt;= current()/@sequence + $rankingpagesize]" mode="finalfencer" >
                            <xsl:sort select="@sequence" data-type="number" />
             </xsl:apply-templates>
                         
@@ -288,9 +290,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <topdiv class="vlist_ranking" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-		<xsl:for-each select="fencer[@sequence mod ($pagesize) = 1]">
+      <xsl:for-each select="fencer[@sequence mod ($rankingpagesize) = 1]">
 			<xsl:sort select="@sequence" />
-			<page>RK<xsl:value-of select="(@sequence - 1) div $pagesize" /></page>
+         <page>RK<xsl:value-of select="(@sequence - 1) div $rankingpagesize" /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
@@ -314,14 +316,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	</table>
 </div>
 <!-- Now the list contents -->
-		<xsl:for-each select="fencer[@sequence mod $pagesize = 1]">
+      <xsl:for-each select="fencer[@sequence mod $rankingpagesize = 1]">
 			<div>
-				<xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div $pagesize" /></xsl:attribute>
+            <xsl:attribute name="id">RK<xsl:value-of select="(@sequence - 1) div $rankingpagesize" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">vlist_body hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">vlist_body visible</xsl:attribute></xsl:if>
 				<table class="vlist_table">
 				<xsl:apply-templates select="." mode="finalfencer" />
-				<xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $pagesize) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
+            <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + $rankingpagesize) and ./@sequence &gt; current()/@sequence ]" mode="finalfencer" >
 					<xsl:sort select="@sequence" data-type="number" />
 				</xsl:apply-templates>
 				</table>

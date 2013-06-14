@@ -282,6 +282,21 @@ function pageload() {
             return;
          }
          
+         var compsenabled = new Object();
+         var comps = xmldoc.getElementsByTagName('competition');
+         
+         for (var c = 0;c < comps.length; ++c) {
+            // If this has an id attribute then look for the enabled attribute
+            if (comps[c].hasAttribute('id')) {
+               // Assume we are enabled
+               var enabled = 'true';
+               if (comps[c].hasAttribute('enabled')) {
+                  enabled = comps[c].getAttribute('enabled');
+               }
+               compsenabled[comps[c].getAttribute('id')] = enabled;
+            }
+         }
+         
          
          var serieses = xmldoc.getElementsByTagName('series');
          var comp_id = null;
@@ -295,18 +310,24 @@ function pageload() {
                   // We have found the series we want.
 
                   var seriescomps = series.getElementsByTagName('competition');
-                  // Default the competition we want to the first one
-                  if (0 < seriescomps.length) {
-                     comp_id = seriescomps[0].textContent;
-                  }
-
-                  // Go looking for the competition we have. 
-                  // (we don't care about the last one as we will use the default first one in that case)
-                  for (var c = 0; c < seriescomps.length - 1; ++c) {
-                     if (seriescomps[c].textContent == this.currentcompid) {
-                        // We want the next one, this is safe as we don't iterate over the last member of the list
-                  	   // And if the last one matches then we want the first, which we have stored anyway so don't want to overwrite
-                        comp_id = seriescomps[c + 1].textContent;
+                  
+                  // We haven't found our competition yet
+                  var found = false;
+                  // We are looking for the first competition after the one we are currently on.
+                  // If we reach the end of the list before finding it then it is the first one on the list
+                  for (var c = 0; c < seriescomps.length; ++c) {
+                     var comp = seriescomps[c].textContent;
+                     
+                     // If we haven't found one then if this is enabled it is the first
+                     if (null == comp_id && 'true' == compsenabled[comp])
+                        comp_id = comp;
+                  
+                     // We don't care whether our competition is still enabled or not.
+                     if (comp == this.currentcompid)                     
+                        found = true;                        
+                     else if (found && 'true' == compsenabled[comp]) {
+                        // We have already passed our competition and this is valid so it is good enough.  So stop.
+                        comp_id = comp;
                                             
                         // Got the competition so can stop looking now
                         break;

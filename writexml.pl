@@ -593,7 +593,7 @@ sub do_tableau
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
 	# my @alltab = $c->tableaux;
-	my @alltab = split / /,$c->tableaux_en_cours;
+	my @alltab = split / /,uc($c->tableaux_en_cours);
 
 	Engarde::debug(2, "do_tableau: alltab = @alltab");
 	

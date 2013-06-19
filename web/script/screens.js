@@ -288,30 +288,24 @@ function pageload() {
       // Is there a message for the current competition
       
       var txt = null;
-      var msgs = this.xmlsource.getElementsByTagName('message');
+      var msgs = this.rawcompxml.getElementsByTagName('message');
       for (var i = 0;i < msgs.length; ++i) {
          var msg = msgs[i];
-         if (this.currentcompid == msg.parentElement.getAttribute("id")) {
-            // Got the message for our competition
-            for (var j = 0; j < msg.childNodes.length; ++j) {
-               if (3 == msg.childNodes[j].nodeType) {
-                  // text node
-                  txt = msg.childNodes[j].data;
-                  
-                  // Found the text node so break out of the loop
-                  break;
-               }
+         for (var j = 0; j < msg.childNodes.length; ++j) {
+            if (3 == msg.childNodes[j].nodeType) {
+               // text node
+               txt = msg.childNodes[j].data;
+
+               // Found the text node so break out of the loop
+               break;
             }
-            // We have found our competition so return early.
-            break;
-     
-         }     
+         }   
       }
-      // If we have a message then display it
-      if (null != txt && 0 < txt.length) {
-         // Got something to display.
-         var msgdiv = document.getElementById("messages");
-         if (null != msgdiv) {
+      var msgdiv = document.getElementById("messages");
+      if (null != msgdiv) {
+         // If we have a message then display it
+         if (null != txt && 0 < txt.length) {
+            // Got something to display.
             // Set the message text
             msgdiv.innerHTML = txt;
 
@@ -322,7 +316,9 @@ function pageload() {
             setTimeout(function() {
                   msgdiv.style.visibility = "hidden";; 
                }, 2 * scrolldelay / 3);
-         }
+         } else 
+            msgdiv.style.visibility = "hidden";
+         
       }
    }
         
@@ -444,13 +440,20 @@ function pageload() {
 
                // Add the new scroller, this will fill in the div
                var newscroller = new scroller(myElement, this);
+               
+               // If we are an entry list, fpp list (which is ranking) or a ranking list then we reload the comp (because of one these is always present)
+               var classname = divelem.getAttribute("class");
+               newscroller.reloader = "vlist_entry" == classname || "vlist_ranking2" == classname ||"vlist_ranking" == classname;
+               
                newscroller.load(divelem, true);
                this.scrollers.push(newscroller);
 
                // Set various attributes here so they don't get overwritten by the xml load.
-               myElement.className = divelem.getAttribute("class");
+               myElement.className = classname;
                myElement.id = divelem.getAttribute("id");
                myElement.setAttribute('name', 'topdiv');
+               
+               
 
                document.body.appendChild(myElement);
             }

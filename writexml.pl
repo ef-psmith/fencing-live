@@ -176,7 +176,9 @@ sub do_comp
 	
 	$out->{id} = $cid;
 	$out->{titre_ligne} = $c->titre_ligne;
-	$out->{background} = $comp->{background};
+   $out->{background} = $comp->{background};
+   
+   $out->{message} = $comp->{message};
 
 	my $where = $c->whereami;
 	

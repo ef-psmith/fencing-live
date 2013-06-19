@@ -77,6 +77,9 @@ function scroller(div, pageloader) {
 
    this.pages = new Array();
    this.pageindex = 0;
+   
+   // Is this a scroller that reloads the competition xml
+   this.reloader = false;
 
    this.myElement = div;
    
@@ -103,10 +106,17 @@ function scroller(div, pageloader) {
       }
    };
 
-   /**
-      Move to a specific page of the scrolling
-   */
    this.movetopage = function(index) {
+      if (this.reloader)
+         this.reloadcompfile(this.pageloader.currentcompid, index);
+      else
+         this.changepage(index);
+   }
+   
+      /**
+         Move to a specific page of the scrolling
+   */
+   this.changepage = function(index) {
       // Hide the old page
       var currdiv = null;
       if (index > 0) {
@@ -119,15 +129,7 @@ function scroller(div, pageloader) {
       // Make the specified one visible
       var newdiv = document.getElementById(this.pages[index]);
       
-      
-      
-      // If we haven't got processed xml then process it now
-      if (null == this.pageloader.proccompxml) {
-      
-         var thiscompnode = this.pageloader.rawcompxml.getElementsByTagName('competition')[0];
-         this.pageloader.proccompxml = transformDoc(thiscompnode, xsl);
-      }
-      
+           
       // Try to reload the div from the latest XML source.
       var newcontents = this.pageloader.proccompxml.ownerDocument.getElementById(this.pages[index]);
       
@@ -191,6 +193,74 @@ function scroller(div, pageloader) {
       
       this.pageloader.showmessages();
    };
+   
+   
+   /**
+      Get the competition file
+   */
+   this.reloadcompfile = function(compid, newpage) {
+
+      if (null == compid) {
+         return;
+      }
+
+      var compfilename = '../competitions/' + compid + '.xml';
+
+      var http_request = false;
+      if (window.XMLHttpRequest) { // Mozilla, Safari,...
+         http_request = new XMLHttpRequest();
+         if (http_request.overrideMimeType) {
+            http_request.overrideMimeType('text/xml');
+         }
+      } else if (window.ActiveXObject) { // IE
+         try {
+            http_request = new ActiveXObject("Msxml2.XMLHTTP");
+         } catch (e) {
+            try {
+               http_request = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) { }
+         }
+      }
+      if (!http_request) {
+         alert('Cannot create XMLHTTP instance');
+         return false;
+      }
+
+      var requestor = this;
+      http_request.onreadystatechange =
+         function() {
+            if (http_request.readyState == 4) {
+               if (http_request.status == 200 || http_request.status == 0) {
+
+                  var xmldoc = http_request.responseXML;
+
+                  // If the id of the competition we have loaded is the same as the current id then save it.
+                  if (compid == requestor.pageloader.currentcompid)
+                  {                   
+
+                     // Now get the competition node   
+                     var thiscompnode = xmldoc.getElementsByTagName('competition')[0];
+
+                     // if we moved competitions then we need to regenerate the processed xml
+                     var comp = transformDoc(thiscompnode, xsl);
+                     requestor.pageloader.proccompxml = comp;
+                     requestor.pageloader.rawcompxml = xmldoc;
+                  } 
+
+                  requestor.changepage(newpage);
+
+
+               } else {
+                  // Failed so try again
+                  setTimeout(function() {requestor.fetchpages(compid);}, 5000);
+               }
+            }
+         };
+
+      http_request.open('GET', compfilename, true);
+      http_request.send(null);
+   }
+
 }
 
 
@@ -217,6 +287,7 @@ function pageload() {
    this.showmessages = function() {
       // Is there a message for the current competition
       
+      var txt = null;
       var msgs = this.xmlsource.getElementsByTagName('message');
       for (var i = 0;i < msgs.length; ++i) {
          var msg = msgs[i];
@@ -225,24 +296,8 @@ function pageload() {
             for (var j = 0; j < msg.childNodes.length; ++j) {
                if (3 == msg.childNodes[j].nodeType) {
                   // text node
-                  var txt = msg.childNodes[j].data;
+                  txt = msg.childNodes[j].data;
                   
-                  if (null != txt && 0 < txt.length) {
-                     // Got something to display.
-                     var msgdiv = document.getElementById("messages");
-                     if (null != msgdiv) {
-                        // Set the message text
-                        msgdiv.innerHTML = txt;
-                        
-                        msgdiv.style.visibility = "visible";
-                        // now put a timer on to switch it off.
-                        
-                        // Reload in one third of the scroll delay
-                        setTimeout(function() {
-                              msgdiv.style.visibility = "hidden";; 
-                           }, 2 * scrolldelay / 3);
-                     }
-                  }
                   // Found the text node so break out of the loop
                   break;
                }
@@ -250,6 +305,23 @@ function pageload() {
             // We have found our competition so return early.
             break;
      
+         }     
+      }
+      // If we have a message then display it
+      if (null != txt && 0 < txt.length) {
+         // Got something to display.
+         var msgdiv = document.getElementById("messages");
+         if (null != msgdiv) {
+            // Set the message text
+            msgdiv.innerHTML = txt;
+
+            msgdiv.style.visibility = "visible";
+            // now put a timer on to switch it off.
+
+            // Reload in one third of the scroll delay
+            setTimeout(function() {
+                  msgdiv.style.visibility = "hidden";; 
+               }, 2 * scrolldelay / 3);
          }
       }
    }
@@ -276,12 +348,7 @@ function pageload() {
             return;
          }
          
-         
-         // If we have a current competition id but no xml then we just return
-         if (null != this.currentcompid && null == this.rawcompxml) {
-            return;
-         }
-         
+                
          var compsenabled = new Object();
          var comps = xmldoc.getElementsByTagName('competition');
          
@@ -350,36 +417,7 @@ function pageload() {
          
 
     this.startscrollers = 
-      function() {
-      
-                              
-         // Now get the competition node   
-         var thiscompnode = this.rawcompxml.getElementsByTagName('competition')[0];
-         
-         
-         
-         // if we moved competitions then we need to regenerate the processed xml
-         var comp = transformDoc(thiscompnode, xsl);
-         this.proccompxml = comp;
-         
-         //alert("Current Competition ID: " + this.currentcompid + "\nThis Competition Node ID: " + thiscompnode.getAttribute("id")+ "\nThis Processed Xml ID: " + comp.getAttribute("id"));
-         
-
-         // Background colours
-         var borders = document.getElementsByName('border');
-         var bgcol = thiscompnode.getAttribute('background');
-         for (var b = 0; b < borders.length; ++b) {
-            borders[b].style.backgroundColor = bgcol;
-         }
-
-         // Timestamp
-         var tstamps = document.getElementsByName('timestamp');
-         var tstamp = thiscompnode.getAttribute('lastupdate');
-         for (var t = 0; t < tstamps.length; ++t) {
-            tstamps[t].innerHTML = tstamp;
-         }
-
-
+      function() {        
 
          // Kill all the div timers
          for (var s = 0; s < this.scrollers.length;  ++s) {
@@ -396,7 +434,7 @@ function pageload() {
          }
 
          // Now get the new div definitions
-         var newdivs = comp.getElementsByTagName('topdiv');
+         var newdivs = this.proccompxml.getElementsByTagName('topdiv');
          if (0 < newdivs.length) {
             for (var d = 0; d < newdivs.length; ++d) {
                // Create the div.
@@ -568,11 +606,30 @@ function pageload() {
                   
                   // If the id of the competition we have loaded is the same as the current id then save it.
                   if (compid == requestor.currentcompid)
-                  {
-                     requestor.rawcompxml = xmldoc;
-                     // Note that we have reloaded the current XML
-                     requestor.proccompxml = null;
+                  {                   
+                  
+                     // Now get the competition node   
+                     var thiscompnode = xmldoc.getElementsByTagName('competition')[0];
                      
+                     
+                     // Background colours
+                     var borders = document.getElementsByName('border');
+                     var bgcol = thiscompnode.getAttribute('background');
+                     for (var b = 0; b < borders.length; ++b) {
+                        borders[b].style.backgroundColor = bgcol;
+                     }
+
+                     // Timestamp
+                     var tstamps = document.getElementsByName('timestamp');
+                     var tstamp = thiscompnode.getAttribute('lastupdate');
+                     for (var t = 0; t < tstamps.length; ++t) {
+                        tstamps[t].innerHTML = tstamp;
+         }
+
+                     // if we moved competitions then we need to regenerate the processed xml
+                     var comp = transformDoc(thiscompnode, xsl);
+                     requestor.proccompxml = comp;
+                     requestor.rawcompxml = xmldoc;
                   } 
                   
                   requestor.startscrollers();

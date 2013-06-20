@@ -15,8 +15,8 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="writexml perl script for Engarde live displays"
 NAME=writexml
-DAEMON=/home/engarde/live/writexml.pl
-DAEMON_ARGS=""
+DAEMON=/bin/su 
+DAEMON_ARGS="engarde -c /home/engarde/live/writexml.pl"
 PIDFILE=/home/engarde/public/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 

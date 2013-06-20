@@ -93,6 +93,7 @@ unless ($^O =~ /MSWin32/ || $runonce)
 
 	# App::Daemon doesn't work for some reason
 	eval { use App::Daemon qw(detach) }; 
+	$App::Daemon::as_user = "engarde";
 	detach();
 }
 

@@ -1,0 +1,21 @@
+install debian or ubuntu - fairly minimal
+
+install firefox (for rPi iceweasel)
+
+install r-kiosk extension
+
+disable disk and memory cache (via about:config)
+
+set home page
+
+disable session restore from crash
+
+install unclutter
+
+install x11vnc
+
+xset to remove screen saver / dpms
+
+disable all hardware power management
+
+

@@ -528,7 +528,6 @@ sub do_where
 
 sub do_tableau_matches
 {
-
 	my $t = shift;
 	my $aff = shift;
 	
@@ -594,8 +593,8 @@ sub do_tableau
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
-	# my @alltab = $c->tableaux;
-	my @alltab = split / /,uc($c->tableaux_en_cours);
+	my @alltab = $c->tableaux;
+	# my @alltab = split / /,uc($c->tableaux_en_cours);
 
 	Engarde::debug(2, "do_tableau: alltab = @alltab");
 	

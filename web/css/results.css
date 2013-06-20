@@ -1,0 +1,56 @@
+
+.tl { 
+	width: 33%;
+	height: 50%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: red;
+}
+
+.tc {
+	width: 33%;
+	height: 50%;
+	position: absolute;
+	left: 33%;
+	top: 0px;
+	background: orange;
+}
+
+.tr {
+	width: 34%;
+	height: 50%;
+	position: absolute;
+	left: 66%;
+	top: 0px;
+	background: yellow;
+}
+
+.bl { 
+	width: 33%;
+	height: 50%;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	background: green;
+}
+
+.bc {
+	width: 33%;
+	height: 50%;
+	position: absolute;
+	left: 33%;
+	bottom: 0px;
+	background: blue;
+}
+
+.br {
+	width: 34%;
+	height: 50%;
+	position: absolute;
+	left: 66%;
+	bottom: 0px;
+	background: violet;
+}
+
+	

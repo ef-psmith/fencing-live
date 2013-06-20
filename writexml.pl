@@ -315,7 +315,7 @@ sub do_poules
 		{
 			# debug(1, "fpp: poule = " . Dumper(\$poule));
 
-			$out = {'number' => $pnum+1, 'piste' => $poule->piste_no || '&#160;', 'heure' => $poule->heure || '', 'size' => $poule->size};
+			$out = {'number' => $pnum+1, 'piste' => $poule->piste_no || 'N/A', 'heure' => $poule->heure || '', 'size' => $poule->size};
 			# debug(1, "fpp: out = " . Dumper(\$out));
 
 			$out->{fencers} = $poule->grid(1);
@@ -594,8 +594,8 @@ sub do_tableau
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
-	my @alltab = $c->tableaux;
-	# my @alltab = split / /,uc($c->tableaux_en_cours);
+	# my @alltab = $c->tableaux;
+	my @alltab = split / /,uc($c->tableaux_en_cours);
 
 	Engarde::debug(2, "do_tableau: alltab = @alltab");
 	

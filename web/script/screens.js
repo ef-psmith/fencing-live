@@ -131,7 +131,20 @@ function scroller(div, pageloader) {
       
            
       // Try to reload the div from the latest XML source.
-      var newcontents = this.pageloader.processedcompxml().ownerDocument.getElementById(this.pages[index]);
+      var newcontents = null; //this.pageloader.processedcompxml().ownerDocument.getElementById(this.pages[index]);
+	  
+	  
+      var xmlpages = this.pageloader.processedcompxml().ownerDocument.getElementsByTagName('content');
+	  
+	  for (var p = 0; p < xmlpages.length; ++p) {
+	     var children = xmlpages[p].childNodes;
+		 for (var d = 0; d < children.length; ++d) {
+            if (this.pages[index] == children[d].getAttribute("id")) {
+		       newcontents = children[d];
+			   break;
+	        }
+		 }
+	  }
       
       if (null == newcontents) {
       

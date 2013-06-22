@@ -131,7 +131,7 @@ function scroller(div, pageloader) {
       
            
       // Try to reload the div from the latest XML source.
-      var newcontents = this.pageloader.proccompxml.ownerDocument.getElementById(this.pages[index]);
+      var newcontents = this.pageloader.getproccompxml().ownerDocument.getElementById(this.pages[index]);
       
       if (null == newcontents) {
       
@@ -286,7 +286,7 @@ function pageload() {
    var proccompxml = null;
    
    this.getproccompxml = function() {
-	   return proccompxml;
+	   return this.proccompxml;
 	}
    
    this.showmessages = function() {
@@ -435,7 +435,7 @@ function pageload() {
          }
 
          // Now get the new div definitions
-         var newdivs = this.proccompxml.getElementsByTagName('topdiv');
+         var newdivs = this.getproccompxml().getElementsByTagName('topdiv');
          if (0 < newdivs.length) {
             for (var d = 0; d < newdivs.length; ++d) {
                // Create the div.

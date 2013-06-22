@@ -92,7 +92,7 @@ unless ($^O =~ /MSWin32/ || $runonce)
 	#	}
 
 	# App::Daemon doesn't work for some reason
-	eval { use App::Daemon qw(detach) }; 
+	# eval { use App::Daemon qw(detach) }; 
 	$App::Daemon::as_user = "engarde";
 	detach();
 }
@@ -357,6 +357,8 @@ sub do_fpp_list
 	my $sequence=1;
 	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
 	{
+		$fencers->{$fid}->{piste_no} = 'N/A' if $fencers->{$fid}->{piste_no} eq "-1";
+		
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
 						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
 						piste => $fencers->{$fid}->{piste_no} || ' ', 	
@@ -505,6 +507,8 @@ sub do_where
 	
 	my $sequence = 1;
 	
+	$fencers->{$f}->{piste} = 'N/A' if $fencers->{$f}->{piste} eq "-1";
+		
 	foreach my $f (sort keys %$fencers)
 	{
 		push @list, { 	name => $f, 
@@ -596,6 +600,11 @@ sub do_tableau
 	
 	# my @alltab = $c->tableaux;
 	my @alltab = split / /,uc($c->tableaux_en_cours);
+	
+	if (scalar @alltab == 1)
+	{
+		push @alltab, $c->next_tableau($alltab[0]); 
+	}
 
 	Engarde::debug(2, "do_tableau: alltab = @alltab");
 	

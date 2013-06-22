@@ -131,7 +131,7 @@ function scroller(div, pageloader) {
       
            
       // Try to reload the div from the latest XML source.
-      var newcontents = this.pageloader.proccompxml.ownerDocument.getElementById(this.pages[index]);
+      var newcontents = this.pageloader.getproccompxml().ownerDocument.getElementById(this.pages[index]);
       
       if (null == newcontents) {
       
@@ -199,10 +199,6 @@ function scroller(div, pageloader) {
       Get the competition file
    */
    this.reloadcompfile = function(compid, newpage) {
-
-      if (null == compid) {
-         return;
-      }
 
       var compfilename = '../competitions/' + compid + '.xml';
 
@@ -283,6 +279,10 @@ function pageload() {
    
    // The processed XML for the current competition
    var proccompxml = null;
+   
+   this.getproccompxml = function() {
+	   return proccompxml;
+	}
    
    this.showmessages = function() {
       // Is there a message for the current competition
@@ -430,7 +430,7 @@ function pageload() {
          }
 
          // Now get the new div definitions
-         var newdivs = this.proccompxml.getElementsByTagName('topdiv');
+         var newdivs = this.getproccompxml().getElementsByTagName('topdiv');
          if (0 < newdivs.length) {
             for (var d = 0; d < newdivs.length; ++d) {
                // Create the div.
@@ -503,17 +503,9 @@ function pageload() {
                this.scrollers[s].stop();
             }
 
-            var updated = this.fetch();
+			// We are done so reload config and then the competitions
+            this.fetch();
             
-            // If we have no scrollers then call ourselves again in a few seconds
-            
-            if (0 == this.scrollers.length)
-            {
-               var caller = this;
-               setTimeout(function() {
-                  loaded = caller.scrollerfinished();
-                  }, 3000);
-            }
          }
 
          return allfinished;

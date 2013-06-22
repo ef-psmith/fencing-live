@@ -522,7 +522,7 @@ with half the number of matches.
       <xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></xsl:attribute>
       <xsl:if test="(@number -1) div ($col1size * 2) > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
       <div class="tableautitle">
-         <p class="tableautitlepart"><xsl:value-of select="../../@title"/></p>
+         <p class="tableautitlepart"><xsl:value-of select="../@title"/></p>
          <xsl:if test="count(../match[@number > ($col1size * 2)]) > 0">
             <p class="tableautitlepart">Part <xsl:value-of select="((@number - 1) div ($col1size * 2)) + 1" /> of <xsl:value-of select="count(../match) div ($col1size * 2)" /></p>
          </xsl:if>
@@ -625,7 +625,7 @@ with half the number of matches.
 		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
 		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
 		<div class="tableautitle">
-		   <p class="tableautitlepart"><xsl:value-of select="../../@title"/></p>
+		   <p class="tableautitlepart"><xsl:value-of select="../@title"/></p>
 			<xsl:if test="count(../match[@number > $col1size]) > 0">
 				<p class="tableautitlepart">Part <xsl:value-of select="((@number - 1) div $col1size) + 1" /> of  <xsl:value-of select="count(../match) div $col1size" /></p>
 			</xsl:if>

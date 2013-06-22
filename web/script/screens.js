@@ -200,6 +200,11 @@ function scroller(div, pageloader) {
    */
    this.reloadcompfile = function(compid, newpage) {
 
+      if (null == compid) {
+	     // this should never happen
+         return;
+      }
+
       var compfilename = '../competitions/' + compid + '.xml';
 
       var http_request = false;
@@ -472,6 +477,10 @@ function pageload() {
             myElement.innerHTML = "<h1>" + comp.getAttribute('titre_ligne') + "</h1>";
 
             document.body.appendChild(myElement);
+			
+			var requestor = this;
+            setTimeout(function() {requestor.scrollerfinished();}, 20000);
+			
          }
                
          this.showmessages();

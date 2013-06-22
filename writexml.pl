@@ -357,7 +357,7 @@ sub do_fpp_list
 	my $sequence=1;
 	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
 	{
-		$fencers->{$fid}->{piste_no} = 'N/A' if $fencers->{$fid}->{piste_no} eq "-1";
+		$fencers->{$fid}->{piste_no} = 'TBD' if $fencers->{$fid}->{piste_no} eq "-1";
 		
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
 						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
@@ -507,7 +507,7 @@ sub do_where
 	
 	my $sequence = 1;
 	
-	$fencers->{$f}->{piste} = 'N/A' if $fencers->{$f}->{piste} eq "-1";
+	$fencers->{$f}->{piste} = 'TBD' if $fencers->{$f}->{piste} eq "-1";
 		
 	foreach my $f (sort keys %$fencers)
 	{
@@ -603,7 +603,15 @@ sub do_tableau
 	
 	if (scalar @alltab == 1)
 	{
-		push @alltab, $c->next_tableau($alltab[0]); 
+		if ($alltab[0] eq "A2")
+		{
+			$alltab[0] = "A4";
+			$alltab[1] = "A2";
+		}
+		else
+		{
+			push @alltab, $c->next_tableau($alltab[0]); 
+		}
 	}
 
 	Engarde::debug(2, "do_tableau: alltab = @alltab");

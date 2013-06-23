@@ -50,7 +50,7 @@ function changeTab(pageid) {
 </head>
 <body>
 <h1><xsl:value-of select="@titre_ligne"/></h1>
-<p><a><xsl:attribute name="href">portal.php?tournament=' . $tournid .'</xsl:attribute>Up to all Competitions</a></p>
+<p><a><xsl:attribute name="href">tournament.php?tournament=' . $tournid .'</xsl:attribute>Up to all Competitions</a></p>
 
 <ul>
 <xsl:for-each select="lists[@name = \'ranking\' or @name = \'entry\']">
@@ -92,7 +92,7 @@ Entries
 </div>
 
 
-<p><a><xsl:attribute name="href">portal.php?tournament=' . $tournid .'</xsl:attribute>Up to all Competitions</a></p>
+<p><a><xsl:attribute name="href">tournament.php?tournament=' . $tournid .'</xsl:attribute>Up to all Competitions</a></p>
 </body>
 </html>
 </xsl:template>

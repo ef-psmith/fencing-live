@@ -92,7 +92,7 @@ unless ($^O =~ /MSWin32/ || $runonce)
 	#	}
 
 	# App::Daemon doesn't work for some reason
-	# eval { use App::Daemon qw(detach) }; 
+	eval { use App::Daemon qw(detach) }; 
 	$App::Daemon::as_user = "engarde";
 	detach();
 }
@@ -246,7 +246,6 @@ sub do_comp
 	{
 		$out->{tableau} = do_tableau($c, $where);
 		push @{$out->{lists}}, do_final_list($c, $nif);
-
 
 		# push the ranking after the pools 
 		my $fencers = $c->ranking("p");
@@ -507,10 +506,10 @@ sub do_where
 	
 	my $sequence = 1;
 	
-	$fencers->{$f}->{piste} = 'TBD' if $fencers->{$f}->{piste} eq "-1";
-		
 	foreach my $f (sort keys %$fencers)
 	{
+		$fencers->{$f}->{piste} = 'TBD' if $fencers->{$f}->{piste} eq "-1";
+		
 		push @list, { 	name => $f, 
 						time => $fencers->{$f}->{time} || "", 
 						round => $fencers->{$f}->{round} || "", 
@@ -598,22 +597,32 @@ sub do_tableau
 	my $dom = $c->domaine_compe;
 	my $aff = $dom eq "national" ? "club" : "nation";
 	
-	# my @alltab = $c->tableaux;
-	my @alltab = split / /,uc($c->tableaux_en_cours);
+	my @possible_tableaux = $c->tableaux;
+	my @alltab;
 	
-	if (scalar @alltab == 1)
+	my @en_cours = split / /,uc($c->tableaux_en_cours);
+	my %en_cours = map { $_ => 1 } @en_cours;
+	
+	print Dumper(\@possible_tableaux);
+	print Dumper(\%en_cours);
+	
+	my $found = 0;
+	
+	foreach my $i (@possible_tableaux)
 	{
-		if ($alltab[0] eq "A2")
+		if ( exists $en_cours{$i} && !$found)
 		{
-			$alltab[0] = "A4";
-			$alltab[1] = "A2";
+			@alltab = (@alltab, @en_cours);
+			$found = 1;
 		}
-		else
+		elsif ( !$found)
 		{
-			push @alltab, $c->next_tableau($alltab[0]); 
-		}
+			push @alltab, $i;
+		}	
 	}
-
+	
+	# @alltab = ("A4", "A2") if ($alltab[0] eq "A2");
+	
 	Engarde::debug(2, "do_tableau: alltab = @alltab");
 	
 	foreach my $atab (@alltab)

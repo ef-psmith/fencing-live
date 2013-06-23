@@ -603,9 +603,6 @@ sub do_tableau
 	my @en_cours = split / /,uc($c->tableaux_en_cours);
 	my %en_cours = map { $_ => 1 } @en_cours;
 	
-	print Dumper(\@possible_tableaux);
-	print Dumper(\%en_cours);
-	
 	my $found = 0;
 	
 	foreach my $i (@possible_tableaux)

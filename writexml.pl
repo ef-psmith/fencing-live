@@ -356,7 +356,7 @@ sub do_fpp_list
 	my $sequence=1;
 	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
 	{
-		$fencers->{$fid}->{piste_no} = 'TBD' if $fencers->{$fid}->{piste_no} eq "-1";
+		$fencers->{$fid}->{piste_no} = 'TBD' if ($fencers->{$fid}->{piste_no} && $fencers->{$fid}->{piste_no} eq "-1");
 		
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
 						affiliation => $fencers->{$fid}->{$aff} || 'U/A',

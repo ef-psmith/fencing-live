@@ -6,7 +6,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- Global variables for controlling the display parameters -->
 <xsl:variable name="fpppagesize" select="number(30)" />
-<xsl:variable name="whereamipagesize" select="number(30)" />
+<xsl:variable name="whereamipagesize" select="number(35)" />
 <xsl:variable name="rankingpagesize" select="number(30)" />
 <xsl:variable name="entrysize" select="number(138)" />
 <xsl:variable name="poolsperpage" select="number(2)"/>

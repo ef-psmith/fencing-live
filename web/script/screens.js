@@ -6,7 +6,7 @@ var pageloader;
 var xsl;
 
 // Scroll delay of 30 seconds
-var scrolldelay = 15000;
+var scrolldelay = 20000;
 
 function onPageLoaded(aEvent) {
 

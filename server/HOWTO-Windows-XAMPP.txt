@@ -1,0 +1,49 @@
+Download XAMPP here:
+
+http://www.apachefriends.org/en/xampp-windows.html#641
+
+
+Install XAMPP - follow the instructions about the target directory (e.g. install to c:\xampp or somewhere else not subject to UAC)
+
+
+XAMPP comes with a cut down install of Strawberry Perl so you need to replace it with one that works.
+
+Download a full copy of Strawberry Perl here:
+
+http://strawberryperl.com/
+
+
+Install in the same location as XAMPP perl - c:\xampp\perl if you took the default path
+
+
+create a symlink (via a command prompt)
+
+mklink /d c:\opt c:\xampp\perl
+
+
+Edit as required and add the content of httpd-engarde.conf to the Apache config - either
+
+copy httpd-engarde.conf c:\xampp\apache\conf\extra
+
+add: Include "conf/extra/httpd-engarde.conf" 
+
+to: c:\xampp\apache\conf\httpd.conf
+
+OR add the content directly to httpd.conf
+
+
+
+
+Start the XAMPP control panel (always start as administrator)
+
+Start / restart apache
+
+
+http://localhost/escrime/  should now point to the index page
+
+
+
+
+
+
+

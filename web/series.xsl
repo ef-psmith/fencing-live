@@ -472,10 +472,10 @@ The first mentioned is the left hand column, the right hand column is the tablea
 with half the number of matches.
 -->
 <xsl:choose>
-<xsl:when test="@stage='termine' or substring-after(@stage, 'tableau ') = 'A2'">
+<xsl:when test="@stage='termine' or number(substring(substring-after(@stage, 'tableau '),2)) = 2">
 
 	<xsl:apply-templates select="." mode="render" >
-		<xsl:with-param name="col1" >A4</xsl:with-param>
+      <xsl:with-param name="col1" ><xsl:value-of select="substring(substring-after(@stage, 'tableau '),1,1)"/>4</xsl:with-param>
 	</xsl:apply-templates>
 </xsl:when>
 <xsl:when test="contains(substring-after(@stage, 'tableau '), ' ')">

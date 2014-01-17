@@ -471,27 +471,100 @@ tableau rounds.  This could be only one i.e. "tableau A64", or any number e.g. "
 The first mentioned is the left hand column, the right hand column is the tableau id of the tableau
 with half the number of matches.
 -->
-<xsl:choose>
-<xsl:when test="@stage='termine' or number(substring(substring-after(@stage, 'tableau '),2)) = 2">
 
-	<xsl:apply-templates select="." mode="render" >
+<topdiv class="tableau" id="tableau" name="topdiv">
+<xsl:choose>
+<!-- Check for finals.  If it is the final then move to semifinal in that same suite -->
+<xsl:when test="@stage='termine' or number(substring(substring-after(@stage, 'tableau '),2)) = 2">
+<pages>
+   <xsl:apply-templates select="." mode="tableaupages" >
       <xsl:with-param name="col1" ><xsl:value-of select="substring(substring-after(@stage, 'tableau '),1,1)"/>4</xsl:with-param>
-	</xsl:apply-templates>
+   </xsl:apply-templates>
+</pages>
+
+<content>
+<h1><xsl:value-of select="./@titre_ligne" /></h1>
+   <xsl:apply-templates select="." mode="render" >
+      <xsl:with-param name="col1" ><xsl:value-of select="substring(substring-after(@stage, 'tableau '),1,1)"/>4</xsl:with-param>
+   </xsl:apply-templates>
+</content>
 </xsl:when>
 <xsl:when test="contains(substring-after(@stage, 'tableau '), ' ')">
+
+<!-- Two tableaus -->
+<pages>
+   <xsl:apply-templates select="." mode="tableaupages" >
+      <xsl:with-param name="col1" select="substring-before(substring-after(@stage, 'tableau '), ' ')"/>
+   </xsl:apply-templates>
+   <xsl:apply-templates select="." mode="tableaupages" >
+      <xsl:with-param name="col1" select="substring-after(substring-after(@stage, 'tableau '), ' ')"/>
+   </xsl:apply-templates>
+</pages>
+
+<content>
+<h1><xsl:value-of select="./@titre_ligne" /></h1>
    <xsl:apply-templates select="." mode="render" >
       <xsl:with-param name="col1" select="substring-before(substring-after(@stage, 'tableau '), ' ')"/>
    </xsl:apply-templates>
+   <xsl:apply-templates select="." mode="render" >
+      <xsl:with-param name="col1" select="substring-after(substring-after(@stage, 'tableau '), ' ')"/>
+   </xsl:apply-templates>
+</content>
 </xsl:when>
 
 <xsl:otherwise>
-
-	<xsl:apply-templates select="." mode="render" >
+<!-- One tableau -->
+<pages>
+   <xsl:apply-templates select="." mode="tableaupages" >
       <xsl:with-param name="col1" select="substring-after(@stage, 'tableau ')"/>
-	</xsl:apply-templates>
+   </xsl:apply-templates>
+</pages>
+<content>
+<h1><xsl:value-of select="./@titre_ligne" /></h1>
+   <xsl:apply-templates select="." mode="render" >
+      <xsl:with-param name="col1" select="substring-after(@stage, 'tableau ')"/>
+   </xsl:apply-templates>
+</content>
 </xsl:otherwise>
 </xsl:choose>
+
+
+</topdiv>
 </xsl:template>
+
+
+<xsl:template match="competition" mode="tableaupages">
+<xsl:param name="col1" />
+<xsl:variable name="col1matchcount" select="tableau[@name = $col1]/@count" />
+
+
+<xsl:choose>
+<xsl:when test="count(tableau[@name = $col1]/match) > 30">
+<!--
+   For large tableaus we show twice as many matches
+-->
+
+
+   <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
+      <xsl:sort select="tableau[@name = $col1]/match/@number" />
+      <page><xsl:value-of select="$col1" />T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></page>
+   </xsl:for-each>
+
+</xsl:when>
+<xsl:otherwise>
+<!-- Traditional rendering of tableau -->
+
+   <xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
+      <xsl:sort select="tableau[@name = $col1]/match/@number" />
+      <page><xsl:value-of select="$col1" />T<xsl:value-of select="(@number - 1) div $col1size" /></page>
+   </xsl:for-each>
+
+
+</xsl:otherwise>
+
+</xsl:choose>
+</xsl:template>
+
 
 
 <xsl:template match="competition" mode="render">
@@ -499,7 +572,6 @@ with half the number of matches.
 <xsl:variable name="col1matchcount" select="tableau[@name = $col1]/@count" />
 <xsl:variable name="col2" select="tableau[@count = $col1matchcount div 2]/@name" />
 
-<topdiv class="tableau" id="tableau" name="topdiv">
 
 <xsl:choose>
 
@@ -509,17 +581,9 @@ with half the number of matches.
 -->
 
 
-<pages>
-   <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
-      <xsl:sort select="tableau[@name = $col1]/match/@number" />
-      <page>T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></page>
-   </xsl:for-each>
-</pages>
-<content>
-<h1><xsl:value-of select="./@titre_ligne" /></h1>
    <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
    <div class="tableaudiv">
-      <xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></xsl:attribute>
+      <xsl:attribute name="id"><xsl:value-of select="$col1" />T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></xsl:attribute>
       <xsl:if test="(@number -1) div ($col1size * 2) > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
       <div class="tableautitle">
          <p class="tableautitlepart"><xsl:value-of select="../@title"/></p>
@@ -604,7 +668,6 @@ with half the number of matches.
 </xsl:if>
    </div>
    </xsl:for-each>
-</content>
 
 
 
@@ -612,17 +675,9 @@ with half the number of matches.
 <xsl:otherwise>
 <!-- Traditional rendering of tableau -->
 
-<pages>
-	<xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
-		<xsl:sort select="tableau[@name = $col1]/match/@number" />
-		<page>T<xsl:value-of select="(@number - 1) div $col1size" /></page>
-	</xsl:for-each>
-</pages>
-<content>
-<h1><xsl:value-of select="./@titre_ligne" /></h1>
 	<xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
 	<div class="tableaudiv">
-		<xsl:attribute name="id">T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
+      <xsl:attribute name="id"><xsl:value-of select="$col1" />T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
 		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
 		<div class="tableautitle">
 		   <p class="tableautitlepart"><xsl:value-of select="../@title"/></p>
@@ -669,12 +724,10 @@ with half the number of matches.
 </xsl:if>
 	</div>
 	</xsl:for-each>
-</content>
 </xsl:otherwise>
 
 
 </xsl:choose>
-</topdiv>
 </xsl:template>
 
 

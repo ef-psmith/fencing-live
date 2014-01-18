@@ -181,6 +181,23 @@ sub do_comp
    
    $out->{message} = $comp->{message};
 
+   
+	#	<xsl:variable name="fpppagesize" select="number(30)"/>
+	#	<xsl:variable name="whereamipagesize" select="number(35)"/>
+	#	<xsl:variable name="rankingpagesize" select="number(30)"/>
+	#	<xsl:variable name="entrysize" select="number(138)"/>
+	#	<xsl:variable name="poolsperpage" select="number(2)"/>
+	#	<xsl:variable name="col1size" select="number(4)"/>
+	#	<xsl:variable name="tablistsize" select="number(8)"/>
+   
+	$out->{fpppagesize} = 30;
+	$out->{whereamipagesize} = 35;
+	$out->{rankingpagesize} = 30;
+	$out->{entrysize} = 138;
+	$out->{poolsperpage} = 2;
+	$out->{col1size} = 4;
+	$out->{tablistsize} = 8;
+   
 	my $where = $c->whereami;
 	
 	# insert current status

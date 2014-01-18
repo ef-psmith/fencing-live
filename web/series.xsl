@@ -5,9 +5,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Global variables for controlling the display parameters -->
-<xsl:variable name="poolsperpage" select="number(2)"/>
 <xsl:variable name="col1size" select="number(4)"/>
-<xsl:variable name="tablistsize" select="number(8)"/>
 
 
 <!-- **********************************************************************************
@@ -364,21 +362,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="pools">
 <topdiv class="poule" id="pools" name="topdiv">
 <pages>
-	<xsl:for-each select="pool[@number mod $poolsperpage = 1]">
+   <xsl:for-each select="pool[@number mod ../../@poolsperpage = 1]">
 		<xsl:sort select="@number" data-type="number"/>
-		<page>P<xsl:value-of select="(@number - 1) div $poolsperpage" /></page>
+      <page>P<xsl:value-of select="(@number - 1) div ../../@poolsperpage" /></page>
 	</xsl:for-each>
 </pages>
 <content>
 <h1><xsl:value-of select="../@titre_ligne" /> &#x2014; <xsl:value-of select="count(pool)" /> Pools</h1>
-	<xsl:for-each select="pool[@number mod $poolsperpage = 1]" >
+   <xsl:for-each select="pool[@number mod ../../@poolsperpage = 1]" >
 		<div class="poulediv">
-			<xsl:attribute name="id">P<xsl:value-of select="(@number - 1) div $poolsperpage" /></xsl:attribute>
+         <xsl:attribute name="id">P<xsl:value-of select="(@number - 1) div ../../@poolsperpage" /></xsl:attribute>
 			<xsl:if test="@number != 1"><xsl:attribute name="class">poulediv hidden</xsl:attribute></xsl:if>
 			<xsl:if test="@number  = 1"><xsl:attribute name="class">poulediv visible</xsl:attribute></xsl:if>
 			<!--<h2>Poules <xsl:value-of select="@number" /> <xsl:if test="../pool[./@number = current()/@number + 1]">&#160;and <xsl:value-of select="@number + 1" /></xsl:if></h2>-->
 			<xsl:apply-templates select="." mode="render" />
-			<xsl:apply-templates select="../pool[./@number &lt; (current()/@number + $poolsperpage) and ./@number &gt; current()/@number ]" mode="render" >
+         <xsl:apply-templates select="../pool[./@number &lt; (current()/@number + ../../@poolsperpage) and ./@number &gt; current()/@number ]" mode="render" >
 				<xsl:sort select="@number" data-type="number" />
 			</xsl:apply-templates>
 		</div>
@@ -472,16 +470,17 @@ with half the number of matches.
 <xsl:choose>
 <!-- Check for finals.  If it is the final then move to semifinal in that same suite -->
 <xsl:when test="@stage='termine' or number(substring(substring-after(@stage, 'tableau '),2)) = 2">
+
 <pages>
    <xsl:apply-templates select="." mode="tableaupages" >
-      <xsl:with-param name="col1" ><xsl:value-of select="substring(substring-after(@stage, 'tableau '),1,1)"/>4</xsl:with-param>
+      <xsl:with-param name="col1" ><xsl:value-of select="tableau[@count = 2]/@name"/></xsl:with-param>
    </xsl:apply-templates>
 </pages>
 
 <content>
 <h1><xsl:value-of select="./@titre_ligne" />&#xA0;</h1>
    <xsl:apply-templates select="." mode="render" >
-      <xsl:with-param name="col1" ><xsl:value-of select="substring(substring-after(@stage, 'tableau '),1,1)"/>4</xsl:with-param>
+      <xsl:with-param name="col1" ><xsl:value-of select="tableau[@count = 2]/@name"/></xsl:with-param>
    </xsl:apply-templates>
 </content>
 </xsl:when>

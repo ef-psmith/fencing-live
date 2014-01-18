@@ -5,7 +5,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml" />
 
 <!-- Global variables for controlling the display parameters -->
-<xsl:variable name="fpppagesize" select="number(30)" />
+<!--<xsl:variable name="fpppagesize" select="number(30)" />-->
 <xsl:variable name="whereamipagesize" select="number(35)" />
 <xsl:variable name="rankingpagesize" select="number(30)" />
 <xsl:variable name="entrysize" select="number(138)" />
@@ -60,9 +60,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
-      <xsl:for-each select="fencer[@sequence mod ($fpppagesize * 2) = 1]">
+      <xsl:for-each select="fencer[@sequence mod (../../@fpppagesize * 2) = 1]">
 			<xsl:sort select="@sequence" />
-         <page>FPP<xsl:value-of select="(@sequence - 1) div ($fpppagesize * 2)" /></page>
+         <page>FPP<xsl:value-of select="(@sequence - 1) div (../../@fpppagesize * 2)" /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
@@ -87,14 +87,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </div>
 			
 	<!-- Now the list contents -->
-      <xsl:for-each select="fencer[@sequence mod ($fpppagesize * 2) = 1]">
+      <xsl:for-each select="fencer[@sequence mod (../../@fpppagesize * 2) = 1]">
 			<div class="vlist_title">
-            <xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div ($fpppagesize * 2)" /></xsl:attribute>
+            <xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div (../../@fpppagesize * 2)" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
 				
 					<xsl:apply-templates select="." mode="fppfencer" />
-               <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + ($fpppagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="fppfencer" >
+               <xsl:apply-templates select="../fencer[./@sequence &lt; (current()/@sequence + (../../@fpppagesize * 2)) and ./@sequence &gt; current()/@sequence ]" mode="fppfencer" >
 						<xsl:sort select="@sequence" data-type="number" />
 					</xsl:apply-templates>
 				

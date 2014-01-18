@@ -2,7 +2,7 @@
 #
 
 use lib '/home/engarde/lib';
-use lib 'C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-perl';
+use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
 use Engarde::Control;
 use Data::Dumper;

@@ -508,7 +508,7 @@ td.messagespace {
 .vm, .hs, .ind {
 	width: 3em;
 	text-align: right;
-	font-size: 0.4em;
+	font-size: 0.6em;
 }
 
 /* 
@@ -621,6 +621,9 @@ td.poule-grid-result {
 
 td.poule-grid-name, td.poule-grid-club {
 	border: 1px solid black;
+}
+td.poule-grid-club {
+   font-size: 0.7em;
 }
 
 td.poule-grid-vm, td.poule-grid-hs, td.poule-grid-ind, td.poule-grid-pl {

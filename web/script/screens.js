@@ -101,6 +101,8 @@ function scroller(div, pageloader) {
 
             this.pages.push(xmlpages[p].textContent);
          }
+         
+         this.pages.sort(function(a,b){return Number(a.substr(2)) - Number(b.substr(2))});
          // Overwrite the inner HTML of the node.
          translateElement(xmlelem.getElementsByTagName('content')[0], this.myElement, true);
       }

@@ -56,7 +56,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<pages>
       <xsl:for-each select="fencer[@sequence mod (../../@fpppagesize * 2) = 1]">
 			<xsl:sort select="@sequence" />
-         <page>FPP<xsl:value-of select="(@sequence - 1) div (../../@fpppagesize * 2)" /></page>
+         <page>FP<xsl:value-of select="(@sequence - 1) div (../../@fpppagesize * 2)" /></page>
 		</xsl:for-each >
 	</pages>
 	<content>
@@ -67,13 +67,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<table class="vlist_table">
 			<tr>
 			<td class="vlist_name">Name</td>
-			<td class="vlist_club">Club</td>
+			<td class="vlist_club">Aff</td>
 			<td class="vlist_poule">Pool</td>
 			<td class="vlist_piste">Piste</td>
 		</tr></table><table class="vlist_table">
 			<tr>
 			<td class="vlist_name">Name</td>
-			<td class="vlist_club">Club</td>
+         <td class="vlist_club">Aff</td>
 			<td class="vlist_poule">Pool</td>
 			<td class="vlist_piste">Piste</td>
 		</tr>
@@ -83,7 +83,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<!-- Now the list contents -->
       <xsl:for-each select="fencer[@sequence mod (../../@fpppagesize * 2) = 1]">
 			<div class="vlist_title">
-            <xsl:attribute name="id">FPP<xsl:value-of select="(@sequence - 1) div (../../@fpppagesize * 2)" /></xsl:attribute>
+            <xsl:attribute name="id">FP<xsl:value-of select="(@sequence - 1) div (../../@fpppagesize * 2)" /></xsl:attribute>
 				<xsl:if test="@sequence != 1"><xsl:attribute name="class">col_multi2 hidden</xsl:attribute></xsl:if>
 				<xsl:if test="@sequence  = 1"><xsl:attribute name="class">col_multi2 visible</xsl:attribute></xsl:if>
 				
@@ -237,7 +237,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <tr>
                      <td class="vlist_position">Pos</td>
                      <td class="vlist_name">Name</td>
-                     <td class="vlist_club">Club</td>
+                     <td class="vlist_club">Aff</td>
                      <xsl:if test="../@type='pools'">
                      <td class="vm">vm</td>
                      <td class="hs">hs</td>
@@ -257,7 +257,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <tr>
                      <td class="vlist_position">Pos</td>
                      <td class="vlist_name">Name</td>
-                     <td class="vlist_club">Club</td>
+                     <td class="vlist_club">Aff</td>
                      <xsl:if test="../@type='pools'">
                      <td class="vm">vm</td>
                      <td class="hs">hs</td>
@@ -299,7 +299,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<tr>
 			<td class="vlist_position">Pos</td>
 			<td class="vlist_name">Name</td>
-			<td class="vlist_club">Club</td>
+         <td class="vlist_club">Aff</td>
          <xsl:if test="@type='pools'">
          <td class="vm">vm</td>
          <td class="hs">hs</td>
@@ -364,14 +364,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <pages>
    <xsl:for-each select="pool[@number mod ../../@poolsperpage = 1]">
 		<xsl:sort select="@number" data-type="number"/>
-      <page>P<xsl:value-of select="(@number - 1) div ../../@poolsperpage" /></page>
+      <page>PL<xsl:value-of select="(@number - 1) div ../../@poolsperpage" /></page>
 	</xsl:for-each>
 </pages>
 <content>
 <h1><xsl:value-of select="../@titre_ligne" /> &#x2014; <xsl:value-of select="count(pool)" /> Pools</h1>
    <xsl:for-each select="pool[@number mod ../../@poolsperpage = 1]" >
 		<div class="poulediv">
-         <xsl:attribute name="id">P<xsl:value-of select="(@number - 1) div ../../@poolsperpage" /></xsl:attribute>
+         <xsl:attribute name="id">PL<xsl:value-of select="(@number - 1) div ../../@poolsperpage" /></xsl:attribute>
 			<xsl:if test="@number != 1"><xsl:attribute name="class">poulediv hidden</xsl:attribute></xsl:if>
 			<xsl:if test="@number  = 1"><xsl:attribute name="class">poulediv visible</xsl:attribute></xsl:if>
 			<!--<h2>Poules <xsl:value-of select="@number" /> <xsl:if test="../pool[./@number = current()/@number + 1]">&#160;and <xsl:value-of select="@number + 1" /></xsl:if></h2>-->
@@ -542,7 +542,7 @@ with half the number of matches.
 
    <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
       <xsl:sort select="tableau[@name = $col1]/match/@number" />
-      <page><xsl:value-of select="$col1" />T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></page>
+      <page><xsl:value-of select="$col1" />TB<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></page>
    </xsl:for-each>
 
 </xsl:when>
@@ -551,7 +551,7 @@ with half the number of matches.
 
    <xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
       <xsl:sort select="tableau[@name = $col1]/match/@number" />
-      <page><xsl:value-of select="$col1" />T<xsl:value-of select="(@number - 1) div $col1size" /></page>
+      <page><xsl:value-of select="$col1" />TB<xsl:value-of select="(@number - 1) div $col1size" /></page>
    </xsl:for-each>
 
 
@@ -578,7 +578,7 @@ with half the number of matches.
 
    <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
    <div class="tableaudiv">
-      <xsl:attribute name="id"><xsl:value-of select="$col1" />T<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></xsl:attribute>
+      <xsl:attribute name="id"><xsl:value-of select="$col1" />TB<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></xsl:attribute>
       <xsl:if test="(@number -1) div ($col1size * 2) > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
       <div class="tableautitle">
          <p class="tableautitlepart"><xsl:value-of select="../@title"/>&#xA0;</p>
@@ -672,7 +672,7 @@ with half the number of matches.
 
 	<xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
 	<div class="tableaudiv">
-      <xsl:attribute name="id"><xsl:value-of select="$col1" />T<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
+      <xsl:attribute name="id"><xsl:value-of select="$col1" />TB<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
 		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
 		<div class="tableautitle">
          <p class="tableautitlepart"><xsl:value-of select="../@title"/>&#xA0;</p>

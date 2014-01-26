@@ -115,7 +115,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
    Appears when tableau are drawn and through to the finals -->
    
-<xsl:template match="lists[@name='where' and starts-with(../@stage, 'tableau') and not(../@stage = 'tableau A8 A4' or ../@stage = 'tableau A4 A2')]">
+<xsl:template match="lists[@name='where' and starts-with(../@stage, 'tableau') and ( ../lists[@name='entry']/@count - ../lists[@name='ranking' and @type='final']/@count &gt; 8)]" >
 <topdiv class="vlist2" name="topdiv" id="vlistid2">
 	<!-- This is the list of pages to scroll through -->
 	<pages>
@@ -158,7 +158,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="fencer" mode="wherefencer">
-		<tr >
+		<tr class="where-row">
 			<td class="vlist_name"><xsl:value-of select="@name" /></td>
 			<td class="vlist_round"><xsl:value-of select="@round" /></td>
 			<td class="vlist_piste"><xsl:value-of select="@piste" /></td>
@@ -210,7 +210,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
    ) ]">
 <xsl:choose>
 <!-- When we have all finished or we are showing the pools finished or we are in the finals used a two column list -->
-<xsl:when test="../@stage='termine' or contains(../@stage, 'finished') or contains(../@stage, 'tableau A8') or contains(../@stage, 'tableau A4') or ../@stage = 'tableau A2'">
+<xsl:when test="../@stage='termine' or contains(../@stage, 'finished') or ../lists[@name='entry']/@count - ../lists[@name='ranking' and @type='final']/@count &lt; 9" >
 
 <topdiv class="vlist_ranking2" name="topdiv" id="vlistid">
 	<!-- This is the list of pages to scroll through -->
@@ -252,7 +252,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:apply-templates>
             </table>
             </div>
-            <div class="outertab" style="left:53%">
+            <div class="outertab" style="left:51%">
             <table class="vlist_table twocol_inner_table">
             <tr>
                      <td class="vlist_position">Pos</td>
@@ -386,12 +386,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="pool" mode="render">
-   <h2>Pool <xsl:value-of select="@number" /> - Piste <xsl:value-of select="@piste" /></h2>
+   <h2 class="poule-heading">Pool <xsl:value-of select="@number" /> - Piste <xsl:value-of select="@piste" /></h2>
 	
 	<table	class="pouletable">
 		<tr>
 			<th class="poule-title-name">name</th>
-			<th class="poule-title-club">club</th>
+			<th class="poule-title-club">affiliation</th>
 			<th class="poule-title-blank"></th>
 			<th class="poule-title-result">1</th>
 			<th class="poule-title-result">2</th>
@@ -481,6 +481,7 @@ with half the number of matches.
 <h1><xsl:value-of select="./@titre_ligne" />&#xA0;</h1>
    <xsl:apply-templates select="." mode="render" >
       <xsl:with-param name="col1" ><xsl:value-of select="tableau[@count = 2]/@name"/></xsl:with-param>
+      <xsl:with-param name="visibility" select="'visible'"/>
    </xsl:apply-templates>
 </content>
 </xsl:when>
@@ -500,9 +501,11 @@ with half the number of matches.
 <h1><xsl:value-of select="./@titre_ligne" />&#xA0;</h1>
    <xsl:apply-templates select="." mode="render" >
       <xsl:with-param name="col1" select="substring-before(substring-after(@stage, 'tableau '), ' ')"/>
+      <xsl:with-param name="visibility" select="'visible'"/>
    </xsl:apply-templates>
    <xsl:apply-templates select="." mode="render" >
       <xsl:with-param name="col1" select="substring-after(substring-after(@stage, 'tableau '), ' ')"/>
+      <xsl:with-param name="visibility" select="'hidden'"/>
    </xsl:apply-templates>
 </content>
 </xsl:when>
@@ -518,6 +521,7 @@ with half the number of matches.
 <h1><xsl:value-of select="./@titre_ligne" />&#xA0;</h1>
    <xsl:apply-templates select="." mode="render" >
       <xsl:with-param name="col1" select="substring-after(@stage, 'tableau ')"/>
+      <xsl:with-param name="visibility" select="'visible'"/>
    </xsl:apply-templates>
 </content>
 </xsl:otherwise>
@@ -542,7 +546,7 @@ with half the number of matches.
 
    <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
       <xsl:sort select="tableau[@name = $col1]/match/@number" />
-      <page><xsl:value-of select="$col1" />TB<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></page>
+      <page>T<xsl:value-of select="substring($col1, 1,1)" /><xsl:value-of select="(@number - 1) div ($col1size * 2)" /></page>
    </xsl:for-each>
 
 </xsl:when>
@@ -551,7 +555,7 @@ with half the number of matches.
 
    <xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
       <xsl:sort select="tableau[@name = $col1]/match/@number" />
-      <page><xsl:value-of select="$col1" />TB<xsl:value-of select="(@number - 1) div $col1size" /></page>
+      <page>T<xsl:value-of select="substring($col1, 1,1)" /><xsl:value-of select="(@number - 1) div $col1size" /></page>
    </xsl:for-each>
 
 
@@ -564,6 +568,7 @@ with half the number of matches.
 
 <xsl:template match="competition" mode="render">
 <xsl:param name="col1" />
+<xsl:param name="visibility" />
 <xsl:variable name="col1matchcount" select="tableau[@name = $col1]/@count" />
 <xsl:variable name="col2" select="tableau[@count = $col1matchcount div 2]/@name" />
 
@@ -577,9 +582,12 @@ with half the number of matches.
 
 
    <xsl:for-each select="tableau[@name = $col1]/match[@number mod ($col1size * 2) = 1]">
-   <div class="tableaudiv">
-      <xsl:attribute name="id"><xsl:value-of select="$col1" />TB<xsl:value-of select="(@number - 1) div ($col1size * 2)" /></xsl:attribute>
-      <xsl:if test="(@number -1) div ($col1size * 2) > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
+   <div>
+      <xsl:attribute name="id">T<xsl:value-of select="substring($col1, 1,1)" /><xsl:value-of select="(@number - 1) div ($col1size * 2)" /></xsl:attribute>
+      <xsl:choose>
+      <xsl:when test="(@number -1) div ($col1size * 2) > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:when>
+      <xsl:otherwise><xsl:attribute name="class">tableaudiv <xsl:value-of select="$visibility" /></xsl:attribute></xsl:otherwise>
+      </xsl:choose>
       <div class="tableautitle">
          <p class="tableautitlepart"><xsl:value-of select="../@title"/>&#xA0;</p>
          <xsl:if test="count(../match[@number > ($col1size * 2)]) > 0">
@@ -643,18 +651,26 @@ with half the number of matches.
          
          <div class="half">
             <div class="quarter">
-               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
+               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" >
+<xsl:with-param name="column">col2</xsl:with-param>
+</xsl:apply-templates>
                </div>
             <div class="quarter">
-               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 2 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
+               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 2 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" > 
+<xsl:with-param name="column">col2</xsl:with-param>
+</xsl:apply-templates>
             </div>
          </div>
          <div class="half">
             <div class="quarter">
-               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 3 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
+               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 3 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" >
+<xsl:with-param name="column">col2</xsl:with-param>
+</xsl:apply-templates>
                </div>
             <div class="quarter">
-               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
+               <xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 4 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" > 
+<xsl:with-param name="column">col2</xsl:with-param>
+</xsl:apply-templates>
             </div>
          </div>
           
@@ -672,8 +688,11 @@ with half the number of matches.
 
 	<xsl:for-each select="tableau[@name = $col1]/match[@number mod $col1size = 1]">
 	<div class="tableaudiv">
-      <xsl:attribute name="id"><xsl:value-of select="$col1" />TB<xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
-		<xsl:if test="(@number -1) div $col1size > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:if>
+      <xsl:attribute name="id">T<xsl:value-of select="substring($col1, 1,1)" /><xsl:value-of select="(@number - 1) div $col1size" /></xsl:attribute>
+      <xsl:choose>
+      <xsl:when test="(@number -1) div ($col1size) > 0"><xsl:attribute name="class">tableaudiv hidden</xsl:attribute></xsl:when>
+      <xsl:otherwise><xsl:attribute name="class">tableaudiv <xsl:value-of select="$visibility" /></xsl:attribute></xsl:otherwise>
+      </xsl:choose>
 		<div class="tableautitle">
          <p class="tableautitlepart"><xsl:value-of select="../@title"/>&#xA0;</p>
 			<xsl:if test="count(../match[@number > $col1size]) > 0">
@@ -711,8 +730,12 @@ with half the number of matches.
 			<!-- the starting number for div 2 should be ((@number + 1) / 2) -->
 <xsl:if test="count(../../tableau[@name = $col2]/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]) &gt; 0">
 			<div class="half">
-				<xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" />
-				<xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 2 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" /> 
+				<xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 2 = 1 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" >
+<xsl:with-param name="column">col2</xsl:with-param>
+</xsl:apply-templates>
+				<xsl:apply-templates select="../../tableau[@name = $col2]/match[./@number mod 2 = 0 and ./@number &lt; (((current()/@number + 1) div 2) + ($col1size div 2)) and ./@number &gt; ((current()/@number + 1) div 2) - 1]" mode="render" > 
+<xsl:with-param name="column">col2</xsl:with-param>
+</xsl:apply-templates>
 			</div>
 </xsl:if>
 		</div>
@@ -729,6 +752,7 @@ with half the number of matches.
 
 
 <xsl:template match="match" mode="render">
+<xsl:param name="column" />
 		<!-- ************ BOUT ************ -->
 		<div id="container"><div id="position">
 			<div class="bout boutborder">
@@ -737,7 +761,7 @@ with half the number of matches.
 					<div id="container">
 						<div id="position">
 							<xsl:choose>
-							<xsl:when test="name(..) = 'col2'">
+							<xsl:when test="$column = 'col2'">
 									<span style="display:none;">&#160;</span>
 								</xsl:when>
 								<xsl:otherwise>
@@ -776,7 +800,7 @@ with half the number of matches.
 					<div id="container">
 						<div id="position">
 							<xsl:choose>
-							<xsl:when test="name(..) = 'col2'">
+							<xsl:when test="$column = 'col2'">
 									<span style="display:none;">&#160;</span>
 								</xsl:when>
 								<xsl:otherwise>

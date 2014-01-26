@@ -168,7 +168,6 @@ Entries
 
 
 </xsl:stylesheet>';
-
   $xslt = new XSLTProcessor();
   $xslt->importStylesheet(new SimpleXMLElement($xslt_string));
 

@@ -27,37 +27,42 @@ use Net::FTP;
 ##################################################################################
 
 my $runonce = shift || 0;
-my $ini = "live.xml";
 
-unless ($^O =~ /MSWin32/ || $runonce)
-{
-	use Proc::Daemon;
-	my $pid = Proc::Daemon::Init({ pid_file=>'/share/Public/writexml.pid'});
-
-	exit 0 if ($pid);
-}
+#unless ($^O =~ /MSWin32/ || $runonce)
+#{
+	#use Proc::Daemon;
+	#my $pid = Proc::Daemon::Init({ pid_file=>'/share/Public/writexml.pid'});
+#
+	#exit 0 if ($pid);
+#}
 
 # save original file handles
-open(OLDOUT, ">&STDOUT");
-open(OLDERR, ">&STDERR");
+#open(OLDOUT, ">&STDOUT");
+#open(OLDERR, ">&STDERR");
 
 
 while (1)
 {
 	my $config = config_read();
+
+	$config->{ftphost} = "ftp.pointinline.com";
+	$config->{ftpuser} = "results@pointinline.com";
+	$config->{ftppwd} = "eyc2013results";
+	$config->{ftpcwd} = "eyc2013";
+
 	
 	$Engarde::DEBUGGING=$config->{debug};
 	
-	if ($config->{log})
-	{
-		open STDERR, ">>" . $config->{targetlocation} . "/" . $config->{log} or die $!;
-		open STDOUT, ">&STDERR";
+	#if ($config->{log})
+	#{
+		#open STDERR, ">>" . $config->{targetlocation} . "/" . $config->{log} or die $!;
+		#open STDOUT, ">&STDERR";
 
 		# set AUTOFLUSH to ensure messages are written in the correct order
-		my $fh = select(STDERR);
-		$| = 1;
-		select($fh);
-	}
+		#my $fh = select(STDERR);
+		#$| = 1;
+		#select($fh);
+	#}
 	
 	my $ftp;
 	# If we have all the ftp details and haven't already created it then create it.
@@ -87,25 +92,28 @@ while (1)
 	{
 		# this needs to change to ftp all the competition/X.xml files now
 		# perhaps a call to rsync might be better?
-		$ftp->put($config->{targetlocation} . "/toplevel.xml" , "newtoplevel.xml");
-		$ftp->rename("newtoplevel.xml" ,"toplevel.xml");
+		$ftp->put($config->{targetlocation} . "/live.xml");
+
+		$ftp->cwd("competitions");
+:x
+
 	}
 	
 		
     $ftp->quit unless !defined($ftp);
     undef($ftp);
-    
-	debug(1, "loop finished");
-		
+   
+	print "loop finished\n";
+ 
 	unless ($runonce)
 	{
 		# close the redirected filehandles
-		close(STDOUT) ;
-		close(STDERR) ;
+		#close(STDOUT) ;
+		#close(STDERR) ;
 
 		# restore stdout and stderr
-		open(STDERR, ">&OLDERR");
-		open(STDOUT, ">&OLDOUT");
+		#open(STDERR, ">&OLDERR");
+		#open(STDOUT, ">&OLDOUT");
 
 		sleep 30;
 	}

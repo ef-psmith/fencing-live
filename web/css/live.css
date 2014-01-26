@@ -45,10 +45,15 @@ div.poule {
 	margin: 20px 20px 20px 20px;
 }
 
+div.poule h1 {
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+
 div.poulediv, div.tableaudiv { 
 	position: absolute; 
-	top: 8%; 
-	height: 92%;
+	top: 4%; 
+	height: 96%;
 	width:90%;
 } 
 
@@ -335,7 +340,7 @@ span.col_rank {
 }
 
 span.col_name { 
-	vertical-align: bottom;
+	vertical-align: top;
 	height: 100%;
 	padding-left: 1ex;
 	font-size: 0.8em;
@@ -348,26 +353,27 @@ span.col_club {
 	border-right: thin solid black;
 	padding-right: 1em;
 	font-size: 0.6em;
-	vertical-align: bottom;
+	vertical-align: top;
 	height: 100%;
 }
 
 
 span.col_fppname { 
-   vertical-align: bottom;
+   vertical-align: top;
    height: 100%;
    width: 50%;
    overflow: hidden;
    position: relative;
-   font-size: 0.9em;
+   font-size: 0.8em;
 }
 span.col_fppclub { 
    text-align: right; 
-   font-size: 0.6em;
-   vertical-align: bottom;
+   font-size: 0.5em;
+   vertical-align: top;
    height: 100%;
    right: 6em;
-   position: absolute;
+   bottom: 0;
+   /* position: absolute; */
    overflow: hidden;
    width: 100%;
 }
@@ -393,7 +399,7 @@ span.col_piste {
 span.fpp_clubpp {
    float: right;
    position: relative;
-   width: 50%;
+   width: 40%;
 }
 
 	
@@ -427,7 +433,7 @@ div.vlist_header {
 	overflow: hidden;
    height: 20px;
    position:absolute;
-   top: 60px;
+   top: 80px;
 	width: 95%;
 }
 
@@ -438,6 +444,15 @@ div.vlist2_header {
 table.vlist_table {
 	border-collapse: collapse; 
 	width: 100%;
+	padding: 1; 
+}
+
+tr.where-row:nth-of-type(odd) {
+	background-color: #FFF2F7;
+}
+
+tr.where-row:nth-of-type(even) {
+	background-color: #F2FFFA;
 }
 
 .twocol_outer_table
@@ -451,39 +466,40 @@ position:absolute;
    top:0px;
    width: 100%;
 }
+
 .outertab
 {
-position:absolute;
-   width: 45%;
-top:80px;
+	position:absolute;
+   	width: 45%;
+	top:80px;
 }
 
 
 .fencer_country, .init_rank, .vlist_piste, .vlist_poule, .vlist_round, .vlist_time {
-	width: 9%;
+	width: 5%;
 	text-align: right;
 	font-size: 0.8em;
 	overflow: hidden;
 }
 
 .vlist_name {
-	width: 45%;
+	width: 44%;
 	text-align: left;
-	font-size: 1em;
+	font-size: .9em;
 	overflow: hidden;
 }
 
 .vlist_club {
-	width: 25%;
-	text-align: right;
-	font-size: 0.8em;
+	width: 30%;
+	text-align: left;
+	font-size: 0.6em;
 	overflow: hidden;
 }
 
 .vlist_position {
-	width: 15%;
+	width: 8%;
 	text-align: left;
-	font-size: 1em;
+	font-size: .8em;
 }
 
 .seed { 
@@ -505,10 +521,10 @@ td.messagespace {
 }
 */
 
-.vm, .hs, .ind {
-	width: 3em;
+.vm, .hs, .ind, .vlist_vm, .vlist_hs, .vlist_ind {
+	width: 6%;
 	text-align: right;
-	font-size: 0.6em;
+	font-size: 0.8em;
 }
 
 /* 
@@ -521,6 +537,24 @@ td.messagespace {
 span.fppspan {
    display: block;
    position: relative;
+	padding: 2px;
+}
+
+
+tr.elim_none:nth-of-type(odd) {
+	background-color: #FFF2F7;
+}
+
+tr.elim_none:nth-of-type(even) {
+	background-color: #F2FFFA;
+}
+
+span.fppspan:nth-of-type(odd) {
+	background-color: #FFF2F7;
+}
+
+span.fppspan:nth-of-type(even) {
+	background-color: #F2FFFA;
 }
 
 span.elim_p {
@@ -607,6 +641,11 @@ table.poule {
 	border-collapse: collapse;
 }
 
+h2.poule-heading {
+	padding: 0;	
+	margin-bottom: 0px;
+}
+
 td.poule-grid-emptycol {
 	border: none;
 }
@@ -619,11 +658,17 @@ td.poule-grid-result {
 	border: 1px solid black;
 }
 
-td.poule-grid-name, td.poule-grid-club {
+td.poule-grid-name {
+	font-size: .9em;
 	border: 1px solid black;
 }
 td.poule-grid-club {
-   font-size: 0.7em;
+   font-size: 0.5em;
+}
+
+td.poule-grid-club {
+	border: 1px solid black;
+	font-size: 0.7em;
 }
 
 td.poule-grid-vm, td.poule-grid-hs, td.poule-grid-ind, td.poule-grid-pl {
@@ -656,7 +701,7 @@ th.poule-title-result {
 
 .poule td {
 	padding: 3px;
-	font-size: 1.1em;
+	/* font-size: 1.1em; */
 }
 
 .poule th {

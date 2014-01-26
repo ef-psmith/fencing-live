@@ -177,10 +177,9 @@ sub do_comp
 	
 	$out->{id} = $cid;
 	$out->{titre_ligne} = $c->titre_ligne;
-   $out->{background} = $comp->{background};
+   	$out->{background} = $comp->{background};
    
-   $out->{message} = $comp->{message};
-
+   	$out->{message} = $comp->{message};
    
 	#	<xsl:variable name="fpppagesize" select="number(30)"/>
 	#	<xsl:variable name="whereamipagesize" select="number(35)"/>
@@ -188,12 +187,13 @@ sub do_comp
 	#	<xsl:variable name="entrysize" select="number(138)"/>
 	#	<xsl:variable name="poolsperpage" select="number(2)"/>
 	
-   
-	$out->{fpppagesize} = 30;
-	$out->{whereamipagesize} = 35;
-	$out->{rankingpagesize} = 30;
-	$out->{entrysize} = 138;
-	$out->{poolsperpage} = 2;
+  
+	# sizes are per column in multi-column lists 
+	$out->{fpppagesize} = 42;
+	$out->{whereamipagesize} = 40;
+	$out->{rankingpagesize} = 40;
+	$out->{entrysize} = 132;
+	$out->{poolsperpage} = 3;
    
 	my $where = $c->whereami;
 	
@@ -371,9 +371,19 @@ sub do_fpp_list
 	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} keys %$fencers)
 	{
 		$fencers->{$fid}->{piste_no} = 'TBD' if ($fencers->{$fid}->{piste_no} && $fencers->{$fid}->{piste_no} eq "-1");
-		
+	
+		my $aff_value;
+		if ($aff eq "nation")
+		{
+			$aff_value = "$fencers->{$fid}->{nation} " . $fencers->{$fid}->{club} || 'U/A';
+		}
+		else
+		{
+			$aff_value = $fencers->{$fid}->{club} || 'U/A';
+		}
+
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
-						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
+						affiliation => substr($aff_value,0,16),
 						piste => $fencers->{$fid}->{piste_no} || ' ', 	
 						poule => $fencers->{$fid}->{poule} || '', 
 						id => $fid || '',
@@ -404,8 +414,18 @@ sub do_entry_list
 
 	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} grep /\d+/, keys %$fencers)
 	{
+		my $aff_value;
+		if ($aff eq "nation")
+		{
+			$aff_value = "$fencers->{$fid}->{nation} " . $fencers->{$fid}->{club} || 'U/A';
+		}
+		else
+		{
+			$aff_value = $fencers->{$fid}->{club} || 'U/A';
+		}
+
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
-						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
+						affiliation => $aff_value,
 						seed => $fencers->{$fid}->{serie} || '',
 						id => $fid || '',
 						category => $fencers->{$fid}->{category} || '',
@@ -435,9 +455,20 @@ sub do_ranking_list
 
 	foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
 	{
+		my $aff_value;
+
+		if ($aff eq "nation")
+		{
+			$aff_value = "$fencers->{$fid}->{nation} " . $fencers->{$fid}->{club} || 'U/A';
+		}
+		else
+		{
+			$aff_value = $fencers->{$fid}->{club} || 'U/A';
+		}
+
 		push @lout, {	name => $fencers->{$fid}->{nom_court}, 
-						affiliation => $fencers->{$fid}->{$aff} || 'U/A',
-						elimround => $fencers->{$fid}->{group} || '', 	
+						affiliation => substr($aff_value,0,16),
+						elimround => $fencers->{$fid}->{group} || 'elim_none', 	
 						position => $fencers->{$fid}->{seed} || '',
 						id => $fid || '', 
 						vm => $fencers->{$fid}->{vm},
@@ -481,10 +512,20 @@ sub do_final_list
 	
 	foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
 	{
+		my $aff_value;
+		if ($aff eq "nation")
+		{
+			$aff_value = "$fencers->{$fid}->{nation} " . $fencers->{$fid}->{club} || 'U/A';
+		}
+		else
+		{
+			$aff_value = $fencers->{$fid}->{club} || 'U/A';
+		}
+
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
-				affiliation => $fencers->{$fid}->{$aff} || 'U/A',
+				affiliation => $aff_value,
 				position => $fencers->{$fid}->{seed} || '', 	
-				elimround => $fencers->{$fid}->{group} || '', 
+				elimround => $fencers->{$fid}->{group} || 'elim_none', 	
 				id => $fid || '',
 				category => $fencers->{$fid}->{category} || '',
 				sequence => $sequence 
@@ -634,14 +675,14 @@ sub do_tableau
 	
 	# @alltab = ("A4", "A2") if ($alltab[0] eq "A2");
 	
-	Engarde::debug(2, "do_tableau: alltab = @alltab");
+	Engarde::debug(1, "do_tableau: alltab = @alltab");
 	
 	foreach my $atab (@alltab)
 	{
 		my $t = $c->tableau($atab,1);
 		$out->{"$atab"}->{title} = $t->nom_etendu;
 
-		Engarde::debug(2, "do_tableau: atab = $atab");
+		Engarde::debug(1, "do_tableau: atab = $atab");
 		my @list = do_tableau_matches($t, $aff);
 		$out->{"$atab"}->{match} = [@list];
 		my $matchcount = @list;
@@ -692,7 +733,7 @@ sub want
 		return undef unless $w[1];
 		my $t = $c->tableau($w[1]);
 		my $size = $t->taille;
-		return undef if $size < 16;
+		# return undef if $size < 16;
 		return $size;
 	}
 	else

@@ -5,6 +5,7 @@ use lib '/home/engarde/lib';
 use lib 'C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-perl';
 
 use Engarde::Control;
+use Engarde::DB;
 
 my $config = config_read();
 

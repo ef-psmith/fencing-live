@@ -7,6 +7,7 @@ use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
 use Engarde;
 use Engarde::Control;
+use Engarde::DB;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser cluck);
 use CGI::Pretty qw(:standard *table -no_xhtml);
 

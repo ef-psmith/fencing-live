@@ -32,9 +32,19 @@ if ($weaponPath  eq "") {
     if ($action eq "check") {fencer_checkin(); last SWITCH;}
     
 	################################################################################################
-    # check fencer in and reload Check-in screen
+    # scratch fencer and reload Check-in screen
     ################################################################################################
     if ($action eq "scratch") {fencer_scratch(); last SWITCH;}
+	
+	################################################################################################
+    # un check-in fencer and reload Check-in screen
+    ################################################################################################
+    if ($action eq "uncheck") {fencer_absent(); last SWITCH;}
+    
+	################################################################################################
+    # un-scratch fencer in and reload Check-in screen
+    ################################################################################################
+    if ($action eq "unscratch") {fencer_absent(); last SWITCH;}
 	
     ################################################################################################
     # Generate Check-in List screen

@@ -19,8 +19,8 @@ use ModPerl::Util (); #for CORE::GLOBAL::exit
   
 use ModPerl::Registry ();
 
-use Engarde;
-use Engarde::DB;
+#use Engarde;
+#use Engarde::DB;
 
 
 #use Apache2::Const -compile => ':common';

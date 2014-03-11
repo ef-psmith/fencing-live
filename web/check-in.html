@@ -1,263 +1,48 @@
 <!DOCTYPE html>
 <html lang="en-GB"><head><title>Check-in Desk</title>
 
-<script>
+<link href="css/dt.css" rel="stylesheet" type="text/css" media="screen" />
+<script>var compid = 3</script>
+<script src="script/check-in.js" type="text/javascript"></script>
 
-function find_place(name, list) {
-
-	// Binary search for correct place to insert the row.
-	var start = 1;  // Start at 1 because the header is 0
-	var end = list.rows.length;
-	var mid = -1;
-	while (start < end) {
-		mid = ((end - start) / 2 >>0)+ start;
-		var compare = name.localeCompare(list.rows[mid].cells[1].innerHTML);
-		
-		if (0 == compare)
-			break;
-		else if (0 > compare)
-			end = mid;
-		else
-			start = ++mid;
-	}
-	
-	return mid;
-}
-function GetFencers(fencerid, action) {
-   
-      
-      var url = 'checkin.php';
-	  
-	  if ('' != action && '' != fencerid) {
-		url += '?action=' + action + '&id=' + fencerid;
-	  }
-
-      var http_request = false;
-      if (window.XMLHttpRequest) { // Mozilla, Safari,...
-         http_request = new XMLHttpRequest();
-         if (http_request.overrideMimeType) {
-            http_request.overrideMimeType('application/json');
-         }
-      } else if (window.ActiveXObject) { // IE
-         try {
-            http_request = new ActiveXObject("Msxml2.XMLHTTP");
-         } catch (e) {
-            try {
-               http_request = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e) { }
-         }
-      }
-      if (!http_request) {
-         alert('Cannot create XMLHTTP instance');
-         return false;
-      }
-
-      var requestor = this;
-      http_request.onreadystatechange =
-         function() {
-            if (http_request.readyState == 4) {
-               if (http_request.status == 200 || http_request.status == 0) {
-
-					
-                    // Paint the fencers.
-					var jsonObj = JSON.parse(http_request.responseText);
-					
-					// Get the checkin list
-					var checkinlist = document.getElementById('CheckIn');
-				
-					// Get the present list
-					var presentlist = document.getElementById('Present');
-					// Get the recent list
-					var recentlist = document.getElementById('Recent');
-					
-					var len = jsonObj.checkin.length;
-					
-					for (var i = 0; i < len; ++i) {
-						
-						var fencer = jsonObj.checkin[i];
-						var fencerid = fencer.id;
-						
-						// Try to find the object in the checkin list by searching for the appropriate row id.
-						if (null == document.getElementById('ChkRow' + fencerid)) {
-							// Not found so insert it
-						
-							//Insert the row at the correct place
-							var row = checkinlist.insertRow(find_place(fencer.name, checkinlist));
-							row.id = 'ChkRow' + fencerid;
-							var buttoncell = row.insertCell(0);
-							var namecell = row.insertCell(1);
-							var clubcell = row.insertCell(2);
-							var numcell = row.insertCell(3);
-							var editcell = row.insertCell(4);
-							
-							buttoncell.innerHTML = '<button id="ChkButton' + fencerid + '" onclick="CheckIn(\'' + fencerid + '\', \'' + fencer.name + ' \', \''+ fencer.affiliation + '\', \'' + fencer.id +'\')">Check-in</button>';
-							namecell.innerHTML = fencer.name;
-							clubcell.innerHTML = fencer.affiliation;
-							numcell.innerHTML = fencer.id;
-							editcell.innerHTML = '<button id="ChkEditButton' + fencerid + '" onclick="Edit(\'' + fencerid + '\')">Edit</button>';
-						}
-						// Now check whether it is in the present list and if so delete it because the fencer isn't present
-						var presentrow = document.getElementById('PresRow' + fencerid);
-						if (null != presentrow) {
-							presentlist.deleteRow(presentrow.rowIndex);
-						}
-						// Now check whether it is in the recent list and if so delete it because the fencer hasn't recently been checked in
-						var recentrow = document.getElementById('RecRow' + fencerid);
-						if (null != recentrow) {
-							recentist.deleteRow(recentrow.rowIndex);
-						}
-						
-					
-					}
-									
-					var len = jsonObj.present.length;
-					
-					for (var i = 0; i < len; ++i) {
-						
-						var fencer = jsonObj.present[i];
-						var fencerid = fencer.id;
-						
-						// Try to find the object in the present list by searching for the appropriate row id.
-						if (null == document.getElementById('PresRow' + fencerid)) {
-						
-							//Insert the row at the end
-							var row = presentlist.insertRow(find_place(fencer.name, presentlist));
-							row.id = 'PresRow' + fencerid;
-							var buttoncell = row.insertCell(0);
-							var namecell = row.insertCell(1);
-							var clubcell = row.insertCell(2);
-							var numcell = row.insertCell(3);
-							var editcell = row.insertCell(4);
-							
-							buttoncell.innerHTML = '<button id="PresButton' + fencerid + '" onclick="UndoCheckIn(\'' + fencerid + '\', \'' + fencer.name + ' \', \''+ fencer.affiliation + '\', \'' + fencer.id +'\')">Undo Check-in</button>';
-							namecell.innerHTML = fencer.name;
-							clubcell.innerHTML = fencer.affiliation;
-							numcell.innerHTML = fencer.id;
-							editcell.innerHTML = '<button id="PresEditButton' + fencerid + '" onclick="Edit(\'' + fencerid + '\')">Edit</button>';
-						}
-						
-						// Now check whether it is in the checkin list and if so delete it because the fencer is present
-						var chkrow = document.getElementById('ChkRow' + fencerid);
-						if (null != chkrow) {
-							checkinlist.deleteRow(chkrow.rowIndex);
-						}
-						
-					}
-					
-					
-
-               } else {
-					// We've had an error so remove from the recent list
-					var recentrow = document.getElementById('RecRow' + fencerid);
-					if (null != recentrow) {
-						recentist.deleteRow(recentrow.rowIndex);
-					}
-					
-					var chkbutton = document.getElementById('ChkButton' + fencerid);
-					if (null != chkbutton) {
-						chkbutton.disabled = false;
-					}
-					var presbutton = document.getElementById('PresButton' + fencerid);
-					if (null != presbutton) {
-						presbutton.disabled = false;
-					}
-					chkbutton = document.getElementById('ChkEditButton' + fencerid);
-					if (null != chkbutton) {
-						chkbutton.disabled = false;
-					}
-					presbutton = document.getElementById('PresEditButton' + fencerid);
-					if (null != presbutton) {
-						presbutton.disabled = false;
-					}
-               }
-            }
-         };
-         
-      http_request.open('GET', url, true);
-      http_request.send(null);
-   }
-function UndoCheckIn(id, name, club, memnum) {
-	// Disable the buttons so we can't be clicked twice
-	var presbutton = document.getElementById('PresButton' + id);
-	if (null != presbutton) 
-		presbutton.disabled = true;
-		
-	var edtbutton = document.getElementById('PresEditButton' + id);
-	if (null != edtbutton) 
-		edtbutton.disabled = true;
-	
-	// Disable the buttons so we can't be clicked twice
-	var recbutton = document.getElementById('RecButton' + id);
-	if (null != recbutton) 
-		recbutton.disabled = true;
-	edtbutton = document.getElementById('RecEditButton' + id);
-	if (null != edtbutton) 
-		edtbutton.disabled = true;
-		
-	// Get the recent list
-	var recentlist = document.getElementById('Recent');
-	
-	// Now check whether it is in the recent list and if so delete it because the fencer hasn't recently been checked in
-	var recentrow = document.getElementById('RecRow' + id);
-	if (null != recentrow) {
-		recentlist.deleteRow(recentrow.rowIndex);
-	}
-
-	GetFencers(id, 'undocheckin');
-}
-function CheckIn(id, name, club, memnum) {
-	
-	// Disable the buttons so we can't be clicked twice
-	var chkbutton = document.getElementById('ChkButton' + id);
-	chkbutton.disabled = true;
-	var edtbutton = document.getElementById('ChkEditButton' + id);
-	edtbutton.disabled = true;
-	
-	var recentlist = document.getElementById('Recent');
-	
-	var recrow = recentlist.insertRow(1);
-	recrow.id = 'RecRow' + id;
-	var buttoncell = recrow.insertCell(0);
-	var namecell = recrow.insertCell(1);
-	var clubcell = recrow.insertCell(2);
-	var numcell = recrow.insertCell(3);
-	var editcell = recrow.insertCell(4);
-	
-	buttoncell.innerHTML = '<button id="RecButton' + id + '" onclick="UndoCheckIn(\'' + id + '\', \'' + name + '\', \'' + club + '\', \'' + id + '\')">Undo Check-in</button>';
-	namecell.innerHTML = name;
-	clubcell.innerHTML = club;
-	numcell.innerHTML = memnum;
-	editcell.innerHTML = '<button id="RecEditButton' + id + '" onclick="Edit(\'' + id + '\')">Edit</button>';
-	
-	// Remove the last row if the list is longer than 10
-	if (10 < recentlist.rows.length)
-		recentlist.deleteRow(recentlist.rows.length -1);
-		
-	GetFencers(id, 'checkin');
-	
-}
-
-</script>
 </head>
-<body>
-<button onclick="GetFencers('Row1', '94632')">Get Fencers</button>
+<body onload="GetFencers()">
+
+	 <div id="openModal" class="modalDialog">
+	 <div class="labeled"><div class="spinner"><div class="bar1"></div><div class="bar2"></div><div class="bar3"></div>
+	 <div class="bar4"></div><div class="bar5"></div><div class="bar6"></div><div class="bar7"></div><div class="bar8"></div>
+	 <div class="bar9"></div><div class="bar10"></div><div class="bar11"></div><div class="bar12"></div></div>Please wait&hellip;</div>
+	</div>
+	<a href="index.html">Competition Portal</a>
+
+<br /><br />	
+<div class="absent">
 <h2>Fencers to be checked in</h2>
-<table id="CheckIn" cellspacing="0" cellpadding="0" border="0">
-<tr>
-<th>&nbsp;</th><th>Name</th><th>Club</th><th>Membership Number</th><th>&nbsp;</th>
+<table id="Absent" class="table1">
+<thead>
+<th>&nbsp;</th><th class="name">Name</th><th class="club">Club</th><th class="nation">Nation</th><th>&nbsp;</th><th>&nbsp;</th>
+</thead>
 </table>
-<h2>Recent Check-ins</h2>
-<table id="Recent" cellspacing="0" cellpadding="0" border="0">
-<tr>
-<th>&nbsp;</th><th>Name</th><th>Club</th><th>Membership Number</th><th>&nbsp;</th>
-	
+</div>
+<div class="present">
+<h2>Recent Check-ins &amp; Scratches</h2>
+<table id="Recent" class="table1">
+<thead>
+<th>&nbsp;</th><th class="name">Name</th><th class="club">Club</th><th class="nation">Nation</th><th>&nbsp;</th><th>&nbsp;</th>
+</thead>	
 </table>
-<h2>Checked-in</h2>
-<table id="Present" cellspacing="0" cellpadding="0" border="0">
-<tr>
-<th>&nbsp;</th><th>Name</th><th>Club</th><th>Membership Number</th><th>&nbsp;</th>
-	
+<h2>Scratched</h2>
+<table id="Scratched" class="table1">
+<thead>
+<th>&nbsp;</th><th class="name">Name</th><th class="club">Club</th><th class="nation">Nation</th><th>&nbsp;</th><th>&nbsp;</th>
+</thead>	
 </table>
-<br><br><a href="index.html">Competition Portal</a>
+<h2>Present</h2>
+<table id="Present" class="table1">
+<thead>
+<th>&nbsp;</th><th class="name">Name</th><th class="club">Club</th><th class="nation">Nation</th><th>&nbsp;</th><th>&nbsp;</th>
+</thead>	
+</table>
+</div>
 </body>
 </html>

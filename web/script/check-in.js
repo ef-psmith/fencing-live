@@ -1,7 +1,7 @@
 
 function find_place(name, list) {
 
-   if (null === list || null === list.rows) {
+   if (!list || !list.rows || !name) {
       return -1;
    }
    // Binary search for correct place to insert the row.
@@ -11,7 +11,8 @@ function find_place(name, list) {
    var compare;
    while (start < end) {
       mid = ((end - start) / 2 >>0)+ start;
-      compare = name.localeCompare(list.rows[mid].cells[1].innerHTML);
+      
+      compare = list.rows[mid].cells[1].innerHTML ? name.localeCompare(list.rows[mid].cells[1].innerHTML) : -1;
 
       if (0 === compare) {
          break;
@@ -103,15 +104,21 @@ function GetFencers(fencerid, action) {
 						namecell = row.insertCell(1);
 						clubcell = row.insertCell(2);
 						natcell = row.insertCell(3);
-						editcell = row.insertCell(4);
-						scratchcell = row.insertCell(5);
+                  var rankcell = row.insertCell(4);
+                  var memnumcell = row.insertCell(5);
+                  var paidcell = row.insertCell(6);
+						editcell = row.insertCell(7);
+						scratchcell = row.insertCell(8);
 						
-						checkcell.innerHTML = '<button id="AbsChkButton' + fencer.id + '" onclick="CheckIn(\'' + fencer.id + '\', \'' + fencer.name + ' \', \''+ fencer.club + '\', \'' + fencer.nation +'\')">Check-in</button>';
-						namecell.innerHTML = fencer.name;
-						clubcell.innerHTML = fencer.club;
-						natcell.innerHTML = fencer.nation;
+						checkcell.innerHTML = '<button id="AbsChkButton' + fencer.id + '" onclick="CheckIn(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Check-in</button>';
+						namecell.innerHTML = fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom;
+						clubcell.innerHTML = fencer.club ? fencer.club : 'U/A';
+						natcell.innerHTML = fencer.nation ? fencer.nation : 'U/A';
+                  rankcell.innerHTML = fencer.ranking;
+						memnumcell.innerHTML = fencer.licence ? fencer.licence : 'FIE ' + fencer.licence_fie;
+						paidcell.innerHTML = fencer.paiement;
 						editcell.innerHTML = '<button id="AbsEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
-						scratchcell.innerHTML = '<button id="AbsScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + fencer.name + ' \', \''+ fencer.affiliation + '\', \'' + fencer.id +'\')">Scratch</button>';
+						scratchcell.innerHTML = '<button id="AbsScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Scratch</button>';
 
 						
 						// Now check whether it is in the recent list and if so delete it because the fencer hasn't recently been checked in
@@ -152,12 +159,12 @@ function GetFencers(fencerid, action) {
 						scratchcell = row.insertCell(5);
 						
 						checkcell.innerHTML = '<button id="PresChkButton' + fencer.id + '" onclick="UndoCheckIn(\'' + fencer.id + '\')">Undo Check-in</button>';
-						namecell.innerHTML = fencer.name;
+						namecell.innerHTML = (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom);
 						clubcell.innerHTML = fencer.club;
 						natcell.innerHTML = fencer.nation;
 						editcell.innerHTML = '<button id="PresEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
 						
-						scratchcell.innerHTML = '<button id="PresScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + fencer.name + ' \', \''+ fencer.affiliation + '\', \'' + fencer.id +'\')">Scratch</button>';
+						scratchcell.innerHTML = '<button id="PresScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Scratch</button>';
 					}
 					
 					// Now check whether it is in the checkin list and if so delete it because the fencer is present
@@ -191,8 +198,8 @@ function GetFencers(fencerid, action) {
 						editcell = row.insertCell(4);
 						scratchcell = row.insertCell(5);
 						
-						checkcell.innerHTML = '<button id="ScratChkButton' + fencer.id + '" onclick="CheckIn(\'' + fencer.id + '\', \'' + fencer.name + '\', \''+ fencer.club + '\', \'' + fencer.nation +'\')">Check-in</button>';
-						namecell.innerHTML = fencer.name;
+						checkcell.innerHTML = '<button id="ScratChkButton' + fencer.id + '" onclick="CheckIn(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + '\', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Check-in</button>';
+						namecell.innerHTML = (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom);
 						clubcell.innerHTML = fencer.club;
 						natcell.innerHTML = fencer.nation;
 						editcell.innerHTML = '<button id="PresEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
@@ -410,6 +417,11 @@ function Scratch(id, name, club, nation) {
 	var edtbutton = document.getElementById('AbsEditButton' + id);
 	if (null !== edtbutton)
 		edtbutton.disabled = true;
+		
+	var scratbutton = document.getElementById('AbsScratchButton' + id);
+	if (null != scratbutton) {
+		scratbutton.disabled = true;
+   }
 	
 	// Are we already in the recent list? If so then readd as we are probably either scratching or checking in from the recent list
 	

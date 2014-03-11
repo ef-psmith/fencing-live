@@ -35,7 +35,7 @@ function GetFencers(fencerid, action) {
 	m.style.opacity=1; 
 	m.style.pointerEvents='auto'; 
       
-	var url = 'checkin.php?wp=' + compid;
+	var url = 'json.cgi?wp=' + compid;
 
 	if ('' != action && '' != fencerid) {
 	url += '&action=' + action + '&id=' + fencerid;
@@ -59,6 +59,7 @@ function GetFencers(fencerid, action) {
    }
    if (!http_request) {
       alert('Cannot create XMLHTTP instance');
+
       return false;
    }
 

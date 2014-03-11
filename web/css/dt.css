@@ -14,18 +14,28 @@
 div.absent
 {
 	left: 0px;
-	position: fixed;
-	height: 100%;
+	position: fixed; 
+	height: 75%;
+	width: 65%;
 	overflow: scroll;
 }
+
 div.present
 {
 	right: 0px;
 	position: fixed;
-	height: 100%;
+	height: 75%;
+	width: 35%;
 	overflow: scroll;
 }
 
+
+div.footer {
+	bottom: 2%;
+	position: fixed;
+	height: 5%;
+	width: 100%;
+}
 
 /* Table 1 Style */
 table.table1 {
@@ -35,6 +45,7 @@ table.table1 {
     /* line-height: 1.4em; */
     font-style: normal;
     border-collapse:separate;
+	width: 100%;
 }
 
 .table1 thead th {

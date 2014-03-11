@@ -16,6 +16,8 @@ my $wp = param('wp') || "";
 my $action = lc(param('Action')) || lc(param('action')) || "list";
 my $f = param('f');
 
+$action = "list" if $action eq "undefined";
+
 SWITCH: 
 {
     ################################################################################################

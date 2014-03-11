@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# (c) Copyright Oliver Smith & Peter Smith 2007-2013
+# (c) Copyright Oliver Smith & Peter Smith 2007-2014
 # oliver_rps@yahoo.co.uk
 # peter.smith@englandfencing.org.uk
 
@@ -26,7 +26,7 @@ use XML::Simple;
 # $XML::Simple::PREFERRED_PARSER = "XML::Parser";
 
 no warnings 'once';
-no warnings 'io';
+no warnings 'io';	
 
 # NOTE:
 #
@@ -126,7 +126,7 @@ while (1)
 	# generate the data
 	
 	foreach my $cid ( sort keys %$comps)
-	{		
+	{
 		next unless $comps->{$cid}->{enabled} eq "true";	
 		
 		# don't regenerate this one if we are paused

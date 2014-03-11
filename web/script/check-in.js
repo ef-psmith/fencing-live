@@ -62,10 +62,12 @@ function GetFencers(fencerid, action) {
       return false;
    }
 
-	var requestor = this;
 	http_request.onreadystatechange =
 	 function() {
 		if (http_request.readyState == 4) {
+         // Get the recent list
+         var recentlist = document.getElementById('Recent');
+         
 		   if (http_request.status == 200 || http_request.status == 0) {
 
 				
@@ -81,8 +83,6 @@ function GetFencers(fencerid, action) {
 				// Get the scratched list
 				var scratchedlist = document.getElementById('Scratched');
 				
-				// Get the recent list
-				var recentlist = document.getElementById('Recent');
 				
 				var len = jsonObj.absent.length;
 				
@@ -116,7 +116,7 @@ function GetFencers(fencerid, action) {
 						// Now check whether it is in the recent list and if so delete it because the fencer hasn't recently been checked in
 						var recentrow = document.getElementById('RecRow' + fencer.id);
 						if (null != recentrow) {
-							recentist.deleteRow(recentrow.rowIndex);
+							recentlist.deleteRow(recentrow.rowIndex);
 						}
 					}
 					// Now check whether it is in the present list and if so delete it because the fencer isn't present
@@ -208,27 +208,26 @@ function GetFencers(fencerid, action) {
 					var presentrow = document.getElementById('PresRow' + fencer.id);
 					if (null !== presentrow) {
 						presentlist.deleteRow(presentrow.rowIndex);
-					}
-					
+					}	
 				}
-				
-				
-				
-
 		   } else {
 				// We've had an error so remove from the recent list
 				var recentrow = document.getElementById('RecRow' + fencerid);
 				if (null !== recentrow) {
-					recentist.deleteRow(recentrow.rowIndex);
+					recentlist.deleteRow(recentrow.rowIndex);
 				}
 				
-				var chkbutton = document.getElementById('AbsChkButton' + fencerid);
-				if (null !== chkbutton) {
-					chkbutton.disabled = false;
+				var absbutton = document.getElementById('AbsChkButton' + fencerid);
+				if (null !== absbutton) {
+					absbutton.disabled = false;
 				}
 				var presbutton = document.getElementById('PresChkButton' + fencerid);
 				if (null !== presbutton) {
 					presbutton.disabled = false;
+				}
+				var scratbutton = document.getElementById('ScratChkButton' + fencerid);
+				if (null !== scratbutton) {
+					scratbutton.disabled = false;
 				}
 				chkbutton = document.getElementById('AbsEditButton' + fencerid);
 				if (null !== chkbutton) {
@@ -237,6 +236,22 @@ function GetFencers(fencerid, action) {
 				presbutton = document.getElementById('PresEditButton' + fencerid);
 				if (null !== presbutton) {
 					presbutton.disabled = false;
+				}
+				scratbutton = document.getElementById('ScratEditButton' + fencerid);
+				if (null !== scratbutton) {
+					scratbutton.disabled = false;
+				}
+				chkbutton = document.getElementById('AbsScratchButton' + fencerid);
+				if (null !== chkbutton) {
+					chkbutton.disabled = false;
+				}
+				presbutton = document.getElementById('PresScratchButton' + fencerid);
+				if (null !== presbutton) {
+					presbutton.disabled = false;
+				}
+				scratbutton = document.getElementById('ScratScratchButton' + fencerid);
+				if (null !== scratbutton) {
+					scratbutton.disabled = false;
 				}
 		   }
 		   // Reset the overlay so that it isn't seen and doesn't stop the pointer events working on the main page
@@ -259,6 +274,11 @@ function UndoCheckIn(id) {
 	if (null !== edtbutton) {
 		edtbutton.disabled = true;
    }
+		
+	var scratbutton = document.getElementById('PresScratchButton' + id);
+	if (null !== scratbutton) {
+		scratbutton.disabled = true;
+   }
 	
 	// Disable the buttons so we can't be clicked twice
 	var recbutton = document.getElementById('RecChkButton' + id);
@@ -269,6 +289,10 @@ function UndoCheckIn(id) {
 	edtbutton = document.getElementById('RecEditButton' + id);
 	if (null !== edtbutton) {
 		edtbutton.disabled = true;
+   }
+	scratbutton = document.getElementById('RecScratchButton' + id);
+	if (null !== scratbutton) {
+		scratbutton.disabled = true;
    }
 		
 	// Get the recent list
@@ -302,31 +326,37 @@ function CheckIn(id, name, club, nation) {
 		scratbutton.disabled = true;
    }
 
-	// Are we already in the recent list?  If so then we don't need to re-add
-	// This happens when we are checked in from the Scratched list or Recent list
+	// Are we already in the recent list?  Remove if we are and readd to make sure the buttons are correct
 	
-	if (null === document.getElementById('RecRow' + id)) {
-		var recentlist = document.getElementById('Recent');
-		
-		var recrow = recentlist.insertRow(1);
-		recrow.id = 'RecRow' + id;
-		var buttoncell = recrow.insertCell(0);
-		var namecell = recrow.insertCell(1);
-		var clubcell = recrow.insertCell(2);
-		var numcell = recrow.insertCell(3);
-		var editcell = recrow.insertCell(4);
-		
-		buttoncell.innerHTML = '<button id="RecChkButton' + id + '" onclick="UndoCheckIn(\'' + id + '\')">Undo Check-in</button>';
-		namecell.innerHTML = name;
-		clubcell.innerHTML = club;
-		numcell.innerHTML = nation;
-		editcell.innerHTML = '<button id="RecEditButton' + id + '" onclick="Edit(\'' + id + '\')">Edit</button>';
-		buttoncell.innerHTML = '<button id="RecScratchButton' + id + '" onclick="Scratch(\'' + id + '\', \'' + name + '\', \'' + club + '\', \'' + nation + '\')">Scratch</button>';
-		
+   var recentlist = document.getElementById('Recent');
+   var recrow = document.getElementById('RecRow' + id);
+	if (null !== recrow) {
+      recentlist.deleteRow(recrow.rowIndex);
+   } else {
 		// Remove the last row if the list is longer than 10
 		if (10 < recentlist.rows.length)
 			recentlist.deleteRow(recentlist.rows.length -1);
-	}	
+	}
+	
+	recentlist = document.getElementById('Recent');
+		
+   var recrow = recentlist.insertRow(1);
+   recrow.id = 'RecRow' + id;
+   var buttoncell = recrow.insertCell(0);
+   var namecell = recrow.insertCell(1);
+   var clubcell = recrow.insertCell(2);
+   var numcell = recrow.insertCell(3);
+   var editcell = recrow.insertCell(4);
+   var scratchcell = recrow.insertCell(5);
+   
+   buttoncell.innerHTML = '<button id="RecChkButton' + id + '" onclick="UndoCheckIn(\'' + id + '\')">Undo Check-in</button>';
+   namecell.innerHTML = name;
+   clubcell.innerHTML = club;
+   numcell.innerHTML = nation;
+   editcell.innerHTML = '<button id="RecEditButton' + id + '" onclick="Edit(\'' + id + '\')">Edit</button>';
+   scratchcell.innerHTML = '<button id="RecScratchButton' + id + '" onclick="Scratch(\'' + id + '\', \'' + name + '\', \'' + club + '\', \'' + nation + '\')">Scratch</button>';
+		
+		
 	GetFencers(id, 'check');
 	
 }
@@ -335,28 +365,28 @@ function CheckIn(id, name, club, nation) {
 function UndoScratch(id) {
 	// Disable the buttons so we can't be clicked twice
 	var chkbutton = document.getElementById('ScratChkButton' + id);
-	if (null != chkbutton) 
+	if (null !== chkbutton) 
 		chkbutton.disabled = true;
 		
 	var edtbutton = document.getElementById('ScratEditButton' + id);
-	if (null != edtbutton) 
+	if (null !== edtbutton) 
 		edtbutton.disabled = true;
 		
 	var scratbutton = document.getElementById('ScratScratchButton' + id);
-	if (null != scratbutton)
+	if (null !== scratbutton)
 		scratbutton.disabled = true;
 	
 	// Disable the buttons so we can't be clicked twice
 	chkbutton = document.getElementById('RecChkButton' + id);
-	if (null != chkbutton) 
+	if (null !== chkbutton) 
 		chkbutton.disabled = true;
       
 	edtbutton = document.getElementById('RecEditButton' + id);
-	if (null != edtbutton) 
+	if (null !== edtbutton) 
 		edtbutton.disabled = true;
 		
 	scratbutton = document.getElementById('RecScratchButton' + id);
-	if (null != scratbutton)
+	if (null !== scratbutton)
 		scratbutton.disabled = true;
 		
 	// Get the recent list
@@ -364,7 +394,7 @@ function UndoScratch(id) {
 	
 	// Now check whether it is in the recent list and if so delete it because the fencer hasn't recently been checked in
 	var recentrow = document.getElementById('RecRow' + id);
-	if (null != recentrow) {
+	if (null !== recentrow) {
 		recentlist.deleteRow(recentrow.rowIndex);
 	}
 
@@ -374,37 +404,41 @@ function Scratch(id, name, club, nation) {
 	
 	// Disable the buttons so we can't be clicked twice
 	var chkbutton = document.getElementById('AbsChkButton' + id);
-	if (null != chkbutton)
+	if (null !== chkbutton)
 		chkbutton.disabled = true;
 	var edtbutton = document.getElementById('AbsEditButton' + id);
-	if (null != edtbutton)
+	if (null !== edtbutton)
 		edtbutton.disabled = true;
 	
-	// Are we already in the recent list?  If so then we don't need to re-add
-	// This happens when we are scratched from the Present list or Recent list
+	// Are we already in the recent list? If so then readd as we are probably either scratching or checking in from the recent list
 	
-	if (null === document.getElementById('RecRow' + id)) {
-	
-		var recentlist = document.getElementById('Recent');
-		
-		var recrow = recentlist.insertRow(1);
-		recrow.id = 'RecRow' + id;
-		var buttoncell = recrow.insertCell(0);
-		var namecell = recrow.insertCell(1);
-		var clubcell = recrow.insertCell(2);
-		var numcell = recrow.insertCell(3);
-		var editcell = recrow.insertCell(4);
-		
-		buttoncell.innerHTML = '<button id="RecButton' + id + '" onclick="CheckIn(\'' + id + '\', \'' + name + '\', \'' + club + '\', \'' + nation + '\')">Check-in</button>';
-		namecell.innerHTML = name;
-		clubcell.innerHTML = club;
-		numcell.innerHTML = nation;
-		editcell.innerHTML = '<button id="RecEditButton' + id + '" onclick="Edit(\'' + id + '\')">Edit</button>';
-		
+   var recentlist = document.getElementById('Recent');
+   var recrow = document.getElementById('RecRow' + id);
+	if (null !== recrow) {
+      recentlist.deleteRow(recrow.rowIndex);
+   } else {
 		// Remove the last row if the list is longer than 10
 		if (10 < recentlist.rows.length)
 			recentlist.deleteRow(recentlist.rows.length -1);
 	}
+	
+   
+   recrow = recentlist.insertRow(1);
+   recrow.id = 'RecRow' + id;
+   var buttoncell = recrow.insertCell(0);
+   var namecell = recrow.insertCell(1);
+   var clubcell = recrow.insertCell(2);
+   var numcell = recrow.insertCell(3);
+   var editcell = recrow.insertCell(4);
+   var scratchcell = recrow.insertCell(5);
+   
+   buttoncell.innerHTML = '<button id="RecButton' + id + '" onclick="CheckIn(\'' + id + '\', \'' + name + '\', \'' + club + '\', \'' + nation + '\')">Check-in</button>';
+   namecell.innerHTML = name;
+   clubcell.innerHTML = club;
+   numcell.innerHTML = nation;
+   editcell.innerHTML = '<button id="RecEditButton' + id + '" onclick="Edit(\'' + id + '\')">Edit</button>';
+   scratchcell.innerHTML = '<button id="RecScratchButton' + id + '" onclick="UndoScratch(\'' + id + '\')">Undo Scratch</button>';
+		
 	GetFencers(id, 'scratch');
 	
 }

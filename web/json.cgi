@@ -14,7 +14,7 @@ use strict;
 
 my $wp = param('wp') || "";
 my $action = lc(param('Action')) || lc(param('action')) || "list";
-my $f = param('f');
+my $f = param('id');
 
 $action = "list" if $action eq "undefined";
 

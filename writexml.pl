@@ -19,6 +19,7 @@ use lib "/home/engarde/lib";
 use strict;
 use Engarde;
 use Engarde::Control;
+use Engarde::DB;
 
 use Data::Dumper;
 use Carp qw(cluck);

@@ -36,6 +36,7 @@ function GetFencers(fencerid, action) {
 	m.style.opacity=1; 
 	m.style.pointerEvents='auto'; 
       
+	//var url = 'checkin.php?wp=' + compid;
 	var url = 'json.cgi?wp=' + compid;
 
 	if ('' != action && '' != fencerid) {
@@ -98,7 +99,7 @@ function GetFencers(fencerid, action) {
 						// Not found so insert it
 					
 						//Insert the row at the correct place
-						row = absentlist.insertRow(find_place(fencer.name, absentlist));
+						row = absentlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, absentlist));
 						row.id = 'AbsRow' + fencer.id;
 						checkcell = row.insertCell(0);
 						namecell = row.insertCell(1);
@@ -114,9 +115,9 @@ function GetFencers(fencerid, action) {
 						namecell.innerHTML = fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom;
 						clubcell.innerHTML = fencer.club ? fencer.club : 'U/A';
 						natcell.innerHTML = fencer.nation ? fencer.nation : 'U/A';
-                  rankcell.innerHTML = fencer.ranking;
-						memnumcell.innerHTML = fencer.licence ? fencer.licence : 'FIE ' + fencer.licence_fie;
-						paidcell.innerHTML = fencer.paiement;
+                  rankcell.innerHTML = fencer.ranking ? fencer.ranking : '999';
+						memnumcell.innerHTML = fencer.licence ? fencer.licence : fencer.licence_fie;
+						paidcell.innerHTML = fencer.paiement ? fencer.paiement : 'Unk';
 						editcell.innerHTML = '<button id="AbsEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
 						scratchcell.innerHTML = '<button id="AbsScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Scratch</button>';
 
@@ -149,7 +150,7 @@ function GetFencers(fencerid, action) {
 					if (null === document.getElementById('PresRow' + fencer.id) && null !== presentlist) {
 					
 						//Insert the row at the end
-						row = presentlist.insertRow(find_place(fencer.name, presentlist));
+						row = presentlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, presentlist));
 						row.id = 'PresRow' + fencer.id;
 						checkcell = row.insertCell(0);
 						namecell = row.insertCell(1);
@@ -189,7 +190,7 @@ function GetFencers(fencerid, action) {
 					if (null === document.getElementById('ScratRow' + fencer.id) && null !== scratchedlist) {
 					
 						//Insert the row at the end
-						row = scratchedlist.insertRow(find_place(fencer.name, scratchedlist));
+						row = scratchedlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, scratchedlist));
 						row.id = 'ScratRow' + fencer.id;
 						checkcell = row.insertCell(0);
 						namecell = row.insertCell(1);

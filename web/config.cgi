@@ -5,7 +5,6 @@ use lib '/home/engarde/lib';
 use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
 use Engarde::Control;
-use Engarde::DB;
 use Data::Dumper;
 
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser cluck);

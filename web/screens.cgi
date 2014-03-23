@@ -8,7 +8,6 @@ use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
 # use Engarde;
 use Engarde::Control;
-use Engarde::DB;
 use CGI::Pretty qw(:standard *table -no_xhtml);
 use Data::Dumper;
 

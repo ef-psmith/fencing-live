@@ -8,7 +8,7 @@ use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
 # use Engarde;
 use Engarde::Control;
-use CGI qw(:standard *table -no_xhtml);
+# use CGI qw(:standard *table -no_xhtml);
 use strict;
 
 my $wp = param('wp') || "";

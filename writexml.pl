@@ -19,7 +19,7 @@ use lib "/home/engarde/lib";
 use strict;
 use Engarde;
 use Engarde::Control;
-use Engarde::DB;
+# use Engarde::DB;
 
 use Data::Dumper;
 use Carp qw(cluck);
@@ -105,6 +105,9 @@ unless ($^O =~ /MSWin32/ || $runonce)
 
 while (1)
 {
+	# make sure we have a fresh dbh
+	# Engarde::DB::reconnect();
+
 	my $config = config_read();
 	
 	$Engarde::DEBUGGING=$config->{debug};
@@ -409,7 +412,7 @@ sub do_entry_list
 	
 	my $fencers = $c->tireurs(1);
 				
-	# print Dumper(\$fencers);
+	print "do_entry_list: " . Dumper(\$fencers);
 
 	my $sequence = 1;
 

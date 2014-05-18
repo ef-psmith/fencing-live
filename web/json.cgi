@@ -8,11 +8,12 @@ use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
 # use Engarde;
 use Engarde::Control;
-# use CGI qw(:standard *table -no_xhtml);
+use CGI qw(:standard *table -no_xhtml);
 use strict;
 
 my $wp = param('wp') || "";
-my $action = lc(param('Action')) || lc(param('action')) || "list";
+
+my $action = lc(param('Action') || param('action') || "list");
 my $f = param('id');
 
 # $action = "list" if $action eq "undefined";

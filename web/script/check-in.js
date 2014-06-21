@@ -39,7 +39,7 @@ function GetFencers(fencerid, action) {
 	//var url = 'checkin.php?wp=' + compid;
 	var url = 'json.cgi?wp=' + compid;
 
-	if ('' != action && '' != fencerid) {
+	if (undefined != action && undefined != fencerid && '' != action && '' != fencerid) {
 	url += '&action=' + action + '&id=' + fencerid;
 	} else
 	url += '&action=list';

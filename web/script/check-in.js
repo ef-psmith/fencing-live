@@ -74,150 +74,152 @@ function GetFencers(fencerid, action) {
 		   if (http_request.status == 200 || http_request.status == 0) {
 
 				
-				// Paint the fencers.
-				var jsonObj = JSON.parse(http_request.responseText);
-				
-				// Get the absent list
-				var absentlist = document.getElementById('Absent');
-			
-				// Get the present list
-				var presentlist = document.getElementById('Present');
-				
-				// Get the scratched list
-				var scratchedlist = document.getElementById('Scratched');
-				
-				
-				var len = jsonObj.absent.length;
-				
-            var row, checkcell, namecell, clubcell, natcell, editcell, scratchcell;
-				for (var i = 0; i < len; ++i) {
+				// Paint the fencers.)
+				if ('' != http_request.responseText) {
+					var jsonObj = JSON.parse(http_request.responseText);
 					
-					var fencer = jsonObj.absent[i];
+					// Get the absent list
+					var absentlist = document.getElementById('Absent');
+				
+					// Get the present list
+					var presentlist = document.getElementById('Present');
 					
-					// Try to find the object in the checkin list by searching for the appropriate row id.
-					if (null === document.getElementById('AbsRow' + fencer.id) && null != absentlist) {
-						// Not found so insert it
+					// Get the scratched list
+					var scratchedlist = document.getElementById('Scratched');
 					
-						//Insert the row at the correct place
-						row = absentlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, absentlist));
-						row.id = 'AbsRow' + fencer.id;
-						checkcell = row.insertCell(0);
-						namecell = row.insertCell(1);
-						clubcell = row.insertCell(2);
-						natcell = row.insertCell(3);
-                  var rankcell = row.insertCell(4);
-                  var memnumcell = row.insertCell(5);
-                  var paidcell = row.insertCell(6);
-						editcell = row.insertCell(7);
-						scratchcell = row.insertCell(8);
+					
+					var len = jsonObj.absent.length;
+				
+					var row, checkcell, namecell, clubcell, natcell, editcell, scratchcell;
+					for (var i = 0; i < len; ++i) {
 						
-						checkcell.innerHTML = '<button id="AbsChkButton' + fencer.id + '" onclick="CheckIn(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Check-in</button>';
-						namecell.innerHTML = fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom;
-						clubcell.innerHTML = fencer.club ? fencer.club : 'U/A';
-						natcell.innerHTML = fencer.nation ? fencer.nation : 'U/A';
-                  rankcell.innerHTML = fencer.ranking ? fencer.ranking : '999';
-						memnumcell.innerHTML = fencer.licence ? fencer.licence : fencer.licence_fie;
-						paidcell.innerHTML = fencer.paiement ? fencer.paiement : 'Unk';
-						editcell.innerHTML = '<button id="AbsEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
-						scratchcell.innerHTML = '<button id="AbsScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Scratch</button>';
+						var fencer = jsonObj.absent[i];
+						
+						// Try to find the object in the checkin list by searching for the appropriate row id.
+						if (null === document.getElementById('AbsRow' + fencer.id) && null != absentlist) {
+							// Not found so insert it
+						
+							//Insert the row at the correct place
+							row = absentlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, absentlist));
+							row.id = 'AbsRow' + fencer.id;
+							checkcell = row.insertCell(0);
+							namecell = row.insertCell(1);
+							clubcell = row.insertCell(2);
+							natcell = row.insertCell(3);
+					  var rankcell = row.insertCell(4);
+					  var memnumcell = row.insertCell(5);
+					  var paidcell = row.insertCell(6);
+							editcell = row.insertCell(7);
+							scratchcell = row.insertCell(8);
+							
+							checkcell.innerHTML = '<button id="AbsChkButton' + fencer.id + '" onclick="CheckIn(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Check-in</button>';
+							namecell.innerHTML = fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom;
+							clubcell.innerHTML = fencer.club ? fencer.club : 'U/A';
+							natcell.innerHTML = fencer.nation ? fencer.nation : 'U/A';
+					  rankcell.innerHTML = fencer.ranking ? fencer.ranking : 'Unranked';
+							memnumcell.innerHTML = fencer.licence ? fencer.licence : fencer.licence_fie;
+							paidcell.innerHTML = fencer.paiement ? fencer.paiement : 'Unk';
+							editcell.innerHTML = '<button id="AbsEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
+							scratchcell.innerHTML = '<button id="AbsScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Scratch</button>';
 
-						
-						// Now check whether it is in the recent list and if so delete it because the fencer hasn't recently been checked in
-						var recentrow = document.getElementById('RecRow' + fencer.id);
-						if (null != recentrow) {
-							recentlist.deleteRow(recentrow.rowIndex);
+							
+							// Now check whether it is in the recent list and if so delete it because the fencer hasn't recently been checked in
+							var recentrow = document.getElementById('RecRow' + fencer.id);
+							if (null != recentrow) {
+								recentlist.deleteRow(recentrow.rowIndex);
+							}
 						}
+						// Now check whether it is in the present list and if so delete it because the fencer isn't present
+						var presentrow = document.getElementById('PresRow' + fencer.id);
+						if (null !== presentrow) {
+							presentlist.deleteRow(presentrow.rowIndex);
+						}
+						// Now check whether it is in the scratched list and if so delete it because the fencer isn't present
+						var scratchrow = document.getElementById('ScratRow' + fencer.id);
+						if (null !== scratchrow) {
+							scratchedlist.deleteRow(scratchrow.rowIndex);
+						}					
 					}
-					// Now check whether it is in the present list and if so delete it because the fencer isn't present
-					var presentrow = document.getElementById('PresRow' + fencer.id);
-					if (null !== presentrow) {
-						presentlist.deleteRow(presentrow.rowIndex);
-					}
-					// Now check whether it is in the scratched list and if so delete it because the fencer isn't present
-					var scratchrow = document.getElementById('ScratRow' + fencer.id);
-					if (null !== scratchrow) {
-						scratchedlist.deleteRow(scratchrow.rowIndex);
-					}					
-				}
-								
-				var len = jsonObj.present.length;
-				
-				for (var i = 0; i < len; ++i) {
+									
+					var len = jsonObj.present.length;
 					
-					var fencer = jsonObj.present[i];
-					
-					// Try to find the object in the present list by searching for the appropriate row id.
-					if (null === document.getElementById('PresRow' + fencer.id) && null !== presentlist) {
-					
-						//Insert the row at the end
-						row = presentlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, presentlist));
-						row.id = 'PresRow' + fencer.id;
-						checkcell = row.insertCell(0);
-						namecell = row.insertCell(1);
-						clubcell = row.insertCell(2);
-						natcell = row.insertCell(3);
-						editcell = row.insertCell(4);
-						scratchcell = row.insertCell(5);
+					for (var i = 0; i < len; ++i) {
 						
-						checkcell.innerHTML = '<button id="PresChkButton' + fencer.id + '" onclick="UndoCheckIn(\'' + fencer.id + '\')">Undo Check-in</button>';
-						namecell.innerHTML = (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom);
-						clubcell.innerHTML = fencer.club;
-						natcell.innerHTML = fencer.nation;
-						editcell.innerHTML = '<button id="PresEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
+						var fencer = jsonObj.present[i];
 						
-						scratchcell.innerHTML = '<button id="PresScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Scratch</button>';
-					}
-					
-					// Now check whether it is in the checkin list and if so delete it because the fencer is present
-					var absrow = document.getElementById('AbsRow' + fencer.id);
-					if (null !== absrow) {
-						absentlist.deleteRow(absrow.rowIndex);
-					}
-					// Now check whether it is in the scratched list and if so delete it because the fencer isn't present
-					var scratchrow = document.getElementById('ScratRow' + fencer.id);
-					if (null !== scratchrow) {
-						scratchedlist.deleteRow(scratchrow.rowIndex);
-					}		
-					
-				}
-				var len = jsonObj.scratched.length;
-				
-				for (var i = 0; i < len; ++i) {
-					
-					var fencer = jsonObj.scratched[i];
-					
-					// Try to find the object in the present list by searching for the appropriate row id.
-					if (null === document.getElementById('ScratRow' + fencer.id) && null !== scratchedlist) {
-					
-						//Insert the row at the end
-						row = scratchedlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, scratchedlist));
-						row.id = 'ScratRow' + fencer.id;
-						checkcell = row.insertCell(0);
-						namecell = row.insertCell(1);
-						clubcell = row.insertCell(2);
-						natcell = row.insertCell(3);
-						editcell = row.insertCell(4);
-						scratchcell = row.insertCell(5);
+						// Try to find the object in the present list by searching for the appropriate row id.
+						if (null === document.getElementById('PresRow' + fencer.id) && null !== presentlist) {
 						
-						checkcell.innerHTML = '<button id="ScratChkButton' + fencer.id + '" onclick="CheckIn(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + '\', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Check-in</button>';
-						namecell.innerHTML = (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom);
-						clubcell.innerHTML = fencer.club;
-						natcell.innerHTML = fencer.nation;
-						editcell.innerHTML = '<button id="PresEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
+							//Insert the row at the end
+							row = presentlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, presentlist));
+							row.id = 'PresRow' + fencer.id;
+							checkcell = row.insertCell(0);
+							namecell = row.insertCell(1);
+							clubcell = row.insertCell(2);
+							natcell = row.insertCell(3);
+							editcell = row.insertCell(4);
+							scratchcell = row.insertCell(5);
+							
+							checkcell.innerHTML = '<button id="PresChkButton' + fencer.id + '" onclick="UndoCheckIn(\'' + fencer.id + '\')">Undo Check-in</button>';
+							namecell.innerHTML = (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom);
+							clubcell.innerHTML = fencer.club;
+							natcell.innerHTML = fencer.nation;
+							editcell.innerHTML = '<button id="PresEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
+							
+							scratchcell.innerHTML = '<button id="PresScratchButton' + fencer.id + '" onclick="Scratch(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + ' \', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Scratch</button>';
+						}
 						
-						scratchcell.innerHTML = '<button id="ScratScratchButton' + fencer.id + '" onclick="UndoScratch(\'' + fencer.id + '\')">Undo Scratch</button>';
+						// Now check whether it is in the checkin list and if so delete it because the fencer is present
+						var absrow = document.getElementById('AbsRow' + fencer.id);
+						if (null !== absrow) {
+							absentlist.deleteRow(absrow.rowIndex);
+						}
+						// Now check whether it is in the scratched list and if so delete it because the fencer isn't present
+						var scratchrow = document.getElementById('ScratRow' + fencer.id);
+						if (null !== scratchrow) {
+							scratchedlist.deleteRow(scratchrow.rowIndex);
+						}		
+						
 					}
+					var len = jsonObj.scratched.length;
 					
-					// Now check whether it is in the checkin list and if so delete it because the fencer is scratched
-					var absrow = document.getElementById('AbsRow' + fencer.id);
-					if (null !== absrow) {
-						absentlist.deleteRow(absrow.rowIndex);
+					for (var i = 0; i < len; ++i) {
+						
+						var fencer = jsonObj.scratched[i];
+						
+						// Try to find the object in the present list by searching for the appropriate row id.
+						if (null === document.getElementById('ScratRow' + fencer.id) && null !== scratchedlist) {
+						
+							//Insert the row at the end
+							row = scratchedlist.insertRow(find_place(fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom, scratchedlist));
+							row.id = 'ScratRow' + fencer.id;
+							checkcell = row.insertCell(0);
+							namecell = row.insertCell(1);
+							clubcell = row.insertCell(2);
+							natcell = row.insertCell(3);
+							editcell = row.insertCell(4);
+							scratchcell = row.insertCell(5);
+							
+							checkcell.innerHTML = '<button id="ScratChkButton' + fencer.id + '" onclick="CheckIn(\'' + fencer.id + '\', \'' + (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom) + '\', \''+ (fencer.club ? fencer.club : 'U/A') + '\', \'' + (fencer.nation ? fencer.nation : 'U/A') +'\')">Check-in</button>';
+							namecell.innerHTML = (fencer.name ? fencer.name : fencer.nom + ' ' + fencer.prenom);
+							clubcell.innerHTML = fencer.club;
+							natcell.innerHTML = fencer.nation;
+							editcell.innerHTML = '<button id="PresEditButton' + fencer.id + '" onclick="Edit(\'' + fencer.id + '\')">Edit</button>';
+							
+							scratchcell.innerHTML = '<button id="ScratScratchButton' + fencer.id + '" onclick="UndoScratch(\'' + fencer.id + '\')">Undo Scratch</button>';
+						}
+						
+						// Now check whether it is in the checkin list and if so delete it because the fencer is scratched
+						var absrow = document.getElementById('AbsRow' + fencer.id);
+						if (null !== absrow) {
+							absentlist.deleteRow(absrow.rowIndex);
+						}
+						// Now check whether it is in the present list and if so delete it because the fencer isn't present
+						var presentrow = document.getElementById('PresRow' + fencer.id);
+						if (null !== presentrow) {
+							presentlist.deleteRow(presentrow.rowIndex);
+						}	
 					}
-					// Now check whether it is in the present list and if so delete it because the fencer isn't present
-					var presentrow = document.getElementById('PresRow' + fencer.id);
-					if (null !== presentrow) {
-						presentlist.deleteRow(presentrow.rowIndex);
-					}	
 				}
 		   } else {
 				// We've had an error so remove from the recent list

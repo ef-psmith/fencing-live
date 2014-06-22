@@ -37,9 +37,9 @@ ini_set('display_errors',1);
 
 
 	// Configuration information on where to find the config file, a place for the temporary file and the base area for Engarde files
-	$configfilelocation = 'C:/Documents and Settings/Oliver/My Documents/fencing/Screens/Live/live.xml';
-	$tempconfigfilelocation = 'C:/Documents and Settings/Oliver/My Documents/fencing/Screens/Live/templive.xml';
-	$basepath  = 'C:/Documents and Settings/Oliver/My Documents/fencing/Screens/Live/Examples/Invicta';
+	$configfilelocation = 'D:/Screens/Live/live.xml';
+	$tempconfigfilelocation = 'D:/Screens/Live/templive.xml';
+	$basepath  = 'D:/Screens/Live/Examples/Invicta';
 
 
 

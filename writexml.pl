@@ -106,11 +106,13 @@ unless ($^O =~ /MSWin32/ || $runonce)
 while (1)
 {
 	# make sure we have a fresh dbh
-	# Engarde::DB::reconnect();
+	Engarde::DB::reconnect();
 
 	my $config = config_read();
 	
 	$Engarde::DEBUGGING=$config->{debug};
+
+	# print Dumper(\$config);
 	
 	if ($config->{log})
 	{
@@ -126,18 +128,20 @@ while (1)
 	my $comps = $config->{competition};
 	
 	$comps = {} unless ref $comps eq "HASH";
-	
+
 	# generate the data
 	
 	foreach my $cid ( sort keys %$comps)
 	{
 		next unless $comps->{$cid}->{enabled} eq "true";	
-		
+	
 		# don't regenerate this one if we are paused
 		next if $comps->{$cid}->{hold};
 		
 		my $c = Engarde->new($comps->{$cid}->{source} . "/competition.egw");		
 		next unless $c;
+
+		$c->{cid} = $cid;
 		
 		do_comp($c, $cid, $config);
 	}
@@ -200,7 +204,7 @@ sub do_comp
 	$out->{poolsperpage} = 3;
    
 	my $where = $c->whereami;
-	
+
 	# insert current status
 	$out->{stage} = $where;
 	
@@ -212,7 +216,7 @@ sub do_comp
 	############################################
 	
 	my $list = {};	
-	do_entry_list($c, $aff, $list);
+	do_entry_list($c, $aff, $list, $where);
 
 	$list->{entry}->{nif} = $nif;
 	push @{$out->{lists}}, $list;
@@ -279,13 +283,17 @@ sub do_comp
 	
 	my $wh = do_where($c);
 	
-	Engarde::debug(3, "cid $cid: where = " . Dumper(\$wh));
+	#Engarde::debug(3, "cid $cid: where = " . Dumper(\$wh));
 	
 	push @{$out->{lists}}, $wh if $wh->{where}->{count};
 	
 	$out->{lastupdate} = localtime;
 	
 	my $outfile = $location . "/competitions/" . $cid . ".xml";
+
+	# print STDERR "do_comp: outfile = $outfile\n";
+	# print STDERR "do_comp: out = " . Dumper(\$out);
+
 	XMLout($out, SuppressEmpty => undef, RootName=>"competition", OutputFile => $outfile . ".tmp");
 	rename($outfile . ".tmp", $outfile);
 	# $comp_output->{competition}->{$cid} = $out;
@@ -407,11 +415,22 @@ sub do_entry_list
 	my $c = shift;
 	my $aff = shift;
 	my $list = shift;
+	my $where = shift;
 	
 	my @lout;
-	
-	my $fencers = $c->tireurs(1);
-				
+
+	my $fencers;
+	if ($where eq "debut")
+	{
+		# print STDERR "do_entry_list: fetching tireurs\n";
+		$fencers = $c->tireurs();
+	}
+	else
+	{
+		print STDERR "do_entry_list: fetching tireurs with nodb\n";
+		$fencers = $c->tireurs(0,1);
+	}
+
 	print "do_entry_list: " . Dumper(\$fencers);
 
 	my $sequence = 1;
@@ -428,11 +447,17 @@ sub do_entry_list
 			$aff_value = $fencers->{$fid}->{club} || 'U/A';
 		}
 
+		#print "************************\n";
+		#print Dumper(\$fencers->{$fid});
+		#print Dumper(\$fencers->{$fid}->{presence});
+		#print "************************\n";
+
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
 						affiliation => $aff_value,
 						seed => $fencers->{$fid}->{serie} || '',
 						id => $fid || '',
 						category => $fencers->{$fid}->{category} || '',
+						presence => $fencers->{$fid}->{presence},
 						sequence => $sequence};
 		$sequence++;
 	}

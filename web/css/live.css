@@ -3,6 +3,7 @@ div.hidden {
 	visibility: hidden; 
 }
 
+
 .navigation 
 {
    display:none;
@@ -555,6 +556,40 @@ span.fppspan:nth-of-type(odd) {
 
 span.fppspan:nth-of-type(even) {
 	background-color: #F2FFFA;
+}
+
+div.pres_key {
+	height: 20;
+	position: absolute;
+	right: 20;
+	top: 20;
+}
+
+h3.pres_abs, h3.pres_pres, h3.pres_scr {
+	display: inline; 
+	margin: 5px; 
+	padding-left: 5px; 
+	padding-right: 5px; 
+}
+
+span.pres_abs, span.pres_pres, span.pres_scr {
+	display: block; 
+}
+
+.pres_abs {
+	background-color: #ff9980;
+	height: 20;
+}
+
+.pres_pres {
+	background-color: #99ff99;
+	height: 20;
+}
+
+.pres_scr {
+	background-color: #ffffcc;
+	height: 20;
+	text-decoration: line-through;
 }
 
 span.elim_p {

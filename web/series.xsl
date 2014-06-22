@@ -24,7 +24,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<content>
 	<!-- Display HTML starts here. 
 			First the list header -->
-<div class="vlist_title" id="vtitle"><h2>Entry List for <xsl:value-of select="../@titre_ligne" /> - <xsl:value-of select="@present" /> present / <xsl:value-of select="@entries" /> entered</h2></div>
+<div class="vlist_title" id="vtitle"><h2>Entry List for <xsl:value-of select="../@titre_ligne" /> - <xsl:value-of select="@present" /> present / <xsl:value-of select="@entries" /> entered</h2>
+<div class="pres_key">
+<h3 class="pres_pres">Present</h3>
+<h3 class="pres_abs">Absent</h3>
+<h3 class="pres_scr">Scratched</h3>
+</div>
+</div>
 
 <xsl:for-each select="fencer[@sequence mod (../../@entrysize) = 1]">
 
@@ -44,7 +50,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="fencer" mode="entryfencer">
-<span class="elim_p">	<span class="col_name"><xsl:value-of select="@name" /></span>
+<span><xsl:attribute name="class">
+
+<xsl:choose>
+<xsl:when test="@presence='present'">pres_pres</xsl:when>
+<xsl:when test="@presence='scratched'">pres_scr</xsl:when>
+
+<xsl:otherwise>pres_abs</xsl:otherwise></xsl:choose>
+
+</xsl:attribute>
+<span class="col_name"><xsl:value-of select="@name" /></span>
 	<span class="col_club"><xsl:value-of select="@affiliation" /><xsl:if test="string-length(@affiliation) = 0"><span style="display:none">NONE</span></xsl:if></span></span>
 </xsl:template>
 

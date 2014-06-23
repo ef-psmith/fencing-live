@@ -345,7 +345,7 @@ sub do_poules
 
 			$out->{fencers} = $poule->grid(1);
 
-			# debug(1, "fpp: out2 = " . Dumper(\$out));
+			# debug(1, "do_poules: out2 = " . Dumper(\$out));
 
 			push @pout, $out;
 		}
@@ -427,15 +427,15 @@ sub do_entry_list
 	}
 	else
 	{
-		print STDERR "do_entry_list: fetching tireurs with nodb\n";
+		# print STDERR "do_entry_list: fetching tireurs with nodb\n";
 		$fencers = $c->tireurs(0,1);
 	}
 
-	print "do_entry_list: " . Dumper(\$fencers);
+	# print "do_entry_list: " . Dumper(\$fencers);
 
 	my $sequence = 1;
 
-	foreach my $fid (sort {$fencers->{$a}->{nom} cmp $fencers->{$b}->{nom}} grep /\d+/, keys %$fencers)
+	foreach my $fid (sort {($fencers->{$a}->{nom} || "") cmp ($fencers->{$b}->{nom} || "")} grep /\d+/, keys %$fencers)
 	{
 		my $aff_value;
 		if ($aff eq "nation")

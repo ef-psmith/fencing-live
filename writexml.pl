@@ -106,7 +106,7 @@ unless ($^O =~ /MSWin32/ || $runonce)
 while (1)
 {
 	# make sure we have a fresh dbh
-	Engarde::DB::reconnect();
+	# Engarde::DB::reconnect();
 
 	my $config = config_read();
 	
@@ -208,7 +208,7 @@ sub do_comp
 	# insert current status
 	$out->{stage} = $where;
 	
-	my $dom = $c->domaine_compe;
+	my $dom = $c->domaine_compe || "national";
 	my $aff = $dom eq "national" ? "club" : "nation";
 
 	############################################

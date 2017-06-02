@@ -374,7 +374,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	POULES
 *************************************************************************************** -->
 
-<xsl:template match="pools">
+<xsl:template match="pools[@round = substring(../@stage,8,1)]">
 <topdiv class="poule" id="pools" name="topdiv">
 <pages>
    <xsl:for-each select="pool[@number mod ../../@poolsperpage = 1]">
@@ -585,7 +585,8 @@ with half the number of matches.
 <xsl:param name="col1" />
 <xsl:param name="visibility" />
 <xsl:variable name="col1matchcount" select="tableau[@name = $col1]/@count" />
-<xsl:variable name="col2" select="tableau[@count = $col1matchcount div 2]/@name" />
+<xsl:variable name="col2name" select="concat(substring($col1, 1, 1), $col1matchcount div 2)" />
+<xsl:variable name="col2" select="tableau[@name = $col2name or (8 > $col1matchcount and @count = $col1matchcount div 2) ]/@name" />
 
 
 <xsl:choose>

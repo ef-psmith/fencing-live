@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<config allowunpaid="true"
+        checkintimeout="100000"
+        debug="1"
+        log="./out.txt"
+        nif="false"
+        restrictIP="false"
+        statusTimeout="40000"
+        targetlocation="/home/engarde/live/web"
+        title="DB Admin Portal"
+        tournamentname="EYC 2016">
+  <competition id="10"
+               background="magenta"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Epee/EYC Boys U13 Epee"
+               state="active"
+               titre_ligne="Boys Under 13 Epee - EYC">
+    <message></message>
+  </competition>
+  <competition id="11"
+               background="orange"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Epee/EYC Boys U15 Epee"
+               state="active"
+               titre_ligne="Boys Under 15 Epee - EYC">
+    <message></message>
+  </competition>
+  <competition id="12"
+               background="red"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Epee/EYC Girls U11 Epee"
+               state="active"
+               titre_ligne="Girls Under 11 Epee - EYC">
+    <message></message>
+  </competition>
+  <competition id="13"
+               background="seagreen"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Epee/EYC Girls U13 Epee"
+               state="active"
+               titre_ligne="Girls Under 13 Epee - EYC">
+    <message></message>
+  </competition>
+  <competition id="14"
+               background="tomato"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Epee/EYC Girls U15 Epee"
+               state="active"
+               titre_ligne="Girls Under 15 Epee - EYC">
+    <message></message>
+  </competition>
+  <competition id="15"
+               background="yellow"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Sabre/EYC Boys U11 Sabre"
+               state="active"
+               titre_ligne="Boys Under 11 Sabre - EYC">
+    <message></message>
+  </competition>
+  <competition id="16"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Sabre/EYC Boys U13 Sabre"
+               state="active"
+               titre_ligne="Boys Under 13 Sabre - EYC">
+    <background></background>
+    <message></message>
+  </competition>
+  <competition id="17"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Sabre/EYC Boys U15 Sabre"
+               state="active"
+               titre_ligne="Boys Under 15 Sabre - EYC">
+    <background></background>
+    <message></message>
+  </competition>
+  <competition id="18"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Sabre/EYC Girls U11 Sabre"
+               state="active"
+               titre_ligne="Girls Under 11 Sabre - EYC">
+    <background></background>
+    <message></message>
+  </competition>
+  <competition id="19"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Sabre/EYC Girls U13 Sabre"
+               state="active"
+               titre_ligne="Girls Under 13 Sabre - EYC">
+    <background></background>
+    <message></message>
+  </competition>
+  <competition id="2"
+               background="chartreuse"
+               enabled="true"
+               hold="0"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Foil/EYC Boys U13 Foil"
+               state="active"
+               titre_ligne="Boys Under 13 Foil - EYC">
+    <message></message>
+  </competition>
+  <competition id="20"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Sabre/EYC Girls U15 Sabre"
+               state="active"
+               titre_ligne="Girls Under 15 Sabre - EYC">
+    <background></background>
+    <message></message>
+  </competition>
+  <competition id="5"
+               background="darkgreen"
+               enabled="true"
+               hold="0"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Foil/EYC Boys U15 Foil"
+               state="active"
+               titre_ligne="Boys Under 15 Foil - EYC">
+    <message></message>
+  </competition>
+  <competition id="6"
+               background="deeppink"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Foil/EYC Girls U11 Foil"
+               state="active"
+               titre_ligne="Girls Under 11 Foil - EYC">
+    <message></message>
+  </competition>
+  <competition id="7"
+               background="dodgerblue"
+               enabled="false"
+               hold="0"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Foil/EYC Girls U13 Foil"
+               state="active"
+               titre_ligne="Girls Under 13 Foil - EYC">
+    <message></message>
+  </competition>
+  <competition id="8"
+               background="gold"
+               enabled="true"
+               hold="0"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Foil/EYC Girls U15 Foil"
+               state="active"
+               titre_ligne="Girls Under 15 Foil - EYC">
+    <message></message>
+  </competition>
+  <competition id="9"
+               background="hotpink"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/EYC2016/Epee/EYC Boys U11 Epee"
+               state="active"
+               titre_ligne="Boys Under 11 Epee - EYC">
+    <message></message>
+  </competition>
+  <series id="1">
+    <competition>9</competition>
+    <competition>19</competition>
+  </series>
+  <series id="10">
+    <competition>12</competition>
+    <competition>15</competition>
+    <competition>20</competition>
+  </series>
+  <series id="11">
+    <competition>14</competition>
+    <competition>16</competition>
+    <competition>17</competition>
+  </series>
+  <series id="2">
+    <competition>10</competition>
+    <competition>12</competition>
+  </series>
+  <series id="3">
+    <competition>11</competition>
+    <competition>18</competition>
+  </series>
+  <series id="4">
+    <competition>14</competition>
+    <competition>15</competition>
+  </series>
+  <series id="5">
+    <competition>13</competition>
+    <competition>16</competition>
+  </series>
+  <series id="6">
+    <competition>17</competition>
+    <competition>20</competition>
+  </series>
+  <series id="8">
+    <competition>9</competition>
+    <competition>10</competition>
+    <competition>13</competition>
+  </series>
+  <series id="9">
+    <competition>11</competition>
+    <competition>18</competition>
+    <competition>19</competition>
+  </series>
+</config>

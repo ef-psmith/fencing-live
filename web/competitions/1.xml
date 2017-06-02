@@ -1,0 +1,1159 @@
+<competition id="1" background="blue" entrysize="132" fpppagesize="42" lastupdate="Sat Feb 18 15:27:37 2017" poolsperpage="3" rankingpagesize="40" stage="termine" titre_ligne="Boys Under 11 Foil - EYC" whereamipagesize="40">
+  <lists name="entry" absent="10" count="80" entries="80" nif="false" present="70" scratch="0">
+    <fencer name="ADHAM Asher" affiliation="ZFW FENCING" category="" id="79" presence="present" seed="31" sequence="1" />
+    <fencer name="AKGUN Eren" affiliation="SUSSEX HOUSE" category="" id="80" presence="present" seed="" sequence="2" />
+    <fencer name="ALLENBY James" affiliation="SALLE OXON" category="" id="78" presence="present" seed="" sequence="3" />
+    <fencer name="AYO-PRICE Oscar" affiliation="RADCLIFFE SWORD" category="" id="77" presence="present" seed="37" sequence="4" />
+    <fencer name="BEARDMORE-ESTEBAN Sebastian" affiliation="ST BENEDICTS" category="" id="76" presence="present" seed="38" sequence="5" />
+    <fencer name="BELL Alfie" affiliation="LASZLO" category="" id="75" presence="present" seed="13" sequence="6" />
+    <fencer name="BERRECLOTH Matthew" affiliation="SALLE ETON" category="" id="74" presence="present" seed="39" sequence="7" />
+    <fencer name="BIRD Toby" affiliation="SWINDON" category="" id="73" presence="absent" seed="40" sequence="8" />
+    <fencer name="BOUHADANA Noam" affiliation="ESCRIME ACADEMY" category="" id="72" presence="present" seed="41" sequence="9" />
+    <fencer name="CAMPBELL - YATES Indio" affiliation="FENCERS CLUB LONDON" category="" id="71" presence="present" seed="27" sequence="10" />
+    <fencer name="CASTRONOVO Aman" affiliation="ZFW FENCING" category="" id="70" presence="present" seed="32" sequence="11" />
+    <fencer name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" category="" id="69" presence="present" seed="22" sequence="12" />
+    <fencer name="CHESSER William" affiliation="KENILWORTH SWORD" category="" id="68" presence="absent" seed="42" sequence="13" />
+    <fencer name="CHOI Aleksey" affiliation="SUSSEX HOUSE" category="" id="67" presence="present" seed="43" sequence="14" />
+    <fencer name="CLEMENT-DAVIES Louis" affiliation="UNATTACHED" category="" id="66" presence="absent" seed="44" sequence="15" />
+    <fencer name="COLLIER Nathan" affiliation="SALLE OXON" category="" id="65" presence="absent" seed="33" sequence="16" />
+    <fencer name="COLSTON Jack" affiliation="WICKFORD FENCING" category="" id="64" presence="present" seed="" sequence="17" />
+    <fencer name="CONTRACTOR Khalam" affiliation="NEWHAM SWORDS" category="" id="63" presence="present" seed="23" sequence="18" />
+    <fencer name="DE ROBERT HAUTEQUERE Francois" affiliation="COBHAM FENCING" category="" id="62" presence="present" seed="5" sequence="19" />
+    <fencer name="DENTON Sam" affiliation="PAUL DAVIS FENCING" category="" id="61" presence="absent" seed="" sequence="20" />
+    <fencer name="EL-SAIE Faaris" affiliation="ZFW FENCING" category="" id="60" presence="present" seed="15" sequence="21" />
+    <fencer name="ELIS Eurig" affiliation="COLCHESTER &amp; DISTRICT" category="" id="59" presence="present" seed="3" sequence="22" />
+    <fencer name="EVANS Callum" affiliation="CHESTER FENCING" category="" id="58" presence="present" seed="9" sequence="23" />
+    <fencer name="FLANAGAN Joel" affiliation="WREKIN SWORD" category="" id="57" presence="present" seed="" sequence="24" />
+    <fencer name="FLANAGAN Zach" affiliation="WREKIN SWORD" category="" id="56" presence="present" seed="" sequence="25" />
+    <fencer name="FLETCHER Charles" affiliation="SWINDON" category="" id="55" presence="present" seed="34" sequence="26" />
+    <fencer name="FRIC Tomi" affiliation="NEWHAM SWORDS" category="" id="54" presence="present" seed="10" sequence="27" />
+    <fencer name="GENG Raymond" affiliation="LASZLO" category="" id="53" presence="present" seed="28" sequence="28" />
+    <fencer name="GIBBONS Scott" affiliation="ZFW FENCING" category="" id="52" presence="present" seed="11" sequence="29" />
+    <fencer name="GORCZYCA Jakub" affiliation="UKS ATENA GDANSK" category="" id="51" presence="present" seed="" sequence="30" />
+    <fencer name="GORCZYCA Tomasz" affiliation="UKS ATENA GDANSK" category="" id="50" presence="present" seed="" sequence="31" />
+    <fencer name="HAJJAR Rafael" affiliation="ESCRIME ACADEMY" category="" id="49" presence="present" seed="" sequence="32" />
+    <fencer name="HARPER-JONES James" affiliation="WIMBLEDON FENCING" category="" id="48" presence="present" seed="" sequence="33" />
+    <fencer name="HAYNES Matthew" affiliation="SALLE PAUL" category="" id="47" presence="present" seed="" sequence="34" />
+    <fencer name="HEALY Sacha" affiliation="FENCERS CLUB LONDON" category="" id="46" presence="present" seed="20" sequence="35" />
+    <fencer name="HEMMINGS Joshua" affiliation="UNATTACHED" category="" id="45" presence="present" seed="" sequence="36" />
+    <fencer name="HENKELL VON RIBBENTROP Phillip" affiliation="SUSSEX HOUSE" category="" id="44" presence="present" seed="36" sequence="37" />
+    <fencer name="HILLS George" affiliation="INVICTA" category="" id="43" presence="present" seed="35" sequence="38" />
+    <fencer name="HIPKINS Alexander" affiliation="FOUR OF CLUBS" category="" id="42" presence="present" seed="16" sequence="39" />
+    <fencer name="HUGHES Otis" affiliation="FOUR OF CLUBS" category="" id="41" presence="present" seed="21" sequence="40" />
+    <fencer name="JOUSSEAUME Ilo" affiliation="WREKIN SWORD" category="" id="40" presence="present" seed="" sequence="41" />
+    <fencer name="KAMSTRA Ben" affiliation="COBHAM FENCING" category="" id="39" presence="present" seed="" sequence="42" />
+    <fencer name="KEOGH George" affiliation="SALLE PAUL" category="" id="38" presence="present" seed="" sequence="43" />
+    <fencer name="KINGSBURY William" affiliation="SALLE HADALIN" category="" id="37" presence="present" seed="" sequence="44" />
+    <fencer name="KISS Dominic" affiliation="SALLE KISS" category="" id="36" presence="present" seed="1" sequence="45" />
+    <fencer name="LAUGA William" affiliation="CAMBRIDGE SWORD" category="" id="35" presence="absent" seed="17" sequence="46" />
+    <fencer name="LAURENT Alexis" affiliation="PAUL DAVIS FENCING" category="" id="34" presence="absent" seed="" sequence="47" />
+    <fencer name="LAWSON Sebastian" affiliation="ST BENEDICTS" category="" id="33" presence="present" seed="" sequence="48" />
+    <fencer name="LEE Taymour" affiliation="SUSSEX HOUSE" category="" id="32" presence="present" seed="7" sequence="49" />
+    <fencer name="LIM Li Leo" affiliation="ZFW FENCING" category="" id="31" presence="present" seed="4" sequence="50" />
+    <fencer name="LUC Wai Hung" affiliation="NEWHAM SWORDS" category="" id="30" presence="present" seed="" sequence="51" />
+    <fencer name="MANSFIELD Ethan" affiliation="CHICHESTER FENCING" category="" id="29" presence="present" seed="24" sequence="52" />
+    <fencer name="MARCHESE HUME Milo" affiliation="THE FENCING SCHOOL" category="" id="28" presence="present" seed="" sequence="53" />
+    <fencer name="MAZZOCCHI Ludovico" affiliation="SUSSEX HOUSE" category="" id="27" presence="present" seed="19" sequence="54" />
+    <fencer name="MEWAWALLA Sam" affiliation="FENCERS CLUB LONDON" category="" id="26" presence="present" seed="" sequence="55" />
+    <fencer name="MOHAUPT Lucas" affiliation="CAMDEN FENCING" category="" id="25" presence="present" seed="" sequence="56" />
+    <fencer name="MOLHANT PROOST Edouard" affiliation="SALLE BOSTON" category="" id="24" presence="present" seed="" sequence="57" />
+    <fencer name="OVERY-JONES Ollie" affiliation="ST BENEDICTS" category="" id="23" presence="present" seed="26" sequence="58" />
+    <fencer name="PARTRIDGE-HICKS Griffin" affiliation="ZFW/SUSSEX HOUSE" category="" id="22" presence="present" seed="12" sequence="59" />
+    <fencer name="PITMAN James" affiliation="SWINDON" category="" id="21" presence="present" seed="" sequence="60" />
+    <fencer name="RATCLIFFE Christian" affiliation="FOUR OF CLUBS" category="" id="20" presence="present" seed="18" sequence="61" />
+    <fencer name="RIGAL Adrien" affiliation="ESCRIME ACADEMY" category="" id="19" presence="present" seed="" sequence="62" />
+    <fencer name="RYAN Cosimo" affiliation="SUSSEX HOUSE" category="" id="18" presence="absent" seed="" sequence="63" />
+    <fencer name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" category="" id="17" presence="present" seed="" sequence="64" />
+    <fencer name="SHELMERDINE Dexter" affiliation="ST BENEDICTS" category="" id="16" presence="present" seed="" sequence="65" />
+    <fencer name="SILK Jed" affiliation="MALLARD FENCING" category="" id="15" presence="present" seed="14" sequence="66" />
+    <fencer name="SMALL Freddie" affiliation="UNATTACHED" category="" id="14" presence="absent" seed="" sequence="67" />
+    <fencer name="SOSNOV David" affiliation="ZFW FENCING" category="" id="13" presence="present" seed="6" sequence="68" />
+    <fencer name="SWALLOW-GAUNT Ethan Thomas" affiliation="HOYLAND HARRIERS" category="" id="12" presence="present" seed="" sequence="69" />
+    <fencer name="TAIWO Adekunle" affiliation="SARUM SWORDS" category="" id="11" presence="present" seed="29" sequence="70" />
+    <fencer name="TAYLOR Teddy" affiliation="TOUCHE FENCING" category="" id="10" presence="present" seed="" sequence="71" />
+    <fencer name="THOMPSON Alastair" affiliation="SUSSEX HOUSE" category="" id="9" presence="absent" seed="" sequence="72" />
+    <fencer name="TURNER Ben" affiliation="ZFW FENCING" category="" id="8" presence="present" seed="30" sequence="73" />
+    <fencer name="VAL Lazaro" affiliation="BATTERSEA FOIL" category="" id="7" presence="present" seed="" sequence="74" />
+    <fencer name="WADDINGTON Oscar" affiliation="KINGS COLLEGE LONDON" category="" id="6" presence="present" seed="" sequence="75" />
+    <fencer name="WALLIN Xavier" affiliation="COBHAM FENCING" category="" id="5" presence="present" seed="8" sequence="76" />
+    <fencer name="WALMSLEY Oliver" affiliation="FOUR OF CLUBS" category="" id="4" presence="present" seed="25" sequence="77" />
+    <fencer name="WINTER Bruno" affiliation="PAUL DAVIS FENCING" category="" id="3" presence="present" seed="" sequence="78" />
+    <fencer name="YAVUZ Attikan" affiliation="FIGHTING FIT" category="" id="2" presence="present" seed="2" sequence="79" />
+    <fencer name="ZHAO Rui" affiliation="SALLE PAUL" category="" id="1" presence="present" seed="" sequence="80" />
+  </lists>
+  <lists name="ranking" count="64" type="final">
+    <fencer name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" category="U11" elimround="elim_0" id="69" position="1" sequence="1" />
+    <fencer name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" category="U11" elimround="elim_2" id="17" position="2" sequence="2" />
+    <fencer name="DE ROBERT HAUTEQUERE Francois" affiliation="COBHAM FENCING" category="U13" elimround="elim_4" id="62" position="3" sequence="3" />
+    <fencer name="SOSNOV David" affiliation="ZFW FENCING" category="U11" elimround="elim_4" id="13" position="3" sequence="4" />
+    <fencer name="YAVUZ Attikan" affiliation="FIGHTING FIT" category="U13" elimround="elim_8" id="2" position="5" sequence="5" />
+    <fencer name="WALLIN Xavier" affiliation="COBHAM FENCING" category="U13" elimround="elim_8" id="5" position="6" sequence="6" />
+    <fencer name="KISS Dominic" affiliation="SALLE KISS" category="U13" elimround="elim_8" id="36" position="7" sequence="7" />
+    <fencer name="CONTRACTOR Khalam" affiliation="NEWHAM SWORDS" category="U11" elimround="elim_8" id="63" position="8" sequence="8" />
+    <fencer name="LIM Li Leo" affiliation="ZFW FENCING" category="U13" elimround="elim_16" id="31" position="9" sequence="9" />
+    <fencer name="ELIS Eurig" affiliation="COLCHESTER &amp; DISTRICT" category="U13" elimround="elim_16" id="59" position="10" sequence="10" />
+    <fencer name="ZHAO Rui" affiliation="SALLE PAUL" category="U11" elimround="elim_16" id="1" position="11" sequence="11" />
+    <fencer name="MAZZOCCHI Ludovico" affiliation="SUSSEX HOUSE" category="U13" elimround="elim_16" id="27" position="12" sequence="12" />
+    <fencer name="PARTRIDGE-HICKS Griffin" affiliation="ZFW/SUSSEX HOUSE" category="U13" elimround="elim_16" id="22" position="13" sequence="13" />
+    <fencer name="LEE Taymour" affiliation="SUSSEX HOUSE" category="U13" elimround="elim_16" id="32" position="14" sequence="14" />
+    <fencer name="GIBBONS Scott" affiliation="ZFW FENCING" category="U13" elimround="elim_16" id="52" position="15" sequence="15" />
+    <fencer name="PITMAN James" affiliation="SWINDON" category="U11" elimround="elim_16" id="21" position="16" sequence="16" />
+    <fencer name="FRIC Tomi" affiliation="NEWHAM SWORDS" category="U11" elimround="elim_32" id="54" position="17" sequence="17" />
+    <fencer name="GORCZYCA Tomasz" affiliation="UKS ATENA GDANSK" category="U13" elimround="elim_32" id="50" position="18" sequence="18" />
+    <fencer name="GORCZYCA Jakub" affiliation="UKS ATENA GDANSK" category="U11" elimround="elim_32" id="51" position="19" sequence="19" />
+    <fencer name="MEWAWALLA Sam" affiliation="FENCERS CLUB LONDON" category="U13" elimround="elim_32" id="26" position="20" sequence="20" />
+    <fencer name="GENG Raymond" affiliation="LASZLO" category="U13" elimround="elim_32" id="53" position="21" sequence="21" />
+    <fencer name="AKGUN Eren" affiliation="SUSSEX HOUSE" category="" elimround="elim_32" id="80" position="22" sequence="22" />
+    <fencer name="COLSTON Jack" affiliation="WICKFORD FENCING" category="U11" elimround="elim_32" id="64" position="23" sequence="23" />
+    <fencer name="HAYNES Matthew" affiliation="SALLE PAUL" category="U11" elimround="elim_32" id="47" position="24" sequence="24" />
+    <fencer name="HARPER-JONES James" affiliation="WIMBLEDON FENCING" category="U13" elimround="elim_32" id="48" position="25" sequence="25" />
+    <fencer name="RATCLIFFE Christian" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_32" id="20" position="26" sequence="26" />
+    <fencer name="CAMPBELL - YATES Indio" affiliation="FENCERS CLUB LONDON" category="U13" elimround="elim_32" id="71" position="27" sequence="27" />
+    <fencer name="EVANS Callum" affiliation="CHESTER FENCING" category="U11" elimround="elim_32" id="58" position="28" sequence="28" />
+    <fencer name="HEALY Sacha" affiliation="FENCERS CLUB LONDON" category="U11" elimround="elim_32" id="46" position="29" sequence="29" />
+    <fencer name="JOUSSEAUME Ilo" affiliation="WREKIN SWORD" category="U13" elimround="elim_32" id="40" position="30" sequence="30" />
+    <fencer name="TAIWO Adekunle" affiliation="SARUM SWORDS" category="U13" elimround="elim_32" id="11" position="31" sequence="31" />
+    <fencer name="WINTER Bruno" affiliation="PAUL DAVIS FENCING" category="U13" elimround="elim_32" id="3" position="32" sequence="32" />
+    <fencer name="TURNER Ben" affiliation="ZFW FENCING" category="U11" elimround="elim_64" id="8" position="33" sequence="33" />
+    <fencer name="EL-SAIE Faaris" affiliation="ZFW FENCING" category="U11" elimround="elim_64" id="60" position="34" sequence="34" />
+    <fencer name="HENKELL VON RIBBENTROP Phillip" affiliation="SUSSEX HOUSE" category="U11" elimround="elim_64" id="44" position="35" sequence="35" />
+    <fencer name="KAMSTRA Ben" affiliation="COBHAM FENCING" category="U11" elimround="elim_64" id="39" position="36" sequence="36" />
+    <fencer name="HEMMINGS Joshua" affiliation="UNATTACHED" category="U13" elimround="elim_64" id="45" position="37" sequence="37" />
+    <fencer name="MOLHANT PROOST Edouard" affiliation="SALLE BOSTON" category="U13" elimround="elim_64" id="24" position="38" sequence="38" />
+    <fencer name="SILK Jed" affiliation="MALLARD FENCING" category="U13" elimround="elim_64" id="15" position="39" sequence="39" />
+    <fencer name="BOUHADANA Noam" affiliation="ESCRIME ACADEMY" category="U11" elimround="elim_64" id="72" position="40" sequence="40" />
+    <fencer name="WALMSLEY Oliver" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_64" id="4" position="41" sequence="41" />
+    <fencer name="HILLS George" affiliation="INVICTA" category="U11" elimround="elim_64" id="43" position="42" sequence="42" />
+    <fencer name="FLETCHER Charles" affiliation="SWINDON" category="U11" elimround="elim_64" id="55" position="43" sequence="43" />
+    <fencer name="LUC Wai Hung" affiliation="NEWHAM SWORDS" category="U11" elimround="elim_64" id="30" position="44" sequence="44" />
+    <fencer name="KINGSBURY William" affiliation="SALLE HADALIN" category="U13" elimround="elim_64" id="37" position="45" sequence="45" />
+    <fencer name="CASTRONOVO Aman" affiliation="ZFW FENCING" category="U11" elimround="elim_64" id="70" position="46" sequence="46" />
+    <fencer name="BELL Alfie" affiliation="LASZLO" category="U13" elimround="elim_64" id="75" position="47" sequence="47" />
+    <fencer name="ADHAM Asher" affiliation="ZFW FENCING" category="U11" elimround="elim_64" id="79" position="48" sequence="48" />
+    <fencer name="BEARDMORE-ESTEBAN Sebastian" affiliation="ST BENEDICTS" category="U11" elimround="elim_64" id="76" position="49" sequence="49" />
+    <fencer name="KEOGH George" affiliation="SALLE PAUL" category="U11" elimround="elim_64" id="38" position="50" sequence="50" />
+    <fencer name="HIPKINS Alexander" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_64" id="42" position="51" sequence="51" />
+    <fencer name="CHOI Aleksey" affiliation="SUSSEX HOUSE" category="U11" elimround="elim_64" id="67" position="52" sequence="52" />
+    <fencer name="HUGHES Otis" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_64" id="41" position="53" sequence="53" />
+    <fencer name="AYO-PRICE Oscar" affiliation="RADCLIFFE SWORD" category="U13" elimround="elim_64" id="77" position="54" sequence="54" />
+    <fencer name="ALLENBY James" affiliation="SALLE OXON" category="U13" elimround="elim_64" id="78" position="55" sequence="55" />
+    <fencer name="HAJJAR Rafael" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_64" id="49" position="56" sequence="56" />
+    <fencer name="OVERY-JONES Ollie" affiliation="ST BENEDICTS" category="U13" elimround="elim_64" id="23" position="57" sequence="57" />
+    <fencer name="BERRECLOTH Matthew" affiliation="SALLE ETON" category="U11" elimround="elim_64" id="74" position="58" sequence="58" />
+    <fencer name="MANSFIELD Ethan" affiliation="CHICHESTER FENCING" category="U13" elimround="elim_64" id="29" position="59" sequence="59" />
+    <fencer name="MOHAUPT Lucas" affiliation="CAMDEN FENCING" category="U11" elimround="elim_64" id="25" position="59" sequence="60" />
+    <fencer name="FLANAGAN Zach" affiliation="WREKIN SWORD" category="U11" elimround="elim_64" id="56" position="61" sequence="61" />
+    <fencer name="FLANAGAN Joel" affiliation="WREKIN SWORD" category="U13" elimround="elim_64" id="57" position="62" sequence="62" />
+    <fencer name="WADDINGTON Oscar" affiliation="KINGS COLLEGE LONDON" category="U11" elimround="elim_64" id="6" position="63" sequence="63" />
+    <fencer name="SHELMERDINE Dexter" affiliation="ST BENEDICTS" category="U13" elimround="elim_64" id="16" position="64" sequence="64" />
+  </lists>
+  <lists name="ranking" count="70" type="pools">
+    <fencer name="SAVICKAS S" affiliation="ALLEZ FENCING" category="U11" elimround="elim_none" hr="2" hs="30" id="17" ind="28" position="1" sequence="1" vm="6/6" />
+    <fencer name="CHAUDHARI A" affiliation="ELTHAM COLLEGE" category="U11" elimround="elim_none" hr="4" hs="30" id="69" ind="26" position="2" sequence="2" vm="6/6" />
+    <fencer name="DE ROBERT HAUTEQUERE F" affiliation="COBHAM FENCING" category="U13" elimround="elim_none" hr="5" hs="30" id="62" ind="25" position="3" sequence="3" vm="6/6" />
+    <fencer name="SOSNOV D" affiliation="ZFW FENCING" category="U11" elimround="elim_none" hr="5" hs="30" id="13" ind="25" position="3" sequence="4" vm="6/6" />
+    <fencer name="YAVUZ A" affiliation="FIGHTING FIT" category="U13" elimround="elim_none" hr="6" hs="30" id="2" ind="24" position="5" sequence="5" vm="6/6" />
+    <fencer name="LIM L" affiliation="ZFW FENCING" category="U13" elimround="elim_none" hr="7" hs="30" id="31" ind="23" position="6" sequence="6" vm="6/6" />
+    <fencer name="WALLIN X" affiliation="COBHAM FENCING" category="U13" elimround="elim_none" hr="10" hs="29" id="5" ind="19" position="7" sequence="7" vm="6/6" />
+    <fencer name="KISS D" affiliation="SALLE KISS" category="U13" elimround="elim_none" hr="7" hs="27" id="36" ind="20" position="8" sequence="8" vm="5/6" />
+    <fencer name="FRIC T" affiliation="NEWHAM SWORDS" category="U11" elimround="elim_none" hr="11" hs="29" id="54" ind="18" position="9" sequence="9" vm="5/6" />
+    <fencer name="ELIS E" affiliation="COLCHESTER &amp; DIS" category="U13" elimround="elim_none" hr="11" hs="29" id="59" ind="18" position="9" sequence="10" vm="5/6" />
+    <fencer name="CONTRACTOR K" affiliation="NEWHAM SWORDS" category="U11" elimround="elim_none" hr="7" hs="25" id="63" ind="18" position="11" sequence="11" vm="5/6" />
+    <fencer name="GORCZYCA T" affiliation="UKS ATENA GDANSK" category="U13" elimround="elim_none" hr="12" hs="28" id="50" ind="16" position="12" sequence="12" vm="5/6" />
+    <fencer name="ZHAO R" affiliation="SALLE PAUL" category="U11" elimround="elim_none" hr="11" hs="27" id="1" ind="16" position="13" sequence="13" vm="5/6" />
+    <fencer name="MAZZOCCHI L" affiliation="SUSSEX HOUSE" category="U13" elimround="elim_none" hr="13" hs="26" id="27" ind="13" position="14" sequence="14" vm="5/6" />
+    <fencer name="PARTRIDGE-HICKS G" affiliation="ZFW/SUSSEX HOUSE" category="U13" elimround="elim_none" hr="16" hs="28" id="22" ind="12" position="15" sequence="15" vm="5/6" />
+    <fencer name="TURNER B" affiliation="ZFW FENCING" category="U11" elimround="elim_none" hr="18" hs="27" id="8" ind="9" position="16" sequence="16" vm="5/6" />
+    <fencer name="GORCZYCA J" affiliation="UKS ATENA GDANSK" category="U11" elimround="elim_none" hr="14" hs="26" id="51" ind="12" position="17" sequence="17" vm="4/6" />
+    <fencer name="MEWAWALLA S" affiliation="FENCERS CLUB LON" category="U13" elimround="elim_none" hr="15" hs="25" id="26" ind="10" position="18" sequence="18" vm="4/6" />
+    <fencer name="GENG R" affiliation="LASZLO" category="U13" elimround="elim_none" hr="14" hs="24" id="53" ind="10" position="19" sequence="19" vm="4/6" />
+    <fencer name="EL-SAIE F" affiliation="ZFW FENCING" category="U11" elimround="elim_none" hr="17" hs="26" id="60" ind="9" position="20" sequence="20" vm="4/6" />
+    <fencer name="LEE T" affiliation="SUSSEX HOUSE" category="U13" elimround="elim_none" hr="14" hs="23" id="32" ind="9" position="21" sequence="21" vm="4/6" />
+    <fencer name="AKGUN E" affiliation="SUSSEX HOUSE" category="" elimround="elim_none" hr="17" hs="24" id="80" ind="7" position="22" sequence="22" vm="4/6" />
+    <fencer name="GIBBONS S" affiliation="ZFW FENCING" category="U13" elimround="elim_none" hr="19" hs="25" id="52" ind="6" position="23" sequence="23" vm="4/6" />
+    <fencer name="HENKELL VON RIBBENTROP P" affiliation="SUSSEX HOUSE" category="U11" elimround="elim_none" hr="21" hs="24" id="44" ind="3" position="24" sequence="24" vm="4/6" />
+    <fencer name="COLSTON J" affiliation="WICKFORD FENCING" category="U11" elimround="elim_none" hr="19" hs="20" id="64" ind="1" position="25" sequence="25" vm="4/6" />
+    <fencer name="HAYNES M" affiliation="SALLE PAUL" category="U11" elimround="elim_none" hr="23" hs="23" id="47" ind="0" position="26" sequence="26" vm="4/6" />
+    <fencer name="HARPER-JONES J" affiliation="WIMBLEDON FENCIN" category="U13" elimround="elim_none" hr="21" hs="20" id="48" ind="-1" position="27" sequence="27" vm="4/6" />
+    <fencer name="RATCLIFFE C" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_none" hr="17" hs="24" id="20" ind="7" position="28" sequence="28" vm="3/6" />
+    <fencer name="CAMPBELL - YATES I" affiliation="FENCERS CLUB LON" category="U13" elimround="elim_none" hr="17" hs="23" id="71" ind="6" position="29" sequence="29" vm="3/6" />
+    <fencer name="EVANS C" affiliation="CHESTER FENCING" category="U11" elimround="elim_none" hr="19" hs="24" id="58" ind="5" position="30" sequence="30" vm="3/6" />
+    <fencer name="HEALY S" affiliation="FENCERS CLUB LON" category="U11" elimround="elim_none" hr="16" hs="19" id="46" ind="3" position="31" sequence="31" vm="3/6" />
+    <fencer name="KAMSTRA B" affiliation="COBHAM FENCING" category="U11" elimround="elim_none" hr="23" hs="25" id="39" ind="2" position="32" sequence="32" vm="3/6" />
+    <fencer name="JOUSSEAUME I" affiliation="WREKIN SWORD" category="U13" elimround="elim_none" hr="19" hs="21" id="40" ind="2" position="33" sequence="33" vm="3/6" />
+    <fencer name="HEMMINGS J" affiliation="UNATTACHED" category="U13" elimround="elim_none" hr="26" hs="27" id="45" ind="1" position="34" sequence="34" vm="3/6" />
+    <fencer name="MOLHANT PROOST E" affiliation="SALLE BOSTON" category="U13" elimround="elim_none" hr="19" hs="20" id="24" ind="1" position="35" sequence="35" vm="3/6" />
+    <fencer name="SILK J" affiliation="MALLARD FENCING" category="U13" elimround="elim_none" hr="18" hs="19" id="15" ind="1" position="36" sequence="36" vm="3/6" />
+    <fencer name="BOUHADANA N" affiliation="ESCRIME ACADEMY" category="U11" elimround="elim_none" hr="19" hs="19" id="72" ind="0" position="37" sequence="37" vm="3/6" />
+    <fencer name="WALMSLEY O" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_none" hr="17" hs="17" id="4" ind="0" position="38" sequence="38" vm="3/6" />
+    <fencer name="HILLS G" affiliation="INVICTA" category="U11" elimround="elim_none" hr="25" hs="23" id="43" ind="-2" position="39" sequence="39" vm="3/6" />
+    <fencer name="FLETCHER C" affiliation="SWINDON" category="U11" elimround="elim_none" hr="23" hs="21" id="55" ind="-2" position="40" sequence="40" vm="3/6" />
+    <fencer name="TAIWO A" affiliation="SARUM SWORDS" category="U13" elimround="elim_none" hr="21" hs="18" id="11" ind="-3" position="41" sequence="41" vm="3/6" />
+    <fencer name="LUC W" affiliation="NEWHAM SWORDS" category="U11" elimround="elim_none" hr="24" hs="19" id="30" ind="-5" position="42" sequence="42" vm="3/6" />
+    <fencer name="KINGSBURY W" affiliation="SALLE HADALIN" category="U13" elimround="elim_none" hr="22" hs="22" id="37" ind="0" position="43" sequence="43" vm="2/6" />
+    <fencer name="CASTRONOVO A" affiliation="ZFW FENCING" category="U11" elimround="elim_none" hr="19" hs="17" id="70" ind="-2" position="44" sequence="44" vm="2/6" />
+    <fencer name="WINTER B" affiliation="PAUL DAVIS FENCI" category="U13" elimround="elim_none" hr="24" hs="18" id="3" ind="-6" position="45" sequence="45" vm="2/6" />
+    <fencer name="BELL A" affiliation="LASZLO" category="U13" elimround="elim_none" hr="23" hs="17" id="75" ind="-6" position="46" sequence="46" vm="2/6" />
+    <fencer name="ADHAM A" affiliation="ZFW FENCING" category="U11" elimround="elim_none" hr="25" hs="17" id="79" ind="-8" position="47" sequence="47" vm="2/6" />
+    <fencer name="BEARDMORE-ESTEBAN S" affiliation="ST BENEDICTS" category="U11" elimround="elim_none" hr="24" hs="16" id="76" ind="-8" position="48" sequence="48" vm="2/6" />
+    <fencer name="PITMAN J" affiliation="SWINDON" category="U11" elimround="elim_none" hr="27" hs="18" id="21" ind="-9" position="49" sequence="49" vm="2/6" />
+    <fencer name="KEOGH G" affiliation="SALLE PAUL" category="U11" elimround="elim_none" hr="26" hs="17" id="38" ind="-9" position="50" sequence="50" vm="2/6" />
+    <fencer name="HIPKINS A" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_none" hr="24" hs="15" id="42" ind="-9" position="51" sequence="51" vm="2/6" />
+    <fencer name="CHOI A" affiliation="SUSSEX HOUSE" category="U11" elimround="elim_none" hr="20" hs="10" id="67" ind="-10" position="52" sequence="52" vm="2/6" />
+    <fencer name="HUGHES O" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_none" hr="28" hs="17" id="41" ind="-11" position="53" sequence="53" vm="2/6" />
+    <fencer name="AYO-PRICE O" affiliation="RADCLIFFE SWORD" category="U13" elimround="elim_none" hr="27" hs="15" id="77" ind="-12" position="54" sequence="54" vm="2/6" />
+    <fencer name="ALLENBY J" affiliation="SALLE OXON" category="U13" elimround="elim_none" hr="27" hs="11" id="78" ind="-16" position="55" sequence="55" vm="2/6" />
+    <fencer name="HAJJAR R" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_none" hr="25" hs="17" id="49" ind="-8" position="56" sequence="56" vm="1/6" />
+    <fencer name="OVERY-JONES O" affiliation="ST BENEDICTS" category="U13" elimround="elim_none" hr="28" hs="17" id="23" ind="-11" position="57" sequence="57" vm="1/6" />
+    <fencer name="BERRECLOTH M" affiliation="SALLE ETON" category="U11" elimround="elim_none" hr="27" hs="13" id="74" ind="-14" position="58" sequence="58" vm="1/6" />
+    <fencer name="MANSFIELD E" affiliation="CHICHESTER FENCI" category="U13" elimround="elim_none" hr="27" hs="11" id="29" ind="-16" position="59" sequence="59" vm="1/6" />
+    <fencer name="MOHAUPT L" affiliation="CAMDEN FENCING" category="U11" elimround="elim_none" hr="27" hs="11" id="25" ind="-16" position="59" sequence="60" vm="1/6" />
+    <fencer name="FLANAGAN Z" affiliation="WREKIN SWORD" category="U11" elimround="elim_none" hr="27" hs="10" id="56" ind="-17" position="61" sequence="61" vm="1/6" />
+    <fencer name="FLANAGAN J" affiliation="WREKIN SWORD" category="U13" elimround="elim_none" hr="25" hs="6" id="57" ind="-19" position="62" sequence="62" vm="1/6" />
+    <fencer name="WADDINGTON O" affiliation="KINGS COLLEGE LO" category="U11" elimround="elim_none" hr="29" hs="8" id="6" ind="-21" position="63" sequence="63" vm="1/6" />
+    <fencer name="SHELMERDINE D" affiliation="ST BENEDICTS" category="U13" elimround="elim_none" hr="30" hs="13" id="16" ind="-17" position="64" sequence="64" vm="0/6" />
+    <fencer name="TAYLOR T" affiliation="TOUCHE FENCING" category="U13" elimround="elim_none" hr="30" hs="9" id="10" ind="-21" position="65" sequence="65" vm="0/6" />
+    <fencer name="RIGAL A" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_none" hr="30" hs="9" id="19" ind="-21" position="65" sequence="66" vm="0/6" />
+    <fencer name="LAWSON S" affiliation="ST BENEDICTS" category="U11" elimround="elim_none" hr="30" hs="6" id="33" ind="-24" position="67" sequence="67" vm="0/6" />
+    <fencer name="VAL L" affiliation="BATTERSEA FOIL" category="U11" elimround="elim_none" hr="30" hs="5" id="7" ind="-25" position="68" sequence="68" vm="0/6" />
+    <fencer name="MARCHESE HUME M" affiliation="THE FENCING SCHO" category="U13" elimround="elim_none" hr="30" hs="4" id="28" ind="-26" position="69" sequence="69" vm="0/6" />
+    <fencer name="SWALLOW-GAUNT E" affiliation="HOYLAND HARRIERS" category="U11" elimround="elim_none" hr="30" hs="0" id="12" ind="-30" position="70" sequence="70" vm="0/6" />
+  </lists>
+  <message></message>
+  <pools count="10" round="1">
+    <pool heure="0:00" number="1" piste="23" size="7">
+      <fencers count="7">
+        <fencer name="HUGHES Otis" affiliation="FOUR OF CLUBS" fencerid="41" hs="17" id="1" ind="-11" pl="5" vm="2/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="4" />
+          <result id="4" score="V" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="HAJJAR Rafael" affiliation="ESCRIME ACADEMY" fencerid="49" hs="17" id="2" ind="-8" pl="6" vm="1/6">
+          <result id="1" score="4" />
+          <result id="2" score="" />
+          <result id="3" score="2" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="0" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="KEOGH George" affiliation="SALLE PAUL" fencerid="38" hs="17" id="3" ind="-9" pl="4" vm="2/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="3" />
+          <result id="5" score="4" />
+          <result id="6" score="0" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="FLANAGAN Zach" affiliation="WREKIN SWORD" fencerid="56" hs="10" id="4" ind="-17" pl="7" vm="1/6">
+          <result id="1" score="4" />
+          <result id="2" score="0" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="1" />
+          <result id="6" score="0" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="HARPER-JONES James" affiliation="WIMBLEDON FENCING" fencerid="48" hs="20" id="5" ind="-1" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V4" />
+          <result id="5" score="" />
+          <result id="6" score="1" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="KISS Dominic" affiliation="SALLE KISS" fencerid="36" hs="27" id="6" ind="20" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" fencerid="69" hs="30" id="7" ind="26" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="2" piste="24" size="7">
+      <fencers count="7">
+        <fencer name="CONTRACTOR Khalam" affiliation="NEWHAM SWORDS" fencerid="63" hs="25" id="1" ind="18" pl="2" vm="5/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V3" />
+          <result id="4" score="V4" />
+          <result id="5" score="V" />
+          <result id="6" score="3" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="WINTER Bruno" affiliation="PAUL DAVIS FENCING" fencerid="3" hs="18" id="2" ind="-6" pl="5" vm="2/6">
+          <result id="1" score="2" />
+          <result id="2" score="" />
+          <result id="3" score="2" />
+          <result id="4" score="2" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="CHOI Aleksey" affiliation="SUSSEX HOUSE" fencerid="67" hs="10" id="3" ind="-10" pl="6" vm="2/6">
+          <result id="1" score="0" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="0" />
+          <result id="5" score="V" />
+          <result id="6" score="0" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="HEALY Sacha" affiliation="FENCERS CLUB LONDON" fencerid="46" hs="19" id="4" ind="3" pl="3" vm="3/6">
+          <result id="1" score="0" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="0" />
+          <result id="7" score="4" />
+        </fencer>
+        <fencer name="SWALLOW-GAUNT Ethan Thomas" affiliation="HOYLAND HARRIERS" fencerid="12" hs="0" id="5" ind="-30" pl="7" vm="0/6">
+          <result id="1" score="0" />
+          <result id="2" score="0" />
+          <result id="3" score="0" />
+          <result id="4" score="0" />
+          <result id="5" score="" />
+          <result id="6" score="0" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="YAVUZ Attikan" affiliation="FIGHTING FIT" fencerid="2" hs="30" id="6" ind="24" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="MOLHANT PROOST Edouard" affiliation="SALLE BOSTON" fencerid="24" hs="20" id="7" ind="1" pl="4" vm="3/6">
+          <result id="1" score="0" />
+          <result id="2" score="4" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="1" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="3" piste="25" size="7">
+      <fencers count="7">
+        <fencer name="ELIS Eurig" affiliation="COLCHESTER &amp; DISTRICT" fencerid="59" hs="29" id="1" ind="18" pl="1" vm="5/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="COLSTON Jack" affiliation="WICKFORD FENCING" fencerid="64" hs="20" id="2" ind="1" pl="4" vm="4/6">
+          <result id="1" score="1" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V4" />
+          <result id="5" score="1" />
+          <result id="6" score="V4" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="MEWAWALLA Sam" affiliation="FENCERS CLUB LONDON" fencerid="26" hs="25" id="3" ind="10" pl="3" vm="4/6">
+          <result id="1" score="2" />
+          <result id="2" score="3" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="MANSFIELD Ethan" affiliation="CHICHESTER FENCING" fencerid="29" hs="11" id="4" ind="-16" pl="6" vm="1/6">
+          <result id="1" score="0" />
+          <result id="2" score="2" />
+          <result id="3" score="3" />
+          <result id="4" score="" />
+          <result id="5" score="1" />
+          <result id="6" score="0" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="MAZZOCCHI Ludovico" affiliation="SUSSEX HOUSE" fencerid="27" hs="26" id="5" ind="13" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="1" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="CASTRONOVO Aman" affiliation="ZFW FENCING" fencerid="70" hs="17" id="6" ind="-2" pl="5" vm="2/6">
+          <result id="1" score="3" />
+          <result id="2" score="1" />
+          <result id="3" score="1" />
+          <result id="4" score="V" />
+          <result id="5" score="2" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="LAWSON Sebastian" affiliation="ST BENEDICTS" fencerid="33" hs="6" id="7" ind="-24" pl="7" vm="0/6">
+          <result id="1" score="0" />
+          <result id="2" score="3" />
+          <result id="3" score="0" />
+          <result id="4" score="3" />
+          <result id="5" score="0" />
+          <result id="6" score="0" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="4" piste="26" size="7">
+      <fencers count="7">
+        <fencer name="MARCHESE HUME Milo" affiliation="THE FENCING SCHOOL" fencerid="28" hs="4" id="1" ind="-26" pl="7" vm="0/6">
+          <result id="1" score="" />
+          <result id="2" score="0" />
+          <result id="3" score="0" />
+          <result id="4" score="3" />
+          <result id="5" score="1" />
+          <result id="6" score="0" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="AKGUN Eren" affiliation="SUSSEX HOUSE" fencerid="80" hs="24" id="2" ind="7" pl="2" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="0" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="LIM Li Leo" affiliation="ZFW FENCING" fencerid="31" hs="30" id="3" ind="23" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="OVERY-JONES Ollie" affiliation="ST BENEDICTS" fencerid="23" hs="17" id="4" ind="-11" pl="6" vm="1/6">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="1" />
+          <result id="4" score="" />
+          <result id="5" score="4" />
+          <result id="6" score="2" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="HAYNES Matthew" affiliation="SALLE PAUL" fencerid="47" hs="23" id="5" ind="0" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="RATCLIFFE Christian" affiliation="FOUR OF CLUBS" fencerid="20" hs="24" id="6" ind="7" pl="4" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="3" />
+          <result id="3" score="2" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="BOUHADANA Noam" affiliation="ESCRIME ACADEMY" fencerid="72" hs="19" id="7" ind="0" pl="5" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="2" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="0" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="5" piste="27" size="7">
+      <fencers count="7">
+        <fencer name="BERRECLOTH Matthew" affiliation="SALLE ETON" fencerid="74" hs="13" id="1" ind="-14" pl="6" vm="1/6">
+          <result id="1" score="" />
+          <result id="2" score="1" />
+          <result id="3" score="3" />
+          <result id="4" score="V" />
+          <result id="5" score="1" />
+          <result id="6" score="1" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="DE ROBERT HAUTEQUERE Francois" affiliation="COBHAM FENCING" fencerid="62" hs="30" id="2" ind="25" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="MOHAUPT Lucas" affiliation="CAMDEN FENCING" fencerid="25" hs="11" id="3" ind="-16" pl="7" vm="1/6">
+          <result id="1" score="V" />
+          <result id="2" score="0" />
+          <result id="3" score="" />
+          <result id="4" score="3" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="ALLENBY James" affiliation="SALLE OXON" fencerid="78" hs="11" id="4" ind="-16" pl="5" vm="2/6">
+          <result id="1" score="2" />
+          <result id="2" score="0" />
+          <result id="3" score="V4" />
+          <result id="4" score="" />
+          <result id="5" score="0" />
+          <result id="6" score="V" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="GORCZYCA Jakub" affiliation="UKS ATENA GDANSK" fencerid="51" hs="26" id="5" ind="12" pl="2" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="4" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="EL-SAIE Faaris" affiliation="ZFW FENCING" fencerid="60" hs="26" id="6" ind="9" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="V" />
+          <result id="4" score="4" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="WALMSLEY Oliver" affiliation="FOUR OF CLUBS" fencerid="4" hs="17" id="7" ind="0" pl="4" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="0" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="1" />
+          <result id="6" score="1" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="6" piste="28" size="7">
+      <fencers count="7">
+        <fencer name="CAMPBELL - YATES Indio" affiliation="FENCERS CLUB LONDON" fencerid="71" hs="23" id="1" ind="6" pl="3" vm="3/6">
+          <result id="1" score="" />
+          <result id="2" score="4" />
+          <result id="3" score="V" />
+          <result id="4" score="2" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="LUC Wai Hung" affiliation="NEWHAM SWORDS" fencerid="30" hs="19" id="2" ind="-5" pl="4" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="1" />
+          <result id="5" score="V" />
+          <result id="6" score="0" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="HIPKINS Alexander" affiliation="FOUR OF CLUBS" fencerid="42" hs="15" id="3" ind="-9" pl="6" vm="2/6">
+          <result id="1" score="0" />
+          <result id="2" score="4" />
+          <result id="3" score="" />
+          <result id="4" score="1" />
+          <result id="5" score="V" />
+          <result id="6" score="0" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="ZHAO Rui" affiliation="SALLE PAUL" fencerid="1" hs="27" id="4" ind="16" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="VAL Lazaro" affiliation="BATTERSEA FOIL" fencerid="7" hs="5" id="5" ind="-25" pl="7" vm="0/6">
+          <result id="1" score="1" />
+          <result id="2" score="1" />
+          <result id="3" score="1" />
+          <result id="4" score="1" />
+          <result id="5" score="" />
+          <result id="6" score="0" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="SOSNOV David" affiliation="ZFW FENCING" fencerid="13" hs="30" id="6" ind="25" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="BEARDMORE-ESTEBAN Sebastian" affiliation="ST BENEDICTS" fencerid="76" hs="16" id="7" ind="-8" pl="5" vm="2/6">
+          <result id="1" score="1" />
+          <result id="2" score="V" />
+          <result id="3" score="3" />
+          <result id="4" score="1" />
+          <result id="5" score="V" />
+          <result id="6" score="1" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="7" piste="29" size="7">
+      <fencers count="7">
+        <fencer name="LEE Taymour" affiliation="SUSSEX HOUSE" fencerid="32" hs="23" id="1" ind="9" pl="3" vm="4/6">
+          <result id="1" score="" />
+          <result id="2" score="1" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" fencerid="17" hs="30" id="2" ind="28" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="FLANAGAN Joel" affiliation="WREKIN SWORD" fencerid="57" hs="6" id="3" ind="-19" pl="6" vm="1/6">
+          <result id="1" score="0" />
+          <result id="2" score="0" />
+          <result id="3" score="" />
+          <result id="4" score="1" />
+          <result id="5" score="0" />
+          <result id="6" score="0" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="ADHAM Asher" affiliation="ZFW FENCING" fencerid="79" hs="17" id="4" ind="-8" pl="5" vm="2/6">
+          <result id="1" score="2" />
+          <result id="2" score="0" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="1" />
+          <result id="6" score="V" />
+          <result id="7" score="4" />
+        </fencer>
+        <fencer name="SILK Jed" affiliation="MALLARD FENCING" fencerid="15" hs="19" id="5" ind="1" pl="4" vm="3/6">
+          <result id="1" score="2" />
+          <result id="2" score="1" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="1" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="GENG Raymond" affiliation="LASZLO" fencerid="53" hs="24" id="6" ind="10" pl="2" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="0" />
+          <result id="3" score="V" />
+          <result id="4" score="4" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="WADDINGTON Oscar" affiliation="KINGS COLLEGE LONDON" fencerid="6" hs="8" id="7" ind="-21" pl="7" vm="1/6">
+          <result id="1" score="0" />
+          <result id="2" score="0" />
+          <result id="3" score="0" />
+          <result id="4" score="V" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="8" piste="30" size="7">
+      <fencers count="7">
+        <fencer name="BELL Alfie" affiliation="LASZLO" fencerid="75" hs="17" id="1" ind="-6" pl="6" vm="2/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="1" />
+          <result id="4" score="1" />
+          <result id="5" score="V3" />
+          <result id="6" score="4" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="RIGAL Adrien" affiliation="ESCRIME ACADEMY" fencerid="19" hs="9" id="2" ind="-21" pl="7" vm="0/6">
+          <result id="1" score="2" />
+          <result id="2" score="" />
+          <result id="3" score="1" />
+          <result id="4" score="3" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="JOUSSEAUME Ilo" affiliation="WREKIN SWORD" fencerid="40" hs="21" id="3" ind="2" pl="3" vm="3/6">
+          <result id="1" score="V4" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V4" />
+          <result id="5" score="3" />
+          <result id="6" score="4" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="KINGSBURY William" affiliation="SALLE HADALIN" fencerid="37" hs="22" id="4" ind="0" pl="5" vm="2/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="3" />
+          <result id="4" score="" />
+          <result id="5" score="3" />
+          <result id="6" score="4" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="TAIWO Adekunle" affiliation="SARUM SWORDS" fencerid="11" hs="18" id="5" ind="-3" pl="4" vm="3/6">
+          <result id="1" score="2" />
+          <result id="2" score="V" />
+          <result id="3" score="V4" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="0" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="TURNER Ben" affiliation="ZFW FENCING" fencerid="8" hs="27" id="6" ind="9" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="WALLIN Xavier" affiliation="COBHAM FENCING" fencerid="5" hs="29" id="7" ind="19" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V4" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="9" piste="31" size="7">
+      <fencers count="7">
+        <fencer name="GORCZYCA Tomasz" affiliation="UKS ATENA GDANSK" fencerid="50" hs="28" id="1" ind="16" pl="1" vm="5/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="AYO-PRICE Oscar" affiliation="RADCLIFFE SWORD" fencerid="77" hs="15" id="2" ind="-12" pl="6" vm="2/6">
+          <result id="1" score="1" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="1" />
+          <result id="6" score="2" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="TAYLOR Teddy" affiliation="TOUCHE FENCING" fencerid="10" hs="9" id="3" ind="-21" pl="7" vm="0/6">
+          <result id="1" score="0" />
+          <result id="2" score="3" />
+          <result id="3" score="" />
+          <result id="4" score="2" />
+          <result id="5" score="2" />
+          <result id="6" score="2" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="KAMSTRA Ben" affiliation="COBHAM FENCING" fencerid="39" hs="25" id="4" ind="2" pl="4" vm="3/6">
+          <result id="1" score="3" />
+          <result id="2" score="4" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="EVANS Callum" affiliation="CHESTER FENCING" fencerid="58" hs="24" id="5" ind="5" pl="3" vm="3/6">
+          <result id="1" score="3" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="2" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="4" />
+        </fencer>
+        <fencer name="FLETCHER Charles" affiliation="SWINDON" fencerid="55" hs="21" id="6" ind="-2" pl="5" vm="3/6">
+          <result id="1" score="1" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="4" />
+          <result id="5" score="1" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="PARTRIDGE-HICKS Griffin" affiliation="ZFW/SUSSEX HOUSE" fencerid="22" hs="28" id="7" ind="12" pl="2" vm="5/6">
+          <result id="1" score="V4" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="4" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="10" piste="32" size="7">
+      <fencers count="7">
+        <fencer name="PITMAN James" affiliation="SWINDON" fencerid="21" hs="18" id="1" ind="-9" pl="6" vm="2/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="0" />
+          <result id="5" score="2" />
+          <result id="6" score="4" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="HEMMINGS Joshua" affiliation="UNATTACHED" fencerid="45" hs="27" id="2" ind="1" pl="4" vm="3/6">
+          <result id="1" score="4" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="4" />
+          <result id="5" score="4" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="HENKELL VON RIBBENTROP Phillip" affiliation="SUSSEX HOUSE" fencerid="44" hs="24" id="3" ind="3" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="3" />
+          <result id="3" score="" />
+          <result id="4" score="1" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="FRIC Tomi" affiliation="NEWHAM SWORDS" fencerid="54" hs="29" id="4" ind="18" pl="1" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="4" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="GIBBONS Scott" affiliation="ZFW FENCING" fencerid="52" hs="25" id="5" ind="6" pl="2" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="4" />
+          <result id="4" score="1" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="HILLS George" affiliation="INVICTA" fencerid="43" hs="23" id="6" ind="-2" pl="5" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="4" />
+          <result id="3" score="2" />
+          <result id="4" score="V" />
+          <result id="5" score="2" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SHELMERDINE Dexter" affiliation="ST BENEDICTS" fencerid="16" hs="13" id="7" ind="-17" pl="7" vm="0/6">
+          <result id="1" score="3" />
+          <result id="2" score="4" />
+          <result id="3" score="3" />
+          <result id="4" score="0" />
+          <result id="5" score="1" />
+          <result id="6" score="2" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+  </pools>
+  <tableau name="A16" count="8" title="tableau of 16">
+    <match number="1" piste="" score="10 / 1" time="0:00" winnerid="17" winnername="SAVICKAS Samuelis">
+      <fencerA name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" category="U11" id="17" seed="1" />
+      <fencerB name="PITMAN James" affiliation="SWINDON" category="U11" id="21" seed="16" />
+    </match>
+    <match number="2" piste="" score="6 / 7" time="0:00" winnerid="36" winnername="KISS Dominic">
+      <fencerA name="ELIS Eurig" affiliation="COLCHESTER &amp; DISTRICT" category="U13" id="59" seed="9" />
+      <fencerB name="KISS Dominic" affiliation="SALLE KISS" category="U13" id="36" seed="8" />
+    </match>
+    <match number="3" piste="" score="10 / 5" time="0:00" winnerid="2" winnername="YAVUZ Attikan">
+      <fencerA name="YAVUZ Attikan" affiliation="FIGHTING FIT" category="U13" id="2" seed="5" />
+      <fencerB name="LEE Taymour" affiliation="SUSSEX HOUSE" category="U13" id="32" seed="12" />
+    </match>
+    <match number="4" piste="" score="2 / 10" time="0:00" winnerid="13" winnername="SOSNOV David">
+      <fencerA name="ZHAO Rui" affiliation="SALLE PAUL" category="U11" id="1" seed="13" />
+      <fencerB name="SOSNOV David" affiliation="ZFW FENCING" category="U11" id="13" seed="4" />
+    </match>
+    <match number="5" piste="" score="10 / 6" time="0:00" winnerid="62" winnername="DE ROBERT HAUTEQUERE Francois">
+      <fencerA name="DE ROBERT HAUTEQUERE Francois" affiliation="COBHAM FENCING" category="U13" id="62" seed="3" />
+      <fencerB name="MAZZOCCHI Ludovico" affiliation="SUSSEX HOUSE" category="U13" id="27" seed="14" />
+    </match>
+    <match number="6" piste="" score="10 / 3" time="0:00" winnerid="63" winnername="CONTRACTOR Khalam">
+      <fencerA name="CONTRACTOR Khalam" affiliation="NEWHAM SWORDS" category="U11" id="63" seed="11" />
+      <fencerB name="LIM Li Leo" affiliation="ZFW FENCING" category="U13" id="31" seed="6" />
+    </match>
+    <match number="7" piste="20" score="10 / 4" time="0:00" winnerid="5" winnername="WALLIN Xavier">
+      <fencerA name="WALLIN Xavier" affiliation="COBHAM FENCING" category="U13" id="5" seed="7" />
+      <fencerB name="GIBBONS Scott" affiliation="ZFW FENCING" category="U13" id="52" seed="10" />
+    </match>
+    <match number="8" piste="20" score="3 / 10" time="0:00" winnerid="69" winnername="CHAUDHARI Aarav">
+      <fencerA name="PARTRIDGE-HICKS Griffin" affiliation="ZFW/SUSSEX HOUSE" category="U13" id="22" seed="15" />
+      <fencerB name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" category="U11" id="69" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A2" count="1" title="final">
+    <match number="1" piste="" score="2 / 10" time="0:00" winnerid="69" winnername="CHAUDHARI Aarav">
+      <fencerA name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" category="U11" id="17" seed="1" />
+      <fencerB name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" category="U11" id="69" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A32" count="16" title="tableau of 32">
+    <match number="1" piste="" score="10 / 2" time="0:00" winnerid="17" winnername="SAVICKAS Samuelis">
+      <fencerA name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" category="U11" id="17" seed="1" />
+      <fencerB name="JOUSSEAUME Ilo" affiliation="WREKIN SWORD" category="U13" id="40" seed="32" />
+    </match>
+    <match number="2" piste="" score="9 / 10" time="0:00" winnerid="21" winnername="PITMAN James">
+      <fencerA name="GORCZYCA Jakub" affiliation="UKS ATENA GDANSK" category="U11" id="51" seed="17" />
+      <fencerB name="PITMAN James" affiliation="SWINDON" category="U11" id="21" seed="16" />
+    </match>
+    <match number="3" piste="" score="10 / 2" time="0:00" winnerid="59" winnername="ELIS Eurig">
+      <fencerA name="ELIS Eurig" affiliation="COLCHESTER &amp; DISTRICT" category="U13" id="59" seed="9" />
+      <fencerB name="TAIWO Adekunle" affiliation="SARUM SWORDS" category="U13" id="11" seed="24" />
+    </match>
+    <match number="4" piste="" score="3 / 10" time="0:00" winnerid="36" winnername="KISS Dominic">
+      <fencerA name="COLSTON Jack" affiliation="WICKFORD FENCING" category="U11" id="64" seed="25" />
+      <fencerB name="KISS Dominic" affiliation="SALLE KISS" category="U13" id="36" seed="8" />
+    </match>
+    <match number="5" piste="" score="10 / 1" time="0:00" winnerid="2" winnername="YAVUZ Attikan">
+      <fencerA name="YAVUZ Attikan" affiliation="FIGHTING FIT" category="U13" id="2" seed="5" />
+      <fencerB name="RATCLIFFE Christian" affiliation="FOUR OF CLUBS" category="U13" id="20" seed="28" />
+    </match>
+    <match number="6" piste="" score="10 / 8" time="0:00" winnerid="32" winnername="LEE Taymour">
+      <fencerA name="LEE Taymour" affiliation="SUSSEX HOUSE" category="U13" id="32" seed="21" />
+      <fencerB name="GORCZYCA Tomasz" affiliation="UKS ATENA GDANSK" category="U13" id="50" seed="12" />
+    </match>
+    <match number="7" piste="" score="10 / 6" time="0:00" winnerid="1" winnername="ZHAO Rui">
+      <fencerA name="ZHAO Rui" affiliation="SALLE PAUL" category="U11" id="1" seed="13" />
+      <fencerB name="WINTER Bruno" affiliation="PAUL DAVIS FENCING" category="U13" id="3" seed="20" />
+    </match>
+    <match number="8" piste="" score="6 / 10" time="0:00" winnerid="13" winnername="SOSNOV David">
+      <fencerA name="CAMPBELL - YATES Indio" affiliation="FENCERS CLUB LONDON" category="U13" id="71" seed="29" />
+      <fencerB name="SOSNOV David" affiliation="ZFW FENCING" category="U11" id="13" seed="4" />
+    </match>
+    <match number="9" piste="" score="10 / 4" time="0:00" winnerid="62" winnername="DE ROBERT HAUTEQUERE Francois">
+      <fencerA name="DE ROBERT HAUTEQUERE Francois" affiliation="COBHAM FENCING" category="U13" id="62" seed="3" />
+      <fencerB name="EVANS Callum" affiliation="CHESTER FENCING" category="U11" id="58" seed="30" />
+    </match>
+    <match number="10" piste="" score="9 / 10" time="0:00" winnerid="27" winnername="MAZZOCCHI Ludovico">
+      <fencerA name="GENG Raymond" affiliation="LASZLO" category="U13" id="53" seed="19" />
+      <fencerB name="MAZZOCCHI Ludovico" affiliation="SUSSEX HOUSE" category="U13" id="27" seed="14" />
+    </match>
+    <match number="11" piste="" score="10 / 1" time="0:00" winnerid="63" winnername="CONTRACTOR Khalam">
+      <fencerA name="CONTRACTOR Khalam" affiliation="NEWHAM SWORDS" category="U11" id="63" seed="11" />
+      <fencerB name="AKGUN Eren" affiliation="SUSSEX HOUSE" category="" id="80" seed="22" />
+    </match>
+    <match number="12" piste="" score="1 / 10" time="0:00" winnerid="31" winnername="LIM Li Leo">
+      <fencerA name="HARPER-JONES James" affiliation="WIMBLEDON FENCING" category="U13" id="48" seed="27" />
+      <fencerB name="LIM Li Leo" affiliation="ZFW FENCING" category="U13" id="31" seed="6" />
+    </match>
+    <match number="13" piste="" score="10 / 5" time="0:00" winnerid="5" winnername="WALLIN Xavier">
+      <fencerA name="WALLIN Xavier" affiliation="COBHAM FENCING" category="U13" id="5" seed="7" />
+      <fencerB name="HAYNES Matthew" affiliation="SALLE PAUL" category="U11" id="47" seed="26" />
+    </match>
+    <match number="14" piste="" score="10 / 4" time="0:00" winnerid="52" winnername="GIBBONS Scott">
+      <fencerA name="GIBBONS Scott" affiliation="ZFW FENCING" category="U13" id="52" seed="23" />
+      <fencerB name="FRIC Tomi" affiliation="NEWHAM SWORDS" category="U11" id="54" seed="10" />
+    </match>
+    <match number="15" piste="" score="10 / 3" time="0:00" winnerid="22" winnername="PARTRIDGE-HICKS Griffin">
+      <fencerA name="PARTRIDGE-HICKS Griffin" affiliation="ZFW/SUSSEX HOUSE" category="U13" id="22" seed="15" />
+      <fencerB name="MEWAWALLA Sam" affiliation="FENCERS CLUB LONDON" category="U13" id="26" seed="18" />
+    </match>
+    <match number="16" piste="" score="2 / 10" time="0:00" winnerid="69" winnername="CHAUDHARI Aarav">
+      <fencerA name="HEALY Sacha" affiliation="FENCERS CLUB LONDON" category="U11" id="46" seed="31" />
+      <fencerB name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" category="U11" id="69" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A4" count="2" title="semi-finals">
+    <match number="1" piste="31" score="10 / 6" time="0:00" winnerid="17" winnername="SAVICKAS Samuelis">
+      <fencerA name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" category="U11" id="17" seed="1" />
+      <fencerB name="SOSNOV David" affiliation="ZFW FENCING" category="U11" id="13" seed="4" />
+    </match>
+    <match number="2" piste="32" score="6 / 10" time="0:00" winnerid="69" winnername="CHAUDHARI Aarav">
+      <fencerA name="DE ROBERT HAUTEQUERE Francois" affiliation="COBHAM FENCING" category="U13" id="62" seed="3" />
+      <fencerB name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" category="U11" id="69" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A64" count="32" title="tableau of 64">
+    <match number="1" piste="" score="10 / 4" time="0:00" winnerid="17" winnername="SAVICKAS Samuelis">
+      <fencerA name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" category="U11" id="17" seed="1" />
+      <fencerB name="SHELMERDINE Dexter" affiliation="ST BENEDICTS" category="U13" id="16" seed="64" />
+    </match>
+    <match number="2" piste="" score="10 / 6" time="0:00" winnerid="40" winnername="JOUSSEAUME Ilo">
+      <fencerA name="JOUSSEAUME Ilo" affiliation="WREKIN SWORD" category="U13" id="40" seed="33" />
+      <fencerB name="KAMSTRA Ben" affiliation="COBHAM FENCING" category="U11" id="39" seed="32" />
+    </match>
+    <match number="3" piste="" score="10 / 5" time="0:00" winnerid="51" winnername="GORCZYCA Jakub">
+      <fencerA name="GORCZYCA Jakub" affiliation="UKS ATENA GDANSK" category="U11" id="51" seed="17" />
+      <fencerB name="BEARDMORE-ESTEBAN Sebastian" affiliation="ST BENEDICTS" category="U11" id="76" seed="48" />
+    </match>
+    <match number="4" piste="" score="10 / 8" time="0:00" winnerid="21" winnername="PITMAN James">
+      <fencerA name="PITMAN James" affiliation="SWINDON" category="U11" id="21" seed="49" />
+      <fencerB name="TURNER Ben" affiliation="ZFW FENCING" category="U11" id="8" seed="16" />
+    </match>
+    <match number="5" piste="" score="10 / 1" time="0:00" winnerid="59" winnername="ELIS Eurig">
+      <fencerA name="ELIS Eurig" affiliation="COLCHESTER &amp; DISTRICT" category="U13" id="59" seed="9" />
+      <fencerB name="HAJJAR Rafael" affiliation="ESCRIME ACADEMY" category="U13" id="49" seed="56" />
+    </match>
+    <match number="6" piste="" score="10 / 8" time="0:00" winnerid="11" winnername="TAIWO Adekunle">
+      <fencerA name="TAIWO Adekunle" affiliation="SARUM SWORDS" category="U13" id="11" seed="41" />
+      <fencerB name="HENKELL VON RIBBENTROP Phillip" affiliation="SUSSEX HOUSE" category="U11" id="44" seed="24" />
+    </match>
+    <match number="7" piste="" score="10 / 5" time="0:00" winnerid="64" winnername="COLSTON Jack">
+      <fencerA name="COLSTON Jack" affiliation="WICKFORD FENCING" category="U11" id="64" seed="25" />
+      <fencerB name="FLETCHER Charles" affiliation="SWINDON" category="U11" id="55" seed="40" />
+    </match>
+    <match number="8" piste="" score="2 / 10" time="0:00" winnerid="36" winnername="KISS Dominic">
+      <fencerA name="OVERY-JONES Ollie" affiliation="ST BENEDICTS" category="U13" id="23" seed="57" />
+      <fencerB name="KISS Dominic" affiliation="SALLE KISS" category="U13" id="36" seed="8" />
+    </match>
+    <match number="9" piste="" score="10 / 1" time="0:00" winnerid="2" winnername="YAVUZ Attikan">
+      <fencerA name="YAVUZ Attikan" affiliation="FIGHTING FIT" category="U13" id="2" seed="5" />
+      <fencerB name="MOHAUPT Lucas" affiliation="CAMDEN FENCING" category="U11" id="25" seed="60" />
+    </match>
+    <match number="10" piste="" score="4 / 10" time="0:00" winnerid="20" winnername="RATCLIFFE Christian">
+      <fencerA name="BOUHADANA Noam" affiliation="ESCRIME ACADEMY" category="U11" id="72" seed="37" />
+      <fencerB name="RATCLIFFE Christian" affiliation="FOUR OF CLUBS" category="U13" id="20" seed="28" />
+    </match>
+    <match number="11" piste="" score="10 / 5" time="0:00" winnerid="32" winnername="LEE Taymour">
+      <fencerA name="LEE Taymour" affiliation="SUSSEX HOUSE" category="U13" id="32" seed="21" />
+      <fencerB name="CASTRONOVO Aman" affiliation="ZFW FENCING" category="U11" id="70" seed="44" />
+    </match>
+    <match number="12" piste="" score="1 / 10" time="0:00" winnerid="50" winnername="GORCZYCA Tomasz">
+      <fencerA name="HUGHES Otis" affiliation="FOUR OF CLUBS" category="U13" id="41" seed="53" />
+      <fencerB name="GORCZYCA Tomasz" affiliation="UKS ATENA GDANSK" category="U13" id="50" seed="12" />
+    </match>
+    <match number="13" piste="" score="10 / 7" time="0:00" winnerid="1" winnername="ZHAO Rui">
+      <fencerA name="ZHAO Rui" affiliation="SALLE PAUL" category="U11" id="1" seed="13" />
+      <fencerB name="CHOI Aleksey" affiliation="SUSSEX HOUSE" category="U11" id="67" seed="52" />
+    </match>
+    <match number="14" piste="" score="10 / 4" time="0:00" winnerid="3" winnername="WINTER Bruno">
+      <fencerA name="WINTER Bruno" affiliation="PAUL DAVIS FENCING" category="U13" id="3" seed="45" />
+      <fencerB name="EL-SAIE Faaris" affiliation="ZFW FENCING" category="U11" id="60" seed="20" />
+    </match>
+    <match number="15" piste="" score="10 / 6" time="0:00" winnerid="71" winnername="CAMPBELL - YATES Indio">
+      <fencerA name="CAMPBELL - YATES Indio" affiliation="FENCERS CLUB LONDON" category="U13" id="71" seed="29" />
+      <fencerB name="SILK Jed" affiliation="MALLARD FENCING" category="U13" id="15" seed="36" />
+    </match>
+    <match number="16" piste="" score="0 / 10" time="0:00" winnerid="13" winnername="SOSNOV David">
+      <fencerA name="FLANAGAN Zach" affiliation="WREKIN SWORD" category="U11" id="56" seed="61" />
+      <fencerB name="SOSNOV David" affiliation="ZFW FENCING" category="U11" id="13" seed="4" />
+    </match>
+    <match number="17" piste="" score="10 / 1" time="0:00" winnerid="62" winnername="DE ROBERT HAUTEQUERE Francois">
+      <fencerA name="DE ROBERT HAUTEQUERE Francois" affiliation="COBHAM FENCING" category="U13" id="62" seed="3" />
+      <fencerB name="FLANAGAN Joel" affiliation="WREKIN SWORD" category="U13" id="57" seed="62" />
+    </match>
+    <match number="18" piste="" score="7 / 10" time="0:00" winnerid="58" winnername="EVANS Callum">
+      <fencerA name="MOLHANT PROOST Edouard" affiliation="SALLE BOSTON" category="U13" id="24" seed="35" />
+      <fencerB name="EVANS Callum" affiliation="CHESTER FENCING" category="U11" id="58" seed="30" />
+    </match>
+    <match number="19" piste="" score="10 / 4" time="0:00" winnerid="53" winnername="GENG Raymond">
+      <fencerA name="GENG Raymond" affiliation="LASZLO" category="U13" id="53" seed="19" />
+      <fencerB name="BELL Alfie" affiliation="LASZLO" category="U13" id="75" seed="46" />
+    </match>
+    <match number="20" piste="" score="7 / 10" time="0:00" winnerid="27" winnername="MAZZOCCHI Ludovico">
+      <fencerA name="HIPKINS Alexander" affiliation="FOUR OF CLUBS" category="U13" id="42" seed="51" />
+      <fencerB name="MAZZOCCHI Ludovico" affiliation="SUSSEX HOUSE" category="U13" id="27" seed="14" />
+    </match>
+    <match number="21" piste="" score="10 / 0" time="0:00" winnerid="63" winnername="CONTRACTOR Khalam">
+      <fencerA name="CONTRACTOR Khalam" affiliation="NEWHAM SWORDS" category="U11" id="63" seed="11" />
+      <fencerB name="AYO-PRICE Oscar" affiliation="RADCLIFFE SWORD" category="U13" id="77" seed="54" />
+    </match>
+    <match number="22" piste="" score="6 / 8" time="0:00" winnerid="80" winnername="AKGUN Eren">
+      <fencerA name="KINGSBURY William" affiliation="SALLE HADALIN" category="U13" id="37" seed="43" />
+      <fencerB name="AKGUN Eren" affiliation="SUSSEX HOUSE" category="" id="80" seed="22" />
+    </match>
+    <match number="23" piste="" score="10 / 4" time="0:00" winnerid="48" winnername="HARPER-JONES James">
+      <fencerA name="HARPER-JONES James" affiliation="WIMBLEDON FENCING" category="U13" id="48" seed="27" />
+      <fencerB name="WALMSLEY Oliver" affiliation="FOUR OF CLUBS" category="U13" id="4" seed="38" />
+    </match>
+    <match number="24" piste="" score="3 / 10" time="0:00" winnerid="31" winnername="LIM Li Leo">
+      <fencerA name="MANSFIELD Ethan" affiliation="CHICHESTER FENCING" category="U13" id="29" seed="59" />
+      <fencerB name="LIM Li Leo" affiliation="ZFW FENCING" category="U13" id="31" seed="6" />
+    </match>
+    <match number="25" piste="" score="10 / 2" time="0:00" winnerid="5" winnername="WALLIN Xavier">
+      <fencerA name="WALLIN Xavier" affiliation="COBHAM FENCING" category="U13" id="5" seed="7" />
+      <fencerB name="BERRECLOTH Matthew" affiliation="SALLE ETON" category="U11" id="74" seed="58" />
+    </match>
+    <match number="26" piste="" score="4 / 8" time="0:00" winnerid="47" winnername="HAYNES Matthew">
+      <fencerA name="HILLS George" affiliation="INVICTA" category="U11" id="43" seed="39" />
+      <fencerB name="HAYNES Matthew" affiliation="SALLE PAUL" category="U11" id="47" seed="26" />
+    </match>
+    <match number="27" piste="" score="10 / 3" time="0:00" winnerid="52" winnername="GIBBONS Scott">
+      <fencerA name="GIBBONS Scott" affiliation="ZFW FENCING" category="U13" id="52" seed="23" />
+      <fencerB name="LUC Wai Hung" affiliation="NEWHAM SWORDS" category="U11" id="30" seed="42" />
+    </match>
+    <match number="28" piste="" score="1 / 10" time="0:00" winnerid="54" winnername="FRIC Tomi">
+      <fencerA name="ALLENBY James" affiliation="SALLE OXON" category="U13" id="78" seed="55" />
+      <fencerB name="FRIC Tomi" affiliation="NEWHAM SWORDS" category="U11" id="54" seed="10" />
+    </match>
+    <match number="29" piste="" score="10 / 3" time="0:00" winnerid="22" winnername="PARTRIDGE-HICKS Griffin">
+      <fencerA name="PARTRIDGE-HICKS Griffin" affiliation="ZFW/SUSSEX HOUSE" category="U13" id="22" seed="15" />
+      <fencerB name="KEOGH George" affiliation="SALLE PAUL" category="U11" id="38" seed="50" />
+    </match>
+    <match number="30" piste="" score="6 / 10" time="0:00" winnerid="26" winnername="MEWAWALLA Sam">
+      <fencerA name="ADHAM Asher" affiliation="ZFW FENCING" category="U11" id="79" seed="47" />
+      <fencerB name="MEWAWALLA Sam" affiliation="FENCERS CLUB LONDON" category="U13" id="26" seed="18" />
+    </match>
+    <match number="31" piste="" score="10 / 2" time="0:00" winnerid="46" winnername="HEALY Sacha">
+      <fencerA name="HEALY Sacha" affiliation="FENCERS CLUB LONDON" category="U11" id="46" seed="31" />
+      <fencerB name="HEMMINGS Joshua" affiliation="UNATTACHED" category="U13" id="45" seed="34" />
+    </match>
+    <match number="32" piste="" score="0 / 10" time="0:00" winnerid="69" winnername="CHAUDHARI Aarav">
+      <fencerA name="WADDINGTON Oscar" affiliation="KINGS COLLEGE LONDON" category="U11" id="6" seed="63" />
+      <fencerB name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" category="U11" id="69" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A8" count="4" title="quarter-finals">
+    <match number="1" piste="" score="10 / 6" time="0:00" winnerid="17" winnername="SAVICKAS Samuelis">
+      <fencerA name="SAVICKAS Samuelis" affiliation="ALLEZ FENCING" category="U11" id="17" seed="1" />
+      <fencerB name="KISS Dominic" affiliation="SALLE KISS" category="U13" id="36" seed="8" />
+    </match>
+    <match number="2" piste="" score="9 / 10" time="0:00" winnerid="13" winnername="SOSNOV David">
+      <fencerA name="YAVUZ Attikan" affiliation="FIGHTING FIT" category="U13" id="2" seed="5" />
+      <fencerB name="SOSNOV David" affiliation="ZFW FENCING" category="U11" id="13" seed="4" />
+    </match>
+    <match number="3" piste="" score="10 / 3" time="0:00" winnerid="62" winnername="DE ROBERT HAUTEQUERE Francois">
+      <fencerA name="DE ROBERT HAUTEQUERE Francois" affiliation="COBHAM FENCING" category="U13" id="62" seed="3" />
+      <fencerB name="CONTRACTOR Khalam" affiliation="NEWHAM SWORDS" category="U11" id="63" seed="6" />
+    </match>
+    <match number="4" piste="" score="2 / 10" time="0:00" winnerid="69" winnername="CHAUDHARI Aarav">
+      <fencerA name="WALLIN Xavier" affiliation="COBHAM FENCING" category="U13" id="5" seed="7" />
+      <fencerB name="CHAUDHARI Aarav" affiliation="ELTHAM COLLEGE" category="U11" id="69" seed="2" />
+    </match>
+  </tableau>
+</competition>

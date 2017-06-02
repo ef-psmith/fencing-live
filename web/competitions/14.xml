@@ -1,0 +1,681 @@
+<competition id="14" background="tomato" entrysize="132" fpppagesize="42" lastupdate="Sun Feb 26 13:04:58 2017" poolsperpage="3" rankingpagesize="40" stage="termine" titre_ligne="Girls Under 15 Epee - EYC" whereamipagesize="40">
+  <lists name="entry" absent="2" count="35" entries="35" nif="false" present="33" scratch="0">
+    <fencer name="ANDREWS Emma" affiliation="PLYMOUTH" category="" id="34" presence="present" seed="" sequence="1" />
+    <fencer name="ARDEN Alisha" affiliation="KNIGHTSBRIDGE" category="" id="33" presence="present" seed="21" sequence="2" />
+    <fencer name="ASHBY Taylor" affiliation="PLYMOUTH" category="" id="32" presence="present" seed="4" sequence="3" />
+    <fencer name="BHANDAL Leah" affiliation="KENILWORTH SWORD" category="" id="31" presence="present" seed="" sequence="4" />
+    <fencer name="BOYES-HUNTER Daisy" affiliation="TRURO" category="" id="30" presence="present" seed="11" sequence="5" />
+    <fencer name="BYWATER Emily" affiliation="SHERBORNE SWORDS" category="" id="29" presence="present" seed="15" sequence="6" />
+    <fencer name="CHUNG-HALPERN Ines" affiliation="CHELSEA" category="" id="35" presence="present" seed="11" sequence="7" />
+    <fencer name="DELL'AQUILA Lorenza" affiliation="COBHAM" category="" id="28" presence="absent" seed="" sequence="8" />
+    <fencer name="DUDLEY Amelia" affiliation="ROYAL TUNBRIDGE WELLS" category="" id="27" presence="absent" seed="10" sequence="9" />
+    <fencer name="EDGECLIFFE-JOHNSON Imogen" affiliation="ALDERSHOT" category="" id="26" presence="present" seed="16" sequence="10" />
+    <fencer name="GRAHAM Megan" affiliation="NEWCASTLE" category="" id="25" presence="present" seed="22" sequence="11" />
+    <fencer name="HAYNES Georgia" affiliation="HARROGATE" category="" id="24" presence="present" seed="3" sequence="12" />
+    <fencer name="HEAPS Hannah" affiliation="LANCASHIRE SWORD" category="" id="23" presence="present" seed="13" sequence="13" />
+    <fencer name="HERRLING Messina" affiliation="KNIGHTSBRIDGE" category="" id="22" presence="present" seed="8" sequence="14" />
+    <fencer name="JEAL Laura" affiliation="WINGERWORTH" category="" id="21" presence="present" seed="18" sequence="15" />
+    <fencer name="LOUIS Avery" affiliation="KNIGHTSBRIDGE" category="" id="20" presence="present" seed="5" sequence="16" />
+    <fencer name="LOWE Kamie" affiliation="UNATTACHED" category="" id="19" presence="present" seed="" sequence="17" />
+    <fencer name="MARTUS Cosima" affiliation="CHELSEA" category="" id="18" presence="present" seed="" sequence="18" />
+    <fencer name="MCCORMACK Maisie" affiliation="OUNDLE PETERBOROUGH" category="" id="17" presence="present" seed="9" sequence="19" />
+    <fencer name="MILES Katy" affiliation="PLYMOUTH" category="" id="16" presence="present" seed="21" sequence="20" />
+    <fencer name="MITCHELL Georgina" affiliation="PLYMOUTH" category="" id="15" presence="present" seed="" sequence="21" />
+    <fencer name="OIEN Jacqueline" affiliation="HAVERSTOCK" category="" id="14" presence="present" seed="1" sequence="22" />
+    <fencer name="PARMAR Ellie" affiliation="REDHILL &amp; REIGATE" category="" id="13" presence="present" seed="6" sequence="23" />
+    <fencer name="RAYNER Phoebe" affiliation="HYMERS" category="" id="12" presence="present" seed="17" sequence="24" />
+    <fencer name="SHARP Tierney" affiliation="DREAM FENCING" category="" id="11" presence="present" seed="19" sequence="25" />
+    <fencer name="SHEFFIELD Anna" affiliation="BRIXTON" category="" id="10" presence="present" seed="21" sequence="26" />
+    <fencer name="SIMMONDS Constance" affiliation="ABINGDON" category="" id="9" presence="present" seed="" sequence="27" />
+    <fencer name="SINGLETON Lauren" affiliation="PLYMOUTH" category="" id="8" presence="present" seed="23" sequence="28" />
+    <fencer name="SISMANOVIC Alice" affiliation="MILLFIELD" category="" id="7" presence="present" seed="20" sequence="29" />
+    <fencer name="TAYLOR Eleanor" affiliation="SALLE HADALIN" category="" id="6" presence="present" seed="7" sequence="30" />
+    <fencer name="TAYLOR Stephanie" affiliation="REDHILL &amp; REIGATE" category="" id="5" presence="present" seed="24" sequence="31" />
+    <fencer name="TREVETHAN Lottie" affiliation="MALVERN HILLS" category="" id="4" presence="present" seed="14" sequence="32" />
+    <fencer name="WHINNEY Sophie" affiliation="TRURO" category="" id="3" presence="present" seed="12" sequence="33" />
+    <fencer name="WILLETT Lulu" affiliation="BEXLEY" category="" id="2" presence="present" seed="11" sequence="34" />
+    <fencer name="WYER-ROBERTS Grace" affiliation="OUNDLE PETERBOROUGH" category="" id="1" presence="present" seed="" sequence="35" />
+  </lists>
+  <lists name="ranking" count="33" type="final">
+    <fencer name="OIEN Jacqueline" affiliation="HAVERSTOCK" category="C" elimround="elim_0" id="14" position="1" sequence="1" />
+    <fencer name="WHINNEY Sophie" affiliation="TRURO" category="C" elimround="elim_2" id="3" position="2" sequence="2" />
+    <fencer name="MARTUS Cosima" affiliation="CHELSEA" category="C" elimround="elim_4" id="18" position="3" sequence="3" />
+    <fencer name="ANDREWS Emma" affiliation="PLYMOUTH" category="C" elimround="elim_4" id="34" position="3" sequence="4" />
+    <fencer name="LOUIS Avery" affiliation="KNIGHTSBRIDGE" category="C" elimround="elim_8" id="20" position="5" sequence="5" />
+    <fencer name="TAYLOR Eleanor" affiliation="SALLE HADALIN" category="C" elimround="elim_8" id="6" position="6" sequence="6" />
+    <fencer name="HERRLING Messina" affiliation="KNIGHTSBRIDGE" category="C" elimround="elim_8" id="22" position="7" sequence="7" />
+    <fencer name="WILLETT Lulu" affiliation="BEXLEY" category="C" elimround="elim_8" id="2" position="8" sequence="8" />
+    <fencer name="PARMAR Ellie" affiliation="REDHILL &amp; REIGATE" category="C" elimround="elim_16" id="13" position="9" sequence="9" />
+    <fencer name="ASHBY Taylor" affiliation="PLYMOUTH" category="C" elimround="elim_16" id="32" position="10" sequence="10" />
+    <fencer name="TREVETHAN Lottie" affiliation="MALVERN HILLS" category="C" elimround="elim_16" id="4" position="11" sequence="11" />
+    <fencer name="BOYES-HUNTER Daisy" affiliation="TRURO" category="C" elimround="elim_16" id="30" position="12" sequence="12" />
+    <fencer name="CHUNG-HALPERN Ines" affiliation="CHELSEA" category="" elimround="elim_16" id="35" position="13" sequence="13" />
+    <fencer name="TAYLOR Stephanie" affiliation="REDHILL &amp; REIGATE" category="C" elimround="elim_16" id="5" position="14" sequence="14" />
+    <fencer name="BYWATER Emily" affiliation="SHERBORNE SWORDS" category="C" elimround="elim_16" id="29" position="15" sequence="15" />
+    <fencer name="HEAPS Hannah" affiliation="LANCASHIRE SWORD" category="C" elimround="elim_16" id="23" position="16" sequence="16" />
+    <fencer name="MITCHELL Georgina" affiliation="PLYMOUTH" category="C" elimround="elim_32" id="15" position="17" sequence="17" />
+    <fencer name="JEAL Laura" affiliation="WINGERWORTH" category="C" elimround="elim_32" id="21" position="18" sequence="18" />
+    <fencer name="MILES Katy" affiliation="PLYMOUTH" category="C" elimround="elim_32" id="16" position="19" sequence="19" />
+    <fencer name="WYER-ROBERTS Grace" affiliation="OUNDLE PETERBOROUGH" category="C" elimround="elim_32" id="1" position="20" sequence="20" />
+    <fencer name="HAYNES Georgia" affiliation="HARROGATE" category="C" elimround="elim_32" id="24" position="21" sequence="21" />
+    <fencer name="MCCORMACK Maisie" affiliation="OUNDLE PETERBOROUGH" category="C" elimround="elim_32" id="17" position="22" sequence="22" />
+    <fencer name="EDGECLIFFE-JOHNSON Imogen" affiliation="ALDERSHOT" category="C" elimround="elim_32" id="26" position="23" sequence="23" />
+    <fencer name="SHARP Tierney" affiliation="DREAM FENCING" category="C" elimround="elim_32" id="11" position="24" sequence="24" />
+    <fencer name="LOWE Kamie" affiliation="UNATTACHED" category="C" elimround="elim_32" id="19" position="25" sequence="25" />
+    <fencer name="RAYNER Phoebe" affiliation="HYMERS" category="C" elimround="elim_32" id="12" position="26" sequence="26" />
+    <fencer name="GRAHAM Megan" affiliation="NEWCASTLE" category="C" elimround="elim_32" id="25" position="27" sequence="27" />
+    <fencer name="ARDEN Alisha" affiliation="KNIGHTSBRIDGE" category="C" elimround="elim_32" id="33" position="28" sequence="28" />
+    <fencer name="SIMMONDS Constance" affiliation="ABINGDON" category="C" elimround="elim_32" id="9" position="29" sequence="29" />
+    <fencer name="SHEFFIELD Anna" affiliation="BRIXTON" category="C" elimround="elim_32" id="10" position="30" sequence="30" />
+    <fencer name="BHANDAL Leah" affiliation="KENILWORTH SWORD" category="C" elimround="elim_32" id="31" position="31" sequence="31" />
+    <fencer name="SINGLETON Lauren" affiliation="PLYMOUTH" category="C" elimround="elim_32" id="8" position="32" sequence="32" />
+    <fencer name="SISMANOVIC Alice" affiliation="MILLFIELD" category="C" elimround="elim_64" id="7" position="33" sequence="33" />
+  </lists>
+  <lists name="ranking" count="33" type="pools">
+    <fencer name="PARMAR E" affiliation="REDHILL &amp; REIGAT" category="C" elimround="elim_none" hr="9" hs="25" id="13" ind="16" position="1" sequence="1" vm="5/5" />
+    <fencer name="MARTUS C" affiliation="CHELSEA" category="C" elimround="elim_none" hr="18" hs="30" id="18" ind="12" position="2" sequence="2" vm="6/6" />
+    <fencer name="OIEN J" affiliation="HAVERSTOCK" category="C" elimround="elim_none" hr="12" hs="29" id="14" ind="17" position="3" sequence="3" vm="5/6" />
+    <fencer name="ASHBY T" affiliation="PLYMOUTH" category="C" elimround="elim_none" hr="13" hs="28" id="32" ind="15" position="4" sequence="4" vm="5/6" />
+    <fencer name="ANDREWS E" affiliation="PLYMOUTH" category="C" elimround="elim_none" hr="20" hs="28" id="34" ind="8" position="5" sequence="5" vm="5/6" />
+    <fencer name="LOUIS A" affiliation="KNIGHTSBRIDGE" category="C" elimround="elim_none" hr="14" hs="24" id="20" ind="10" position="6" sequence="6" vm="4/5" />
+    <fencer name="TAYLOR E" affiliation="SALLE HADALIN" category="C" elimround="elim_none" hr="13" hs="22" id="6" ind="9" position="7" sequence="7" vm="4/5" />
+    <fencer name="TREVETHAN L" affiliation="MALVERN HILLS" category="C" elimround="elim_none" hr="16" hs="24" id="4" ind="8" position="8" sequence="8" vm="4/5" />
+    <fencer name="MITCHELL G" affiliation="PLYMOUTH" category="C" elimround="elim_none" hr="15" hs="28" id="15" ind="13" position="9" sequence="9" vm="4/6" />
+    <fencer name="BOYES-HUNTER D" affiliation="TRURO" category="C" elimround="elim_none" hr="17" hs="25" id="30" ind="8" position="10" sequence="10" vm="4/6" />
+    <fencer name="JEAL L" affiliation="WINGERWORTH" category="C" elimround="elim_none" hr="17" hs="23" id="21" ind="6" position="11" sequence="11" vm="4/6" />
+    <fencer name="CHUNG-HALPERN I" affiliation="CHELSEA" category="" elimround="elim_none" hr="22" hs="27" id="35" ind="5" position="12" sequence="12" vm="4/6" />
+    <fencer name="HERRLING M" affiliation="KNIGHTSBRIDGE" category="C" elimround="elim_none" hr="21" hs="23" id="22" ind="2" position="13" sequence="13" vm="4/6" />
+    <fencer name="TAYLOR S" affiliation="REDHILL &amp; REIGAT" category="C" elimround="elim_none" hr="17" hs="21" id="5" ind="4" position="14" sequence="14" vm="3/5" />
+    <fencer name="BYWATER E" affiliation="SHERBORNE SWORDS" category="C" elimround="elim_none" hr="18" hs="16" id="29" ind="-2" position="15" sequence="15" vm="3/5" />
+    <fencer name="MILES K" affiliation="PLYMOUTH" category="C" elimround="elim_none" hr="24" hs="27" id="16" ind="3" position="16" sequence="16" vm="3/6" />
+    <fencer name="WILLETT L" affiliation="BEXLEY" category="C" elimround="elim_none" hr="22" hs="21" id="2" ind="-1" position="17" sequence="17" vm="3/6" />
+    <fencer name="WYER-ROBERTS G" affiliation="OUNDLE PETERBORO" category="C" elimround="elim_none" hr="26" hs="22" id="1" ind="-4" position="18" sequence="18" vm="3/6" />
+    <fencer name="HAYNES G" affiliation="HARROGATE" category="C" elimround="elim_none" hr="26" hs="21" id="24" ind="-5" position="19" sequence="19" vm="3/6" />
+    <fencer name="MCCORMACK M" affiliation="OUNDLE PETERBORO" category="C" elimround="elim_none" hr="18" hs="20" id="17" ind="2" position="20" sequence="20" vm="2/5" />
+    <fencer name="EDGECLIFFE-JOHNSON I" affiliation="ALDERSHOT" category="C" elimround="elim_none" hr="21" hs="15" id="26" ind="-6" position="21" sequence="21" vm="2/5" />
+    <fencer name="HEAPS H" affiliation="LANCASHIRE SWORD" category="C" elimround="elim_none" hr="23" hs="21" id="23" ind="-2" position="22" sequence="22" vm="2/6" />
+    <fencer name="SHARP T" affiliation="DREAM FENCING" category="C" elimround="elim_none" hr="25" hs="21" id="11" ind="-4" position="23" sequence="23" vm="2/6" />
+    <fencer name="WHINNEY S" affiliation="TRURO" category="C" elimround="elim_none" hr="24" hs="18" id="3" ind="-6" position="24" sequence="24" vm="2/6" />
+    <fencer name="LOWE K" affiliation="UNATTACHED" category="C" elimround="elim_none" hr="21" hs="12" id="19" ind="-9" position="25" sequence="25" vm="1/5" />
+    <fencer name="RAYNER P" affiliation="HYMERS" category="C" elimround="elim_none" hr="24" hs="14" id="12" ind="-10" position="26" sequence="26" vm="1/5" />
+    <fencer name="GRAHAM M" affiliation="NEWCASTLE" category="C" elimround="elim_none" hr="24" hs="10" id="25" ind="-14" position="27" sequence="27" vm="1/5" />
+    <fencer name="ARDEN A" affiliation="KNIGHTSBRIDGE" category="C" elimround="elim_none" hr="27" hs="19" id="33" ind="-8" position="28" sequence="28" vm="1/6" />
+    <fencer name="SIMMONDS C" affiliation="ABINGDON" category="C" elimround="elim_none" hr="28" hs="16" id="9" ind="-12" position="29" sequence="29" vm="1/6" />
+    <fencer name="SHEFFIELD A" affiliation="BRIXTON" category="C" elimround="elim_none" hr="27" hs="13" id="10" ind="-14" position="30" sequence="30" vm="1/6" />
+    <fencer name="BHANDAL L" affiliation="KENILWORTH SWORD" category="C" elimround="elim_none" hr="28" hs="12" id="31" ind="-16" position="31" sequence="31" vm="1/6" />
+    <fencer name="SINGLETON L" affiliation="PLYMOUTH" category="C" elimround="elim_none" hr="25" hs="17" id="8" ind="-8" position="32" sequence="32" vm="0/5" />
+    <fencer name="SISMANOVIC A" affiliation="MILLFIELD" category="C" elimround="elim_none" hr="30" hs="13" id="7" ind="-17" position="33" sequence="33" vm="0/6" />
+  </lists>
+  <message></message>
+  <pools count="5" round="1">
+    <pool heure="0:00" number="1" piste="25" size="7">
+      <fencers count="7">
+        <fencer name="OIEN Jacqueline" affiliation="HAVERSTOCK" fencerid="14" hs="29" id="1" ind="17" pl="1" vm="5/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="4" />
+        </fencer>
+        <fencer name="CHUNG-HALPERN Ines" affiliation="CHELSEA" fencerid="35" hs="27" id="2" ind="5" pl="3" vm="4/6">
+          <result id="1" score="3" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="4" />
+        </fencer>
+        <fencer name="ARDEN Alisha" affiliation="KNIGHTSBRIDGE" fencerid="33" hs="19" id="3" ind="-8" pl="6" vm="1/6">
+          <result id="1" score="3" />
+          <result id="2" score="1" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="3" />
+          <result id="6" score="4" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="SISMANOVIC Alice" affiliation="MILLFIELD" fencerid="7" hs="13" id="4" ind="-17" pl="7" vm="0/6">
+          <result id="1" score="0" />
+          <result id="2" score="3" />
+          <result id="3" score="2" />
+          <result id="4" score="" />
+          <result id="5" score="2" />
+          <result id="6" score="4" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="WILLETT Lulu" affiliation="BEXLEY" fencerid="2" hs="21" id="5" ind="-1" pl="4" vm="3/6">
+          <result id="1" score="0" />
+          <result id="2" score="4" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="WYER-ROBERTS Grace" affiliation="OUNDLE PETERBOROUGH" fencerid="1" hs="22" id="6" ind="-4" pl="5" vm="3/6">
+          <result id="1" score="1" />
+          <result id="2" score="4" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="2" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="ANDREWS Emma" affiliation="PLYMOUTH" fencerid="34" hs="28" id="7" ind="8" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="3" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="2" piste="26" size="7">
+      <fencers count="7">
+        <fencer name="BOYES-HUNTER Daisy" affiliation="TRURO" fencerid="30" hs="25" id="1" ind="8" pl="2" vm="4/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="3" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="HEAPS Hannah" affiliation="LANCASHIRE SWORD" fencerid="23" hs="21" id="2" ind="-2" pl="5" vm="2/6">
+          <result id="1" score="1" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="4" />
+          <result id="5" score="V" />
+          <result id="6" score="3" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="HAYNES Georgia" affiliation="HARROGATE" fencerid="24" hs="21" id="3" ind="-5" pl="4" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="0" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="3" />
+          <result id="6" score="3" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SHARP Tierney" affiliation="DREAM FENCING" fencerid="11" hs="21" id="4" ind="-4" pl="6" vm="2/6">
+          <result id="1" score="1" />
+          <result id="2" score="V" />
+          <result id="3" score="4" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="4" />
+        </fencer>
+        <fencer name="SIMMONDS Constance" affiliation="ABINGDON" fencerid="9" hs="16" id="5" ind="-12" pl="7" vm="1/6">
+          <result id="1" score="1" />
+          <result id="2" score="3" />
+          <result id="3" score="V" />
+          <result id="4" score="1" />
+          <result id="5" score="" />
+          <result id="6" score="4" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="MARTUS Cosima" affiliation="CHELSEA" fencerid="18" hs="30" id="6" ind="12" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="MILES Katy" affiliation="PLYMOUTH" fencerid="16" hs="27" id="7" ind="3" pl="3" vm="3/6">
+          <result id="1" score="4" />
+          <result id="2" score="V" />
+          <result id="3" score="4" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="4" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="3" piste="27" size="7">
+      <fencers count="7">
+        <fencer name="JEAL Laura" affiliation="WINGERWORTH" fencerid="21" hs="23" id="1" ind="6" pl="3" vm="4/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V4" />
+          <result id="4" score="V" />
+          <result id="5" score="3" />
+          <result id="6" score="2" />
+          <result id="7" score="V4" />
+        </fencer>
+        <fencer name="ASHBY Taylor" affiliation="PLYMOUTH" fencerid="32" hs="28" id="2" ind="15" pl="1" vm="5/6">
+          <result id="1" score="4" />
+          <result id="2" score="" />
+          <result id="3" score="V4" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="WHINNEY Sophie" affiliation="TRURO" fencerid="3" hs="18" id="3" ind="-6" pl="5" vm="2/6">
+          <result id="1" score="2" />
+          <result id="2" score="1" />
+          <result id="3" score="" />
+          <result id="4" score="3" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="HERRLING Messina" affiliation="KNIGHTSBRIDGE" fencerid="22" hs="23" id="4" ind="2" pl="4" vm="4/6">
+          <result id="1" score="1" />
+          <result id="2" score="2" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="BHANDAL Leah" affiliation="KENILWORTH SWORD" fencerid="31" hs="12" id="5" ind="-16" pl="7" vm="1/6">
+          <result id="1" score="V" />
+          <result id="2" score="1" />
+          <result id="3" score="2" />
+          <result id="4" score="1" />
+          <result id="5" score="" />
+          <result id="6" score="0" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="MITCHELL Georgina" affiliation="PLYMOUTH" fencerid="15" hs="28" id="6" ind="13" pl="2" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="4" />
+          <result id="3" score="V" />
+          <result id="4" score="4" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SHEFFIELD Anna" affiliation="BRIXTON" fencerid="10" hs="13" id="7" ind="-14" pl="6" vm="1/6">
+          <result id="1" score="0" />
+          <result id="2" score="0" />
+          <result id="3" score="4" />
+          <result id="4" score="3" />
+          <result id="5" score="V" />
+          <result id="6" score="1" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="4" piste="28" size="6">
+      <fencers count="6">
+        <fencer name="RAYNER Phoebe" affiliation="HYMERS" fencerid="12" hs="14" id="1" ind="-10" pl="5" vm="1/5">
+          <result id="1" score="" />
+          <result id="2" score="1" />
+          <result id="3" score="4" />
+          <result id="4" score="2" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+        </fencer>
+        <fencer name="TREVETHAN Lottie" affiliation="MALVERN HILLS" fencerid="4" hs="24" id="2" ind="8" pl="2" vm="4/5">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="TAYLOR Stephanie" affiliation="REDHILL &amp; REIGATE" fencerid="5" hs="21" id="3" ind="4" pl="3" vm="3/5">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="" />
+          <result id="4" score="4" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="LOUIS Avery" affiliation="KNIGHTSBRIDGE" fencerid="20" hs="24" id="4" ind="10" pl="1" vm="4/5">
+          <result id="1" score="V" />
+          <result id="2" score="4" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="GRAHAM Megan" affiliation="NEWCASTLE" fencerid="25" hs="10" id="5" ind="-14" pl="6" vm="1/5">
+          <result id="1" score="4" />
+          <result id="2" score="V" />
+          <result id="3" score="0" />
+          <result id="4" score="0" />
+          <result id="5" score="" />
+          <result id="6" score="1" />
+        </fencer>
+        <fencer name="MCCORMACK Maisie" affiliation="OUNDLE PETERBOROUGH" fencerid="17" hs="20" id="6" ind="2" pl="4" vm="2/5">
+          <result id="1" score="V" />
+          <result id="2" score="4" />
+          <result id="3" score="3" />
+          <result id="4" score="3" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="5" piste="29" size="6">
+      <fencers count="6">
+        <fencer name="SINGLETON Lauren" affiliation="PLYMOUTH" fencerid="8" hs="17" id="1" ind="-8" pl="6" vm="0/5">
+          <result id="1" score="" />
+          <result id="2" score="2" />
+          <result id="3" score="3" />
+          <result id="4" score="4" />
+          <result id="5" score="4" />
+          <result id="6" score="4" />
+        </fencer>
+        <fencer name="LOWE Kamie" affiliation="UNATTACHED" fencerid="19" hs="12" id="2" ind="-9" pl="5" vm="1/5">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="0" />
+          <result id="4" score="3" />
+          <result id="5" score="1" />
+          <result id="6" score="3" />
+        </fencer>
+        <fencer name="PARMAR Ellie" affiliation="REDHILL &amp; REIGATE" fencerid="13" hs="25" id="3" ind="16" pl="1" vm="5/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="TAYLOR Eleanor" affiliation="SALLE HADALIN" fencerid="6" hs="22" id="4" ind="9" pl="2" vm="4/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="BYWATER Emily" affiliation="SHERBORNE SWORDS" fencerid="29" hs="16" id="5" ind="-2" pl="3" vm="3/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="0" />
+          <result id="5" score="" />
+          <result id="6" score="V4" />
+        </fencer>
+        <fencer name="EDGECLIFFE-JOHNSON Imogen" affiliation="ALDERSHOT" fencerid="26" hs="15" id="6" ind="-6" pl="4" vm="2/5">
+          <result id="1" score="V" />
+          <result id="2" score="V4" />
+          <result id="3" score="2" />
+          <result id="4" score="1" />
+          <result id="5" score="3" />
+          <result id="6" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+  </pools>
+  <tableau name="A16" count="8" title="tableau of 16">
+    <match number="1" piste="" score="12 / 15" time="0:00" winnerid="2" winnername="WILLETT Lulu">
+      <fencerA name="PARMAR Ellie" affiliation="REDHILL &amp; REIGATE" category="C" id="13" seed="1" />
+      <fencerB name="WILLETT Lulu" affiliation="BEXLEY" category="C" id="2" seed="16" />
+    </match>
+    <match number="2" piste="" score="15 / 12" time="0:00" winnerid="3" winnername="WHINNEY Sophie">
+      <fencerA name="WHINNEY Sophie" affiliation="TRURO" category="C" id="3" seed="9" />
+      <fencerB name="TREVETHAN Lottie" affiliation="MALVERN HILLS" category="C" id="4" seed="8" />
+    </match>
+    <match number="3" piste="" score="15 / 14" time="0:00" winnerid="34" winnername="ANDREWS Emma">
+      <fencerA name="ANDREWS Emma" affiliation="PLYMOUTH" category="C" id="34" seed="5" />
+      <fencerB name="CHUNG-HALPERN Ines" affiliation="CHELSEA" category="" id="35" seed="12" />
+    </match>
+    <match number="4" piste="" score="15 / 14" time="0:00" winnerid="22" winnername="HERRLING Messina">
+      <fencerA name="HERRLING Messina" affiliation="KNIGHTSBRIDGE" category="C" id="22" seed="13" />
+      <fencerB name="ASHBY Taylor" affiliation="PLYMOUTH" category="C" id="32" seed="4" />
+    </match>
+    <match number="5" piste="" score="15 / 5" time="0:00" winnerid="14" winnername="OIEN Jacqueline">
+      <fencerA name="OIEN Jacqueline" affiliation="HAVERSTOCK" category="C" id="14" seed="3" />
+      <fencerB name="TAYLOR Stephanie" affiliation="REDHILL &amp; REIGATE" category="C" id="5" seed="14" />
+    </match>
+    <match number="6" piste="" score="7 / 15" time="0:00" winnerid="20" winnername="LOUIS Avery">
+      <fencerA name="HEAPS Hannah" affiliation="LANCASHIRE SWORD" category="C" id="23" seed="11" />
+      <fencerB name="LOUIS Avery" affiliation="KNIGHTSBRIDGE" category="C" id="20" seed="6" />
+    </match>
+    <match number="7" piste="" score="15 / 7" time="0:00" winnerid="6" winnername="TAYLOR Eleanor">
+      <fencerA name="TAYLOR Eleanor" affiliation="SALLE HADALIN" category="C" id="6" seed="7" />
+      <fencerB name="BOYES-HUNTER Daisy" affiliation="TRURO" category="C" id="30" seed="10" />
+    </match>
+    <match number="8" piste="" score="4 / 15" time="0:00" winnerid="18" winnername="MARTUS Cosima">
+      <fencerA name="BYWATER Emily" affiliation="SHERBORNE SWORDS" category="C" id="29" seed="15" />
+      <fencerB name="MARTUS Cosima" affiliation="CHELSEA" category="C" id="18" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A2" count="1" title="final">
+    <match number="1" piste="" score="5 / 15" time="0:00" winnerid="14" winnername="OIEN Jacqueline">
+      <fencerA name="WHINNEY Sophie" affiliation="TRURO" category="C" id="3" seed="1" />
+      <fencerB name="OIEN Jacqueline" affiliation="HAVERSTOCK" category="C" id="14" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A32" count="16" title="tableau of 32">
+    <match number="1" piste="" score="15 / 7" time="0:00" winnerid="13" winnername="PARMAR Ellie">
+      <fencerA name="PARMAR Ellie" affiliation="REDHILL &amp; REIGATE" category="C" id="13" seed="1" />
+      <fencerB name="SINGLETON Lauren" affiliation="PLYMOUTH" category="C" id="8" seed="32" />
+    </match>
+    <match number="2" piste="" score="15 / 13" time="0:00" winnerid="2" winnername="WILLETT Lulu">
+      <fencerA name="WILLETT Lulu" affiliation="BEXLEY" category="C" id="2" seed="17" />
+      <fencerB name="MILES Katy" affiliation="PLYMOUTH" category="C" id="16" seed="16" />
+    </match>
+    <match number="3" piste="" score="12 / 13" time="0:00" winnerid="3" winnername="WHINNEY Sophie">
+      <fencerA name="MITCHELL Georgina" affiliation="PLYMOUTH" category="C" id="15" seed="9" />
+      <fencerB name="WHINNEY Sophie" affiliation="TRURO" category="C" id="3" seed="24" />
+    </match>
+    <match number="4" piste="" score="7 / 15" time="0:00" winnerid="4" winnername="TREVETHAN Lottie">
+      <fencerA name="LOWE Kamie" affiliation="UNATTACHED" category="C" id="19" seed="25" />
+      <fencerB name="TREVETHAN Lottie" affiliation="MALVERN HILLS" category="C" id="4" seed="8" />
+    </match>
+    <match number="5" piste="" score="15 / 10" time="0:00" winnerid="34" winnername="ANDREWS Emma">
+      <fencerA name="ANDREWS Emma" affiliation="PLYMOUTH" category="C" id="34" seed="5" />
+      <fencerB name="ARDEN Alisha" affiliation="KNIGHTSBRIDGE" category="C" id="33" seed="28" />
+    </match>
+    <match number="6" piste="" score="14 / 15" time="0:00" winnerid="35" winnername="CHUNG-HALPERN Ines">
+      <fencerA name="EDGECLIFFE-JOHNSON Imogen" affiliation="ALDERSHOT" category="C" id="26" seed="21" />
+      <fencerB name="CHUNG-HALPERN Ines" affiliation="CHELSEA" category="" id="35" seed="12" />
+    </match>
+    <match number="7" piste="" score="15 / 12" time="0:00" winnerid="22" winnername="HERRLING Messina">
+      <fencerA name="HERRLING Messina" affiliation="KNIGHTSBRIDGE" category="C" id="22" seed="13" />
+      <fencerB name="MCCORMACK Maisie" affiliation="OUNDLE PETERBOROUGH" category="C" id="17" seed="20" />
+    </match>
+    <match number="8" piste="" score="8 / 15" time="0:00" winnerid="32" winnername="ASHBY Taylor">
+      <fencerA name="SIMMONDS Constance" affiliation="ABINGDON" category="C" id="9" seed="29" />
+      <fencerB name="ASHBY Taylor" affiliation="PLYMOUTH" category="C" id="32" seed="4" />
+    </match>
+    <match number="9" piste="" score="15 / 0" time="0:00" winnerid="14" winnername="OIEN Jacqueline">
+      <fencerA name="OIEN Jacqueline" affiliation="HAVERSTOCK" category="C" id="14" seed="3" />
+      <fencerB name="SHEFFIELD Anna" affiliation="BRIXTON" category="C" id="10" seed="30" />
+    </match>
+    <match number="10" piste="" score="10 / 15" time="0:00" winnerid="5" winnername="TAYLOR Stephanie">
+      <fencerA name="HAYNES Georgia" affiliation="HARROGATE" category="C" id="24" seed="19" />
+      <fencerB name="TAYLOR Stephanie" affiliation="REDHILL &amp; REIGATE" category="C" id="5" seed="14" />
+    </match>
+    <match number="11" piste="" score="9 / 15" time="0:00" winnerid="23" winnername="HEAPS Hannah">
+      <fencerA name="JEAL Laura" affiliation="WINGERWORTH" category="C" id="21" seed="11" />
+      <fencerB name="HEAPS Hannah" affiliation="LANCASHIRE SWORD" category="C" id="23" seed="22" />
+    </match>
+    <match number="12" piste="" score="6 / 15" time="0:00" winnerid="20" winnername="LOUIS Avery">
+      <fencerA name="GRAHAM Megan" affiliation="NEWCASTLE" category="C" id="25" seed="27" />
+      <fencerB name="LOUIS Avery" affiliation="KNIGHTSBRIDGE" category="C" id="20" seed="6" />
+    </match>
+    <match number="13" piste="" score="9 / 4" time="0:00" winnerid="6" winnername="TAYLOR Eleanor">
+      <fencerA name="TAYLOR Eleanor" affiliation="SALLE HADALIN" category="C" id="6" seed="7" />
+      <fencerB name="RAYNER Phoebe" affiliation="HYMERS" category="C" id="12" seed="26" />
+    </match>
+    <match number="14" piste="" score="8 / 15" time="0:00" winnerid="30" winnername="BOYES-HUNTER Daisy">
+      <fencerA name="SHARP Tierney" affiliation="DREAM FENCING" category="C" id="11" seed="23" />
+      <fencerB name="BOYES-HUNTER Daisy" affiliation="TRURO" category="C" id="30" seed="10" />
+    </match>
+    <match number="15" piste="" score="15 / 11" time="0:00" winnerid="29" winnername="BYWATER Emily">
+      <fencerA name="BYWATER Emily" affiliation="SHERBORNE SWORDS" category="C" id="29" seed="15" />
+      <fencerB name="WYER-ROBERTS Grace" affiliation="OUNDLE PETERBOROUGH" category="C" id="1" seed="18" />
+    </match>
+    <match number="16" piste="" score="2 / 15" time="0:00" winnerid="18" winnername="MARTUS Cosima">
+      <fencerA name="BHANDAL Leah" affiliation="KENILWORTH SWORD" category="C" id="31" seed="31" />
+      <fencerB name="MARTUS Cosima" affiliation="CHELSEA" category="C" id="18" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A4" count="2" title="semi-finals">
+    <match number="1" piste="31" score="15 / 11" time="0:00" winnerid="3" winnername="WHINNEY Sophie">
+      <fencerA name="WHINNEY Sophie" affiliation="TRURO" category="C" id="3" seed="1" />
+      <fencerB name="ANDREWS Emma" affiliation="PLYMOUTH" category="C" id="34" seed="4" />
+    </match>
+    <match number="2" piste="32" score="15 / 2" time="0:00" winnerid="14" winnername="OIEN Jacqueline">
+      <fencerA name="OIEN Jacqueline" affiliation="HAVERSTOCK" category="C" id="14" seed="3" />
+      <fencerB name="MARTUS Cosima" affiliation="CHELSEA" category="C" id="18" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A64" count="32" title="tableau of 64">
+    <match number="1" piste="28" score="" time="" winnerid="13" winnername="PARMAR Ellie">
+      <fencerA name="PARMAR Ellie" affiliation="REDHILL &amp; REIGATE" category="C" id="13" seed="1" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="64" />
+    </match>
+    <match number="2" piste="28" score="12 / 15" time="0:00" winnerid="8" winnername="SINGLETON Lauren">
+      <fencerA name="SISMANOVIC Alice" affiliation="MILLFIELD" category="C" id="7" seed="33" />
+      <fencerB name="SINGLETON Lauren" affiliation="PLYMOUTH" category="C" id="8" seed="32" />
+    </match>
+    <match number="3" piste="28" score="" time="" winnerid="2" winnername="WILLETT Lulu">
+      <fencerA name="WILLETT Lulu" affiliation="BEXLEY" category="C" id="2" seed="17" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="48" />
+    </match>
+    <match number="4" piste="28" score="" time="" winnerid="16" winnername="MILES Katy">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="49" />
+      <fencerB name="MILES Katy" affiliation="PLYMOUTH" category="C" id="16" seed="16" />
+    </match>
+    <match number="5" piste="28" score="" time="" winnerid="15" winnername="MITCHELL Georgina">
+      <fencerA name="MITCHELL Georgina" affiliation="PLYMOUTH" category="C" id="15" seed="9" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="56" />
+    </match>
+    <match number="6" piste="28" score="" time="" winnerid="3" winnername="WHINNEY Sophie">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="41" />
+      <fencerB name="WHINNEY Sophie" affiliation="TRURO" category="C" id="3" seed="24" />
+    </match>
+    <match number="7" piste="28" score="" time="" winnerid="19" winnername="LOWE Kamie">
+      <fencerA name="LOWE Kamie" affiliation="UNATTACHED" category="C" id="19" seed="25" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="40" />
+    </match>
+    <match number="8" piste="28" score="" time="" winnerid="4" winnername="TREVETHAN Lottie">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="57" />
+      <fencerB name="TREVETHAN Lottie" affiliation="MALVERN HILLS" category="C" id="4" seed="8" />
+    </match>
+    <match number="9" piste="28" score="" time="" winnerid="34" winnername="ANDREWS Emma">
+      <fencerA name="ANDREWS Emma" affiliation="PLYMOUTH" category="C" id="34" seed="5" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="60" />
+    </match>
+    <match number="10" piste="28" score="" time="" winnerid="33" winnername="ARDEN Alisha">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="37" />
+      <fencerB name="ARDEN Alisha" affiliation="KNIGHTSBRIDGE" category="C" id="33" seed="28" />
+    </match>
+    <match number="11" piste="28" score="" time="" winnerid="26" winnername="EDGECLIFFE-JOHNSON Imogen">
+      <fencerA name="EDGECLIFFE-JOHNSON Imogen" affiliation="ALDERSHOT" category="C" id="26" seed="21" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="44" />
+    </match>
+    <match number="12" piste="28" score="" time="" winnerid="35" winnername="CHUNG-HALPERN Ines">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="53" />
+      <fencerB name="CHUNG-HALPERN Ines" affiliation="CHELSEA" category="" id="35" seed="12" />
+    </match>
+    <match number="13" piste="28" score="" time="" winnerid="22" winnername="HERRLING Messina">
+      <fencerA name="HERRLING Messina" affiliation="KNIGHTSBRIDGE" category="C" id="22" seed="13" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="52" />
+    </match>
+    <match number="14" piste="28" score="" time="" winnerid="17" winnername="MCCORMACK Maisie">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="45" />
+      <fencerB name="MCCORMACK Maisie" affiliation="OUNDLE PETERBOROUGH" category="C" id="17" seed="20" />
+    </match>
+    <match number="15" piste="28" score="" time="" winnerid="9" winnername="SIMMONDS Constance">
+      <fencerA name="SIMMONDS Constance" affiliation="ABINGDON" category="C" id="9" seed="29" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="36" />
+    </match>
+    <match number="16" piste="28" score="" time="" winnerid="32" winnername="ASHBY Taylor">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="61" />
+      <fencerB name="ASHBY Taylor" affiliation="PLYMOUTH" category="C" id="32" seed="4" />
+    </match>
+    <match number="17" piste="29" score="" time="" winnerid="14" winnername="OIEN Jacqueline">
+      <fencerA name="OIEN Jacqueline" affiliation="HAVERSTOCK" category="C" id="14" seed="3" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="62" />
+    </match>
+    <match number="18" piste="29" score="" time="" winnerid="10" winnername="SHEFFIELD Anna">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="35" />
+      <fencerB name="SHEFFIELD Anna" affiliation="BRIXTON" category="C" id="10" seed="30" />
+    </match>
+    <match number="19" piste="29" score="" time="" winnerid="24" winnername="HAYNES Georgia">
+      <fencerA name="HAYNES Georgia" affiliation="HARROGATE" category="C" id="24" seed="19" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="46" />
+    </match>
+    <match number="20" piste="29" score="" time="" winnerid="5" winnername="TAYLOR Stephanie">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="51" />
+      <fencerB name="TAYLOR Stephanie" affiliation="REDHILL &amp; REIGATE" category="C" id="5" seed="14" />
+    </match>
+    <match number="21" piste="29" score="" time="" winnerid="21" winnername="JEAL Laura">
+      <fencerA name="JEAL Laura" affiliation="WINGERWORTH" category="C" id="21" seed="11" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="54" />
+    </match>
+    <match number="22" piste="29" score="" time="" winnerid="23" winnername="HEAPS Hannah">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="43" />
+      <fencerB name="HEAPS Hannah" affiliation="LANCASHIRE SWORD" category="C" id="23" seed="22" />
+    </match>
+    <match number="23" piste="29" score="" time="" winnerid="25" winnername="GRAHAM Megan">
+      <fencerA name="GRAHAM Megan" affiliation="NEWCASTLE" category="C" id="25" seed="27" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="38" />
+    </match>
+    <match number="24" piste="29" score="" time="" winnerid="20" winnername="LOUIS Avery">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="59" />
+      <fencerB name="LOUIS Avery" affiliation="KNIGHTSBRIDGE" category="C" id="20" seed="6" />
+    </match>
+    <match number="25" piste="29" score="" time="" winnerid="6" winnername="TAYLOR Eleanor">
+      <fencerA name="TAYLOR Eleanor" affiliation="SALLE HADALIN" category="C" id="6" seed="7" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="58" />
+    </match>
+    <match number="26" piste="29" score="" time="" winnerid="12" winnername="RAYNER Phoebe">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="39" />
+      <fencerB name="RAYNER Phoebe" affiliation="HYMERS" category="C" id="12" seed="26" />
+    </match>
+    <match number="27" piste="29" score="" time="" winnerid="11" winnername="SHARP Tierney">
+      <fencerA name="SHARP Tierney" affiliation="DREAM FENCING" category="C" id="11" seed="23" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="42" />
+    </match>
+    <match number="28" piste="29" score="" time="" winnerid="30" winnername="BOYES-HUNTER Daisy">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="55" />
+      <fencerB name="BOYES-HUNTER Daisy" affiliation="TRURO" category="C" id="30" seed="10" />
+    </match>
+    <match number="29" piste="29" score="" time="" winnerid="29" winnername="BYWATER Emily">
+      <fencerA name="BYWATER Emily" affiliation="SHERBORNE SWORDS" category="C" id="29" seed="15" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="50" />
+    </match>
+    <match number="30" piste="29" score="" time="" winnerid="1" winnername="WYER-ROBERTS Grace">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="47" />
+      <fencerB name="WYER-ROBERTS Grace" affiliation="OUNDLE PETERBOROUGH" category="C" id="1" seed="18" />
+    </match>
+    <match number="31" piste="29" score="" time="" winnerid="31" winnername="BHANDAL Leah">
+      <fencerA name="BHANDAL Leah" affiliation="KENILWORTH SWORD" category="C" id="31" seed="31" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="34" />
+    </match>
+    <match number="32" piste="29" score="" time="" winnerid="18" winnername="MARTUS Cosima">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="63" />
+      <fencerB name="MARTUS Cosima" affiliation="CHELSEA" category="C" id="18" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A8" count="4" title="quarter-finals">
+    <match number="1" piste="5" score="12 / 15" time="0:00" winnerid="3" winnername="WHINNEY Sophie">
+      <fencerA name="WILLETT Lulu" affiliation="BEXLEY" category="C" id="2" seed="1" />
+      <fencerB name="WHINNEY Sophie" affiliation="TRURO" category="C" id="3" seed="8" />
+    </match>
+    <match number="2" piste="6" score="15 / 14" time="0:00" winnerid="34" winnername="ANDREWS Emma">
+      <fencerA name="ANDREWS Emma" affiliation="PLYMOUTH" category="C" id="34" seed="5" />
+      <fencerB name="HERRLING Messina" affiliation="KNIGHTSBRIDGE" category="C" id="22" seed="4" />
+    </match>
+    <match number="3" piste="27" score="15 / 13" time="0:00" winnerid="14" winnername="OIEN Jacqueline">
+      <fencerA name="OIEN Jacqueline" affiliation="HAVERSTOCK" category="C" id="14" seed="3" />
+      <fencerB name="LOUIS Avery" affiliation="KNIGHTSBRIDGE" category="C" id="20" seed="6" />
+    </match>
+    <match number="4" piste="28" score="11 / 15" time="0:00" winnerid="18" winnername="MARTUS Cosima">
+      <fencerA name="TAYLOR Eleanor" affiliation="SALLE HADALIN" category="C" id="6" seed="7" />
+      <fencerB name="MARTUS Cosima" affiliation="CHELSEA" category="C" id="18" seed="2" />
+    </match>
+  </tableau>
+</competition>

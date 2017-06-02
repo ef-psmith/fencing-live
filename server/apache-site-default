@@ -1,4 +1,8 @@
 <VirtualHost *:80>
+
+	ExpiresActive On
+	ExpiresDefault A0
+
 	ServerAdmin peter.smith@englandfencing.org.uk
 
 	DocumentRoot /home/engarde/live/web

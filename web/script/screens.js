@@ -308,18 +308,9 @@ function pageload() {
       // Is there a message for the current competition
       
       var txt = null;
-      var msgs = this.rawcompxml.getElementsByTagName('message');
-      for (var i = 0;i < msgs.length; ++i) {
-         var msg = msgs[i];
-         for (var j = 0; j < msg.childNodes.length; ++j) {
-            if (3 == msg.childNodes[j].nodeType) {
-               // text node
-               txt = msg.childNodes[j].data;
-
-               // Found the text node so break out of the loop
-               break;
-            }
-         }   
+	  var compnode = this.rawcompxml.getElementsByTagName('competition')[0];
+	  if (null != compnode && compnode.hasAttribute('message')) {
+         var txt = compnode.getAttribute('message');
       }
       var msgdiv = document.getElementById("messages");
       if (null != msgdiv) {

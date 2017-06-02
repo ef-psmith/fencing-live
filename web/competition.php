@@ -1,3 +1,4 @@
+
 <?php
 	$compid = $_REQUEST['competition'];
 	$tournid = $_REQUEST['tournament'];
@@ -84,32 +85,10 @@ Entries
 </a>
 </li>
 </xsl:for-each>
-
-<xsl:for-each select="tableau" >
-      <xsl:sort select="@count" data-type="number" />
-
-<li>
-<a class="tabs">
-<xsl:attribute name="href">javascript:changeTab(\'<xsl:value-of select="@name" />\')</xsl:attribute>
-<xsl:attribute name="id"><xsl:value-of select="@name" />tab</xsl:attribute>
-<xsl:if test="@name = $tabpage">
-<xsl:attribute name="style">color:black;</xsl:attribute>
-</xsl:if>
-<xsl:value-of select="@title" />
-</a>
-</li>
-
-</xsl:for-each>
-
-
 </ul>
 <br />
 <div id="tabpages">
 <xsl:apply-templates select="lists" />
-<xsl:apply-templates select="tableau" >
-<xsl:sort select="@count" data-type="number" />
-</xsl:apply-templates>
-
 </div>
 
 
@@ -187,83 +166,8 @@ Entries
 </div>
 </xsl:template>
 
-<xsl:template match="competition[@id = ' . $compid . ']/tableau">
-<div>
-<xsl:attribute name="id"><xsl:value-of select="@name" /></xsl:attribute>
-<xsl:if test="@name != $tabpage">
-<xsl:attribute name="style">display:none;</xsl:attribute>
-</xsl:if>
-
-<table class="entry">
-<tr><th class="entry">Seed</th><th class="entry">Name</th><th class="entry">Score</th><th class="entry">Name</th><th class="entry">Seed</th></tr>
-
-
-   <xsl:for-each select="match">
-      <xsl:sort select="@number" data-type="number" />
-
-
-<!-- ************ BOUT ************ -->
-<tr>
-<td class="entry">
-<xsl:value-of select="fencerA/@seed"/>
-</td>
-
-
-<td class="entry">
-<xsl:if test="./@winnerid = fencerA/@id">
-<xsl:attribute name="class">entry winner</xsl:attribute>
-</xsl:if>
-
-<xsl:value-of select="fencerA/@name"/>
-
-<xsl:if test="string-length(fencerA/@name) = 0">N/A
-</xsl:if>
-</td>
-
-
-<td class="entry">
-<xsl:choose>
-
-<xsl:when test="string-length(@winnername) > 0 and string-length(@score) != 0">
-<xsl:value-of select="@score"/>
-</xsl:when>
-<xsl:when test="string-length(@winnername) > 0">
-Bye
-</xsl:when>
-<xsl:when test="string-length(@piste) != 0">
-Piste: 
-<xsl:value-of select="@piste"/>
-<xsl:text> </xsl:text>
-<xsl:value-of select="@time"/>
-</xsl:when>
-<xsl:otherwise>N/A</xsl:otherwise>
-</xsl:choose>
-</td>
-
-<td class="entry">
-<xsl:if test="./@winnerid = fencerB/@id">
-<xsl:attribute name="class">entry winner</xsl:attribute>
-</xsl:if>
-<xsl:value-of select="fencerB/@name"/>
-<xsl:if test="string-length(fencerB/@name) = 0">
-N/A
-</xsl:if>
-</td>
-
-<td class="entry">
-<xsl:value-of select="fencerB/@seed"/>
-</td>
-
-</tr>
-
-</xsl:for-each>
-</table>
-</div>
-</xsl:template>
-
 
 </xsl:stylesheet>';
-
   $xslt = new XSLTProcessor();
   $xslt->importStylesheet(new SimpleXMLElement($xslt_string));
 

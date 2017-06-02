@@ -1,0 +1,154 @@
+<competition id="18" entrysize="132" fpppagesize="42" lastupdate="Sun Feb 26 13:04:58 2017" poolsperpage="3" rankingpagesize="40" stage="termine" titre_ligne="Girls Under 11 Sabre - EYC" whereamipagesize="40">
+  <background></background>
+  <lists name="entry" absent="0" count="8" entries="8" nif="false" present="8" scratch="0">
+    <fencer name="BRIERLEY Bethany" affiliation="MARSHALL FENCING" category="" id="8" presence="present" seed="" sequence="1" />
+    <fencer name="BRYCE Eleanor" affiliation="KCSWHS" category="" id="7" presence="present" seed="" sequence="2" />
+    <fencer name="CRAZE Lexie" affiliation="TRURO" category="" id="6" presence="present" seed="" sequence="3" />
+    <fencer name="DANFORD Thisbe" affiliation="PAUL DAVIS FENCING" category="" id="5" presence="present" seed="" sequence="4" />
+    <fencer name="JANE Melissa" affiliation="TRURO" category="" id="4" presence="present" seed="" sequence="5" />
+    <fencer name="LINDSAY Lucie" affiliation="CAMDEN" category="" id="3" presence="present" seed="" sequence="6" />
+    <fencer name="STUTCHBURY Carolina" affiliation="INVICTA" category="" id="2" presence="present" seed="" sequence="7" />
+    <fencer name="YANG Linxuan" affiliation="CAMDEN" category="" id="1" presence="present" seed="" sequence="8" />
+  </lists>
+  <lists name="ranking" count="8" type="final">
+    <fencer name="BRIERLEY Bethany" affiliation="MARSHALL FENCING" category="U13" elimround="elim_0" id="8" position="1" sequence="1" />
+    <fencer name="YANG Linxuan" affiliation="CAMDEN" category="U13" elimround="elim_2" id="1" position="2" sequence="2" />
+    <fencer name="CRAZE Lexie" affiliation="TRURO" category="U13" elimround="elim_4" id="6" position="3" sequence="3" />
+    <fencer name="STUTCHBURY Carolina" affiliation="INVICTA" category="U13" elimround="elim_4" id="2" position="3" sequence="4" />
+    <fencer name="JANE Melissa" affiliation="TRURO" category="U13" elimround="elim_8" id="4" position="5" sequence="5" />
+    <fencer name="DANFORD Thisbe" affiliation="PAUL DAVIS FENCING" category="U11" elimround="elim_8" id="5" position="6" sequence="6" />
+    <fencer name="LINDSAY Lucie" affiliation="CAMDEN" category="U11" elimround="elim_8" id="3" position="7" sequence="7" />
+    <fencer name="BRYCE Eleanor" affiliation="KCSWHS" category="U11" elimround="elim_8" id="7" position="8" sequence="8" />
+  </lists>
+  <lists name="ranking" count="8" type="pools">
+    <fencer name="STUTCHBURY C" affiliation="INVICTA" category="U13" elimround="elim_none" hr="16" hs="30" id="2" ind="14" position="1" sequence="1" vm="5/7" />
+    <fencer name="BRIERLEY B" affiliation="MARSHALL FENCING" category="U13" elimround="elim_none" hr="17" hs="30" id="8" ind="13" position="2" sequence="2" vm="5/7" />
+    <fencer name="CRAZE L" affiliation="TRURO" category="U13" elimround="elim_none" hr="25" hs="31" id="6" ind="6" position="3" sequence="3" vm="5/7" />
+    <fencer name="YANG L" affiliation="CAMDEN" category="U13" elimround="elim_none" hr="23" hs="28" id="1" ind="5" position="4" sequence="4" vm="4/7" />
+    <fencer name="JANE M" affiliation="TRURO" category="U13" elimround="elim_none" hr="26" hs="27" id="4" ind="1" position="5" sequence="5" vm="4/7" />
+    <fencer name="DANFORD T" affiliation="PAUL DAVIS FENCI" category="U11" elimround="elim_none" hr="27" hs="20" id="5" ind="-7" position="6" sequence="6" vm="3/7" />
+    <fencer name="LINDSAY L" affiliation="CAMDEN" category="U11" elimround="elim_none" hr="27" hs="22" id="3" ind="-5" position="7" sequence="7" vm="2/7" />
+    <fencer name="BRYCE E" affiliation="KCSWHS" category="U11" elimround="elim_none" hr="35" hs="8" id="7" ind="-27" position="8" sequence="8" vm="0/7" />
+  </lists>
+  <message></message>
+  <pools count="1" round="1">
+    <pool heure="14:20" number="1" piste="22" size="8">
+      <fencers count="8">
+        <fencer name="LINDSAY Lucie" affiliation="CAMDEN" fencerid="3" hs="22" id="1" ind="-5" pl="7" vm="2/7">
+          <result id="1" score="" />
+          <result id="2" score="2" />
+          <result id="3" score="4" />
+          <result id="4" score="1" />
+          <result id="5" score="1" />
+          <result id="6" score="4" />
+          <result id="7" score="V" />
+          <result id="8" score="V" />
+        </fencer>
+        <fencer name="JANE Melissa" affiliation="TRURO" fencerid="4" hs="27" id="2" ind="1" pl="5" vm="4/7">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="4" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+          <result id="8" score="1" />
+        </fencer>
+        <fencer name="CRAZE Lexie" affiliation="TRURO" fencerid="6" hs="31" id="3" ind="6" pl="3" vm="5/7">
+          <result id="1" score="V" />
+          <result id="2" score="4" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+          <result id="8" score="2" />
+        </fencer>
+        <fencer name="DANFORD Thisbe" affiliation="PAUL DAVIS FENCING" fencerid="5" hs="20" id="4" ind="-7" pl="6" vm="3/7">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="" />
+          <result id="5" score="3" />
+          <result id="6" score="0" />
+          <result id="7" score="V" />
+          <result id="8" score="0" />
+        </fencer>
+        <fencer name="YANG Linxuan" affiliation="CAMDEN" fencerid="1" hs="28" id="5" ind="5" pl="4" vm="4/7">
+          <result id="1" score="V" />
+          <result id="2" score="3" />
+          <result id="3" score="4" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="1" />
+          <result id="7" score="V" />
+          <result id="8" score="V" />
+        </fencer>
+        <fencer name="BRIERLEY Bethany" affiliation="MARSHALL FENCING" fencerid="8" hs="30" id="6" ind="13" pl="2" vm="5/7">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+          <result id="8" score="3" />
+        </fencer>
+        <fencer name="BRYCE Eleanor" affiliation="KCSWHS" fencerid="7" hs="8" id="7" ind="-27" pl="8" vm="0/7">
+          <result id="1" score="0" />
+          <result id="2" score="2" />
+          <result id="3" score="3" />
+          <result id="4" score="2" />
+          <result id="5" score="1" />
+          <result id="6" score="0" />
+          <result id="7" score="" />
+          <result id="8" score="0" />
+        </fencer>
+        <fencer name="STUTCHBURY Carolina" affiliation="INVICTA" fencerid="2" hs="30" id="8" ind="14" pl="1" vm="5/7">
+          <result id="1" score="2" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="3" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+          <result id="8" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+  </pools>
+  <tableau name="A2" count="1" title="final">
+    <match number="1" piste="33" score="4 / 10" time="0:00" winnerid="8" winnername="BRIERLEY Bethany">
+      <fencerA name="YANG Linxuan" affiliation="CAMDEN" category="U13" id="1" seed="1" />
+      <fencerB name="BRIERLEY Bethany" affiliation="MARSHALL FENCING" category="U13" id="8" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A4" count="2" title="semi-finals">
+    <match number="1" piste="22" score="7 / 10" time="0:00" winnerid="1" winnername="YANG Linxuan">
+      <fencerA name="STUTCHBURY Carolina" affiliation="INVICTA" category="U13" id="2" seed="1" />
+      <fencerB name="YANG Linxuan" affiliation="CAMDEN" category="U13" id="1" seed="4" />
+    </match>
+    <match number="2" piste="23" score="6 / 10" time="0:00" winnerid="8" winnername="BRIERLEY Bethany">
+      <fencerA name="CRAZE Lexie" affiliation="TRURO" category="U13" id="6" seed="3" />
+      <fencerB name="BRIERLEY Bethany" affiliation="MARSHALL FENCING" category="U13" id="8" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A8" count="4" title="quarter-finals">
+    <match number="1" piste="22" score="10 / 1" time="0:00" winnerid="2" winnername="STUTCHBURY Carolina">
+      <fencerA name="STUTCHBURY Carolina" affiliation="INVICTA" category="U13" id="2" seed="1" />
+      <fencerB name="BRYCE Eleanor" affiliation="KCSWHS" category="U11" id="7" seed="8" />
+    </match>
+    <match number="2" piste="22" score="3 / 10" time="0:00" winnerid="1" winnername="YANG Linxuan">
+      <fencerA name="JANE Melissa" affiliation="TRURO" category="U13" id="4" seed="5" />
+      <fencerB name="YANG Linxuan" affiliation="CAMDEN" category="U13" id="1" seed="4" />
+    </match>
+    <match number="3" piste="22" score="10 / 7" time="0:00" winnerid="6" winnername="CRAZE Lexie">
+      <fencerA name="CRAZE Lexie" affiliation="TRURO" category="U13" id="6" seed="3" />
+      <fencerB name="DANFORD Thisbe" affiliation="PAUL DAVIS FENCING" category="U11" id="5" seed="6" />
+    </match>
+    <match number="4" piste="22" score="0 / 10" time="0:00" winnerid="8" winnername="BRIERLEY Bethany">
+      <fencerA name="LINDSAY Lucie" affiliation="CAMDEN" category="U11" id="3" seed="7" />
+      <fencerB name="BRIERLEY Bethany" affiliation="MARSHALL FENCING" category="U13" id="8" seed="2" />
+    </match>
+  </tableau>
+</competition>

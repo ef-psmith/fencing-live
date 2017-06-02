@@ -1,0 +1,681 @@
+<competition id="17" entrysize="132" fpppagesize="42" lastupdate="Sun Feb 26 13:04:58 2017" poolsperpage="3" rankingpagesize="40" stage="termine" titre_ligne="Boys Under 15 Sabre - EYC" whereamipagesize="40">
+  <background></background>
+  <lists name="entry" absent="1" count="34" entries="34" nif="false" present="33" scratch="0">
+    <fencer name="ARMSTRONG Benjamin" affiliation="MX FENCING" category="" id="34" presence="present" seed="" sequence="1" />
+    <fencer name="ASHENDEN William" affiliation="MX FENCING" category="" id="33" presence="present" seed="29" sequence="2" />
+    <fencer name="BARNES Lewis" affiliation="ESPADA" category="" id="32" presence="present" seed="36" sequence="3" />
+    <fencer name="BOORNE Samuel" affiliation="TRURO" category="" id="31" presence="present" seed="7" sequence="4" />
+    <fencer name="CRABTREE Felix" affiliation="SHAKESPEARES SWORDS" category="" id="30" presence="present" seed="9" sequence="5" />
+    <fencer name="DAVIES Orlando" affiliation="TRURO" category="" id="29" presence="present" seed="8" sequence="6" />
+    <fencer name="DEROIDE Theotime" affiliation="CAMDEN" category="" id="28" presence="present" seed="" sequence="7" />
+    <fencer name="DICKSON Oliver" affiliation="SHAKESPEARES SWORDS" category="" id="27" presence="present" seed="50" sequence="8" />
+    <fencer name="DUNN Gabriel" affiliation="MARSHALL FENCING" category="" id="26" presence="present" seed="5" sequence="9" />
+    <fencer name="EDWARDES Oliver" affiliation="SHAKESPEARES SWORDS" category="" id="25" presence="present" seed="13" sequence="10" />
+    <fencer name="FOSTER Alex" affiliation="PHOENIX FENCING" category="" id="24" presence="present" seed="12" sequence="11" />
+    <fencer name="GAILLY DE TAURINES Jean Edouard" affiliation="ESCRIME ACADEMY" category="" id="23" presence="present" seed="41" sequence="12" />
+    <fencer name="GALIOTTO Alexandre" affiliation="TRURO" category="" id="22" presence="present" seed="" sequence="13" />
+    <fencer name="GILLESPIE Vinnie" affiliation="MILLFIELD" category="" id="21" presence="present" seed="" sequence="14" />
+    <fencer name="GOUGOULIAS Olympios" affiliation="SHAKESPEARES SWORDS" category="" id="20" presence="present" seed="22" sequence="15" />
+    <fencer name="HAYNES Luke" affiliation="TRURO" category="" id="19" presence="present" seed="3" sequence="16" />
+    <fencer name="HILL Oscar" affiliation="PAUL DAVIS FENCING" category="" id="18" presence="absent" seed="25" sequence="17" />
+    <fencer name="HURST Henry" affiliation="TRURO" category="" id="17" presence="present" seed="24" sequence="18" />
+    <fencer name="IVANOV Valentin" affiliation="BRENTWOOD SCHOOL" category="" id="16" presence="present" seed="58" sequence="19" />
+    <fencer name="KAROUZIS Kyriacos" affiliation="PAUL DAVIS FENCING" category="" id="15" presence="present" seed="" sequence="20" />
+    <fencer name="MATHUR Anuj" affiliation="SHAKESPEARES SWORDS" category="" id="14" presence="present" seed="20" sequence="21" />
+    <fencer name="MCDONNELL Kajetan" affiliation="CAMDEN" category="" id="13" presence="present" seed="2" sequence="22" />
+    <fencer name="MILLS Antoine" affiliation="ESCRIME ACADEMY" category="" id="12" presence="present" seed="" sequence="23" />
+    <fencer name="NORTON RAYBOULD Dominic" affiliation="UNATTACHED" category="" id="11" presence="present" seed="" sequence="24" />
+    <fencer name="PRESTON-COWELL Jack" affiliation="CAMDEN" category="" id="10" presence="present" seed="17" sequence="25" />
+    <fencer name="RICHARDSON Joe" affiliation="SHAKESPEARES SWORDS" category="" id="9" presence="present" seed="42" sequence="26" />
+    <fencer name="SMITH Rohan" affiliation="MARSHALL FENCING" category="" id="8" presence="present" seed="19" sequence="27" />
+    <fencer name="SPRINGETT Lochie" affiliation="CAMDEN" category="" id="7" presence="present" seed="33" sequence="28" />
+    <fencer name="STAMPER-WATLING Jack" affiliation="BATH SWORD" category="" id="6" presence="present" seed="14" sequence="29" />
+    <fencer name="THAKRAR Rohan" affiliation="SHAKESPEARES SWORDS" category="" id="5" presence="present" seed="" sequence="30" />
+    <fencer name="THORNLEY Drew Lewis" affiliation="MARSHALL FENCING" category="" id="4" presence="present" seed="4" sequence="31" />
+    <fencer name="VON POSERN George" affiliation="ESCRIME ACADEMY" category="" id="3" presence="present" seed="" sequence="32" />
+    <fencer name="WATT Archie" affiliation="SHAKESPEARES SWORDS" category="" id="2" presence="present" seed="1" sequence="33" />
+    <fencer name="WRIGHT Sean" affiliation="ACTIV8" category="" id="1" presence="present" seed="" sequence="34" />
+  </lists>
+  <lists name="ranking" count="33" type="final">
+    <fencer name="HAYNES Luke" affiliation="TRURO" category="C" elimround="elim_0" id="19" position="1" sequence="1" />
+    <fencer name="BOORNE Samuel" affiliation="TRURO" category="C" elimround="elim_2" id="31" position="2" sequence="2" />
+    <fencer name="DUNN Gabriel" affiliation="MARSHALL FENCING" category="C" elimround="elim_4" id="26" position="3" sequence="3" />
+    <fencer name="WATT Archie" affiliation="SHAKESPEARES SWORDS" category="C" elimround="elim_4" id="2" position="3" sequence="4" />
+    <fencer name="THORNLEY Drew Lewis" affiliation="MARSHALL FENCING" category="C" elimround="elim_8" id="4" position="5" sequence="5" />
+    <fencer name="FOSTER Alex" affiliation="PHOENIX FENCING" category="C" elimround="elim_8" id="24" position="6" sequence="6" />
+    <fencer name="SMITH Rohan" affiliation="MARSHALL FENCING" category="C" elimround="elim_8" id="8" position="7" sequence="7" />
+    <fencer name="CRABTREE Felix" affiliation="SHAKESPEARES SWORDS" category="C" elimround="elim_8" id="30" position="8" sequence="8" />
+    <fencer name="SPRINGETT Lochie" affiliation="CAMDEN" category="C" elimround="elim_16" id="7" position="9" sequence="9" />
+    <fencer name="PRESTON-COWELL Jack" affiliation="CAMDEN" category="C" elimround="elim_16" id="10" position="10" sequence="10" />
+    <fencer name="STAMPER-WATLING Jack" affiliation="BATH SWORD" category="C" elimround="elim_16" id="6" position="11" sequence="11" />
+    <fencer name="MATHUR Anuj" affiliation="SHAKESPEARES SWORDS" category="C" elimround="elim_16" id="14" position="12" sequence="12" />
+    <fencer name="GOUGOULIAS Olympios" affiliation="SHAKESPEARES SWORDS" category="C" elimround="elim_16" id="20" position="13" sequence="13" />
+    <fencer name="HURST Henry" affiliation="TRURO" category="C" elimround="elim_16" id="17" position="14" sequence="14" />
+    <fencer name="EDWARDES Oliver" affiliation="SHAKESPEARES SWORDS" category="C" elimround="elim_16" id="25" position="15" sequence="15" />
+    <fencer name="DAVIES Orlando" affiliation="TRURO" category="C" elimround="elim_16" id="29" position="16" sequence="16" />
+    <fencer name="MCDONNELL Kajetan" affiliation="CAMDEN" category="C" elimround="elim_32" id="13" position="17" sequence="17" />
+    <fencer name="GILLESPIE Vinnie" affiliation="MILLFIELD" category="C" elimround="elim_32" id="21" position="18" sequence="18" />
+    <fencer name="ASHENDEN William" affiliation="MX FENCING" category="C" elimround="elim_32" id="33" position="19" sequence="19" />
+    <fencer name="THAKRAR Rohan" affiliation="SHAKESPEARES SWORDS" category="C" elimround="elim_32" id="5" position="20" sequence="20" />
+    <fencer name="GAILLY DE TAURINES Jean Edouard" affiliation="ESCRIME ACADEMY" category="C" elimround="elim_32" id="23" position="21" sequence="21" />
+    <fencer name="KAROUZIS Kyriacos" affiliation="PAUL DAVIS FENCING" category="C" elimround="elim_32" id="15" position="22" sequence="22" />
+    <fencer name="BARNES Lewis" affiliation="ESPADA" category="C" elimround="elim_32" id="32" position="23" sequence="23" />
+    <fencer name="IVANOV Valentin" affiliation="BRENTWOOD SCHOOL" category="C" elimround="elim_32" id="16" position="24" sequence="24" />
+    <fencer name="RICHARDSON Joe" affiliation="SHAKESPEARES SWORDS" category="C" elimround="elim_32" id="9" position="25" sequence="25" />
+    <fencer name="MILLS Antoine" affiliation="ESCRIME ACADEMY" category="C" elimround="elim_32" id="12" position="26" sequence="26" />
+    <fencer name="GALIOTTO Alexandre" affiliation="TRURO" category="C" elimround="elim_32" id="22" position="27" sequence="27" />
+    <fencer name="NORTON RAYBOULD Dominic" affiliation="UNATTACHED" category="C" elimround="elim_32" id="11" position="28" sequence="28" />
+    <fencer name="VON POSERN George" affiliation="ESCRIME ACADEMY" category="C" elimround="elim_32" id="3" position="29" sequence="29" />
+    <fencer name="ARMSTRONG Benjamin" affiliation="MX FENCING" category="C" elimround="elim_32" id="34" position="30" sequence="30" />
+    <fencer name="WRIGHT Sean" affiliation="ACTIV8" category="C" elimround="elim_32" id="1" position="31" sequence="31" />
+    <fencer name="DICKSON Oliver" affiliation="SHAKESPEARES SWORDS" category="C" elimround="elim_32" id="27" position="32" sequence="32" />
+    <fencer name="DEROIDE Theotime" affiliation="CAMDEN" category="C" elimround="elim_64" id="28" position="33" sequence="33" />
+  </lists>
+  <lists name="ranking" count="33" type="pools">
+    <fencer name="WATT A" affiliation="SHAKESPEARES SWO" category="C" elimround="elim_none" hr="8" hs="30" id="2" ind="22" position="1" sequence="1" vm="6/6" />
+    <fencer name="THORNLEY D" affiliation="MARSHALL FENCING" category="C" elimround="elim_none" hr="8" hs="30" id="4" ind="22" position="1" sequence="2" vm="6/6" />
+    <fencer name="BOORNE S" affiliation="TRURO" category="C" elimround="elim_none" hr="5" hs="25" id="31" ind="20" position="3" sequence="3" vm="5/5" />
+    <fencer name="HAYNES L" affiliation="TRURO" category="C" elimround="elim_none" hr="16" hs="30" id="19" ind="14" position="4" sequence="4" vm="6/6" />
+    <fencer name="FOSTER A" affiliation="PHOENIX FENCING" category="C" elimround="elim_none" hr="11" hs="25" id="24" ind="14" position="5" sequence="5" vm="5/5" />
+    <fencer name="SMITH R" affiliation="MARSHALL FENCING" category="C" elimround="elim_none" hr="11" hs="29" id="8" ind="18" position="6" sequence="6" vm="5/6" />
+    <fencer name="SPRINGETT L" affiliation="CAMDEN" category="C" elimround="elim_none" hr="11" hs="27" id="7" ind="16" position="7" sequence="7" vm="5/6" />
+    <fencer name="PRESTON-COWELL J" affiliation="CAMDEN" category="C" elimround="elim_none" hr="14" hs="29" id="10" ind="15" position="8" sequence="8" vm="5/6" />
+    <fencer name="DUNN G" affiliation="MARSHALL FENCING" category="C" elimround="elim_none" hr="13" hs="20" id="26" ind="7" position="9" sequence="9" vm="4/5" />
+    <fencer name="CRABTREE F" affiliation="SHAKESPEARES SWO" category="C" elimround="elim_none" hr="15" hs="25" id="30" ind="10" position="10" sequence="10" vm="4/6" />
+    <fencer name="STAMPER-WATLING J" affiliation="BATH SWORD" category="C" elimround="elim_none" hr="14" hs="23" id="6" ind="9" position="11" sequence="11" vm="4/6" />
+    <fencer name="MATHUR A" affiliation="SHAKESPEARES SWO" category="C" elimround="elim_none" hr="18" hs="22" id="14" ind="4" position="12" sequence="12" vm="4/6" />
+    <fencer name="MCDONNELL K" affiliation="CAMDEN" category="C" elimround="elim_none" hr="11" hs="20" id="13" ind="9" position="13" sequence="13" vm="3/5" />
+    <fencer name="GOUGOULIAS O" affiliation="SHAKESPEARES SWO" category="C" elimround="elim_none" hr="16" hs="20" id="20" ind="4" position="14" sequence="14" vm="3/5" />
+    <fencer name="HURST H" affiliation="TRURO" category="C" elimround="elim_none" hr="14" hs="16" id="17" ind="2" position="15" sequence="15" vm="3/5" />
+    <fencer name="EDWARDES O" affiliation="SHAKESPEARES SWO" category="C" elimround="elim_none" hr="17" hs="17" id="25" ind="0" position="16" sequence="16" vm="2/5" />
+    <fencer name="GILLESPIE V" affiliation="MILLFIELD" category="C" elimround="elim_none" hr="18" hs="16" id="21" ind="-2" position="17" sequence="17" vm="2/5" />
+    <fencer name="ASHENDEN W" affiliation="MX FENCING" category="C" elimround="elim_none" hr="19" hs="14" id="33" ind="-5" position="18" sequence="18" vm="2/5" />
+    <fencer name="DAVIES O" affiliation="TRURO" category="C" elimround="elim_none" hr="25" hs="21" id="29" ind="-4" position="19" sequence="19" vm="2/6" />
+    <fencer name="THAKRAR R" affiliation="SHAKESPEARES SWO" category="C" elimround="elim_none" hr="25" hs="21" id="5" ind="-4" position="19" sequence="20" vm="2/6" />
+    <fencer name="GAILLY DE TAURINES J" affiliation="ESCRIME ACADEMY" category="C" elimround="elim_none" hr="22" hs="17" id="23" ind="-5" position="21" sequence="21" vm="2/6" />
+    <fencer name="KAROUZIS K" affiliation="PAUL DAVIS FENCI" category="C" elimround="elim_none" hr="26" hs="19" id="15" ind="-7" position="22" sequence="22" vm="2/6" />
+    <fencer name="BARNES L" affiliation="ESPADA" category="C" elimround="elim_none" hr="23" hs="14" id="32" ind="-9" position="23" sequence="23" vm="2/6" />
+    <fencer name="IVANOV V" affiliation="BRENTWOOD SCHOOL" category="C" elimround="elim_none" hr="27" hs="17" id="16" ind="-10" position="24" sequence="24" vm="2/6" />
+    <fencer name="RICHARDSON J" affiliation="SHAKESPEARES SWO" category="C" elimround="elim_none" hr="28" hs="12" id="9" ind="-16" position="25" sequence="25" vm="2/6" />
+    <fencer name="MILLS A" affiliation="ESCRIME ACADEMY" category="C" elimround="elim_none" hr="24" hs="12" id="12" ind="-12" position="26" sequence="26" vm="1/5" />
+    <fencer name="GALIOTTO A" affiliation="TRURO" category="C" elimround="elim_none" hr="27" hs="15" id="22" ind="-12" position="27" sequence="27" vm="1/6" />
+    <fencer name="NORTON RAYBOULD D" affiliation="UNATTACHED" category="C" elimround="elim_none" hr="27" hs="14" id="11" ind="-13" position="28" sequence="28" vm="1/6" />
+    <fencer name="VON POSERN G" affiliation="ESCRIME ACADEMY" category="C" elimround="elim_none" hr="27" hs="11" id="3" ind="-16" position="29" sequence="29" vm="1/6" />
+    <fencer name="ARMSTRONG B" affiliation="MX FENCING" category="C" elimround="elim_none" hr="28" hs="10" id="34" ind="-18" position="30" sequence="30" vm="1/6" />
+    <fencer name="WRIGHT S" affiliation="ACTIV8" category="C" elimround="elim_none" hr="25" hs="11" id="1" ind="-14" position="31" sequence="31" vm="0/5" />
+    <fencer name="DEROIDE T" affiliation="CAMDEN" category="C" elimround="elim_none" hr="30" hs="14" id="28" ind="-16" position="32" sequence="32" vm="0/6" />
+    <fencer name="DICKSON O" affiliation="SHAKESPEARES SWO" category="C" elimround="elim_none" hr="25" hs="2" id="27" ind="-23" position="33" sequence="33" vm="0/5" />
+  </lists>
+  <message></message>
+  <pools count="5" round="1">
+    <pool heure="0:00" number="1" piste="1" size="7">
+      <fencers count="7">
+        <fencer name="RICHARDSON Joe" affiliation="SHAKESPEARES SWORDS" fencerid="9" hs="12" id="1" ind="-16" pl="5" vm="2/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="1" />
+          <result id="4" score="0" />
+          <result id="5" score="V" />
+          <result id="6" score="0" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="GALIOTTO Alexandre" affiliation="TRURO" fencerid="22" hs="15" id="2" ind="-12" pl="6" vm="1/6">
+          <result id="1" score="4" />
+          <result id="2" score="" />
+          <result id="3" score="1" />
+          <result id="4" score="2" />
+          <result id="5" score="V" />
+          <result id="6" score="1" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="GAILLY DE TAURINES Jean Edouard" affiliation="ESCRIME ACADEMY" fencerid="23" hs="17" id="3" ind="-5" pl="4" vm="2/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="1" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="WATT Archie" affiliation="SHAKESPEARES SWORDS" fencerid="2" hs="30" id="4" ind="22" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="NORTON RAYBOULD Dominic" affiliation="UNATTACHED" fencerid="11" hs="14" id="5" ind="-13" pl="7" vm="1/6">
+          <result id="1" score="4" />
+          <result id="2" score="2" />
+          <result id="3" score="V" />
+          <result id="4" score="0" />
+          <result id="5" score="" />
+          <result id="6" score="2" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="STAMPER-WATLING Jack" affiliation="BATH SWORD" fencerid="6" hs="23" id="6" ind="9" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="1" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="PRESTON-COWELL Jack" affiliation="CAMDEN" fencerid="10" hs="29" id="7" ind="15" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="4" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="2" piste="2" size="6">
+      <fencers count="6">
+        <fencer name="EDWARDES Oliver" affiliation="SHAKESPEARES SWORDS" fencerid="25" hs="17" id="1" ind="0" pl="4" vm="2/5">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="3" />
+          <result id="5" score="2" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="DICKSON Oliver" affiliation="SHAKESPEARES SWORDS" fencerid="27" hs="2" id="2" ind="-23" pl="6" vm="0/5">
+          <result id="1" score="0" />
+          <result id="2" score="" />
+          <result id="3" score="2" />
+          <result id="4" score="0" />
+          <result id="5" score="0" />
+          <result id="6" score="0" />
+        </fencer>
+        <fencer name="FOSTER Alex" affiliation="PHOENIX FENCING" fencerid="24" hs="25" id="3" ind="14" pl="1" vm="5/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="GILLESPIE Vinnie" affiliation="MILLFIELD" fencerid="21" hs="16" id="4" ind="-2" pl="5" vm="2/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="3" />
+          <result id="4" score="" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+        </fencer>
+        <fencer name="HURST Henry" affiliation="TRURO" fencerid="17" hs="16" id="5" ind="2" pl="3" vm="3/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="1" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="0" />
+        </fencer>
+        <fencer name="MCDONNELL Kajetan" affiliation="CAMDEN" fencerid="13" hs="20" id="6" ind="9" pl="2" vm="3/5">
+          <result id="1" score="2" />
+          <result id="2" score="V" />
+          <result id="3" score="3" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="3" piste="3" size="7">
+      <fencers count="7">
+        <fencer name="SMITH Rohan" affiliation="MARSHALL FENCING" fencerid="8" hs="29" id="1" ind="18" pl="2" vm="5/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="4" />
+        </fencer>
+        <fencer name="BARNES Lewis" affiliation="ESPADA" fencerid="32" hs="14" id="2" ind="-9" pl="5" vm="2/6">
+          <result id="1" score="0" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="2" />
+          <result id="5" score="1" />
+          <result id="6" score="V" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="IVANOV Valentin" affiliation="BRENTWOOD SCHOOL" fencerid="16" hs="17" id="3" ind="-10" pl="6" vm="2/6">
+          <result id="1" score="0" />
+          <result id="2" score="1" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="3" />
+          <result id="6" score="V" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="KAROUZIS Kyriacos" affiliation="PAUL DAVIS FENCING" fencerid="15" hs="19" id="4" ind="-7" pl="4" vm="2/6">
+          <result id="1" score="3" />
+          <result id="2" score="V" />
+          <result id="3" score="4" />
+          <result id="4" score="" />
+          <result id="5" score="0" />
+          <result id="6" score="V" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="CRABTREE Felix" affiliation="SHAKESPEARES SWORDS" fencerid="30" hs="25" id="5" ind="10" pl="3" vm="4/6">
+          <result id="1" score="2" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="DEROIDE Theotime" affiliation="CAMDEN" fencerid="28" hs="14" id="6" ind="-16" pl="7" vm="0/6">
+          <result id="1" score="1" />
+          <result id="2" score="2" />
+          <result id="3" score="3" />
+          <result id="4" score="4" />
+          <result id="5" score="1" />
+          <result id="6" score="" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="HAYNES Luke" affiliation="TRURO" fencerid="19" hs="30" id="7" ind="14" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="4" piste="4" size="7">
+      <fencers count="7">
+        <fencer name="THAKRAR Rohan" affiliation="SHAKESPEARES SWORDS" fencerid="5" hs="21" id="1" ind="-4" pl="4" vm="2/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="3" />
+          <result id="5" score="V" />
+          <result id="6" score="3" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="VON POSERN George" affiliation="ESCRIME ACADEMY" fencerid="3" hs="11" id="2" ind="-16" pl="6" vm="1/6">
+          <result id="1" score="1" />
+          <result id="2" score="" />
+          <result id="3" score="0" />
+          <result id="4" score="1" />
+          <result id="5" score="4" />
+          <result id="6" score="0" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SPRINGETT Lochie" affiliation="CAMDEN" fencerid="7" hs="27" id="3" ind="16" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="MATHUR Anuj" affiliation="SHAKESPEARES SWORDS" fencerid="14" hs="22" id="4" ind="4" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="0" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="DAVIES Orlando" affiliation="TRURO" fencerid="29" hs="21" id="5" ind="-4" pl="4" vm="2/6">
+          <result id="1" score="4" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="3" />
+          <result id="5" score="" />
+          <result id="6" score="2" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="THORNLEY Drew Lewis" affiliation="MARSHALL FENCING" fencerid="4" hs="30" id="6" ind="22" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="ARMSTRONG Benjamin" affiliation="MX FENCING" fencerid="34" hs="10" id="7" ind="-18" pl="7" vm="1/6">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="0" />
+          <result id="4" score="1" />
+          <result id="5" score="1" />
+          <result id="6" score="1" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="5" piste="19" size="6">
+      <fencers count="6">
+        <fencer name="BOORNE Samuel" affiliation="TRURO" fencerid="31" hs="25" id="1" ind="20" pl="1" vm="5/5">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="DUNN Gabriel" affiliation="MARSHALL FENCING" fencerid="26" hs="20" id="2" ind="7" pl="2" vm="4/5">
+          <result id="1" score="0" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="WRIGHT Sean" affiliation="ACTIV8" fencerid="1" hs="11" id="3" ind="-14" pl="6" vm="0/5">
+          <result id="1" score="2" />
+          <result id="2" score="2" />
+          <result id="3" score="" />
+          <result id="4" score="1" />
+          <result id="5" score="4" />
+          <result id="6" score="2" />
+        </fencer>
+        <fencer name="GOUGOULIAS Olympios" affiliation="SHAKESPEARES SWORDS" fencerid="20" hs="20" id="4" ind="4" pl="3" vm="3/5">
+          <result id="1" score="1" />
+          <result id="2" score="4" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="MILLS Antoine" affiliation="ESCRIME ACADEMY" fencerid="12" hs="12" id="5" ind="-12" pl="5" vm="1/5">
+          <result id="1" score="1" />
+          <result id="2" score="1" />
+          <result id="3" score="V" />
+          <result id="4" score="3" />
+          <result id="5" score="" />
+          <result id="6" score="2" />
+        </fencer>
+        <fencer name="ASHENDEN William" affiliation="MX FENCING" fencerid="33" hs="14" id="6" ind="-5" pl="4" vm="2/5">
+          <result id="1" score="1" />
+          <result id="2" score="1" />
+          <result id="3" score="V" />
+          <result id="4" score="2" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+  </pools>
+  <tableau name="A16" count="8" title="tableau of 16">
+    <match number="1" piste="" score="15 / 11" time="0:00" winnerid="4" winnername="THORNLEY Drew Lewis">
+      <fencerA name="THORNLEY Drew Lewis" affiliation="MARSHALL FENCING" category="C" id="4" seed="1" />
+      <fencerB name="EDWARDES Oliver" affiliation="SHAKESPEARES SWORDS" category="C" id="25" seed="16" />
+    </match>
+    <match number="2" piste="" score="15 / 7" time="0:00" winnerid="26" winnername="DUNN Gabriel">
+      <fencerA name="DUNN Gabriel" affiliation="MARSHALL FENCING" category="C" id="26" seed="9" />
+      <fencerB name="PRESTON-COWELL Jack" affiliation="CAMDEN" category="C" id="10" seed="8" />
+    </match>
+    <match number="3" piste="" score="15 / 11" time="0:00" winnerid="24" winnername="FOSTER Alex">
+      <fencerA name="FOSTER Alex" affiliation="PHOENIX FENCING" category="C" id="24" seed="5" />
+      <fencerB name="MATHUR Anuj" affiliation="SHAKESPEARES SWORDS" category="C" id="14" seed="12" />
+    </match>
+    <match number="4" piste="" score="9 / 15" time="0:00" winnerid="19" winnername="HAYNES Luke">
+      <fencerA name="DAVIES Orlando" affiliation="TRURO" category="C" id="29" seed="13" />
+      <fencerB name="HAYNES Luke" affiliation="TRURO" category="C" id="19" seed="4" />
+    </match>
+    <match number="5" piste="" score="15 / 5" time="0:00" winnerid="31" winnername="BOORNE Samuel">
+      <fencerA name="BOORNE Samuel" affiliation="TRURO" category="C" id="31" seed="3" />
+      <fencerB name="GOUGOULIAS Olympios" affiliation="SHAKESPEARES SWORDS" category="C" id="20" seed="14" />
+    </match>
+    <match number="6" piste="" score="14 / 15" time="0:00" winnerid="8" winnername="SMITH Rohan">
+      <fencerA name="STAMPER-WATLING Jack" affiliation="BATH SWORD" category="C" id="6" seed="11" />
+      <fencerB name="SMITH Rohan" affiliation="MARSHALL FENCING" category="C" id="8" seed="6" />
+    </match>
+    <match number="7" piste="" score="7 / 15" time="0:00" winnerid="30" winnername="CRABTREE Felix">
+      <fencerA name="SPRINGETT Lochie" affiliation="CAMDEN" category="C" id="7" seed="7" />
+      <fencerB name="CRABTREE Felix" affiliation="SHAKESPEARES SWORDS" category="C" id="30" seed="10" />
+    </match>
+    <match number="8" piste="" score="8 / 15" time="0:00" winnerid="2" winnername="WATT Archie">
+      <fencerA name="HURST Henry" affiliation="TRURO" category="C" id="17" seed="15" />
+      <fencerB name="WATT Archie" affiliation="SHAKESPEARES SWORDS" category="C" id="2" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A2" count="1" title="final">
+    <match number="1" piste="33" score="15 / 13" time="0:00" winnerid="19" winnername="HAYNES Luke">
+      <fencerA name="HAYNES Luke" affiliation="TRURO" category="C" id="19" seed="1" />
+      <fencerB name="BOORNE Samuel" affiliation="TRURO" category="C" id="31" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A32" count="16" title="tableau of 32">
+    <match number="1" piste="" score="15 / 1" time="0:00" winnerid="4" winnername="THORNLEY Drew Lewis">
+      <fencerA name="THORNLEY Drew Lewis" affiliation="MARSHALL FENCING" category="C" id="4" seed="1" />
+      <fencerB name="DICKSON Oliver" affiliation="SHAKESPEARES SWORDS" category="C" id="27" seed="32" />
+    </match>
+    <match number="2" piste="" score="7 / 15" time="0:00" winnerid="25" winnername="EDWARDES Oliver">
+      <fencerA name="GILLESPIE Vinnie" affiliation="MILLFIELD" category="C" id="21" seed="17" />
+      <fencerB name="EDWARDES Oliver" affiliation="SHAKESPEARES SWORDS" category="C" id="25" seed="16" />
+    </match>
+    <match number="3" piste="" score="15 / 5" time="0:00" winnerid="26" winnername="DUNN Gabriel">
+      <fencerA name="DUNN Gabriel" affiliation="MARSHALL FENCING" category="C" id="26" seed="9" />
+      <fencerB name="IVANOV Valentin" affiliation="BRENTWOOD SCHOOL" category="C" id="16" seed="24" />
+    </match>
+    <match number="4" piste="" score="9 / 15" time="0:00" winnerid="10" winnername="PRESTON-COWELL Jack">
+      <fencerA name="RICHARDSON Joe" affiliation="SHAKESPEARES SWORDS" category="C" id="9" seed="25" />
+      <fencerB name="PRESTON-COWELL Jack" affiliation="CAMDEN" category="C" id="10" seed="8" />
+    </match>
+    <match number="5" piste="" score="15 / 4" time="0:00" winnerid="24" winnername="FOSTER Alex">
+      <fencerA name="FOSTER Alex" affiliation="PHOENIX FENCING" category="C" id="24" seed="5" />
+      <fencerB name="NORTON RAYBOULD Dominic" affiliation="UNATTACHED" category="C" id="11" seed="28" />
+    </match>
+    <match number="6" piste="" score="12 / 15" time="0:00" winnerid="14" winnername="MATHUR Anuj">
+      <fencerA name="GAILLY DE TAURINES Jean Edouard" affiliation="ESCRIME ACADEMY" category="C" id="23" seed="21" />
+      <fencerB name="MATHUR Anuj" affiliation="SHAKESPEARES SWORDS" category="C" id="14" seed="12" />
+    </match>
+    <match number="7" piste="" score="14 / 15" time="0:00" winnerid="29" winnername="DAVIES Orlando">
+      <fencerA name="MCDONNELL Kajetan" affiliation="CAMDEN" category="C" id="13" seed="13" />
+      <fencerB name="DAVIES Orlando" affiliation="TRURO" category="C" id="29" seed="20" />
+    </match>
+    <match number="8" piste="" score="2 / 15" time="0:00" winnerid="19" winnername="HAYNES Luke">
+      <fencerA name="VON POSERN George" affiliation="ESCRIME ACADEMY" category="C" id="3" seed="29" />
+      <fencerB name="HAYNES Luke" affiliation="TRURO" category="C" id="19" seed="4" />
+    </match>
+    <match number="9" piste="" score="15 / 3" time="0:00" winnerid="31" winnername="BOORNE Samuel">
+      <fencerA name="BOORNE Samuel" affiliation="TRURO" category="C" id="31" seed="3" />
+      <fencerB name="ARMSTRONG Benjamin" affiliation="MX FENCING" category="C" id="34" seed="30" />
+    </match>
+    <match number="10" piste="" score="12 / 15" time="0:00" winnerid="20" winnername="GOUGOULIAS Olympios">
+      <fencerA name="THAKRAR Rohan" affiliation="SHAKESPEARES SWORDS" category="C" id="5" seed="19" />
+      <fencerB name="GOUGOULIAS Olympios" affiliation="SHAKESPEARES SWORDS" category="C" id="20" seed="14" />
+    </match>
+    <match number="11" piste="" score="15 / 10" time="0:00" winnerid="6" winnername="STAMPER-WATLING Jack">
+      <fencerA name="STAMPER-WATLING Jack" affiliation="BATH SWORD" category="C" id="6" seed="11" />
+      <fencerB name="KAROUZIS Kyriacos" affiliation="PAUL DAVIS FENCING" category="C" id="15" seed="22" />
+    </match>
+    <match number="12" piste="" score="4 / 15" time="0:00" winnerid="8" winnername="SMITH Rohan">
+      <fencerA name="GALIOTTO Alexandre" affiliation="TRURO" category="C" id="22" seed="27" />
+      <fencerB name="SMITH Rohan" affiliation="MARSHALL FENCING" category="C" id="8" seed="6" />
+    </match>
+    <match number="13" piste="" score="15 / 8" time="0:00" winnerid="7" winnername="SPRINGETT Lochie">
+      <fencerA name="SPRINGETT Lochie" affiliation="CAMDEN" category="C" id="7" seed="7" />
+      <fencerB name="MILLS Antoine" affiliation="ESCRIME ACADEMY" category="C" id="12" seed="26" />
+    </match>
+    <match number="14" piste="" score="11 / 15" time="0:00" winnerid="30" winnername="CRABTREE Felix">
+      <fencerA name="BARNES Lewis" affiliation="ESPADA" category="C" id="32" seed="23" />
+      <fencerB name="CRABTREE Felix" affiliation="SHAKESPEARES SWORDS" category="C" id="30" seed="10" />
+    </match>
+    <match number="15" piste="" score="15 / 11" time="0:00" winnerid="17" winnername="HURST Henry">
+      <fencerA name="HURST Henry" affiliation="TRURO" category="C" id="17" seed="15" />
+      <fencerB name="ASHENDEN William" affiliation="MX FENCING" category="C" id="33" seed="18" />
+    </match>
+    <match number="16" piste="" score="8 / 15" time="0:00" winnerid="2" winnername="WATT Archie">
+      <fencerA name="WRIGHT Sean" affiliation="ACTIV8" category="C" id="1" seed="31" />
+      <fencerB name="WATT Archie" affiliation="SHAKESPEARES SWORDS" category="C" id="2" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A4" count="2" title="semi-finals">
+    <match number="1" piste="29" score="6 / 15" time="0:00" winnerid="19" winnername="HAYNES Luke">
+      <fencerA name="DUNN Gabriel" affiliation="MARSHALL FENCING" category="C" id="26" seed="1" />
+      <fencerB name="HAYNES Luke" affiliation="TRURO" category="C" id="19" seed="4" />
+    </match>
+    <match number="2" piste="31" score="15 / 7" time="0:00" winnerid="31" winnername="BOORNE Samuel">
+      <fencerA name="BOORNE Samuel" affiliation="TRURO" category="C" id="31" seed="3" />
+      <fencerB name="WATT Archie" affiliation="SHAKESPEARES SWORDS" category="C" id="2" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A64" count="32" title="tableau of 64">
+    <match number="1" piste="1" score="" time="" winnerid="4" winnername="THORNLEY Drew Lewis">
+      <fencerA name="THORNLEY Drew Lewis" affiliation="MARSHALL FENCING" category="C" id="4" seed="1" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="64" />
+    </match>
+    <match number="2" piste="" score="15 / 14" time="0:00" winnerid="27" winnername="DICKSON Oliver">
+      <fencerA name="DICKSON Oliver" affiliation="SHAKESPEARES SWORDS" category="C" id="27" seed="33" />
+      <fencerB name="DEROIDE Theotime" affiliation="CAMDEN" category="C" id="28" seed="32" />
+    </match>
+    <match number="3" piste="1" score="" time="" winnerid="21" winnername="GILLESPIE Vinnie">
+      <fencerA name="GILLESPIE Vinnie" affiliation="MILLFIELD" category="C" id="21" seed="17" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="48" />
+    </match>
+    <match number="4" piste="1" score="" time="" winnerid="25" winnername="EDWARDES Oliver">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="49" />
+      <fencerB name="EDWARDES Oliver" affiliation="SHAKESPEARES SWORDS" category="C" id="25" seed="16" />
+    </match>
+    <match number="5" piste="1" score="" time="" winnerid="26" winnername="DUNN Gabriel">
+      <fencerA name="DUNN Gabriel" affiliation="MARSHALL FENCING" category="C" id="26" seed="9" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="56" />
+    </match>
+    <match number="6" piste="1" score="" time="" winnerid="16" winnername="IVANOV Valentin">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="41" />
+      <fencerB name="IVANOV Valentin" affiliation="BRENTWOOD SCHOOL" category="C" id="16" seed="24" />
+    </match>
+    <match number="7" piste="1" score="" time="" winnerid="9" winnername="RICHARDSON Joe">
+      <fencerA name="RICHARDSON Joe" affiliation="SHAKESPEARES SWORDS" category="C" id="9" seed="25" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="40" />
+    </match>
+    <match number="8" piste="1" score="" time="" winnerid="10" winnername="PRESTON-COWELL Jack">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="57" />
+      <fencerB name="PRESTON-COWELL Jack" affiliation="CAMDEN" category="C" id="10" seed="8" />
+    </match>
+    <match number="9" piste="2" score="" time="" winnerid="24" winnername="FOSTER Alex">
+      <fencerA name="FOSTER Alex" affiliation="PHOENIX FENCING" category="C" id="24" seed="5" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="60" />
+    </match>
+    <match number="10" piste="2" score="" time="" winnerid="11" winnername="NORTON RAYBOULD Dominic">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="37" />
+      <fencerB name="NORTON RAYBOULD Dominic" affiliation="UNATTACHED" category="C" id="11" seed="28" />
+    </match>
+    <match number="11" piste="2" score="" time="" winnerid="23" winnername="GAILLY DE TAURINES Jean Edouard">
+      <fencerA name="GAILLY DE TAURINES Jean Edouard" affiliation="ESCRIME ACADEMY" category="C" id="23" seed="21" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="44" />
+    </match>
+    <match number="12" piste="2" score="" time="" winnerid="14" winnername="MATHUR Anuj">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="53" />
+      <fencerB name="MATHUR Anuj" affiliation="SHAKESPEARES SWORDS" category="C" id="14" seed="12" />
+    </match>
+    <match number="13" piste="2" score="" time="" winnerid="13" winnername="MCDONNELL Kajetan">
+      <fencerA name="MCDONNELL Kajetan" affiliation="CAMDEN" category="C" id="13" seed="13" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="52" />
+    </match>
+    <match number="14" piste="2" score="" time="" winnerid="29" winnername="DAVIES Orlando">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="45" />
+      <fencerB name="DAVIES Orlando" affiliation="TRURO" category="C" id="29" seed="20" />
+    </match>
+    <match number="15" piste="2" score="" time="" winnerid="3" winnername="VON POSERN George">
+      <fencerA name="VON POSERN George" affiliation="ESCRIME ACADEMY" category="C" id="3" seed="29" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="36" />
+    </match>
+    <match number="16" piste="2" score="" time="" winnerid="19" winnername="HAYNES Luke">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="61" />
+      <fencerB name="HAYNES Luke" affiliation="TRURO" category="C" id="19" seed="4" />
+    </match>
+    <match number="17" piste="3" score="" time="" winnerid="31" winnername="BOORNE Samuel">
+      <fencerA name="BOORNE Samuel" affiliation="TRURO" category="C" id="31" seed="3" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="62" />
+    </match>
+    <match number="18" piste="3" score="" time="" winnerid="34" winnername="ARMSTRONG Benjamin">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="35" />
+      <fencerB name="ARMSTRONG Benjamin" affiliation="MX FENCING" category="C" id="34" seed="30" />
+    </match>
+    <match number="19" piste="3" score="" time="" winnerid="5" winnername="THAKRAR Rohan">
+      <fencerA name="THAKRAR Rohan" affiliation="SHAKESPEARES SWORDS" category="C" id="5" seed="19" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="46" />
+    </match>
+    <match number="20" piste="3" score="" time="" winnerid="20" winnername="GOUGOULIAS Olympios">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="51" />
+      <fencerB name="GOUGOULIAS Olympios" affiliation="SHAKESPEARES SWORDS" category="C" id="20" seed="14" />
+    </match>
+    <match number="21" piste="3" score="" time="" winnerid="6" winnername="STAMPER-WATLING Jack">
+      <fencerA name="STAMPER-WATLING Jack" affiliation="BATH SWORD" category="C" id="6" seed="11" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="54" />
+    </match>
+    <match number="22" piste="3" score="" time="" winnerid="15" winnername="KAROUZIS Kyriacos">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="43" />
+      <fencerB name="KAROUZIS Kyriacos" affiliation="PAUL DAVIS FENCING" category="C" id="15" seed="22" />
+    </match>
+    <match number="23" piste="3" score="" time="" winnerid="22" winnername="GALIOTTO Alexandre">
+      <fencerA name="GALIOTTO Alexandre" affiliation="TRURO" category="C" id="22" seed="27" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="38" />
+    </match>
+    <match number="24" piste="3" score="" time="" winnerid="8" winnername="SMITH Rohan">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="59" />
+      <fencerB name="SMITH Rohan" affiliation="MARSHALL FENCING" category="C" id="8" seed="6" />
+    </match>
+    <match number="25" piste="4" score="" time="" winnerid="7" winnername="SPRINGETT Lochie">
+      <fencerA name="SPRINGETT Lochie" affiliation="CAMDEN" category="C" id="7" seed="7" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="58" />
+    </match>
+    <match number="26" piste="4" score="" time="" winnerid="12" winnername="MILLS Antoine">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="39" />
+      <fencerB name="MILLS Antoine" affiliation="ESCRIME ACADEMY" category="C" id="12" seed="26" />
+    </match>
+    <match number="27" piste="4" score="" time="" winnerid="32" winnername="BARNES Lewis">
+      <fencerA name="BARNES Lewis" affiliation="ESPADA" category="C" id="32" seed="23" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="42" />
+    </match>
+    <match number="28" piste="4" score="" time="" winnerid="30" winnername="CRABTREE Felix">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="55" />
+      <fencerB name="CRABTREE Felix" affiliation="SHAKESPEARES SWORDS" category="C" id="30" seed="10" />
+    </match>
+    <match number="29" piste="4" score="" time="" winnerid="17" winnername="HURST Henry">
+      <fencerA name="HURST Henry" affiliation="TRURO" category="C" id="17" seed="15" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="50" />
+    </match>
+    <match number="30" piste="4" score="" time="" winnerid="33" winnername="ASHENDEN William">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="47" />
+      <fencerB name="ASHENDEN William" affiliation="MX FENCING" category="C" id="33" seed="18" />
+    </match>
+    <match number="31" piste="4" score="" time="" winnerid="1" winnername="WRIGHT Sean">
+      <fencerA name="WRIGHT Sean" affiliation="ACTIV8" category="C" id="1" seed="31" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="34" />
+    </match>
+    <match number="32" piste="4" score="" time="" winnerid="2" winnername="WATT Archie">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="63" />
+      <fencerB name="WATT Archie" affiliation="SHAKESPEARES SWORDS" category="C" id="2" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A8" count="4" title="quarter-finals">
+    <match number="1" piste="" score="11 / 15" time="0:00" winnerid="26" winnername="DUNN Gabriel">
+      <fencerA name="THORNLEY Drew Lewis" affiliation="MARSHALL FENCING" category="C" id="4" seed="1" />
+      <fencerB name="DUNN Gabriel" affiliation="MARSHALL FENCING" category="C" id="26" seed="8" />
+    </match>
+    <match number="2" piste="" score="5 / 15" time="0:00" winnerid="19" winnername="HAYNES Luke">
+      <fencerA name="FOSTER Alex" affiliation="PHOENIX FENCING" category="C" id="24" seed="5" />
+      <fencerB name="HAYNES Luke" affiliation="TRURO" category="C" id="19" seed="4" />
+    </match>
+    <match number="3" piste="" score="15 / 9" time="0:00" winnerid="31" winnername="BOORNE Samuel">
+      <fencerA name="BOORNE Samuel" affiliation="TRURO" category="C" id="31" seed="3" />
+      <fencerB name="SMITH Rohan" affiliation="MARSHALL FENCING" category="C" id="8" seed="6" />
+    </match>
+    <match number="4" piste="" score="5 / 15" time="0:00" winnerid="2" winnername="WATT Archie">
+      <fencerA name="CRABTREE Felix" affiliation="SHAKESPEARES SWORDS" category="C" id="30" seed="7" />
+      <fencerB name="WATT Archie" affiliation="SHAKESPEARES SWORDS" category="C" id="2" seed="2" />
+    </match>
+  </tableau>
+</competition>

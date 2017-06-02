@@ -1,0 +1,908 @@
+<competition id="7" background="dodgerblue" entrysize="132" fpppagesize="42" lastupdate="Sun Jun 19 10:39:09 2016" poolsperpage="3" rankingpagesize="40" stage="termine" titre_ligne="Girls Under 13 Foil - EYC" whereamipagesize="40">
+  <lists name="entry" absent="2" count="53" entries="53" nif="false" present="51" scratch="0">
+    <fencer name="ALLMARK Lily" affiliation="BRENTWOOD SCHOOL" category="" id="52" presence="present" seed="33" sequence="1" />
+    <fencer name="APPLEBY-PRINCE Celena" affiliation="SALLE OXON" category="" id="51" presence="present" seed="7" sequence="2" />
+    <fencer name="ATTIAS Olivia" affiliation="SALLE OXON" category="" id="50" presence="present" seed="19" sequence="3" />
+    <fencer name="BARROW Daisy" affiliation="BATH SWORD" category="" id="49" presence="present" seed="" sequence="4" />
+    <fencer name="BASAK Defne" affiliation="BATTERSEA FOIL" category="" id="48" presence="present" seed="" sequence="5" />
+    <fencer name="BEIGHTON India" affiliation="SALLE OXON" category="" id="47" presence="present" seed="32" sequence="6" />
+    <fencer name="BIDGOOD Elysia" affiliation="SWINDON" category="" id="46" presence="present" seed="20" sequence="7" />
+    <fencer name="BIRD Martha" affiliation="COBHAM FENCING" category="" id="45" presence="present" seed="21" sequence="8" />
+    <fencer name="BOUCHER-ROWE Sarah" affiliation="WYCOMBE ABBEY SCH" category="" id="44" presence="present" seed="26" sequence="9" />
+    <fencer name="BRYCE Jessica" affiliation="KCSWHS" category="" id="43" presence="present" seed="13" sequence="10" />
+    <fencer name="BULLMAN Evie" affiliation="FINCHLEY FOIL" category="" id="42" presence="present" seed="10" sequence="11" />
+    <fencer name="BULMAN Imogen" affiliation="ALDERSHOT" category="" id="41" presence="present" seed="" sequence="12" />
+    <fencer name="COMMITTERI Sofia Emily" affiliation="BATTERSEA FOIL" category="" id="40" presence="present" seed="25" sequence="13" />
+    <fencer name="CULHANE Sunni" affiliation="FENCERS CLUB LONDON" category="" id="39" presence="present" seed="" sequence="14" />
+    <fencer name="DANBY Maisie" affiliation="WREKIN SWORD" category="" id="38" presence="present" seed="" sequence="15" />
+    <fencer name="DE N'YEURT Tabitha" affiliation="BATH SWORD" category="" id="37" presence="present" seed="5" sequence="16" />
+    <fencer name="FLANAGAN Iyla" affiliation="GARDEN HOUSE" category="" id="36" presence="absent" seed="" sequence="17" />
+    <fencer name="FORSE Jessica" affiliation="FOUR OF CLUBS" category="" id="35" presence="present" seed="12" sequence="18" />
+    <fencer name="GALE Madeleine" affiliation="BRENTWOOD SCHOOL" category="" id="34" presence="present" seed="16" sequence="19" />
+    <fencer name="GEORGE India" affiliation="SALLE OXON" category="" id="33" presence="present" seed="9" sequence="20" />
+    <fencer name="GOLDFISCHER Marcela" affiliation="COBHAM FENCING" category="" id="32" presence="present" seed="" sequence="21" />
+    <fencer name="GREIG Lucy" affiliation="RADCLIFFE SWORD" category="" id="31" presence="present" seed="" sequence="22" />
+    <fencer name="HADALIN Henriette" affiliation="SALLE HADALIN" category="" id="30" presence="present" seed="1" sequence="23" />
+    <fencer name="HYDE Bronwen" affiliation="CHESTER" category="" id="29" presence="present" seed="2" sequence="24" />
+    <fencer name="JEROME Elizabeth" affiliation="SALLE BOSTON" category="" id="28" presence="present" seed="" sequence="25" />
+    <fencer name="KENISTON-COOPER Isabella" affiliation="COTSWOLD FENCING" category="" id="27" presence="present" seed="15" sequence="26" />
+    <fencer name="KNOX Eleanor" affiliation="NEWHAM SWORDS" category="" id="26" presence="present" seed="" sequence="27" />
+    <fencer name="LAWSON Angelica" affiliation="ST BENEDICTS" category="" id="25" presence="present" seed="18" sequence="28" />
+    <fencer name="LIVESLEY Kathryn" affiliation="WELLINGTON SWORDS" category="" id="24" presence="present" seed="" sequence="29" />
+    <fencer name="MACEY Charlotte" affiliation="SALLE PAUL" category="" id="23" presence="present" seed="6" sequence="30" />
+    <fencer name="MAYER-REICH Hannah" affiliation="FIGHTING FIT" category="" id="22" presence="present" seed="" sequence="31" />
+    <fencer name="MEURISSE Scarlett" affiliation="COBHAM FENCING" category="" id="21" presence="present" seed="11" sequence="32" />
+    <fencer name="MIDDLETON Amelia" affiliation="SALLE PAUL" category="" id="20" presence="present" seed="23" sequence="33" />
+    <fencer name="NGO Olivia" affiliation="SALLE KISS" category="" id="19" presence="present" seed="24" sequence="34" />
+    <fencer name="O'CONNELL Olivia" affiliation="FIGHTING FIT" category="" id="18" presence="present" seed="8" sequence="35" />
+    <fencer name="OWEN Alicia" affiliation="SWINDON" category="" id="17" presence="present" seed="27" sequence="36" />
+    <fencer name="PARKIN Sophie" affiliation="RADCLIFFE SWORD" category="" id="16" presence="present" seed="" sequence="37" />
+    <fencer name="QUELCH Abigail" affiliation="SALLE OXON" category="" id="15" presence="present" seed="4" sequence="38" />
+    <fencer name="RESTON Eva" affiliation="ALDERSHOT" category="" id="14" presence="present" seed="14" sequence="39" />
+    <fencer name="ROBINSON Monique" affiliation="UNATTACHED" category="" id="13" presence="present" seed="" sequence="40" />
+    <fencer name="SAVILL Jaymee" affiliation="SWINDON" category="" id="12" presence="present" seed="30" sequence="41" />
+    <fencer name="SHELDON Priya" affiliation="FOUR OF CLUBS" category="" id="11" presence="present" seed="31" sequence="42" />
+    <fencer name="SITANYI Lili" affiliation="ZFW FENCING" category="" id="10" presence="present" seed="" sequence="43" />
+    <fencer name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" category="" id="9" presence="present" seed="" sequence="44" />
+    <fencer name="SUEN Chloe" affiliation="WYCOMBE ABBEY SCH" category="" id="8" presence="present" seed="" sequence="45" />
+    <fencer name="TAN Qian Yi" affiliation="ESCRIME WINCHESTER" category="" id="7" presence="present" seed="28" sequence="46" />
+    <fencer name="WHITAKER Rosie" affiliation="CHICHESTER" category="" id="6" presence="present" seed="29" sequence="47" />
+    <fencer name="WILLIAMS-HOWE Sydney" affiliation="SALLE KISS" category="" id="5" presence="present" seed="17" sequence="48" />
+    <fencer name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" category="" id="4" presence="present" seed="3" sequence="49" />
+    <fencer name="WILLS Zoe" affiliation="SUSSEX HOUSE" category="" id="53" presence="absent" seed="" sequence="50" />
+    <fencer name="WILSON India" affiliation="FOUR OF CLUBS" category="" id="3" presence="present" seed="22" sequence="51" />
+    <fencer name="ZAMBITO Isabel" affiliation="FENCERS CLUB LONDON" category="" id="2" presence="present" seed="34" sequence="52" />
+    <fencer name="ZHAO Jing" affiliation="SALLE PAUL" category="" id="1" presence="present" seed="" sequence="53" />
+  </lists>
+  <lists name="ranking" count="52" type="final">
+    <fencer name="HYDE Bronwen" affiliation="CHESTER" category="U13" elimround="elim_0" id="29" position="1" sequence="1" />
+    <fencer name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" category="U13" elimround="elim_2" id="4" position="2" sequence="2" />
+    <fencer name="GEORGE India" affiliation="SALLE OXON" category="U13" elimround="elim_4" id="33" position="3" sequence="3" />
+    <fencer name="BIDGOOD Elysia" affiliation="SWINDON" category="U13" elimround="elim_4" id="46" position="3" sequence="4" />
+    <fencer name="HADALIN Henriette" affiliation="SALLE HADALIN" category="U13" elimround="elim_8" id="30" position="5" sequence="5" />
+    <fencer name="O'CONNELL Olivia" affiliation="FIGHTING FIT" category="U13" elimround="elim_8" id="18" position="6" sequence="6" />
+    <fencer name="GALE Madeleine" affiliation="BRENTWOOD SCHOOL" category="U13" elimround="elim_8" id="34" position="7" sequence="7" />
+    <fencer name="BOUCHER-ROWE Sarah" affiliation="WYCOMBE ABBEY SCH" category="U13" elimround="elim_8" id="44" position="8" sequence="8" />
+    <fencer name="DE N'YEURT Tabitha" affiliation="BATH SWORD" category="U13" elimround="elim_16" id="37" position="9" sequence="9" />
+    <fencer name="RESTON Eva" affiliation="ALDERSHOT" category="U13" elimround="elim_16" id="14" position="10" sequence="10" />
+    <fencer name="KENISTON-COOPER Isabella" affiliation="COTSWOLD FENCING" category="U13" elimround="elim_16" id="27" position="11" sequence="11" />
+    <fencer name="MACEY Charlotte" affiliation="SALLE PAUL" category="U13" elimround="elim_16" id="23" position="12" sequence="12" />
+    <fencer name="COMMITTERI Sofia Emily" affiliation="BATTERSEA FOIL" category="U13" elimround="elim_16" id="40" position="13" sequence="13" />
+    <fencer name="LAWSON Angelica" affiliation="ST BENEDICTS" category="U13" elimround="elim_16" id="25" position="14" sequence="14" />
+    <fencer name="KNOX Eleanor" affiliation="NEWHAM SWORDS" category="U13" elimround="elim_16" id="26" position="15" sequence="15" />
+    <fencer name="BIRD Martha" affiliation="COBHAM FENCING" category="U13" elimround="elim_16" id="45" position="16" sequence="16" />
+    <fencer name="MIDDLETON Amelia" affiliation="SALLE PAUL" category="U13" elimround="elim_32" id="20" position="17" sequence="17" />
+    <fencer name="ATTIAS Olivia" affiliation="SALLE OXON" category="U13" elimround="elim_32" id="50" position="18" sequence="18" />
+    <fencer name="BULMAN Imogen" affiliation="ALDERSHOT" category="U13" elimround="elim_32" id="41" position="19" sequence="19" />
+    <fencer name="QUELCH Abigail" affiliation="SALLE OXON" category="U13" elimround="elim_32" id="15" position="20" sequence="20" />
+    <fencer name="WILLIAMS-HOWE Sydney" affiliation="SALLE KISS" category="U13" elimround="elim_32" id="5" position="21" sequence="21" />
+    <fencer name="SUEN Chloe" affiliation="WYCOMBE ABBEY SCH" category="U13" elimround="elim_32" id="8" position="22" sequence="22" />
+    <fencer name="MEURISSE Scarlett" affiliation="COBHAM FENCING" category="U13" elimround="elim_32" id="21" position="23" sequence="23" />
+    <fencer name="ZHAO Jing" affiliation="SALLE PAUL" category="U13" elimround="elim_32" id="1" position="24" sequence="24" />
+    <fencer name="BRYCE Jessica" affiliation="KCSWHS" category="U13" elimround="elim_32" id="43" position="25" sequence="25" />
+    <fencer name="WILSON India" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_32" id="3" position="26" sequence="26" />
+    <fencer name="SHELDON Priya" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_32" id="11" position="27" sequence="27" />
+    <fencer name="SAVILL Jaymee" affiliation="SWINDON" category="U13" elimround="elim_32" id="12" position="28" sequence="28" />
+    <fencer name="ZAMBITO Isabel" affiliation="FENCERS CLUB LONDON" category="U13" elimround="elim_32" id="2" position="29" sequence="29" />
+    <fencer name="WHITAKER Rosie" affiliation="CHICHESTER" category="U13" elimround="elim_32" id="6" position="30" sequence="30" />
+    <fencer name="FORSE Jessica" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_32" id="35" position="31" sequence="31" />
+    <fencer name="GOLDFISCHER Marcela" affiliation="COBHAM FENCING" category="U13" elimround="elim_32" id="32" position="32" sequence="32" />
+    <fencer name="NGO Olivia" affiliation="SALLE KISS" category="U13" elimround="elim_64" id="19" position="33" sequence="33" />
+    <fencer name="APPLEBY-PRINCE Celena" affiliation="SALLE OXON" category="U13" elimround="elim_64" id="51" position="34" sequence="34" />
+    <fencer name="TAN Qian Yi" affiliation="ESCRIME WINCHESTER" category="U13" elimround="elim_64" id="7" position="35" sequence="35" />
+    <fencer name="OWEN Alicia" affiliation="SWINDON" category="U13" elimround="elim_64" id="17" position="36" sequence="36" />
+    <fencer name="SITANYI Lili" affiliation="ZFW FENCING" category="U13" elimround="elim_64" id="10" position="37" sequence="37" />
+    <fencer name="BEIGHTON India" affiliation="SALLE OXON" category="U13" elimround="elim_64" id="47" position="38" sequence="38" />
+    <fencer name="BULLMAN Evie" affiliation="FINCHLEY FOIL" category="U13" elimround="elim_64" id="42" position="39" sequence="39" />
+    <fencer name="BASAK Defne" affiliation="BATTERSEA FOIL" category="U13" elimround="elim_64" id="48" position="40" sequence="40" />
+    <fencer name="WILLS Zoe" affiliation="SUSSEX HOUSE" category="" elimround="elim_64" id="53" position="41" sequence="41" />
+    <fencer name="LIVESLEY Kathryn" affiliation="WELLINGTON SWORDS" category="U13" elimround="elim_64" id="24" position="42" sequence="42" />
+    <fencer name="BARROW Daisy" affiliation="BATH SWORD" category="U13" elimround="elim_64" id="49" position="43" sequence="43" />
+    <fencer name="CULHANE Sunni" affiliation="FENCERS CLUB LONDON" category="U13" elimround="elim_64" id="39" position="44" sequence="44" />
+    <fencer name="JEROME Elizabeth" affiliation="SALLE BOSTON" category="U13" elimround="elim_64" id="28" position="45" sequence="45" />
+    <fencer name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" category="U13" elimround="elim_64" id="9" position="46" sequence="46" />
+    <fencer name="MAYER-REICH Hannah" affiliation="FIGHTING FIT" category="U13" elimround="elim_64" id="22" position="47" sequence="47" />
+    <fencer name="DANBY Maisie" affiliation="WREKIN SWORD" category="U13" elimround="elim_64" id="38" position="48" sequence="48" />
+    <fencer name="GREIG Lucy" affiliation="RADCLIFFE SWORD" category="U13" elimround="elim_64" id="31" position="49" sequence="49" />
+    <fencer name="ALLMARK Lily" affiliation="BRENTWOOD SCHOOL" category="U13" elimround="elim_64" id="52" position="50" sequence="50" />
+    <fencer name="ROBINSON Monique" affiliation="UNATTACHED" category="U13" elimround="elim_64" id="13" position="51" sequence="51" />
+    <fencer name="PARKIN Sophie" affiliation="RADCLIFFE SWORD" category="U13" elimround="elim_64" id="16" position="52" sequence="52" />
+  </lists>
+  <lists name="ranking" count="52" type="pools">
+    <fencer name="HADALIN H" affiliation="SALLE HADALIN" category="U13" elimround="elim_none" hr="5" hs="30" id="30" ind="25" position="1" sequence="1" vm="6/6" />
+    <fencer name="HYDE B" affiliation="CHESTER" category="U13" elimround="elim_none" hr="7" hs="30" id="29" ind="23" position="2" sequence="2" vm="6/6" />
+    <fencer name="O'CONNELL O" affiliation="FIGHTING FIT" category="U13" elimround="elim_none" hr="8" hs="30" id="18" ind="22" position="3" sequence="3" vm="6/6" />
+    <fencer name="DE N'YEURT T" affiliation="BATH SWORD" category="U13" elimround="elim_none" hr="8" hs="23" id="37" ind="15" position="4" sequence="4" vm="5/5" />
+    <fencer name="BIDGOOD E" affiliation="SWINDON" category="U13" elimround="elim_none" hr="12" hs="25" id="46" ind="13" position="5" sequence="5" vm="5/5" />
+    <fencer name="MIDDLETON A" affiliation="SALLE PAUL" category="U13" elimround="elim_none" hr="9" hs="22" id="20" ind="13" position="6" sequence="6" vm="5/5" />
+    <fencer name="GALE M" affiliation="BRENTWOOD SCHOOL" category="U13" elimround="elim_none" hr="7" hs="26" id="34" ind="19" position="7" sequence="7" vm="5/6" />
+    <fencer name="RESTON E" affiliation="ALDERSHOT" category="U13" elimround="elim_none" hr="11" hs="29" id="14" ind="18" position="8" sequence="8" vm="5/6" />
+    <fencer name="WILLIAMSON L" affiliation="SHEFFIELD BUCCAN" category="U13" elimround="elim_none" hr="8" hs="26" id="4" ind="18" position="9" sequence="9" vm="5/6" />
+    <fencer name="KENISTON-COOPER I" affiliation="COTSWOLD FENCING" category="U13" elimround="elim_none" hr="13" hs="27" id="27" ind="14" position="10" sequence="10" vm="5/6" />
+    <fencer name="ATTIAS O" affiliation="SALLE OXON" category="U13" elimround="elim_none" hr="11" hs="24" id="50" ind="13" position="11" sequence="11" vm="5/6" />
+    <fencer name="MACEY C" affiliation="SALLE PAUL" category="U13" elimround="elim_none" hr="7" hs="23" id="23" ind="16" position="12" sequence="12" vm="4/5" />
+    <fencer name="BULMAN I" affiliation="ALDERSHOT" category="U13" elimround="elim_none" hr="7" hs="22" id="41" ind="15" position="13" sequence="13" vm="4/5" />
+    <fencer name="QUELCH A" affiliation="SALLE OXON" category="U13" elimround="elim_none" hr="11" hs="24" id="15" ind="13" position="14" sequence="14" vm="4/5" />
+    <fencer name="COMMITTERI S" affiliation="BATTERSEA FOIL" category="U13" elimround="elim_none" hr="15" hs="24" id="40" ind="9" position="15" sequence="15" vm="4/6" />
+    <fencer name="LAWSON A" affiliation="ST BENEDICTS" category="U13" elimround="elim_none" hr="16" hs="23" id="25" ind="7" position="16" sequence="16" vm="4/6" />
+    <fencer name="WILLIAMS-HOWE S" affiliation="SALLE KISS" category="U13" elimround="elim_none" hr="15" hs="22" id="5" ind="7" position="17" sequence="17" vm="4/6" />
+    <fencer name="SUEN C" affiliation="WYCOMBE ABBEY SC" category="U13" elimround="elim_none" hr="24" hs="23" id="8" ind="-1" position="18" sequence="18" vm="4/6" />
+    <fencer name="KNOX E" affiliation="NEWHAM SWORDS" category="U13" elimround="elim_none" hr="14" hs="22" id="26" ind="8" position="19" sequence="19" vm="3/5" />
+    <fencer name="BOUCHER-ROWE S" affiliation="WYCOMBE ABBEY SC" category="U13" elimround="elim_none" hr="9" hs="16" id="44" ind="7" position="20" sequence="20" vm="3/5" />
+    <fencer name="MEURISSE S" affiliation="COBHAM FENCING" category="U13" elimround="elim_none" hr="14" hs="19" id="21" ind="5" position="21" sequence="21" vm="3/5" />
+    <fencer name="BIRD M" affiliation="COBHAM FENCING" category="U13" elimround="elim_none" hr="17" hs="19" id="45" ind="2" position="22" sequence="22" vm="3/5" />
+    <fencer name="ZHAO J" affiliation="SALLE PAUL" category="U13" elimround="elim_none" hr="16" hs="18" id="1" ind="2" position="23" sequence="23" vm="3/5" />
+    <fencer name="BRYCE J" affiliation="KCSWHS" category="U13" elimround="elim_none" hr="17" hs="18" id="43" ind="1" position="24" sequence="24" vm="3/5" />
+    <fencer name="WILSON I" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_none" hr="16" hs="17" id="3" ind="1" position="25" sequence="25" vm="3/5" />
+    <fencer name="SHELDON P" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_none" hr="18" hs="21" id="11" ind="3" position="26" sequence="26" vm="3/6" />
+    <fencer name="GEORGE I" affiliation="SALLE OXON" category="U13" elimround="elim_none" hr="23" hs="25" id="33" ind="2" position="27" sequence="27" vm="3/6" />
+    <fencer name="SAVILL J" affiliation="SWINDON" category="U13" elimround="elim_none" hr="21" hs="22" id="12" ind="1" position="28" sequence="28" vm="3/6" />
+    <fencer name="NGO O" affiliation="SALLE KISS" category="U13" elimround="elim_none" hr="22" hs="20" id="19" ind="-2" position="29" sequence="29" vm="3/6" />
+    <fencer name="ZAMBITO I" affiliation="FENCERS CLUB LON" category="U13" elimround="elim_none" hr="21" hs="17" id="2" ind="-4" position="30" sequence="30" vm="3/6" />
+    <fencer name="WHITAKER R" affiliation="CHICHESTER" category="U13" elimround="elim_none" hr="17" hs="21" id="6" ind="4" position="31" sequence="31" vm="2/5" />
+    <fencer name="FORSE J" affiliation="FOUR OF CLUBS" category="U13" elimround="elim_none" hr="18" hs="19" id="35" ind="1" position="32" sequence="32" vm="2/5" />
+    <fencer name="APPLEBY-PRINCE C" affiliation="SALLE OXON" category="U13" elimround="elim_none" hr="10" hs="11" id="51" ind="1" position="33" sequence="33" vm="2/5" />
+    <fencer name="TAN Q" affiliation="ESCRIME WINCHEST" category="U13" elimround="elim_none" hr="21" hs="19" id="7" ind="-2" position="34" sequence="34" vm="2/5" />
+    <fencer name="OWEN A" affiliation="SWINDON" category="U13" elimround="elim_none" hr="18" hs="12" id="17" ind="-6" position="35" sequence="35" vm="2/5" />
+    <fencer name="GOLDFISCHER M" affiliation="COBHAM FENCING" category="U13" elimround="elim_none" hr="22" hs="14" id="32" ind="-8" position="36" sequence="36" vm="2/6" />
+    <fencer name="SITANYI L" affiliation="ZFW FENCING" category="U13" elimround="elim_none" hr="25" hs="14" id="10" ind="-11" position="37" sequence="37" vm="2/6" />
+    <fencer name="BEIGHTON I" affiliation="SALLE OXON" category="U13" elimround="elim_none" hr="25" hs="12" id="47" ind="-13" position="38" sequence="38" vm="2/6" />
+    <fencer name="BULLMAN E" affiliation="FINCHLEY FOIL" category="U13" elimround="elim_none" hr="21" hs="8" id="42" ind="-13" position="39" sequence="39" vm="1/5" />
+    <fencer name="BASAK D" affiliation="BATTERSEA FOIL" category="U13" elimround="elim_none" hr="23" hs="8" id="48" ind="-15" position="40" sequence="40" vm="1/5" />
+    <fencer name="WILLS Z" affiliation="SUSSEX HOUSE" category="" elimround="elim_none" hr="27" hs="18" id="53" ind="-9" position="41" sequence="41" vm="1/6" />
+    <fencer name="LIVESLEY K" affiliation="WELLINGTON SWORD" category="U13" elimround="elim_none" hr="28" hs="14" id="24" ind="-14" position="42" sequence="42" vm="1/6" />
+    <fencer name="BARROW D" affiliation="BATH SWORD" category="U13" elimround="elim_none" hr="25" hs="9" id="49" ind="-16" position="43" sequence="43" vm="1/6" />
+    <fencer name="CULHANE S" affiliation="FENCERS CLUB LON" category="U13" elimround="elim_none" hr="26" hs="6" id="39" ind="-20" position="44" sequence="44" vm="1/6" />
+    <fencer name="JEROME E" affiliation="SALLE BOSTON" category="U13" elimround="elim_none" hr="25" hs="9" id="28" ind="-16" position="45" sequence="45" vm="0/5" />
+    <fencer name="SPARKES T" affiliation="HEADINGTON SCHOO" category="U13" elimround="elim_none" hr="25" hs="7" id="9" ind="-18" position="46" sequence="46" vm="0/5" />
+    <fencer name="MAYER-REICH H" affiliation="FIGHTING FIT" category="U13" elimround="elim_none" hr="30" hs="11" id="22" ind="-19" position="47" sequence="47" vm="0/6" />
+    <fencer name="DANBY M" affiliation="WREKIN SWORD" category="U13" elimround="elim_none" hr="30" hs="10" id="38" ind="-20" position="48" sequence="48" vm="0/6" />
+    <fencer name="GREIG L" affiliation="RADCLIFFE SWORD" category="U13" elimround="elim_none" hr="30" hs="9" id="31" ind="-21" position="49" sequence="49" vm="0/6" />
+    <fencer name="ALLMARK L" affiliation="BRENTWOOD SCHOOL" category="U13" elimround="elim_none" hr="30" hs="7" id="52" ind="-23" position="50" sequence="50" vm="0/6" />
+    <fencer name="ROBINSON M" affiliation="UNATTACHED" category="U13" elimround="elim_none" hr="25" hs="2" id="13" ind="-23" position="51" sequence="51" vm="0/5" />
+    <fencer name="PARKIN S" affiliation="RADCLIFFE SWORD" category="U13" elimround="elim_none" hr="25" hs="1" id="16" ind="-24" position="52" sequence="52" vm="0/5" />
+  </lists>
+  <message></message>
+  <pools count="8" round="1">
+    <pool heure="0:00" number="1" piste="5" size="7">
+      <fencers count="7">
+        <fencer name="DANBY Maisie" affiliation="WREKIN SWORD" fencerid="38" hs="10" id="1" ind="-20" pl="7" vm="0/6">
+          <result id="1" score="" />
+          <result id="2" score="3" />
+          <result id="3" score="0" />
+          <result id="4" score="0" />
+          <result id="5" score="1" />
+          <result id="6" score="3" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="BEIGHTON India" affiliation="SALLE OXON" fencerid="47" hs="12" id="2" ind="-13" pl="5" vm="2/6">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="1" />
+          <result id="4" score="1" />
+          <result id="5" score="0" />
+          <result id="6" score="0" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="HADALIN Henriette" affiliation="SALLE HADALIN" fencerid="30" hs="30" id="3" ind="25" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="WILLIAMS-HOWE Sydney" affiliation="SALLE KISS" fencerid="5" hs="22" id="4" ind="7" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="" />
+          <result id="5" score="0" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="GALE Madeleine" affiliation="BRENTWOOD SCHOOL" fencerid="34" hs="26" id="5" ind="19" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="1" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="ZAMBITO Isabel" affiliation="FENCERS CLUB LONDON" fencerid="2" hs="17" id="6" ind="-4" pl="4" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="1" />
+          <result id="4" score="1" />
+          <result id="5" score="0" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="LIVESLEY Kathryn" affiliation="WELLINGTON SWORDS" fencerid="24" hs="14" id="7" ind="-14" pl="6" vm="1/6">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="0" />
+          <result id="4" score="3" />
+          <result id="5" score="1" />
+          <result id="6" score="3" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="2" piste="6" size="7">
+      <fencers count="7">
+        <fencer name="BARROW Daisy" affiliation="BATH SWORD" fencerid="49" hs="9" id="1" ind="-16" pl="6" vm="1/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="1" />
+          <result id="5" score="0" />
+          <result id="6" score="1" />
+          <result id="7" score="0" />
+        </fencer>
+        <fencer name="ALLMARK Lily" affiliation="BRENTWOOD SCHOOL" fencerid="52" hs="7" id="2" ind="-23" pl="7" vm="0/6">
+          <result id="1" score="0" />
+          <result id="2" score="" />
+          <result id="3" score="2" />
+          <result id="4" score="1" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="KENISTON-COOPER Isabella" affiliation="COTSWOLD FENCING" fencerid="27" hs="27" id="3" ind="14" pl="2" vm="5/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="2" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="HYDE Bronwen" affiliation="CHESTER" fencerid="29" hs="30" id="4" ind="23" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SHELDON Priya" affiliation="FOUR OF CLUBS" fencerid="11" hs="21" id="5" ind="3" pl="4" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="3" />
+          <result id="4" score="1" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="GOLDFISCHER Marcela" affiliation="COBHAM FENCING" fencerid="32" hs="14" id="6" ind="-8" pl="5" vm="2/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="0" />
+          <result id="4" score="0" />
+          <result id="5" score="1" />
+          <result id="6" score="" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="LAWSON Angelica" affiliation="ST BENEDICTS" fencerid="25" hs="23" id="7" ind="7" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="1" />
+          <result id="4" score="2" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="3" piste="7" size="7">
+      <fencers count="7">
+        <fencer name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" fencerid="4" hs="26" id="1" ind="18" pl="2" vm="5/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="1" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="RESTON Eva" affiliation="ALDERSHOT" fencerid="14" hs="29" id="2" ind="18" pl="1" vm="5/6">
+          <result id="1" score="4" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="CULHANE Sunni" affiliation="FENCERS CLUB LONDON" fencerid="39" hs="6" id="3" ind="-20" pl="6" vm="1/6">
+          <result id="1" score="0" />
+          <result id="2" score="0" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="0" />
+          <result id="6" score="0" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="MAYER-REICH Hannah" affiliation="FIGHTING FIT" fencerid="22" hs="11" id="4" ind="-19" pl="7" vm="0/6">
+          <result id="1" score="2" />
+          <result id="2" score="0" />
+          <result id="3" score="1" />
+          <result id="4" score="" />
+          <result id="5" score="4" />
+          <result id="6" score="0" />
+          <result id="7" score="4" />
+        </fencer>
+        <fencer name="SAVILL Jaymee" affiliation="SWINDON" fencerid="12" hs="22" id="5" ind="1" pl="4" vm="3/6">
+          <result id="1" score="0" />
+          <result id="2" score="3" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="4" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="ATTIAS Olivia" affiliation="SALLE OXON" fencerid="50" hs="24" id="6" ind="13" pl="3" vm="5/6">
+          <result id="1" score="V2" />
+          <result id="2" score="2" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SITANYI Lili" affiliation="ZFW FENCING" fencerid="10" hs="14" id="7" ind="-11" pl="5" vm="2/6">
+          <result id="1" score="0" />
+          <result id="2" score="1" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="4" piste="8" size="6">
+      <fencers count="6">
+        <fencer name="JEROME Elizabeth" affiliation="SALLE BOSTON" fencerid="28" hs="9" id="1" ind="-16" pl="6" vm="0/5">
+          <result id="1" score="" />
+          <result id="2" score="2" />
+          <result id="3" score="1" />
+          <result id="4" score="3" />
+          <result id="5" score="1" />
+          <result id="6" score="2" />
+        </fencer>
+        <fencer name="BRYCE Jessica" affiliation="KCSWHS" fencerid="43" hs="18" id="2" ind="1" pl="3" vm="3/5">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="2" />
+          <result id="4" score="V" />
+          <result id="5" score="1" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="BIDGOOD Elysia" affiliation="SWINDON" fencerid="46" hs="25" id="3" ind="13" pl="1" vm="5/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="BASAK Defne" affiliation="BATTERSEA FOIL" fencerid="48" hs="8" id="4" ind="-15" pl="5" vm="1/5">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="1" />
+          <result id="4" score="" />
+          <result id="5" score="0" />
+          <result id="6" score="0" />
+        </fencer>
+        <fencer name="QUELCH Abigail" affiliation="SALLE OXON" fencerid="15" hs="24" id="5" ind="13" pl="2" vm="4/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="4" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="WHITAKER Rosie" affiliation="CHICHESTER" fencerid="6" hs="21" id="6" ind="4" pl="4" vm="2/5">
+          <result id="1" score="V" />
+          <result id="2" score="3" />
+          <result id="3" score="4" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="5" piste="9" size="6">
+      <fencers count="6">
+        <fencer name="BIRD Martha" affiliation="COBHAM FENCING" fencerid="45" hs="19" id="1" ind="2" pl="2" vm="3/5">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="2" />
+          <result id="6" score="2" />
+        </fencer>
+        <fencer name="TAN Qian Yi" affiliation="ESCRIME WINCHESTER" fencerid="7" hs="19" id="2" ind="-2" pl="5" vm="2/5">
+          <result id="1" score="4" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="1" />
+        </fencer>
+        <fencer name="FORSE Jessica" affiliation="FOUR OF CLUBS" fencerid="35" hs="19" id="3" ind="1" pl="4" vm="2/5">
+          <result id="1" score="3" />
+          <result id="2" score="3" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="3" />
+        </fencer>
+        <fencer name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" fencerid="9" hs="7" id="4" ind="-18" pl="6" vm="0/5">
+          <result id="1" score="0" />
+          <result id="2" score="3" />
+          <result id="3" score="1" />
+          <result id="4" score="" />
+          <result id="5" score="2" />
+          <result id="6" score="1" />
+        </fencer>
+        <fencer name="ZHAO Jing" affiliation="SALLE PAUL" fencerid="1" hs="18" id="5" ind="2" pl="3" vm="3/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="1" />
+        </fencer>
+        <fencer name="DE N'YEURT Tabitha" affiliation="BATH SWORD" fencerid="37" hs="23" id="6" ind="15" pl="1" vm="5/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V3" />
+          <result id="6" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="6" piste="10" size="6">
+      <fencers count="6">
+        <fencer name="OWEN Alicia" affiliation="SWINDON" fencerid="17" hs="12" id="1" ind="-6" pl="5" vm="2/5">
+          <result id="1" score="" />
+          <result id="2" score="1" />
+          <result id="3" score="0" />
+          <result id="4" score="2" />
+          <result id="5" score="V" />
+          <result id="6" score="V4" />
+        </fencer>
+        <fencer name="KNOX Eleanor" affiliation="NEWHAM SWORDS" fencerid="26" hs="22" id="2" ind="8" pl="2" vm="3/5">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="3" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="4" />
+        </fencer>
+        <fencer name="MACEY Charlotte" affiliation="SALLE PAUL" fencerid="23" hs="23" id="3" ind="16" pl="1" vm="4/5">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="3" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="MEURISSE Scarlett" affiliation="COBHAM FENCING" fencerid="21" hs="19" id="4" ind="5" pl="3" vm="3/5">
+          <result id="1" score="V" />
+          <result id="2" score="2" />
+          <result id="3" score="V4" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="3" />
+        </fencer>
+        <fencer name="PARKIN Sophie" affiliation="RADCLIFFE SWORD" fencerid="16" hs="1" id="5" ind="-24" pl="6" vm="0/5">
+          <result id="1" score="0" />
+          <result id="2" score="1" />
+          <result id="3" score="0" />
+          <result id="4" score="0" />
+          <result id="5" score="" />
+          <result id="6" score="0" />
+        </fencer>
+        <fencer name="WILSON India" affiliation="FOUR OF CLUBS" fencerid="3" hs="17" id="6" ind="1" pl="4" vm="3/5">
+          <result id="1" score="3" />
+          <result id="2" score="V" />
+          <result id="3" score="0" />
+          <result id="4" score="V4" />
+          <result id="5" score="V" />
+          <result id="6" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="7" piste="11" size="6">
+      <fencers count="6">
+        <fencer name="MIDDLETON Amelia" affiliation="SALLE PAUL" fencerid="20" hs="22" id="1" ind="13" pl="1" vm="5/5">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V2" />
+        </fencer>
+        <fencer name="BOUCHER-ROWE Sarah" affiliation="WYCOMBE ABBEY SCH" fencerid="44" hs="16" id="2" ind="7" pl="3" vm="3/5">
+          <result id="1" score="4" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="1" />
+          <result id="6" score="V1" />
+        </fencer>
+        <fencer name="ROBINSON Monique" affiliation="UNATTACHED" fencerid="13" hs="2" id="3" ind="-23" pl="6" vm="0/5">
+          <result id="1" score="0" />
+          <result id="2" score="0" />
+          <result id="3" score="" />
+          <result id="4" score="1" />
+          <result id="5" score="0" />
+          <result id="6" score="1" />
+        </fencer>
+        <fencer name="BULLMAN Evie" affiliation="FINCHLEY FOIL" fencerid="42" hs="8" id="4" ind="-13" pl="5" vm="1/5">
+          <result id="1" score="1" />
+          <result id="2" score="0" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="1" />
+          <result id="6" score="1" />
+        </fencer>
+        <fencer name="BULMAN Imogen" affiliation="ALDERSHOT" fencerid="41" hs="22" id="5" ind="15" pl="2" vm="4/5">
+          <result id="1" score="3" />
+          <result id="2" score="V4" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+        </fencer>
+        <fencer name="APPLEBY-PRINCE Celena" affiliation="SALLE OXON" fencerid="51" hs="11" id="6" ind="1" pl="4" vm="2/5">
+          <result id="1" score="1" />
+          <result id="2" score="0" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="0" />
+          <result id="6" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="8" piste="12" size="7">
+      <fencers count="7">
+        <fencer name="GEORGE India" affiliation="SALLE OXON" fencerid="33" hs="25" id="1" ind="2" pl="4" vm="3/6">
+          <result id="1" score="" />
+          <result id="2" score="4" />
+          <result id="3" score="2" />
+          <result id="4" score="4" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SUEN Chloe" affiliation="WYCOMBE ABBEY SCH" fencerid="8" hs="23" id="2" ind="-1" pl="3" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="" />
+          <result id="3" score="1" />
+          <result id="4" score="V" />
+          <result id="5" score="2" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="O'CONNELL Olivia" affiliation="FIGHTING FIT" fencerid="18" hs="30" id="3" ind="22" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="NGO Olivia" affiliation="SALLE KISS" fencerid="19" hs="20" id="4" ind="-2" pl="5" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="3" />
+          <result id="3" score="0" />
+          <result id="4" score="" />
+          <result id="5" score="2" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="COMMITTERI Sofia Emily" affiliation="BATTERSEA FOIL" fencerid="40" hs="24" id="5" ind="9" pl="2" vm="4/6">
+          <result id="1" score="3" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="V4" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="GREIG Lucy" affiliation="RADCLIFFE SWORD" fencerid="31" hs="9" id="6" ind="-21" pl="7" vm="0/6">
+          <result id="1" score="1" />
+          <result id="2" score="4" />
+          <result id="3" score="0" />
+          <result id="4" score="2" />
+          <result id="5" score="0" />
+          <result id="6" score="" />
+          <result id="7" score="2" />
+        </fencer>
+        <fencer name="WILLS Zoe" affiliation="SUSSEX HOUSE" fencerid="53" hs="18" id="7" ind="-9" pl="6" vm="1/6">
+          <result id="1" score="4" />
+          <result id="2" score="3" />
+          <result id="3" score="3" />
+          <result id="4" score="2" />
+          <result id="5" score="1" />
+          <result id="6" score="V" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+  </pools>
+  <tableau name="A16" count="8" title="tableau of 16">
+    <match number="1" piste="" score="10 / 1" time="0:00" winnerid="30" winnername="HADALIN Henriette">
+      <fencerA name="HADALIN Henriette" affiliation="SALLE HADALIN" category="U13" id="30" seed="1" />
+      <fencerB name="LAWSON Angelica" affiliation="ST BENEDICTS" category="U13" id="25" seed="16" />
+    </match>
+    <match number="2" piste="" score="10 / 4" time="0:00" winnerid="4" winnername="WILLIAMSON Lucy-Belle">
+      <fencerA name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" category="U13" id="4" seed="9" />
+      <fencerB name="RESTON Eva" affiliation="ALDERSHOT" category="U13" id="14" seed="8" />
+    </match>
+    <match number="3" piste="" score="10 / 9" time="0:00" winnerid="46" winnername="BIDGOOD Elysia">
+      <fencerA name="BIDGOOD Elysia" affiliation="SWINDON" category="U13" id="46" seed="5" />
+      <fencerB name="MACEY Charlotte" affiliation="SALLE PAUL" category="U13" id="23" seed="12" />
+    </match>
+    <match number="4" piste="" score="10 / 6" time="0:00" winnerid="44" winnername="BOUCHER-ROWE Sarah">
+      <fencerA name="BOUCHER-ROWE Sarah" affiliation="WYCOMBE ABBEY SCH" category="U13" id="44" seed="13" />
+      <fencerB name="DE N'YEURT Tabitha" affiliation="BATH SWORD" category="U13" id="37" seed="4" />
+    </match>
+    <match number="5" piste="" score="10 / 6" time="0:00" winnerid="18" winnername="O'CONNELL Olivia">
+      <fencerA name="O'CONNELL Olivia" affiliation="FIGHTING FIT" category="U13" id="18" seed="3" />
+      <fencerB name="KNOX Eleanor" affiliation="NEWHAM SWORDS" category="U13" id="26" seed="14" />
+    </match>
+    <match number="6" piste="" score="8 / 10" time="0:00" winnerid="33" winnername="GEORGE India">
+      <fencerA name="BIRD Martha" affiliation="COBHAM FENCING" category="U13" id="45" seed="11" />
+      <fencerB name="GEORGE India" affiliation="SALLE OXON" category="U13" id="33" seed="6" />
+    </match>
+    <match number="7" piste="" score="10 / 1" time="0:00" winnerid="34" winnername="GALE Madeleine">
+      <fencerA name="GALE Madeleine" affiliation="BRENTWOOD SCHOOL" category="U13" id="34" seed="7" />
+      <fencerB name="KENISTON-COOPER Isabella" affiliation="COTSWOLD FENCING" category="U13" id="27" seed="10" />
+    </match>
+    <match number="8" piste="" score="0 / 10" time="0:00" winnerid="29" winnername="HYDE Bronwen">
+      <fencerA name="COMMITTERI Sofia Emily" affiliation="BATTERSEA FOIL" category="U13" id="40" seed="15" />
+      <fencerB name="HYDE Bronwen" affiliation="CHESTER" category="U13" id="29" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A2" count="1" title="final">
+    <match number="1" piste="" score="2 / 10" time="0:00" winnerid="29" winnername="HYDE Bronwen">
+      <fencerA name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" category="U13" id="4" seed="1" />
+      <fencerB name="HYDE Bronwen" affiliation="CHESTER" category="U13" id="29" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A32" count="16" title="tableau of 32">
+    <match number="1" piste="" score="10 / 3" time="0:00" winnerid="30" winnername="HADALIN Henriette">
+      <fencerA name="HADALIN Henriette" affiliation="SALLE HADALIN" category="U13" id="30" seed="1" />
+      <fencerB name="FORSE Jessica" affiliation="FOUR OF CLUBS" category="U13" id="35" seed="32" />
+    </match>
+    <match number="2" piste="" score="3 / 10" time="0:00" winnerid="25" winnername="LAWSON Angelica">
+      <fencerA name="WILLIAMS-HOWE Sydney" affiliation="SALLE KISS" category="U13" id="5" seed="17" />
+      <fencerB name="LAWSON Angelica" affiliation="ST BENEDICTS" category="U13" id="25" seed="16" />
+    </match>
+    <match number="3" piste="" score="10 / 2" time="0:00" winnerid="4" winnername="WILLIAMSON Lucy-Belle">
+      <fencerA name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" category="U13" id="4" seed="9" />
+      <fencerB name="BRYCE Jessica" affiliation="KCSWHS" category="U13" id="43" seed="24" />
+    </match>
+    <match number="4" piste="" score="8 / 10" time="0:00" winnerid="14" winnername="RESTON Eva">
+      <fencerA name="WILSON India" affiliation="FOUR OF CLUBS" category="U13" id="3" seed="25" />
+      <fencerB name="RESTON Eva" affiliation="ALDERSHOT" category="U13" id="14" seed="8" />
+    </match>
+    <match number="5" piste="" score="10 / 2" time="0:00" winnerid="46" winnername="BIDGOOD Elysia">
+      <fencerA name="BIDGOOD Elysia" affiliation="SWINDON" category="U13" id="46" seed="5" />
+      <fencerB name="SAVILL Jaymee" affiliation="SWINDON" category="U13" id="12" seed="28" />
+    </match>
+    <match number="6" piste="" score="1 / 7" time="0:00" winnerid="23" winnername="MACEY Charlotte">
+      <fencerA name="MEURISSE Scarlett" affiliation="COBHAM FENCING" category="U13" id="21" seed="21" />
+      <fencerB name="MACEY Charlotte" affiliation="SALLE PAUL" category="U13" id="23" seed="12" />
+    </match>
+    <match number="7" piste="" score="7 / 10" time="0:00" winnerid="44" winnername="BOUCHER-ROWE Sarah">
+      <fencerA name="BULMAN Imogen" affiliation="ALDERSHOT" category="U13" id="41" seed="13" />
+      <fencerB name="BOUCHER-ROWE Sarah" affiliation="WYCOMBE ABBEY SCH" category="U13" id="44" seed="20" />
+    </match>
+    <match number="8" piste="" score="1 / 10" time="0:00" winnerid="37" winnername="DE N'YEURT Tabitha">
+      <fencerA name="GOLDFISCHER Marcela" affiliation="COBHAM FENCING" category="U13" id="32" seed="29" />
+      <fencerB name="DE N'YEURT Tabitha" affiliation="BATH SWORD" category="U13" id="37" seed="4" />
+    </match>
+    <match number="9" piste="" score="10 / 1" time="0:00" winnerid="18" winnername="O'CONNELL Olivia">
+      <fencerA name="O'CONNELL Olivia" affiliation="FIGHTING FIT" category="U13" id="18" seed="3" />
+      <fencerB name="ZAMBITO Isabel" affiliation="FENCERS CLUB LONDON" category="U13" id="2" seed="30" />
+    </match>
+    <match number="10" piste="" score="10 / 6" time="0:00" winnerid="26" winnername="KNOX Eleanor">
+      <fencerA name="KNOX Eleanor" affiliation="NEWHAM SWORDS" category="U13" id="26" seed="19" />
+      <fencerB name="QUELCH Abigail" affiliation="SALLE OXON" category="U13" id="15" seed="14" />
+    </match>
+    <match number="11" piste="" score="5 / 6" time="0:00" winnerid="45" winnername="BIRD Martha">
+      <fencerA name="ATTIAS Olivia" affiliation="SALLE OXON" category="U13" id="50" seed="11" />
+      <fencerB name="BIRD Martha" affiliation="COBHAM FENCING" category="U13" id="45" seed="22" />
+    </match>
+    <match number="12" piste="" score="10 / 8" time="0:00" winnerid="33" winnername="GEORGE India">
+      <fencerA name="GEORGE India" affiliation="SALLE OXON" category="U13" id="33" seed="27" />
+      <fencerB name="MIDDLETON Amelia" affiliation="SALLE PAUL" category="U13" id="20" seed="6" />
+    </match>
+    <match number="13" piste="" score="10 / 2" time="0:00" winnerid="34" winnername="GALE Madeleine">
+      <fencerA name="GALE Madeleine" affiliation="BRENTWOOD SCHOOL" category="U13" id="34" seed="7" />
+      <fencerB name="SHELDON Priya" affiliation="FOUR OF CLUBS" category="U13" id="11" seed="26" />
+    </match>
+    <match number="14" piste="" score="by abandonment" time="0:00" winnerid="27" winnername="KENISTON-COOPER Isabella">
+      <fencerA name="ZHAO Jing" affiliation="SALLE PAUL" category="U13" id="1" seed="23" />
+      <fencerB name="KENISTON-COOPER Isabella" affiliation="COTSWOLD FENCING" category="U13" id="27" seed="10" />
+    </match>
+    <match number="15" piste="" score="10 / 7" time="0:00" winnerid="40" winnername="COMMITTERI Sofia Emily">
+      <fencerA name="COMMITTERI Sofia Emily" affiliation="BATTERSEA FOIL" category="U13" id="40" seed="15" />
+      <fencerB name="SUEN Chloe" affiliation="WYCOMBE ABBEY SCH" category="U13" id="8" seed="18" />
+    </match>
+    <match number="16" piste="" score="4 / 10" time="0:00" winnerid="29" winnername="HYDE Bronwen">
+      <fencerA name="WHITAKER Rosie" affiliation="CHICHESTER" category="U13" id="6" seed="31" />
+      <fencerB name="HYDE Bronwen" affiliation="CHESTER" category="U13" id="29" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A4" count="2" title="semi-finals">
+    <match number="1" piste="27" score="10 / 1" time="0:00" winnerid="4" winnername="WILLIAMSON Lucy-Belle">
+      <fencerA name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" category="U13" id="4" seed="1" />
+      <fencerB name="BIDGOOD Elysia" affiliation="SWINDON" category="U13" id="46" seed="4" />
+    </match>
+    <match number="2" piste="31" score="4 / 10" time="0:00" winnerid="29" winnername="HYDE Bronwen">
+      <fencerA name="GEORGE India" affiliation="SALLE OXON" category="U13" id="33" seed="3" />
+      <fencerB name="HYDE Bronwen" affiliation="CHESTER" category="U13" id="29" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A64" count="32" title="tableau of 64">
+    <match number="1" piste="5" score="" time="" winnerid="30" winnername="HADALIN Henriette">
+      <fencerA name="HADALIN Henriette" affiliation="SALLE HADALIN" category="U13" id="30" seed="1" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="64" />
+    </match>
+    <match number="2" piste="" score="8 / 10" time="0:00" winnerid="35" winnername="FORSE Jessica">
+      <fencerA name="APPLEBY-PRINCE Celena" affiliation="SALLE OXON" category="U13" id="51" seed="33" />
+      <fencerB name="FORSE Jessica" affiliation="FOUR OF CLUBS" category="U13" id="35" seed="32" />
+    </match>
+    <match number="3" piste="" score="10 / 1" time="0:00" winnerid="5" winnername="WILLIAMS-HOWE Sydney">
+      <fencerA name="WILLIAMS-HOWE Sydney" affiliation="SALLE KISS" category="U13" id="5" seed="17" />
+      <fencerB name="DANBY Maisie" affiliation="WREKIN SWORD" category="U13" id="38" seed="48" />
+    </match>
+    <match number="4" piste="" score="1 / 10" time="0:00" winnerid="25" winnername="LAWSON Angelica">
+      <fencerA name="GREIG Lucy" affiliation="RADCLIFFE SWORD" category="U13" id="31" seed="49" />
+      <fencerB name="LAWSON Angelica" affiliation="ST BENEDICTS" category="U13" id="25" seed="16" />
+    </match>
+    <match number="5" piste="6" score="" time="" winnerid="4" winnername="WILLIAMSON Lucy-Belle">
+      <fencerA name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" category="U13" id="4" seed="9" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="56" />
+    </match>
+    <match number="6" piste="" score="3 / 10" time="0:00" winnerid="43" winnername="BRYCE Jessica">
+      <fencerA name="WILLS Zoe" affiliation="SUSSEX HOUSE" category="" id="53" seed="41" />
+      <fencerB name="BRYCE Jessica" affiliation="KCSWHS" category="U13" id="43" seed="24" />
+    </match>
+    <match number="7" piste="" score="10 / 2" time="0:00" winnerid="3" winnername="WILSON India">
+      <fencerA name="WILSON India" affiliation="FOUR OF CLUBS" category="U13" id="3" seed="25" />
+      <fencerB name="BASAK Defne" affiliation="BATTERSEA FOIL" category="U13" id="48" seed="40" />
+    </match>
+    <match number="8" piste="6" score="" time="" winnerid="14" winnername="RESTON Eva">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="57" />
+      <fencerB name="RESTON Eva" affiliation="ALDERSHOT" category="U13" id="14" seed="8" />
+    </match>
+    <match number="9" piste="7" score="" time="" winnerid="46" winnername="BIDGOOD Elysia">
+      <fencerA name="BIDGOOD Elysia" affiliation="SWINDON" category="U13" id="46" seed="5" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="60" />
+    </match>
+    <match number="10" piste="" score="3 / 10" time="0:00" winnerid="12" winnername="SAVILL Jaymee">
+      <fencerA name="SITANYI Lili" affiliation="ZFW FENCING" category="U13" id="10" seed="37" />
+      <fencerB name="SAVILL Jaymee" affiliation="SWINDON" category="U13" id="12" seed="28" />
+    </match>
+    <match number="11" piste="" score="10 / 0" time="0:00" winnerid="21" winnername="MEURISSE Scarlett">
+      <fencerA name="MEURISSE Scarlett" affiliation="COBHAM FENCING" category="U13" id="21" seed="21" />
+      <fencerB name="CULHANE Sunni" affiliation="FENCERS CLUB LONDON" category="U13" id="39" seed="44" />
+    </match>
+    <match number="12" piste="7" score="" time="" winnerid="23" winnername="MACEY Charlotte">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="53" />
+      <fencerB name="MACEY Charlotte" affiliation="SALLE PAUL" category="U13" id="23" seed="12" />
+    </match>
+    <match number="13" piste="" score="10 / 1" time="0:00" winnerid="41" winnername="BULMAN Imogen">
+      <fencerA name="BULMAN Imogen" affiliation="ALDERSHOT" category="U13" id="41" seed="13" />
+      <fencerB name="PARKIN Sophie" affiliation="RADCLIFFE SWORD" category="U13" id="16" seed="52" />
+    </match>
+    <match number="14" piste="" score="2 / 10" time="0:00" winnerid="44" winnername="BOUCHER-ROWE Sarah">
+      <fencerA name="JEROME Elizabeth" affiliation="SALLE BOSTON" category="U13" id="28" seed="45" />
+      <fencerB name="BOUCHER-ROWE Sarah" affiliation="WYCOMBE ABBEY SCH" category="U13" id="44" seed="20" />
+    </match>
+    <match number="15" piste="" score="9 / 10" time="0:00" winnerid="32" winnername="GOLDFISCHER Marcela">
+      <fencerA name="NGO Olivia" affiliation="SALLE KISS" category="U13" id="19" seed="29" />
+      <fencerB name="GOLDFISCHER Marcela" affiliation="COBHAM FENCING" category="U13" id="32" seed="36" />
+    </match>
+    <match number="16" piste="8" score="" time="" winnerid="37" winnername="DE N'YEURT Tabitha">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="61" />
+      <fencerB name="DE N'YEURT Tabitha" affiliation="BATH SWORD" category="U13" id="37" seed="4" />
+    </match>
+    <match number="17" piste="9" score="" time="" winnerid="18" winnername="O'CONNELL Olivia">
+      <fencerA name="O'CONNELL Olivia" affiliation="FIGHTING FIT" category="U13" id="18" seed="3" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="62" />
+    </match>
+    <match number="18" piste="" score="4 / 10" time="0:00" winnerid="2" winnername="ZAMBITO Isabel">
+      <fencerA name="OWEN Alicia" affiliation="SWINDON" category="U13" id="17" seed="35" />
+      <fencerB name="ZAMBITO Isabel" affiliation="FENCERS CLUB LONDON" category="U13" id="2" seed="30" />
+    </match>
+    <match number="19" piste="" score="10 / 6" time="0:00" winnerid="26" winnername="KNOX Eleanor">
+      <fencerA name="KNOX Eleanor" affiliation="NEWHAM SWORDS" category="U13" id="26" seed="19" />
+      <fencerB name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" category="U13" id="9" seed="46" />
+    </match>
+    <match number="20" piste="" score="1 / 10" time="0:00" winnerid="15" winnername="QUELCH Abigail">
+      <fencerA name="ROBINSON Monique" affiliation="UNATTACHED" category="U13" id="13" seed="51" />
+      <fencerB name="QUELCH Abigail" affiliation="SALLE OXON" category="U13" id="15" seed="14" />
+    </match>
+    <match number="21" piste="10" score="" time="" winnerid="50" winnername="ATTIAS Olivia">
+      <fencerA name="ATTIAS Olivia" affiliation="SALLE OXON" category="U13" id="50" seed="11" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="54" />
+    </match>
+    <match number="22" piste="" score="2 / 10" time="0:00" winnerid="45" winnername="BIRD Martha">
+      <fencerA name="BARROW Daisy" affiliation="BATH SWORD" category="U13" id="49" seed="43" />
+      <fencerB name="BIRD Martha" affiliation="COBHAM FENCING" category="U13" id="45" seed="22" />
+    </match>
+    <match number="23" piste="" score="10 / 3" time="0:00" winnerid="33" winnername="GEORGE India">
+      <fencerA name="GEORGE India" affiliation="SALLE OXON" category="U13" id="33" seed="27" />
+      <fencerB name="BEIGHTON India" affiliation="SALLE OXON" category="U13" id="47" seed="38" />
+    </match>
+    <match number="24" piste="10" score="" time="" winnerid="20" winnername="MIDDLETON Amelia">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="59" />
+      <fencerB name="MIDDLETON Amelia" affiliation="SALLE PAUL" category="U13" id="20" seed="6" />
+    </match>
+    <match number="25" piste="11" score="" time="" winnerid="34" winnername="GALE Madeleine">
+      <fencerA name="GALE Madeleine" affiliation="BRENTWOOD SCHOOL" category="U13" id="34" seed="7" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="58" />
+    </match>
+    <match number="26" piste="" score="0 / 10" time="0:00" winnerid="11" winnername="SHELDON Priya">
+      <fencerA name="BULLMAN Evie" affiliation="FINCHLEY FOIL" category="U13" id="42" seed="39" />
+      <fencerB name="SHELDON Priya" affiliation="FOUR OF CLUBS" category="U13" id="11" seed="26" />
+    </match>
+    <match number="27" piste="" score="10 / 4" time="0:00" winnerid="1" winnername="ZHAO Jing">
+      <fencerA name="ZHAO Jing" affiliation="SALLE PAUL" category="U13" id="1" seed="23" />
+      <fencerB name="LIVESLEY Kathryn" affiliation="WELLINGTON SWORDS" category="U13" id="24" seed="42" />
+    </match>
+    <match number="28" piste="11" score="" time="" winnerid="27" winnername="KENISTON-COOPER Isabella">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="55" />
+      <fencerB name="KENISTON-COOPER Isabella" affiliation="COTSWOLD FENCING" category="U13" id="27" seed="10" />
+    </match>
+    <match number="29" piste="" score="10 / 1" time="0:00" winnerid="40" winnername="COMMITTERI Sofia Emily">
+      <fencerA name="COMMITTERI Sofia Emily" affiliation="BATTERSEA FOIL" category="U13" id="40" seed="15" />
+      <fencerB name="ALLMARK Lily" affiliation="BRENTWOOD SCHOOL" category="U13" id="52" seed="50" />
+    </match>
+    <match number="30" piste="" score="4 / 10" time="0:00" winnerid="8" winnername="SUEN Chloe">
+      <fencerA name="MAYER-REICH Hannah" affiliation="FIGHTING FIT" category="U13" id="22" seed="47" />
+      <fencerB name="SUEN Chloe" affiliation="WYCOMBE ABBEY SCH" category="U13" id="8" seed="18" />
+    </match>
+    <match number="31" piste="" score="10 / 8" time="0:00" winnerid="6" winnername="WHITAKER Rosie">
+      <fencerA name="WHITAKER Rosie" affiliation="CHICHESTER" category="U13" id="6" seed="31" />
+      <fencerB name="TAN Qian Yi" affiliation="ESCRIME WINCHESTER" category="U13" id="7" seed="34" />
+    </match>
+    <match number="32" piste="12" score="" time="" winnerid="29" winnername="HYDE Bronwen">
+      <fencerA name="" affiliation="" category="" id="nobody" seed="63" />
+      <fencerB name="HYDE Bronwen" affiliation="CHESTER" category="U13" id="29" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A8" count="4" title="quarter-finals">
+    <match number="1" piste="" score="1 / 2" time="0:00" winnerid="4" winnername="WILLIAMSON Lucy-Belle">
+      <fencerA name="HADALIN Henriette" affiliation="SALLE HADALIN" category="U13" id="30" seed="1" />
+      <fencerB name="WILLIAMSON Lucy-Belle" affiliation="SHEFFIELD BUCCANEERS" category="U13" id="4" seed="8" />
+    </match>
+    <match number="2" piste="" score="10 / 2" time="0:00" winnerid="46" winnername="BIDGOOD Elysia">
+      <fencerA name="BIDGOOD Elysia" affiliation="SWINDON" category="U13" id="46" seed="5" />
+      <fencerB name="BOUCHER-ROWE Sarah" affiliation="WYCOMBE ABBEY SCH" category="U13" id="44" seed="4" />
+    </match>
+    <match number="3" piste="" score="8 / 10" time="0:00" winnerid="33" winnername="GEORGE India">
+      <fencerA name="O'CONNELL Olivia" affiliation="FIGHTING FIT" category="U13" id="18" seed="3" />
+      <fencerB name="GEORGE India" affiliation="SALLE OXON" category="U13" id="33" seed="6" />
+    </match>
+    <match number="4" piste="" score="7 / 10" time="0:00" winnerid="29" winnername="HYDE Bronwen">
+      <fencerA name="GALE Madeleine" affiliation="BRENTWOOD SCHOOL" category="U13" id="34" seed="7" />
+      <fencerB name="HYDE Bronwen" affiliation="CHESTER" category="U13" id="29" seed="2" />
+    </match>
+  </tableau>
+</competition>

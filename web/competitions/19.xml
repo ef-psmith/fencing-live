@@ -1,0 +1,279 @@
+<competition id="19" entrysize="132" fpppagesize="42" lastupdate="Sun Feb 26 13:04:58 2017" poolsperpage="3" rankingpagesize="40" stage="termine" titre_ligne="Girls Under 13 Sabre - EYC" whereamipagesize="40">
+  <background></background>
+  <lists name="entry" absent="3" count="18" entries="18" nif="false" present="15" scratch="0">
+    <fencer name="ABRAM-MOORE Bea" affiliation="TRURO" category="" id="18" presence="present" seed="101" sequence="1" />
+    <fencer name="BANHAM Lauren" affiliation="PAUL DAVIS FENCING" category="" id="17" presence="present" seed="" sequence="2" />
+    <fencer name="BARROW Daisy" affiliation="BATH SWORD" category="" id="16" presence="present" seed="104" sequence="3" />
+    <fencer name="BAYRAMOVA Varvara" affiliation="LEICESTER" category="" id="15" presence="present" seed="108" sequence="4" />
+    <fencer name="BULLMAN Evie" affiliation="PAUL DAVIS FENCING" category="" id="14" presence="present" seed="206" sequence="5" />
+    <fencer name="DERRIEN Margot" affiliation="ESCRIME ACADEMY" category="" id="13" presence="present" seed="" sequence="6" />
+    <fencer name="DIEU Carla" affiliation="ESCRIME ACADEMY" category="" id="12" presence="present" seed="112" sequence="7" />
+    <fencer name="HIBOU Josephine" affiliation="ESCRIME ACADEMY" category="" id="11" presence="present" seed="" sequence="8" />
+    <fencer name="KAROUZIS Gabriella" affiliation="PAUL DAVIS FENCING" category="" id="10" presence="present" seed="" sequence="9" />
+    <fencer name="KAYE Guinevere" affiliation="BATH SWORD" category="" id="9" presence="present" seed="202" sequence="10" />
+    <fencer name="LIU Zara" affiliation="MARSHALL FENCING" category="" id="8" presence="present" seed="" sequence="11" />
+    <fencer name="MCCOY Olivia" affiliation="UNATTACHED" category="" id="7" presence="absent" seed="" sequence="12" />
+    <fencer name="RAYMENT Sophie" affiliation="MX FENCING" category="" id="6" presence="present" seed="105" sequence="13" />
+    <fencer name="SAUNDERS Nicole" affiliation="MARSHALL FENCING" category="" id="5" presence="present" seed="102" sequence="14" />
+    <fencer name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" category="" id="4" presence="present" seed="" sequence="15" />
+    <fencer name="TOMLINSON Isabella" affiliation="SHAKESPEARES SWORDS" category="" id="3" presence="absent" seed="205" sequence="16" />
+    <fencer name="VON POSERN Josephine" affiliation="ESCRIME ACADEMY" category="" id="2" presence="present" seed="116" sequence="17" />
+    <fencer name="ZAKY Morgan" affiliation="MILLFIELD" category="" id="1" presence="absent" seed="" sequence="18" />
+  </lists>
+  <lists name="ranking" count="15" type="final">
+    <fencer name="LIU Zara" affiliation="MARSHALL FENCING" category="C" elimround="elim_0" id="8" position="1" sequence="1" />
+    <fencer name="BAYRAMOVA Varvara" affiliation="LEICESTER" category="C" elimround="elim_2" id="15" position="2" sequence="2" />
+    <fencer name="ABRAM-MOORE Bea" affiliation="TRURO" category="C" elimround="elim_4" id="18" position="3" sequence="3" />
+    <fencer name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" category="C" elimround="elim_4" id="4" position="3" sequence="4" />
+    <fencer name="RAYMENT Sophie" affiliation="MX FENCING" category="C" elimround="elim_8" id="6" position="5" sequence="5" />
+    <fencer name="SAUNDERS Nicole" affiliation="MARSHALL FENCING" category="U13" elimround="elim_8" id="5" position="6" sequence="6" />
+    <fencer name="KAROUZIS Gabriella" affiliation="PAUL DAVIS FENCING" category="U13" elimround="elim_8" id="10" position="7" sequence="7" />
+    <fencer name="BARROW Daisy" affiliation="BATH SWORD" category="U13" elimround="elim_8" id="16" position="8" sequence="8" />
+    <fencer name="BANHAM Lauren" affiliation="PAUL DAVIS FENCING" category="C" elimround="elim_16" id="17" position="9" sequence="9" />
+    <fencer name="KAYE Guinevere" affiliation="BATH SWORD" category="U13" elimround="elim_16" id="9" position="10" sequence="10" />
+    <fencer name="HIBOU Josephine" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_16" id="11" position="11" sequence="11" />
+    <fencer name="DIEU Carla" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_16" id="12" position="12" sequence="12" />
+    <fencer name="BULLMAN Evie" affiliation="PAUL DAVIS FENCING" category="U13" elimround="elim_16" id="14" position="13" sequence="13" />
+    <fencer name="VON POSERN Josephine" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_16" id="2" position="14" sequence="14" />
+    <fencer name="DERRIEN Margot" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_16" id="13" position="15" sequence="15" />
+  </lists>
+  <lists name="ranking" count="15" type="pools">
+    <fencer name="SPARKES T" affiliation="HEADINGTON SCHOO" category="C" elimround="elim_none" hr="16" hs="30" id="4" ind="14" position="1" sequence="1" vm="6/6" />
+    <fencer name="LIU Z" affiliation="MARSHALL FENCING" category="C" elimround="elim_none" hr="15" hs="34" id="8" ind="19" position="2" sequence="2" vm="6/7" />
+    <fencer name="ABRAM-MOORE B" affiliation="TRURO" category="C" elimround="elim_none" hr="14" hs="33" id="18" ind="19" position="3" sequence="3" vm="5/7" />
+    <fencer name="BAYRAMOVA V" affiliation="LEICESTER" category="C" elimround="elim_none" hr="23" hs="31" id="15" ind="8" position="4" sequence="4" vm="5/7" />
+    <fencer name="RAYMENT S" affiliation="MX FENCING" category="C" elimround="elim_none" hr="20" hs="28" id="6" ind="8" position="5" sequence="5" vm="5/7" />
+    <fencer name="SAUNDERS N" affiliation="MARSHALL FENCING" category="U13" elimround="elim_none" hr="20" hs="27" id="5" ind="7" position="6" sequence="6" vm="4/6" />
+    <fencer name="KAROUZIS G" affiliation="PAUL DAVIS FENCI" category="U13" elimround="elim_none" hr="20" hs="22" id="10" ind="2" position="7" sequence="7" vm="3/6" />
+    <fencer name="BARROW D" affiliation="BATH SWORD" category="U13" elimround="elim_none" hr="25" hs="20" id="16" ind="-5" position="8" sequence="8" vm="3/6" />
+    <fencer name="BANHAM L" affiliation="PAUL DAVIS FENCI" category="C" elimround="elim_none" hr="27" hs="24" id="17" ind="-3" position="9" sequence="9" vm="3/7" />
+    <fencer name="KAYE G" affiliation="BATH SWORD" category="U13" elimround="elim_none" hr="26" hs="21" id="9" ind="-5" position="10" sequence="10" vm="3/7" />
+    <fencer name="HIBOU J" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_none" hr="23" hs="23" id="11" ind="0" position="11" sequence="11" vm="2/6" />
+    <fencer name="DIEU C" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_none" hr="23" hs="19" id="12" ind="-4" position="12" sequence="12" vm="2/6" />
+    <fencer name="BULLMAN E" affiliation="PAUL DAVIS FENCI" category="U13" elimround="elim_none" hr="28" hs="14" id="14" ind="-14" position="13" sequence="13" vm="1/6" />
+    <fencer name="VON POSERN J" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_none" hr="30" hs="13" id="2" ind="-17" position="14" sequence="14" vm="1/7" />
+    <fencer name="DERRIEN M" affiliation="ESCRIME ACADEMY" category="U13" elimround="elim_none" hr="35" hs="6" id="13" ind="-29" position="15" sequence="15" vm="0/7" />
+  </lists>
+  <message></message>
+  <pools count="2" round="1">
+    <pool heure="0:00" number="1" piste="23&amp;24" size="8">
+      <fencers count="8">
+        <fencer name="BANHAM Lauren" affiliation="PAUL DAVIS FENCING" fencerid="17" hs="24" id="1" ind="-3" pl="5" vm="3/7">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="3" />
+          <result id="7" score="1" />
+          <result id="8" score="1" />
+        </fencer>
+        <fencer name="VON POSERN Josephine" affiliation="ESCRIME ACADEMY" fencerid="2" hs="13" id="2" ind="-17" pl="7" vm="1/7">
+          <result id="1" score="2" />
+          <result id="2" score="" />
+          <result id="3" score="V" />
+          <result id="4" score="3" />
+          <result id="5" score="0" />
+          <result id="6" score="2" />
+          <result id="7" score="1" />
+          <result id="8" score="0" />
+        </fencer>
+        <fencer name="DERRIEN Margot" affiliation="ESCRIME ACADEMY" fencerid="13" hs="6" id="3" ind="-29" pl="8" vm="0/7">
+          <result id="1" score="2" />
+          <result id="2" score="0" />
+          <result id="3" score="" />
+          <result id="4" score="1" />
+          <result id="5" score="0" />
+          <result id="6" score="0" />
+          <result id="7" score="2" />
+          <result id="8" score="1" />
+        </fencer>
+        <fencer name="KAYE Guinevere" affiliation="BATH SWORD" fencerid="9" hs="21" id="4" ind="-5" pl="6" vm="3/7">
+          <result id="1" score="3" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="" />
+          <result id="5" score="2" />
+          <result id="6" score="V" />
+          <result id="7" score="1" />
+          <result id="8" score="0" />
+        </fencer>
+        <fencer name="RAYMENT Sophie" affiliation="MX FENCING" fencerid="6" hs="28" id="5" ind="8" pl="4" vm="5/7">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="1" />
+          <result id="8" score="2" />
+        </fencer>
+        <fencer name="BAYRAMOVA Varvara" affiliation="LEICESTER" fencerid="15" hs="31" id="6" ind="8" pl="3" vm="5/7">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="2" />
+          <result id="5" score="4" />
+          <result id="6" score="" />
+          <result id="7" score="V" />
+          <result id="8" score="V" />
+        </fencer>
+        <fencer name="LIU Zara" affiliation="MARSHALL FENCING" fencerid="8" hs="34" id="7" ind="19" pl="1" vm="6/7">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="4" />
+          <result id="7" score="" />
+          <result id="8" score="V" />
+        </fencer>
+        <fencer name="ABRAM-MOORE Bea" affiliation="TRURO" fencerid="18" hs="33" id="8" ind="19" pl="2" vm="5/7">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="V" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="4" />
+          <result id="7" score="4" />
+          <result id="8" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+    <pool heure="0:00" number="2" piste="22" size="7">
+      <fencers count="7">
+        <fencer name="HIBOU Josephine" affiliation="ESCRIME ACADEMY" fencerid="11" hs="23" id="1" ind="0" pl="5" vm="2/6">
+          <result id="1" score="" />
+          <result id="2" score="V" />
+          <result id="3" score="3" />
+          <result id="4" score="V" />
+          <result id="5" score="4" />
+          <result id="6" score="3" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="BULLMAN Evie" affiliation="PAUL DAVIS FENCING" fencerid="14" hs="14" id="2" ind="-14" pl="7" vm="1/6">
+          <result id="1" score="1" />
+          <result id="2" score="" />
+          <result id="3" score="2" />
+          <result id="4" score="1" />
+          <result id="5" score="1" />
+          <result id="6" score="4" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" fencerid="4" hs="30" id="3" ind="14" pl="1" vm="6/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="V" />
+        </fencer>
+        <fencer name="DIEU Carla" affiliation="ESCRIME ACADEMY" fencerid="12" hs="19" id="4" ind="-4" pl="6" vm="2/6">
+          <result id="1" score="2" />
+          <result id="2" score="V" />
+          <result id="3" score="1" />
+          <result id="4" score="" />
+          <result id="5" score="V" />
+          <result id="6" score="3" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="KAROUZIS Gabriella" affiliation="PAUL DAVIS FENCING" fencerid="10" hs="22" id="5" ind="2" pl="3" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="2" />
+          <result id="4" score="2" />
+          <result id="5" score="" />
+          <result id="6" score="V" />
+          <result id="7" score="3" />
+        </fencer>
+        <fencer name="BARROW Daisy" affiliation="BATH SWORD" fencerid="16" hs="20" id="6" ind="-5" pl="4" vm="3/6">
+          <result id="1" score="V" />
+          <result id="2" score="V" />
+          <result id="3" score="4" />
+          <result id="4" score="V" />
+          <result id="5" score="0" />
+          <result id="6" score="" />
+          <result id="7" score="1" />
+        </fencer>
+        <fencer name="SAUNDERS Nicole" affiliation="MARSHALL FENCING" fencerid="5" hs="27" id="7" ind="7" pl="2" vm="4/6">
+          <result id="1" score="V" />
+          <result id="2" score="3" />
+          <result id="3" score="4" />
+          <result id="4" score="V" />
+          <result id="5" score="V" />
+          <result id="6" score="V" />
+          <result id="7" score="" />
+        </fencer>
+      </fencers>
+    </pool>
+  </pools>
+  <tableau name="A16" count="8" title="tableau of 16">
+    <match number="1" piste="21" score="" time="" winnerid="4" winnername="SPARKES Tegen">
+      <fencerA name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" category="C" id="4" seed="1" />
+      <fencerB name="" affiliation="" category="" id="nobody" seed="16" />
+    </match>
+    <match number="2" piste="21" score="9 / 10" time="0:00" winnerid="16" winnername="BARROW Daisy">
+      <fencerA name="BANHAM Lauren" affiliation="PAUL DAVIS FENCING" category="C" id="17" seed="9" />
+      <fencerB name="BARROW Daisy" affiliation="BATH SWORD" category="U13" id="16" seed="8" />
+    </match>
+    <match number="3" piste="21" score="10 / 3" time="0:00" winnerid="6" winnername="RAYMENT Sophie">
+      <fencerA name="RAYMENT Sophie" affiliation="MX FENCING" category="C" id="6" seed="5" />
+      <fencerB name="DIEU Carla" affiliation="ESCRIME ACADEMY" category="U13" id="12" seed="12" />
+    </match>
+    <match number="4" piste="21" score="1 / 10" time="0:00" winnerid="15" winnername="BAYRAMOVA Varvara">
+      <fencerA name="BULLMAN Evie" affiliation="PAUL DAVIS FENCING" category="U13" id="14" seed="13" />
+      <fencerB name="BAYRAMOVA Varvara" affiliation="LEICESTER" category="C" id="15" seed="4" />
+    </match>
+    <match number="5" piste="22" score="10 / 3" time="0:00" winnerid="18" winnername="ABRAM-MOORE Bea">
+      <fencerA name="ABRAM-MOORE Bea" affiliation="TRURO" category="C" id="18" seed="3" />
+      <fencerB name="VON POSERN Josephine" affiliation="ESCRIME ACADEMY" category="U13" id="2" seed="14" />
+    </match>
+    <match number="6" piste="22" score="9 / 10" time="0:00" winnerid="5" winnername="SAUNDERS Nicole">
+      <fencerA name="HIBOU Josephine" affiliation="ESCRIME ACADEMY" category="U13" id="11" seed="11" />
+      <fencerB name="SAUNDERS Nicole" affiliation="MARSHALL FENCING" category="U13" id="5" seed="6" />
+    </match>
+    <match number="7" piste="22" score="10 / 8" time="0:00" winnerid="10" winnername="KAROUZIS Gabriella">
+      <fencerA name="KAROUZIS Gabriella" affiliation="PAUL DAVIS FENCING" category="U13" id="10" seed="7" />
+      <fencerB name="KAYE Guinevere" affiliation="BATH SWORD" category="U13" id="9" seed="10" />
+    </match>
+    <match number="8" piste="22" score="6 / 10" time="0:00" winnerid="8" winnername="LIU Zara">
+      <fencerA name="DERRIEN Margot" affiliation="ESCRIME ACADEMY" category="U13" id="13" seed="15" />
+      <fencerB name="LIU Zara" affiliation="MARSHALL FENCING" category="C" id="8" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A2" count="1" title="final">
+    <match number="1" piste="33" score="9 / 10" time="0:00" winnerid="8" winnername="LIU Zara">
+      <fencerA name="BAYRAMOVA Varvara" affiliation="LEICESTER" category="C" id="15" seed="1" />
+      <fencerB name="LIU Zara" affiliation="MARSHALL FENCING" category="C" id="8" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A4" count="2" title="semi-finals">
+    <match number="1" piste="30" score="5 / 10" time="0:00" winnerid="15" winnername="BAYRAMOVA Varvara">
+      <fencerA name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" category="C" id="4" seed="1" />
+      <fencerB name="BAYRAMOVA Varvara" affiliation="LEICESTER" category="C" id="15" seed="4" />
+    </match>
+    <match number="2" piste="31" score="6 / 10" time="0:00" winnerid="8" winnername="LIU Zara">
+      <fencerA name="ABRAM-MOORE Bea" affiliation="TRURO" category="C" id="18" seed="3" />
+      <fencerB name="LIU Zara" affiliation="MARSHALL FENCING" category="C" id="8" seed="2" />
+    </match>
+  </tableau>
+  <tableau name="A8" count="4" title="quarter-finals">
+    <match number="1" piste="21" score="10 / 7" time="0:00" winnerid="4" winnername="SPARKES Tegen">
+      <fencerA name="SPARKES Tegen" affiliation="HEADINGTON SCHOOL" category="C" id="4" seed="1" />
+      <fencerB name="BARROW Daisy" affiliation="BATH SWORD" category="U13" id="16" seed="8" />
+    </match>
+    <match number="2" piste="21" score="8 / 10" time="0:00" winnerid="15" winnername="BAYRAMOVA Varvara">
+      <fencerA name="RAYMENT Sophie" affiliation="MX FENCING" category="C" id="6" seed="5" />
+      <fencerB name="BAYRAMOVA Varvara" affiliation="LEICESTER" category="C" id="15" seed="4" />
+    </match>
+    <match number="3" piste="22" score="10 / 3" time="0:00" winnerid="18" winnername="ABRAM-MOORE Bea">
+      <fencerA name="ABRAM-MOORE Bea" affiliation="TRURO" category="C" id="18" seed="3" />
+      <fencerB name="SAUNDERS Nicole" affiliation="MARSHALL FENCING" category="U13" id="5" seed="6" />
+    </match>
+    <match number="4" piste="22" score="9 / 10" time="0:00" winnerid="8" winnername="LIU Zara">
+      <fencerA name="KAROUZIS Gabriella" affiliation="PAUL DAVIS FENCING" category="U13" id="10" seed="7" />
+      <fencerB name="LIU Zara" affiliation="MARSHALL FENCING" category="C" id="8" seed="2" />
+    </match>
+  </tableau>
+</competition>

@@ -1,81 +1,66 @@
 <?xml version="1.0"?>
-<config allowunpaid="false"
-        checkintimeout="60000"
+<config allowunpaid="true"
+        checkintimeout="100000"
         debug="1"
         log="./out.txt"
         nif="false"
         restrictIP="false"
         statusTimeout="40000"
-        targetlocation="C:/Users/peter/Documents/Insync/prs2712@gmail.com/escrime/eng-live/web"
-        title="Competition Admin Portal"
-        tournamentname="EYC 2013">
+        targetlocation="/home/engarde/live/web"
+        title="DB Admin Portal"
+        tournamentname="EYC 2016">
   <competition id="1"
-               background="FF0000"
+               background="blue"
                enabled="true"
                nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 1"
-               state="check-in" />
+               source="/home/engarde/public/data/current/mf2006"
+               state="active"
+               titre_ligne="Men's Foil" />
   <competition id="2"
-               background="FF0000"
+               background="chartreuse"
                enabled="true"
                nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\BIFT\Womens Epee"
-               state="active" />
-  <competition id="3"
-               background="FF0000"
-               enabled="true"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\BIFT\Womens Sabre"
-               state="active" />
-  <competition id="4"
-               background="cyan"
-               enabled="true"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 2"
-               state="active" />
-  <competition id="5"
-               background="darkgreen"
-               enabled="true"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 3"
-               state="active" />
-  <competition id="6"
-               background="deeppink"
-               enabled="false"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 4"
-               state="active" />
-  <competition id="7"
-               background="dodgerblue"
-               enabled="false"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\Stage 4a"
-               state="active" />
-  <competition id="8"
-               background="gold"
-               enabled="true"
-               nif="0"
-               source="C:\Users\Peter\Documents\Insync\prs2712@gmail.com\escrime\data\examples\ME03"
-               state="active" />
-  <controlIP>172.20.30.10</controlIP>
-  <controlIP>172.20.30.11</controlIP>
-  <controlIP>172.20.30.12</controlIP>
-  <controlIP>172.20.30.13</controlIP>
-  <controlIP>172.20.30.14</controlIP>
-  <controlIP>172.20.30.15</controlIP>
-  <controlIP>172.20.30.16</controlIP>
-  <controlIP>172.20.30.17</controlIP>
-  <controlIP>172.20.30.18</controlIP>
-  <series id="1" />
-  <series id="10" />
-  <series id="11" />
-  <series id="12" />
-  <series id="2" />
-  <series id="3" />
-  <series id="4" />
-  <series id="5" />
-  <series id="6" />
-  <series id="7" />
-  <series id="8" />
-  <series id="9" />
+               source="/home/engarde/public/data/current/EYC2016/Epee/EYC Girls U11 Epee"
+               state="active"
+               titre_ligne="Girls Under 11 Epee - EYC" />
+  <series id="1">
+  </series>
+  <series id="10">
+  </series>
+  <series id="11">
+    <competition>1</competition>
+  </series>
+  <series id="12">
+    <competition>2</competition>
+  </series>
+  <series id="13">
+  </series>
+  <series id="14">
+    <competition>1</competition>
+    <competition>2</competition>
+  </series>
+  <series id="2">
+    <competition>1</competition>
+  </series>
+  <series id="3">
+    <competition>1</competition>
+  </series>
+  <series id="4">
+    <competition>2</competition>
+  </series>
+  <series id="5">
+    <competition>1</competition>
+  </series>
+  <series id="6">
+  </series>
+  <series id="7">
+    <competition>1</competition>
+    <competition>2</competition>
+  </series>
+  <series id="8">
+    <competition>1</competition>
+  </series>
+  <series id="9">
+    <competition>2</competition>
+  </series>
 </config>

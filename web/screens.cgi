@@ -4,7 +4,6 @@
 # but refresh method means there will be no prior pages in history so no problem
 
 use lib '/home/engarde/lib';
-use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
 # use Engarde;
 use Engarde::Control;
@@ -25,6 +24,11 @@ if (param())
 		# Update series config
 		################################################################################################
 		if ($action eq "update") { weapon_series_update($weaponPath); last SWITCH;}
+		
+		################################################################################################
+		# Update series config via ajax
+		################################################################################################
+		if ($action eq "ajax") { weapon_series_update_ajax($weaponPath); last SWITCH;}
 		
 		################################################################################################
 		# Delete a comp

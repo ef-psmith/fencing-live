@@ -4,10 +4,9 @@
 # but refresh method means there will be no prior pages in history so no problem
 
 use lib '/home/engarde/lib';
-use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
 # use Engarde;
-use Engarde::Control;
+use DT::Control;
 use CGI qw(:standard *table -no_xhtml);
 use strict;
 

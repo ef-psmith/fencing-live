@@ -1,8 +1,6 @@
 #file:startup.pl
 
-use lib '/home/engarde/lib';
-use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
-
+use lib qw(/home/engarde/lib /home/engarde/perl5/lib/perl5);
 
 use ModPerl::Util (); #for CORE::GLOBAL::exit
   

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<config allowunpaid="true"
+        checkintimeout="100000"
+        debug="1"
+        ftapikey="XXXXX"
+        ftserver="192.168.56.101"
+        log="./out.txt"
+        nif="false"
+        restrictIP="false"
+        statusTimeout="40000"
+        targetlocation="/home/engarde/live/web"
+        title="Admin Portal"
+        tournamentname="This isnt used any more">
+  <competition id="1"
+               background="blue"
+               enabled="true"
+               nif="0"
+               source="/home/engarde/public/data/current/mf2006"
+               state="active"
+               titre_ligne="Men's Foil"
+               type="engarde" />
+  <competition id="2"
+               background="chartreuse"
+               enabled="true"
+               nif="0"
+               source="Senior Mens Foil"
+               state="active"
+               titre_ligne="Girls Under 11 Epee - EYC"
+               type="ft" />
+  <series id="1" />
+  <series id="10" />
+  <series id="11">
+    <competition>1</competition>
+  </series>
+  <series id="12">
+    <competition>2</competition>
+  </series>
+  <series id="13" />
+  <series id="14">
+    <competition>1</competition>
+    <competition>2</competition>
+  </series>
+  <series id="2">
+    <competition>1</competition>
+  </series>
+  <series id="3">
+    <competition>1</competition>
+  </series>
+  <series id="4">
+    <competition>2</competition>
+  </series>
+  <series id="5">
+    <competition>1</competition>
+  </series>
+  <series id="6" />
+  <series id="7">
+    <competition>1</competition>
+    <competition>2</competition>
+  </series>
+  <series id="8">
+    <competition>1</competition>
+  </series>
+  <series id="9">
+    <competition>2</competition>
+  </series>
+</config>

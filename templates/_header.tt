@@ -1,0 +1,17 @@
+Content-type: text/html
+
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+	<title>[% title %]</title>
+	<link rel="stylesheet" type="text/css" href="./css/dt.css">
+	<link rel="stylesheet" type="text/css" href="./css/hint.css">
+	[% IF script %]
+	<script type="text/javascript">
+		<!-- Hide script
+		[% script %]
+		// End script hiding --></script>
+	[% END %]
+</head>
+
+<body alink="#999900" vlink="#000000" onload="" text="#000000" link="#000000">

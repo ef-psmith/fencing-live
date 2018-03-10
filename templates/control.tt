@@ -1,0 +1,72 @@
+[% INCLUDE _header.tt %]
+	<!-- Title -->
+	<table cellpadding="0" cellspacing="2" border="0">
+		<tr>
+			<td><img width="150" height="100" alt="Logo" src="./graphics/logo_small.jpg"></td> 
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+			<td><h1>[% title %]</h1></td>
+		</tr>
+	</table>
+
+	<!-- START main content table -->
+	<br>
+	[% USE Dumper %]
+	<table border=1 cellspacing=0 cellpadding=4>
+		<tr>
+			<td></td>
+			<th>Type</th>
+			<th colspan=3 align=left >Status</th>
+			<th colspan=3 align=left>Actions</th>
+		</tr>
+		<!-- START competition loop -->
+		[% FOREACH id IN data.competition.keys.nsort %]
+		<tr>
+			<th align=left>[% id %] - [% data.competition.$id.titre_ligne %]<br><font color='grey' size=1>[% data.competition.$id.source %]</font></th>
+			<td>[% data.competition.$id.type %]</td>
+			<td><img src=[% IF data.competition.$id.lockstat %]'./graphics/unlock-small.png'[% ELSE %]'./graphics/lock-small.png'[% END %]/></td> 
+			<td>[% data.competition.$id.where %]</td>
+			<td>
+				<!-- START pistes loop -->
+				[% FOREACH piste IN data.competition.$id.matchlist.keys.sort %]
+				[% p = data.competition.$id.matchlist.$piste %]
+				<table class="table1">
+					<tr>
+						<th data-hint="[% p.total_matches %] bouts, [% p.unfinished_matches %] unfinished. Start: [% p.start_time %], End: [% p.end_time %]" 
+								class="hint--bottom hint--rounded hint--info [% IF p.status == "late" %]late[% END %]">
+							<font size=+1><b>[% piste %]</b></font>
+						</th>
+							<!-- START match loop --> 
+							[% FOREACH tab IN p.keys.sort %]
+							[% t = p.$tab %]
+								<!-- [% Dumper.dump(t) %] -->
+								[% FOREACH match IN t.keys.sort %]
+								[% NEXT IF t.$match.winnerid %]
+								[% NEXT UNLESS t.$match.fencerA %]
+								[% NEXT UNLESS t.$match.fencerB %]
+								[% hint = t.$match.fencerA_court _ " -v- " _ t.$match.fencerB_court %]
+								<td class='hint--bottom hint--rounded hint--info' data-hint="[% hint %]">[% t.$match.num %]</td>
+								[% END %]
+							[% END %]
+							<!-- END match loop --> 
+					</tr>
+					<tr></tr>
+				</table>
+				[% END %]
+				<!-- END pistes loop -->
+			</td>
+			
+			<!-- Pause -->
+			<!-- IF here -->
+			<td><a href="http://localhost:8000/status.cgi?wp=[% id %]&Action=pause"><img src='./graphics/pause.png' /></a></td>
+	
+			<!-- Link to XML -->
+			<td><a href="/competitions/[% id %].xml" target="_new"><img src='./graphics/xml.png' /></a></td>
+		</tr>
+		[% END %]
+		<!-- END competition loop -->
+
+	</table>
+
+	<!-- END of main content table -->
+	
+[% INCLUDE _footer.tt %]

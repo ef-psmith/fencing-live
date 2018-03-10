@@ -6,7 +6,7 @@
 use lib '/home/engarde/lib';
 
 # use Engarde;
-use Engarde::Control;
+use DT::Control;
 use CGI::Pretty qw(:standard *table -no_xhtml);
 use Data::Dumper;
 

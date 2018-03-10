@@ -1,0 +1,6 @@
+[% USE Dumper %]
+[% FOR i IN data.keys %]
+[% i %]
+[% Dumper.dump(data.$i) %]
+****
+[% END %]

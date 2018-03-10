@@ -1,17 +1,15 @@
-#!/opt/bin/perl -w
-#
-
-use strict;
+#!/opt/bin/perl
+use 5.018;
+use warnings;
 use lib '/home/engarde/lib';
-use lib 'C:/Users/psmith/Documents/prs2712@gmail.com/escrime/eng-perl';
 
-use Engarde;
-use Engarde::Control;
+#use Engarde;
+use DT::Control;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser cluck);
 use CGI::Pretty qw(:standard *table -no_xhtml);
 
 
-use strict;
+#use strict;
 #use diagnostics;
 
 use Data::Dumper;

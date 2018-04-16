@@ -70,7 +70,7 @@ while (1)
 {
 	my $config = config_read();
 
-	TRACE( sub { Dumper($config) } );
+	#TRACE( sub { Dumper($config) } );
 	
 	my $comps = $config->{competition};
 	
@@ -106,6 +106,8 @@ while (1)
 		$c->{cid} = $cid;
 		
 		do_comp($c, $cid, $config);
+
+		undef $c;
 	}
 		
 	INFO("loop finished");
@@ -124,8 +126,11 @@ while (1)
 	}
 	else
 	{
-		exit;
+		#exit;
 	}
+
+
+	sleep 60;
 }
 
 
@@ -185,8 +190,10 @@ sub do_comp
 
 	$list->{entry} = $c->entry_list;
 
+	#TRACE( sub { Dumper(\$list) });
+
 	# $list->{entry}->{nif} = $nif;
-	push @{$out->{lists}}, $list;
+	#push @{$out->{lists}}, $list;
 	
 	# poules are needed for anything other than debut now
 	if ($where ne "debut" && ${$c->nombre_poules}[0])
@@ -208,12 +215,12 @@ sub do_comp
 	if ($where =~ /poules/)
 	{
 		my @lout;
-		my $list = {};
+		my $plist = {};
 
 		if (ref $c eq "FencingTime::Event")
 		{
 			$list->{fpp} = $c->fpp;
-			push @{$out->{lists}}, $list;
+			# push @{$out->{lists}}, $list;
 
 			# @lout = $c->fpp;
 		}
@@ -226,39 +233,37 @@ sub do_comp
 			$list->{fpp}->{count} = @lout;
 			# $list->{fpp}->{round} = $where[1];
 		}
+	}
 
+
+	if ($where =~ /tableau/ || $where eq "termine" || $where =~ /finished/ )
+	{
 		# push the ranking after the pools 
 		my $fencers = $c->ranking("p");
 
-		@lout = do_ranking_list($fencers, $aff);
+		my @rlout = do_ranking_list($fencers, $aff);
 
-		$list->{ranking}->{fencer} = [@lout];
-		$list->{ranking}->{count} = @lout;
+		# TRACE( sub { Dumper(\@rlout) });
+
+		$list->{ranking}->{fencer} = [@rlout];
+		$list->{ranking}->{count} = @rlout;
 		$list->{ranking}->{type} = "pools";
 		push @{$out->{lists}}, $list;
 	
-	}
 
-	DEBUG("where = $where");
-
-	if ($where =~ /tableau/ || $where eq "termine")
-	{
 		$out->{tableau} = $c->tableau_with_matches($where);
 
 		push @{$out->{lists}}, do_final_list($c, $nif);
 
-		# push the ranking after the pools 
-		my $fencers = $c->ranking("p");
+		# my $fencers = $c->ranking();
 
-		my @lout = do_ranking_list($fencers, $aff);
-		my $list = {};
+		#my @lout = do_ranking_list($fencers, $aff);
+		#my $rlist = {};
 
-		$list->{ranking}->{fencer} = [@lout];
-		$list->{ranking}->{count} = @lout;
-		$list->{ranking}->{type} = "pools";
-		push @{$out->{lists}}, $list;
-		ERROR( sub { Dumper($out->{tableau}) } );
-		ERROR("***********************");
+		#$rlist->{ranking}->{fencer} = [@lout];
+		#$rlist->{ranking}->{count} = @lout;
+		#$rlist->{ranking}->{type} = "final";
+		# push @{$out->{lists}}, $rlist;
 	}
 	
 	my $wh = do_where($c);
@@ -272,6 +277,8 @@ sub do_comp
 	DEBUG("outfile = $outfile");
 
 	# print STDERR "do_comp: out = " . Dumper(\$out);
+
+	# TRACE( sub { Dumper(\$out) });
 
 	XMLout($out, SuppressEmpty => undef, RootName=>"competition", OutputFile => $outfile . ".tmp");
 	rename($outfile . ".tmp", $outfile);
@@ -307,7 +314,7 @@ sub do_fpp_list
 
 	my $fencers = $c->fpp;
 
-	DEBUG( sub {  Dumper(\$fencers) });
+	# DEBUG( sub {  Dumper(\$fencers) });
 
 	my $sequence=1;
 
@@ -361,6 +368,8 @@ sub do_ranking_list
 			$aff_value = $fencers->{$fid}->{club} || 'U/A';
 		}
 
+		# TRACE( sub { Dumper($fencers->{$fid}) });
+
 		push @lout, {	name => $fencers->{$fid}->{nom_court}, 
 						affiliation => substr($aff_value,0,16),
 						elimround => $fencers->{$fid}->{group} || 'elim_none', 	
@@ -374,6 +383,7 @@ sub do_ranking_list
 						sequence => $sequence};
 		$sequence++;
 	}
+
 	return @lout;
 }
 
@@ -400,8 +410,9 @@ sub do_final_list
 	#######################################################
 				
 	$fencers = $c->ranking();
+
 				
-	DEBUG( sub { Dumper(\$fencers) } );
+	# DEBUG( sub { Dumper(\$fencers) } );
 			
 	my $sequence = 1;
 	
@@ -431,7 +442,8 @@ sub do_final_list
 	$list->{ranking}->{fencer} = [@lout];
 	$list->{ranking}->{count} = @lout;
 	$list->{ranking}->{type} = "final";
-	 
+	
+	# TRACE( sub { Dumper(\$list) }); 
 	return $list;
 }
 
@@ -453,13 +465,13 @@ sub do_where
 	{
 		my @matches = @{$t->{match}};
 	
-		DEBUG(sub {Dumper(\@matches)});	
+		# DEBUG(sub {Dumper(\@matches)});	
 
 		INFO("entering foreach loop");
 
 		foreach my $m (@matches)
 		{
-			WARN( sub { Dumper(\$m) } );
+			# WARN( sub { Dumper(\$m) } );
 			next if $m->{winnerid} > 0;
 
 			$m->{piste} = 'TBD' if $m->{piste} eq "-1";
@@ -499,7 +511,7 @@ sub do_where
 	$out->{where}->{fencer} = [@list];
 	$out->{where}->{count} = @list;
 	
-	DEBUG( sub { Dumper(\$out) } );
+	# DEBUG( sub { Dumper(\$out) } );
 
 	$out;
 }

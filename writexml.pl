@@ -76,7 +76,8 @@ while (1)
 	
 	$comps = {} unless ref $comps eq "HASH";
 
-	my $ft = FencingTime->instance({ host => $config->{ftserver} }) if $config->{ftserver};
+	# my $ft = FencingTime->instance({ host => $config->{ftserver} }) if $config->{ftserver};
+	my $ft;
 
 	# generate the data
 	

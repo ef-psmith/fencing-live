@@ -8,7 +8,7 @@ use Engarde::Control;
 use Data::Dumper;
 
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser cluck);
-use CGI::Pretty qw(:standard *table -no_xhtml);
+use CGI qw(:standard *table -no_xhtml);
 
 if (param()) 
 {  

@@ -76,8 +76,8 @@ while (1)
 	
 	$comps = {} unless ref $comps eq "HASH";
 
-	# my $ft = FencingTime->instance({ host => $config->{ftserver} }) if $config->{ftserver};
-	my $ft;
+	my $ft = FencingTime->instance({ host => $config->{ftserver} }) if $config->{ftserver};
+	#my $ft;
 
 	# generate the data
 	
@@ -99,7 +99,7 @@ while (1)
 		else
 		{
 			TRACE("type = ft");
-			$c = $ft->tournament($config->{tournamentname})->event($comps->{$cid}->{source});
+			$c = $ft->event($comps->{$cid}->{source});
 		}
 
 		next unless $c;
@@ -127,7 +127,7 @@ while (1)
 	}
 	else
 	{
-		#exit;
+		exit;
 	}
 
 
@@ -191,7 +191,7 @@ sub do_comp
 
 	$list->{entry} = $c->entry_list;
 
-	#TRACE( sub { Dumper(\$list) });
+	# TRACE( sub { Dumper(\$list) });
 
 	# $list->{entry}->{nif} = $nif;
 	#push @{$out->{lists}}, $list;
@@ -221,7 +221,7 @@ sub do_comp
 		if (ref $c eq "FencingTime::Event")
 		{
 			$list->{fpp} = $c->fpp;
-			# push @{$out->{lists}}, $list;
+			push @{$out->{lists}}, $list;
 
 			# @lout = $c->fpp;
 		}
@@ -249,7 +249,7 @@ sub do_comp
 		$list->{ranking}->{fencer} = [@rlout];
 		$list->{ranking}->{count} = @rlout;
 		$list->{ranking}->{type} = "pools";
-		push @{$out->{lists}}, $list;
+		# push @{$out->{lists}}, $list;
 	
 
 		$out->{tableau} = $c->tableau_with_matches($where);
@@ -279,7 +279,7 @@ sub do_comp
 
 	# print STDERR "do_comp: out = " . Dumper(\$out);
 
-	# TRACE( sub { Dumper(\$out) });
+	#TRACE( sub { Dumper(\$out) });
 
 	XMLout($out, SuppressEmpty => undef, RootName=>"competition", OutputFile => $outfile . ".tmp");
 	rename($outfile . ".tmp", $outfile);
@@ -374,7 +374,7 @@ sub do_ranking_list
 		push @lout, {	name => $fencers->{$fid}->{nom_court}, 
 						affiliation => substr($aff_value,0,16),
 						elimround => $fencers->{$fid}->{group} || 'elim_none', 	
-						position => $fencers->{$fid}->{seed} || '',
+						position => $fencers->{$fid}->{place} || '',
 						id => $fid || '', 
 						vm => $fencers->{$fid}->{vm},
 						hs => $fencers->{$fid}->{hs},
@@ -412,13 +412,15 @@ sub do_final_list
 				
 	$fencers = $c->ranking();
 
-				
-	# DEBUG( sub { Dumper(\$fencers) } );
-			
+	DEBUG( sub { Dumper(\$fencers) } );
+	TRACE ("*****************************");
+
 	my $sequence = 1;
 	
 	foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
 	{
+		TRACE( sub { "fid = $fid " . Dumper($fencers->{$fid}) });
+
 		my $aff_value;
 		if ($aff eq "nation")
 		{
@@ -431,7 +433,7 @@ sub do_final_list
 
 		push @lout, {	name => $fencers->{$fid}->{nom}, 
 				affiliation => $aff_value,
-				position => $fencers->{$fid}->{seed} || '', 	
+				position => $fencers->{$fid}->{place} || '', 	
 				elimround => $fencers->{$fid}->{group} || 'elim_none', 	
 				id => $fid || '',
 				# category => $fencers->{$fid}->{category} || '',

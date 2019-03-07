@@ -53,12 +53,12 @@ no warnings 'io';
 my $runonce = shift || 0;
 
 
-unless ($^O =~ /MSWin32/ || $runonce)
-{
-	eval { use App::Daemon qw(detach) }; 
-	$App::Daemon::as_user = "engarde";
-	detach();
-}
+#unless ($^O =~ /MSWin32/ || $runonce)
+#{
+#	eval { use App::Daemon qw(detach) }; 
+#	$App::Daemon::as_user = "engarde";
+#	detach();
+#}
 
 # save original file handles
 # open(OLDOUT, ">&STDOUT");
@@ -76,13 +76,13 @@ while (1)
 	
 	$comps = {} unless ref $comps eq "HASH";
 
-	my $ft = FencingTime->instance({ host => $config->{ftserver} }) if $config->{ftserver};
+	my $ft = FencingTime->instance({ host => $config->{ftserver}, timeout=> 15 }) if $config->{ftserver};
 
 	# generate the data
 	
 	foreach my $cid ( sort keys %$comps)
 	{
-		next unless $comps->{$cid}->{enabled} eq "true";	
+		next unless $comps->{$cid}->{enabled} && $comps->{$cid}->{enabled} eq "true";	
 	
 		# don't regenerate this one if we are paused
 		next if $comps->{$cid}->{hold};
@@ -99,6 +99,7 @@ while (1)
 		{
 			TRACE("type = ft");
 			$c = $ft->tournament($config->{tournamentname})->event($comps->{$cid}->{source});
+			TRACE("blah");
 		}
 
 		next unless $c;
@@ -120,7 +121,7 @@ while (1)
 		# open(STDERR, ">&OLDERR");
 		# open(STDOUT, ">&OLDOUT");
 
-		sleep 60;
+		sleep 30;
 	}
 	else
 	{
@@ -184,6 +185,8 @@ sub do_comp
 	my $list = {};	
 
 	$list->{entry} = $c->entry_list;
+
+	# TRACE( sub { Dumper(\$list) } );
 
 	# $list->{entry}->{nif} = $nif;
 	push @{$out->{lists}}, $list;
@@ -269,7 +272,7 @@ sub do_comp
 	
 	my $outfile = $location . "/competitions/" . $cid . ".xml";
 
-	DEBUG("outfile = $outfile");
+	# DEBUG("outfile = $outfile");
 
 	# print STDERR "do_comp: out = " . Dumper(\$out);
 
@@ -453,13 +456,13 @@ sub do_where
 	{
 		my @matches = @{$t->{match}};
 	
-		DEBUG(sub {Dumper(\@matches)});	
+		#DEBUG(sub {Dumper(\@matches)});	
 
-		INFO("entering foreach loop");
+		#INFO("entering foreach loop");
 
 		foreach my $m (@matches)
 		{
-			WARN( sub { Dumper(\$m) } );
+			# WARN( sub { Dumper(\$m) } );
 			next if $m->{winnerid} > 0;
 
 			$m->{piste} = 'TBD' if $m->{piste} eq "-1";
@@ -489,7 +492,7 @@ sub do_where
 			}
 		}
 
-		INFO("after foreach loop");
+		#INFO("after foreach loop");
 	}
 
 	my $sequence = 1;
@@ -499,7 +502,7 @@ sub do_where
 	$out->{where}->{fencer} = [@list];
 	$out->{where}->{count} = @list;
 	
-	DEBUG( sub { Dumper(\$out) } );
+	# DEBUG( sub { Dumper(\$out) } );
 
 	$out;
 }
@@ -524,6 +527,8 @@ sub want
 	my $what = shift;
 
 	my $where = $c->whereami;
+
+	TRACE ( $where );
 
 	if ($what eq "where")
 	{

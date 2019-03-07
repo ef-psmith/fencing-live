@@ -6,6 +6,7 @@
 				<td><a href='status.cgi'>Status / Control</a></td>
 				<td><a href='screens.cgi'>Screen Configuration</a></td>
 				<td><a href='config.cgi'>General Configuration</a></td>
+				<td><a href='/out.txt'>Log File </a></td>
 			</tr>
 		</table>
 	</div>

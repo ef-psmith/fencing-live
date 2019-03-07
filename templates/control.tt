@@ -1,15 +1,4 @@
 [% INCLUDE _header.tt %]
-	<!-- Title -->
-	<table cellpadding="0" cellspacing="2" border="0">
-		<tr>
-			<td><img width="150" height="100" alt="Logo" src="./graphics/logo_small.jpg"></td> 
-			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-			<td><h1>[% title %]</h1></td>
-		</tr>
-	</table>
-
-	<!-- START main content table -->
-	<br>
 	[% USE Dumper %]
 	<table border=1 cellspacing=0 cellpadding=4>
 		<tr>
@@ -57,7 +46,7 @@
 			
 			<!-- Pause -->
 			<!-- IF here -->
-			<td><a href="http://localhost:8000/status.cgi?wp=[% id %]&Action=pause"><img src='./graphics/pause.png' /></a></td>
+			<td><a href="/status.cgi?wp=[% id %]&Action=pause"><img src='./graphics/pause.png' /></a></td>
 	
 			<!-- Link to XML -->
 			<td><a href="/competitions/[% id %].xml" target="_new"><img src='./graphics/xml.png' /></a></td>

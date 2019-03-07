@@ -111,6 +111,7 @@ div.vlist_ranking2
 	right:	10px;
 	margin: 20px 20px 20px 20px;
 	width: 49%;
+	opacity: 0.75;
 }
 
 div.pvlist
@@ -136,6 +137,21 @@ body {
 	font-size: 1.0em; 
 	padding: 0px; 
 	margin: 0px; 
+}
+
+body::after {
+	content: "";
+	background: url(../graphics/background.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto 80%;
+	opacity: 0.25;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
 }
 
 div.half, div.quarter  { 
@@ -384,14 +400,14 @@ span.col_poule {
    vertical-align: bottom;
    height: 100%;
    width: 2em;
-   right:2em;
+   right: 4em;
    position: absolute;
 }
 span.col_piste {
    text-align: right; 
    vertical-align: bottom;
    height: 100%;
-   width: 2em;
+   width: 3em;
    right:0em;
    position: absolute;
 }
@@ -477,7 +493,8 @@ position:absolute;
 
 
 .fencer_country, .init_rank, .vlist_piste, .vlist_poule, .vlist_round, .vlist_time {
-	width: 5%;
+	/* width: 8%; */
+	width: 3em;
 	text-align: right;
 	font-size: 0.8em;
 	overflow: hidden;

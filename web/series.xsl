@@ -146,7 +146,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <!-- Where am I list
 	Appears when tableau are drawn and through to the finals -->
    
-<xsl:template match="lists[@name='where' and starts-with(../@stage, 'tableau') and ( ../lists[@name='entry']/@count - ../lists[@name='ranking' and @type='final']/@count &gt; 8)]" >
+<!-- <xsl:template match="lists[@name='where' and starts-with(../@stage, 'tableau') and ( ../lists[@name='entry']/@count - ../lists[@name='ranking' and @type='final']/@count &gt; 8)]" > -->
+
+<xsl:template match="lists[@name='where' and starts-with(../@stage, 'tableau') and (../tableau[@name=substring-after(../@stage,'tableau ') or @name=substring-before(substring-after(../@stage,'tableau '),' ')]/@count &gt; 4)]" >
 <topdiv class="vlist2" name="topdiv" id="vlistid2">
 
 	<!-- This is the list of pages to scroll through -->

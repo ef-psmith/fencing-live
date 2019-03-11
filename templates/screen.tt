@@ -1,0 +1,117 @@
+
+[% INCLUDE _header.tt %]
+[% USE Dumper %]
+	
+<script>$(document).ready(function(){
+		$(".go").click(function(e) {
+    		e.preventDefault();
+
+			var row = $(this).closest("tr");
+			var checked = row.find("input[name=screens]").serialize();
+			var wp = row.find("input[name=wp]").val();
+			var message = row.find("input[name=message]").val();
+
+    		$.ajax({
+       			type: "POST",
+        		url: "/screens.cgi",
+        		data: { 
+					Action: "ajax",
+					s: checked,
+            		wp: wp, 
+					message: message,
+        		},
+        		success: function(result) {
+            		// alert(result);
+					$(row).fadeTo(200, 0.3, function() { $(this).fadeTo(500, 1.0); });
+        		},
+        		error: function(a, b, c) {
+            	 	// alert('error');
+					// alert(a);
+					// alert(b);
+					alert(c);
+        		}
+    		});
+		});
+	});</script>
+
+<br>
+
+<fieldset><legend>Screen Configuration</legend>
+<br>
+
+<table border=1 cellspacing=0 cellpadding=4 width=1080>
+	<tr>
+		<th align=left rowspan=2 colspan=2>Competition</th></th>
+		<th colspan=14 align=left>Screens</th><th rowspan=2>Message</th>
+		<th rowspan=2>Save</th><th rowspan=2>Enabled?</th>
+	</tr>
+
+	<tr>
+		[% FOREACH i = [1..14] %]
+		<th><a href="/series[% i %]" target="_new">[% i %]</a></th>
+		[% END %]
+	</tr>
+
+	[% FOREACH c IN data.comps.keys.nsort %]
+
+	<form method="post" action="/screens.cgi" enctype="application/x-www-form-urlencoded" name="screens_[% c %]">
+		<input type="hidden" name="wp" value="[% c %]" />
+		<input type="hidden" name="Action" value="update" />
+
+		<tr>
+			<th align='left'>[% c %] - [% data.comps.$c.titre_ligne %]<br><font size=1>[% data.comps.$c.source %]</font></th>
+			<td>
+				<a href="http://localhost:8000/screens.cgi?wp=[% c %]&Action=delete"><img src='./graphics/red-cross-icon.png' /></a>
+			</td>
+
+			[% FOREACH s = [0..13] %]
+			<td><input type="checkbox" name="screens" value="[% s %]" [% IF data.series.$c.$s %] checked[% END %]></td>
+			[% END %]
+
+			<!-- ADD FT Message here -->
+			<td>
+				<input type="text" name="message" >
+			</td>
+
+			<td align='center'>
+				<img id="[% c %]" class='go' src="./graphics/green-disk-icon.png" />
+			</td>
+
+			<td align='center'>
+				[% IF data.comps.$c.enabled %]
+				<a href="/screens.cgi?wp=2&Action=disable"><img src='./graphics/green-document-icon.png' /></a>
+				[% ELSE %]
+				<a href="/screens.cgi?wp=2&Action=enable"><img src='./graphics/blue-document-cross-icon.png' /></a>
+				[% END %]
+			</td>
+		</tr>
+	</form>
+	[% END %]
+</table>
+</fieldset>
+
+<br>
+
+<form method="post" action="/screens.cgi" enctype="application/x-www-form-urlencoded" name="form_add">
+	<fieldset>
+		<legend>Add a Competition</legend>
+		<input type="hidden" name="Action" value="newcomp" >
+		<table border="0" cellpadding="0" cellspacing="2">
+			<tr>
+				<td>
+					<select name="newcomp" >
+						[% FOREACH c IN data.newcomps.keys.nsort %]
+						<option value="[% c %]">[% data.newcomps.$c %]</option>
+						[% END %]
+					</select>
+				</td> 
+				<td><a href='javascript: document.form_add.submit();'><img src='./graphics/green-plus-icon.png' /></a></td>
+			</tr>
+		</table>
+	</fieldset>
+</form>
+
+<br>
+
+[% INCLUDE _footer.tt %]
+

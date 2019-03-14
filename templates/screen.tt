@@ -4,33 +4,33 @@
 	
 <script>$(document).ready(function(){
 		$(".go").click(function(e) {
-    		e.preventDefault();
+			e.preventDefault();
 
 			var row = $(this).closest("tr");
 			var checked = row.find("input[name=screens]").serialize();
 			var wp = row.find("input[name=wp]").val();
 			var message = row.find("input[name=message]").val();
 
-    		$.ajax({
-       			type: "POST",
-        		url: "/screens.cgi",
-        		data: { 
+			$.ajax({
+					type: "POST",
+				url: "/screens.cgi",
+				data: { 
 					Action: "ajax",
 					s: checked,
-            		wp: wp, 
+					wp: wp, 
 					message: message,
-        		},
-        		success: function(result) {
-            		// alert(result);
+				},
+				success: function(result) {
+					// alert(result);
 					$(row).fadeTo(200, 0.3, function() { $(this).fadeTo(500, 1.0); });
-        		},
-        		error: function(a, b, c) {
-            	 	// alert('error');
+				},
+				error: function(a, b, c) {
+				 	// alert('error');
 					// alert(a);
 					// alert(b);
 					alert(c);
-        		}
-    		});
+				}
+			});
 		});
 	});</script>
 
@@ -54,38 +54,39 @@
 
 	[% FOREACH c IN data.comps.keys.nsort %]
 
-	<form method="post" action="/screens.cgi" enctype="application/x-www-form-urlencoded" name="screens_[% c %]">
-		<input type="hidden" name="wp" value="[% c %]" />
-		<input type="hidden" name="Action" value="update" />
+	<tr>
 
-		<tr>
-			<th align='left'>[% c %] - [% data.comps.$c.titre_ligne %]<br><font size=1>[% data.comps.$c.source %]</font></th>
-			<td>
-				<a href="http://localhost:8000/screens.cgi?wp=[% c %]&Action=delete"><img src='./graphics/red-cross-icon.png' /></a>
-			</td>
+		<form method="post" action="/screens.cgi" enctype="application/x-www-form-urlencoded" name="screens_[% c %]">
+			<input type="hidden" name="wp" value="[% c %]" />
+			<input type="hidden" name="Action" value="update" />
+		</form>
 
-			[% FOREACH s = [0..13] %]
-			<td><input type="checkbox" name="screens" value="[% s %]" [% IF data.series.$c.$s %] checked[% END %]></td>
+		<th align='left'>[% c %] - [% data.comps.$c.titre_ligne %]<br><font size=1>[% data.comps.$c.source %]</font></th>
+		<td>
+			<a href="/screens.cgi?wp=[% c %]&Action=delete"><img src='./graphics/red-cross-icon.png' /></a>
+		</td>
+
+		[% FOREACH s = [0..13] %]
+		<td><input type="checkbox" name="screens" value="[% s %]" [% IF data.series.$c.$s %] checked[% END %]></td>
+		[% END %]
+
+		<!-- ADD FT Message here -->
+		<td>
+			<input type="text" name="message" >
+		</td>
+
+		<td align='center'>
+			<img id="[% c %]" class='go' src="./graphics/green-disk-icon.png" />
+		</td>
+
+		<td align='center'>
+			[% IF data.comps.$c.enabled %]
+			<a href="/screens.cgi?wp=2&Action=disable"><img src='./graphics/green-document-icon.png' /></a>
+			[% ELSE %]
+			<a href="/screens.cgi?wp=2&Action=enable"><img src='./graphics/blue-document-cross-icon.png' /></a>
 			[% END %]
-
-			<!-- ADD FT Message here -->
-			<td>
-				<input type="text" name="message" >
-			</td>
-
-			<td align='center'>
-				<img id="[% c %]" class='go' src="./graphics/green-disk-icon.png" />
-			</td>
-
-			<td align='center'>
-				[% IF data.comps.$c.enabled %]
-				<a href="/screens.cgi?wp=2&Action=disable"><img src='./graphics/green-document-icon.png' /></a>
-				[% ELSE %]
-				<a href="/screens.cgi?wp=2&Action=enable"><img src='./graphics/blue-document-cross-icon.png' /></a>
-				[% END %]
-			</td>
-		</tr>
-	</form>
+		</td>
+	</tr>
 	[% END %]
 </table>
 </fieldset>

@@ -186,12 +186,12 @@ sub do_comp
 	# potential scope issue - check other $list variables	
 	# maybe remove the $list->{type} indirection?
 
-	my $list = {};	
+	my $elist = {};	
 
-	$list->{entry} = $c->entry_list;
+	$elist->{entry} = $c->entry_list;
 
 	# $list->{entry}->{nif} = $nif;
-	#push @{$out->{lists}}, $list;
+	push @{$out->{lists}}, $elist;
 	
 	# poules are needed for anything other than debut now
 	if ($where ne "debut" && ${$c->nombre_poules}[0])
@@ -217,8 +217,8 @@ sub do_comp
 
 		if (ref $c eq "FencingTime::Event")
 		{
-			$list->{fpp} = $c->fpp;
-			push @{$out->{lists}}, $list;
+			$plist->{fpp} = $c->fpp;
+			push @{$out->{lists}}, $plist;
 
 			# @lout = $c->fpp;
 		}
@@ -227,9 +227,9 @@ sub do_comp
 			# We need the fpp for the series
 			@lout = do_fpp_list($c, $aff);		
 		
-			$list->{fpp}->{fencer} = [@lout];
-			$list->{fpp}->{count} = @lout;
-			# $list->{fpp}->{round} = $where[1];
+			$plist->{fpp}->{fencer} = [@lout];
+			$plist->{fpp}->{count} = @lout;
+			# $plist->{fpp}->{round} = $where[1];
 		}
 	}
 
@@ -239,14 +239,15 @@ sub do_comp
 		# push the ranking after the pools 
 		my $fencers = $c->ranking("p");
 
+		my $rlist = {};
 		my @rlout = do_ranking_list($fencers, $aff);
 
 		# TRACE( sub { Dumper(\@rlout) });
 
-		$list->{ranking}->{fencer} = [@rlout];
-		$list->{ranking}->{count} = @rlout;
-		$list->{ranking}->{type} = "pools";
-		# push @{$out->{lists}}, $list;
+		$rlist->{ranking}->{fencer} = [@rlout];
+		$rlist->{ranking}->{count} = @rlout;
+		$rlist->{ranking}->{type} = "pools";
+		push @{$out->{lists}}, $rlist;
 	
 
 		$out->{tableau} = $c->tableau_with_matches($where);
@@ -409,14 +410,14 @@ sub do_final_list
 				
 	$fencers = $c->ranking();
 
-	DEBUG( sub { Dumper(\$fencers) } );
-	TRACE ("*****************************");
+	#DEBUG( sub { Dumper(\$fencers) } );
+	#TRACE ("*****************************");
 
 	my $sequence = 1;
 	
 	foreach my $fid (sort {$fencers->{$a}->{seed} <=> $fencers->{$b}->{seed}} keys %$fencers)
 	{
-		TRACE( sub { "fid = $fid " . Dumper($fencers->{$fid}) });
+		#TRACE( sub { "fid = $fid " . Dumper($fencers->{$fid}) });
 
 		my $aff_value;
 		if ($aff eq "nation")

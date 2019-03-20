@@ -15,6 +15,47 @@ div.centreinfo
    margin-top: 30ex;
 }
 
+div.podium {
+	overflow: hidden; 
+	position: absolute; 
+	top: 55%;
+	left: 5%;
+	height:  40%; 
+	width: 	90%; 
+	background-image: url("../podium_640_nomargin.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position-y: bottom;
+	padding-left: 5em;
+}
+
+td.goldpod {
+	width: 35%;
+	/* background-color: #ffd700; */
+}
+
+td.silverpod {
+	width: 35%;
+	/* background-color: #c0c0c0; */
+}
+
+td.bronzepod {
+	width: 30%;
+	/* background-color: #b8860b; */
+}
+
+table.podiumtable {
+	width: 100%;
+	border-collapse: collapse; 
+	line-height: 2em;
+}
+
+.podiumtable td {
+	text-align: left;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
 div.tableau { 
 	overflow: hidden; 
 	position: absolute; 
@@ -280,9 +321,18 @@ div.mid_title {
 span.timestamp {  
    position: fixed; 
    bottom: 0px;
-   right: 20px; 
+   right: 15px; 
    color: #ffffff;
    margin-top:2px;
+   margin-bottom:2px;
+   height: 15px; 
+}
+
+span.tournament {  
+   position: fixed; 
+   top: 0px;
+   left: 15px; 
+   color: #ffffff;
    margin-bottom:2px;
    height: 15px; 
 }
@@ -808,18 +858,5 @@ tr.tablistmatch {
    margin-right: 15%;
    width: 70%;
    background-color: red;
-}
-
-#victor {
-   opacity:0.7;
-   font-size:xx-large;
-   font-weight: bold;
-   position: fixed;
-   top: 65%;
-   z-index:1;
-   text-align:center;
-   margin-left: 7%;
-   width: 33%;
-   background-color: gold;
 }
 

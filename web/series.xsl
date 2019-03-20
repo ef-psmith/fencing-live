@@ -519,7 +519,10 @@ with half the number of matches.
 	  <xsl:with-param name="visibility" select="'visible'"/>
    </xsl:apply-templates>
 </content>
+
+
 </xsl:when>
+<!-- The stage will contain two current tableaux with a space between them.  So if there is something after a space we must have a repecharge -->
 <xsl:when test="contains(substring-after(@stage, 'tableau '), ' ')">
 
 <!-- Two tableaus for repecharge -->
@@ -567,6 +570,7 @@ with half the number of matches.
 </xsl:template>
 
 
+<!-- This builds the page list for the javascript to page through.  -->
 <xsl:template match="competition" mode="tableaupages">
 <xsl:param name="col1" />
 <xsl:variable name="col1matchcount" select="tableau[@name = $col1]/@count" />
@@ -776,6 +780,81 @@ with half the number of matches.
 </xsl:if>
 		</div>
 </xsl:if>
+
+
+<!-- Put a podium table here.-->
+<xsl:if test="../../tableau[@name = $col2]/@count = 1">
+<xsl:variable name="goldid" select="../../tableau[@count = 1]/match[@number = 1]/@winnerid"/>
+
+	<div class="podium">
+		<table class="podiumtable">
+			<tr>
+				<td class="emptypod">&#xA0;</td>
+				<td class="goldpod">
+					<xsl:if test="../../tableau[@count = 1]/match/fencerA/@id = $goldid">
+						<xsl:value-of select="../../tableau[@count = 1]/match/fencerA/@name" />
+					</xsl:if>
+					<xsl:if test="../../tableau[@count = 1]/match/fencerB/@id = $goldid">
+						<xsl:value-of select="../../tableau[@count = 1]/match/fencerB/@name" />
+					</xsl:if>
+				</td>
+				<td class="emptypod" >&#xA0;</td>
+			</tr>
+
+			<tr>
+				<td class="silverpod">
+					<xsl:if test="../../tableau[@count = 1]/match/fencerB/@id = $goldid">
+						<xsl:value-of select="../../tableau[@count = 1]/match/fencerA/@name" />
+					</xsl:if>
+					<xsl:if test="../../tableau[@count = 1]/match/fencerA/@id = $goldid">
+						<xsl:value-of select="../../tableau[@count = 1]/match/fencerB/@name" />
+					</xsl:if>
+				</td>
+				<td class="goldpod" />
+				<td class="emptypod" />
+			</tr>
+
+			<tr>
+				<td class="silverpod"/>
+				<td class="goldpod"/>
+				<td class="bronzepod">
+					<xsl:variable name="notbronze1" select="../../tableau[@count = 2]/match[@number = 1]/@winnerid"/>
+
+					<xsl:if test="../../tableau[@count = 2]/match[@number = 1]/fencerB/@id = $notbronze1">
+						<xsl:value-of select="../../tableau[@count = 2]/match[@number = 1]/fencerA/@name" />
+					</xsl:if>
+					<xsl:if test="../../tableau[@count = 2]/match[@number = 1]/fencerA/@id = $notbronze1">
+						<xsl:value-of select="../../tableau[@count = 2]/match[@number = 1]/fencerB/@name" />
+					</xsl:if>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="silverpod"/>
+				<td class="goldpod"/>
+				<td class="bronzepod">
+					<xsl:variable name="notbronze2" select="../../tableau[@count = 2]/match[@number = 2]/@winnerid"/>
+					<xsl:if test="../../tableau[@count = 2]/match[@number = 2]/fencerA/@id = $notbronze2">
+						<xsl:value-of select="../../tableau[@count = 2]/match[@number = 2]/fencerB/@name" />
+					</xsl:if>
+					<xsl:if test="../../tableau[@count = 2]/match[@number = 2]/fencerB/@id = $notbronze2">
+						<xsl:value-of select="../../tableau[@count = 2]/match[@number = 2]/fencerA/@name" />
+					</xsl:if>
+				</td>
+			</tr>
+
+<!--
+			<tr>
+				<td class="silverpod">&#xA0;</td>
+				<td class="goldpod"/>
+				<td class="bronzepod"/>
+			</tr>
+-->
+		</table>
+	</div>  
+</xsl:if>
+
+
 	</div>
 	</xsl:for-each>
 </xsl:otherwise>

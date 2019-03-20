@@ -270,6 +270,7 @@ sub do_comp
 	push @{$out->{lists}}, $wh if $wh->{where}->{count};
 	
 	$out->{lastupdate} = localtime;
+	$out->{tournamentname} = $config->{tournamentname};
 	
 	my $outfile = $location . "/competitions/" . $cid . ".xml";
 

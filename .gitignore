@@ -1,3 +1,5 @@
-web/competitions/*
-web/out.txt
-web/live.xml
+.svn
+/web/out.txt
+/web/live.xml
+*.LCK
+/web/competitions/*.xml

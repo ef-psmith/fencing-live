@@ -9,7 +9,7 @@
 # Short-Description: Start/stop writexml perl script
 ### END INIT INFO
 
-# Author: Peter Smiht <peter.smith@englandfencing.org.uk>
+# Author: Peter Smith <peter.smith@englandfencing.org.uk>
 #
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
